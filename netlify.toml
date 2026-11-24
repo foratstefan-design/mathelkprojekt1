@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build:static"
+  publish = "dist"
+
+# Add a 200 /api/* proxy to the persistent Node service BEFORE this SPA rule.
+# See README.md; a Netlify Function cannot persist this SQLite database.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

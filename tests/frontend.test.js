@@ -1,0 +1,105 @@
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {readFile} from 'node:fs/promises';
+const elements=new Map(),scenes=[],calls=[];
+function classes(){const list=new Set();return {toggle(name,on){if(on===undefined)on=!list.has(name);on?list.add(name):list.delete(name);return on;},contains:name=>list.has(name),add:name=>list.add(name),remove:name=>list.delete(name)};}
+class Element {
+  constructor(id=''){this.id=id;this.dataset={};this.style={};this.classList=classes();this.attributes={};this.isConnected=true;this.disabled=false;this._html='';}
+  set innerHTML(html){this._html=html;for(const match of html.matchAll(/id="([^"]+)"/g))elements.set(match[1],new Element(match[1]));}
+  get innerHTML(){return this._html;}
+  setAttribute(key,value){this.attributes[key]=value;}
+  getAttribute(key){return this.attributes[key]??'false';}
+  querySelector(selector){if(selector==='h1,h2')return new Element();if(selector==='button')return new Element();return query(selector);}
+  querySelectorAll(){return [];}
+  focus(){} addEventListener(){} append(){} showModal(){this.open=true;} close(value){this.open=false;this.returnValue=value;this.onclose?.();}
+}
+function query(selector){const id=selector.replace(/^#/,'');if(!elements.has(id))elements.set(id,new Element(id));return elements.get(id);}
+const body=new Element('body'),storage=new Map();
+class Scene {
+  constructor(){this.calls=[];scenes.push(this);}
+  setMode(mode){this.calls.push(['mode',mode]);}
+  setAltitude(height){this.calls.push(['height',height]);}
+  setDanger(){}setSpeed(){}reset(){}
+  takeoff(){this.calls.push(['takeoff']);return Promise.resolve();}
+  recover(){this.calls.push(['recover']);return Promise.resolve();}
+  stall(){this.calls.push(['stall']);return Promise.resolve();}
+  boost(){this.calls.push(['boost']);}
+  crash(){this.calls.push(['crash']);return Promise.resolve();}
+}
+let handler=()=>({}),frame=0;
+const location={hash:'#anleitung',origin:'https://flight.test'};
+const context=vm.createContext({
+  console,crypto,URL,Response,Intl,Date,Math,Promise,performance,setTimeout,clearTimeout,
+  localStorage:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},
+  matchMedia:()=>({matches:true}),requestAnimationFrame:()=>++frame,cancelAnimationFrame(){},
+  FlightScene:Scene,plane:()=>'<svg></svg>',hero:'<svg></svg>',location,
+  window:{scrollTo(){},addEventListener(){},history:{replaceState(a,b,value){location.hash=value;}}},
+  document:{body,querySelector:query,querySelectorAll:()=>[],addEventListener(){},createElement:()=>new Element()},
+  navigator:{},fetch:async(path,init)=>{calls.push({path,body:init?.body?JSON.parse(init.body):null});const result=await handler(path,init);return new Response(JSON.stringify(result),{status:200,headers:{'Content-Type':'application/json'}});}
+});
+let source=await readFile(new URL('../public/app.js',import.meta.url),'utf8');
+source=source.replace(/^import .*;\n/gm,'');
+vm.runInContext(source,context);
+const execute=text=>vm.runInContext(text,context);
+const result={correct:true,questionId:'q1',questionIndex:0,prompt:'Warum schwimmt Eis?',correctLabel:'Es hat eine geringere Dichte',explanation:'Wasser bildet beim Gefrieren ein offenes Kristallgitter.',source:{title:'USGS',url:'https://www.usgs.gov/'},options:[{id:'a',label:'Dichte',displayValue:'Richtig'}],points:25,altitudeGain:350,altitudeLoss:0};
+const q={id:'q1',type:'general',category:'Physik',difficulty:1,prompt:result.prompt,basisLabel:'Wissen',options:[{id:'a',label:'Dichte'},{id:'b',label:'Masse'},{id:'c',label:'Temperatur'},{id:'d',label:'Farbe'}]};
+function setRun(overrides={}){
+  context.fixture={id:'run1',mode:'mix',kind:'free',status:'flying',index:0,streak:0,correctTotal:0,score:0,altitude:0,peakAltitude:0,danger:0,recovering:false,timeLimitMs:18000,deadline:Date.now()+18000,question:q,...overrides};
+  execute('run=fixture;currentQuestion=run.question;busy=false;question();');
+}
+function response(overrides={}){
+  return {...context.fixture,status:'ready',index:1,correctTotal:1,streak:1,score:25,altitude:350,peakAltitude:350,question:null,deadline:null,result,latestResult:result,...overrides};
+}
+setRun();calls.length=0;handler=()=>response();
+await execute("submitChoice('a')");
+assert.equal(execute('screen'),'feedback');
+assert.equal(calls.filter(x=>x.path.includes('/api/next')).length,0,'learning does not start a new timer');
+assert.match(query('#main').innerHTML,/Kristallgitter/);
+assert.match(query('#main').innerHTML,/WEITERFLIEGEN/);
+handler=()=>({...context.fixture,index:1,question:{...q,id:'q2'}});
+await execute('advanceFlight()');
+assert.equal(execute('screen'),'question');
+assert.equal(calls.filter(x=>x.path.includes('/api/next')).length,1,'explicit next starts question');
+setRun({kind:'daily',mode:'daily',dailyMode:'rare',competitionVersion:3,questionCount:10,dailyDate:'2026-11-20',index:9,altitude:350,peakAltitude:900});
+scenes[0].calls.length=0;calls.length=0;
+handler=path=>path.includes('leaderboard')?{own:{rank:2},totalFinished:3}:response({kind:'daily',mode:'daily',dailyMode:'rare',competitionVersion:3,questionCount:10,dailyDate:'2026-11-20',status:'finished',index:10,altitude:700,peakAltitude:900,pilotName:'Pilot'});
+await execute("submitChoice('a')");
+assert.equal(execute('screen'),'feedback');
+assert.match(query('#main').innerHTML,/TAGESERGEBNIS ANSEHEN/);
+await execute('advanceFlight()');
+assert.equal(execute('screen'),'results');
+assert.equal(scenes[0].calls.filter(x=>x[0]==='crash').length,0,'finished daily never crashes');
+assert.ok(scenes[0].calls.some(x=>x[0]==='recover'),'positive finish animation');
+assert.equal(execute('run.altitude'),700);
+assert.match(query('#main').innerHTML,/700 <small>Meter/);
+assert.equal(calls.filter(x=>x.path.includes('/api/next')).length,0,'no eleventh question');
+setRun({danger:2,altitude:400,peakAltitude:900});
+handler=()=>response({status:'crashed',danger:3,index:0,altitude:0,peakAltitude:900,result:{...result,correct:false},latestResult:{...result,correct:false}});
+await execute("submitChoice('b')");
+assert.equal(execute('screen'),'results');
+assert.equal(scenes[0].calls.filter(x=>x[0]==='crash').length,1,'practice still crashes');
+execute("store.set('active',{id:'saved-free'});screen='home';busy=false;");
+handler=path=>path.includes('leaderboard')?{own:{rank:1},totalFinished:1}:response({status:'finished',kind:'daily',mode:'daily',dailyMode:'common',competitionVersion:3,questionCount:10,index:10,dailyDate:'2026-11-20',altitude:700,peakAltitude:900});
+await execute("startFlight('daily')");
+assert.equal(execute("store.get('active',null).id"),'saved-free','viewing finished daily preserves saved free flight');
+calls.length=0;
+execute("store.set('active',{id:'run1'});busy=false;");
+handler=()=>response();
+await execute('resumeFlight()');
+assert.equal(execute('screen'),'feedback');
+assert.equal(calls.filter(x=>x.path.includes('/api/next')).length,0,'resume shows last fact before arming next');
+setRun();calls.length=0;let attempts=0;
+handler=()=>{if(!attempts++)throw Error('offline');return response();};
+await execute("submitChoice('a')");
+assert.equal(execute('screen'),'question');
+await execute('submitChoice(null,false,pendingChoice)');
+assert.equal(execute('screen'),'feedback');
+assert.deepEqual(calls.map(x=>x.body.choiceId),['a','a'],'retry preserves first submitted choice');
+assert.equal(execute("sourceList({source:{url:'javascript:alert(1)'}})"),'');
+assert.ok(execute("pilotForm('<script>')").includes('&lt;script&gt;'));
+calls.length=0;handler=path=>path.includes('profile')?{name:'<script>'}:{date:'2026-11-20',mode:'common',entries:[{rank:1,name:'<script>alert(1)</script>',altitude:3000,score:100,answerElapsedMs:10000,isYou:true}],own:{rank:1},totalFinished:1};
+await execute("leaderboard('2026-11-20')");
+assert.equal(execute('screen'),'bestenliste');
+assert.ok(query('#leaderboard-content').innerHTML.includes('&lt;script&gt;'));
+assert.ok(!query('#leaderboard-content').innerHTML.includes('<script>'));
+console.log('Frontend flow checks passed: learning pause, explicit next, daily finish/no11th, positive animation, practice crash, saved-flight preservation, resume, idempotent retry, escaped aliases and source URLs.');

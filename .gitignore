@@ -1,0 +1,8 @@
+data/
+dist/
+*.sqlite*
+node_modules/
+.env*
+.wrangler/
+
+.openai/hosting.json

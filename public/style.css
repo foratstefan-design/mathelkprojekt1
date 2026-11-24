@@ -1,0 +1,609 @@
+/* Höhenflug keeps the original pixel interface, with a new sky and flight controls. */
+#sky-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-3;pointer-events:none;image-rendering:pixelated;transition:filter .6s ease}
+body.dark #sky-canvas{filter:brightness(.65) saturate(.88)}
+body.in-flight.dark #sky-canvas,body.in-dive.dark #sky-canvas{filter:brightness(.79) saturate(.92)}
+body[data-screen="question"] .footer,body[data-screen="feedback"] .footer,body[data-screen="crash"] .footer,body[data-screen="descent"] .footer,body[data-screen="intro"] .footer{display:none}
+.flight-home{min-height:100svh;min-height:100dvh}
+.flight-home .home-heading{top:6vh;left:24px;right:24px}
+.flight-home .home-heading .edition{font-size:12px;letter-spacing:.2em;margin-bottom:14px;color:#315f74}
+.flight-home .home-heading h1{font-size:clamp(5.8rem,9vw,7.5rem);line-height:.79;letter-spacing:.075em;margin-bottom:20px;white-space:normal}
+.flight-home .home-heading h1 br{display:block}
+.flight-home .home-heading .tagline{font-size:14px;line-height:1.65;max-width:620px;margin:0 auto;color:#31576d}
+.flight-home .home-bottom{top:58%;width:min(700px,calc(100% - 64px))}
+.flight-home .home-bottom .primary{min-height:65px;font-size:1.8rem;letter-spacing:.08em;margin-top:17px}
+.flight-home .home-meta{margin-top:17px;gap:18px;justify-content:center;font-size:12px;line-height:1.6}
+.flight-home .home-meta>span{width:auto}
+.flight-home .home-mascot{display:none}
+.flight-home .home-coordinate{display:none}
+.mode-picker{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;width:100%;padding:10px;background:#071b2ee8;border:1px solid #4c7a90;box-shadow:4px 4px 0 #020d19;text-align:center}
+.mode-option{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:68px;padding:10px 6px;background:#102b42;border:1px solid #426b80;color:#bdd5df;box-shadow:2px 2px 0 #041220;transition:border-color .2s,background .2s,color .2s;line-height:1.3;min-width:0}
+.mode-option:hover{background:#1b3e54;border-color:#80babf;color:#edfff8}
+.mode-option[aria-pressed="true"]{background:#1b4658;border-color:var(--cyan);color:var(--cyan);box-shadow:inset 0 0 0 2px #12364a,0 0 12px #7ee5df13}
+.mode-option[aria-pressed="true"]:after{content:'';position:absolute;top:4px;right:4px;width:4px;height:4px;background:var(--coral);box-shadow:-4px 0 #ff8cab44}
+.mode-option:focus-visible{outline:2px dashed var(--cyan);outline-offset:4px;z-index:1}
+.mode-option:active{transform:translate(1px,1px)}
+.mode-name{font-family:'VT323',monospace;font-size:1.5rem;font-weight:400;line-height:1;text-transform:uppercase;letter-spacing:.04em}
+.mode-detail{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.5;color:#9ab9c9;overflow-wrap:anywhere}
+.mode-option[aria-pressed="true"] .mode-detail{color:#bdd8db}
+body.dark .flight-home .home-heading .edition,body.dark .flight-home .home-heading .tagline{color:#b9d6de}
+/* Flight instruments reuse the stepped navy HUD, without any sea labels. */
+#flight-hud{align-items:flex-start}
+.hud-box.height strong{color:var(--cyan)}
+.hud-box.speed{text-align:right}
+.hud-box.speed strong{color:var(--coral);text-shadow:0 0 14px #ff8cab33}
+.hud-box.speed small{letter-spacing:.12em}
+.flight-status{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding-top:9px;color:#c1dce2;text-align:center;font-size:12px;line-height:1.3;white-space:nowrap}
+#hud-streak{font-family:'VT323',monospace;font-size:1.6rem;line-height:1;color:var(--cyan);letter-spacing:.04em}
+#hud-mode{font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.4;letter-spacing:.12em;color:#adc8d5;text-transform:uppercase}
+.score-chip{position:fixed;top:83px;left:50%;transform:translateX(-50%);z-index:8;display:flex;align-items:center;justify-content:center;gap:7px;background:#091f32d9;border:1px solid #375c73;color:#98b7c8;padding:6px 11px;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.4;letter-spacing:.045em;pointer-events:none;white-space:nowrap;box-shadow:2px 2px 0 #020c17}
+.score-chip #hud-score{font-family:'VT323',monospace;font-size:1.25rem;color:#e0eee7;line-height:1}
+.altitude-rail{position:fixed;right:18px;top:118px;bottom:32px;width:58px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none;color:#93b4c6;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.5;text-align:center;letter-spacing:.03em}
+.altitude-rail .rail-track{position:relative;width:1px;flex:1;min-height:100px;background:#9bbaca55}
+.altitude-rail .rail-track:before{content:'';position:absolute;right:0;top:0;bottom:0;width:9px;background:repeating-linear-gradient(to bottom,#9bbaca88 0,#9bbaca88 1px,transparent 1px,transparent 16px)}
+.altitude-rail .rail-track:after{content:'';position:absolute;right:0;top:0;bottom:0;width:15px;background:repeating-linear-gradient(to bottom,#b7d0dd99 0,#b7d0dd99 1px,transparent 1px,transparent 80px)}
+.altitude-rail .rail-track i{position:absolute;left:-3px;width:7px;height:4px;background:var(--coral);box-shadow:0 0 8px #ff8cab66;transition:bottom 1.5s var(--ease),top 1.5s var(--ease)}
+.altitude-rail strong{font-family:'VT323',monospace;font-size:1.3rem;font-weight:400;color:var(--cyan);line-height:1.1;white-space:nowrap}
+.altitude-rail .level-label{font-size:12px;line-height:1.7;color:#8eb1c3}
+.altitude-rail>span{font-size:12px;line-height:1.5}
+/* Questions and choices form one compact instrument panel over the open sky. */
+.flight-game .game-top{top:112px}
+.flight-game .question-counter{font-size:12px;letter-spacing:.08em;color:#a6c3d1}
+.flight-game .question-content{padding-top:153px;padding-bottom:35px;min-height:100svh;min-height:100dvh;display:flex;flex-direction:column;align-items:stretch}
+.flight-game .question-panel{padding:19px 25px 21px;flex:none}
+.flight-game .category-tag{font-size:12px;letter-spacing:.13em;line-height:1.6;margin-bottom:13px}
+.flight-game .question-title{font-size:clamp(2.1rem,3.5vw,2.9rem);line-height:1.06;letter-spacing:.015em;margin-bottom:13px}
+.flight-game .question-note{font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.8;letter-spacing:0;color:#a2bfd0}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:25px 0 23px;width:100%;flex:none}
+.choice{position:relative;display:flex;align-items:center;gap:14px;min-height:88px;padding:17px 17px 17px 15px;background:#0d2940ed;color:#e5f3ec;border:1px solid #5e8b9d;border-left:3px solid #629eac;box-shadow:3px 3px 0 #020d19;text-align:left;min-width:0;line-height:1.6;transition:background .18s,border-color .18s,box-shadow .18s,transform .18s;isolation:isolate}
+.choice:before{content:'';position:absolute;top:0;right:0;width:5px;height:5px;background:#6c97a966;pointer-events:none}
+.choice:hover:not(:disabled){background:#1c4559;border-color:var(--cyan);border-left-color:#c1fff0;transform:translateY(-2px);box-shadow:3px 5px 0 #020d19}
+.choice:focus-visible{outline:2px dashed var(--cyan);outline-offset:5px;border-color:var(--cyan);z-index:1}
+.choice:active:not(:disabled){transform:translate(1px,1px);box-shadow:1px 1px 0 #020d19}
+.choice-number{display:flex;align-items:center;justify-content:center;flex:0 0 31px;min-height:31px;background:#061a2c;border:1px solid #48758b;color:#8fb8c8;font-family:'VT323',monospace;font-size:1.7rem;line-height:1;text-align:center}
+.choice-label{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;line-height:1.7;overflow-wrap:anywhere;min-width:0;flex:1}
+.choice.selected{background:#1d495a;border-color:#a9eae2;border-left-color:var(--cyan);box-shadow:0 0 16px #7ee5df18,3px 3px 0 #020d19}
+.choice.selected .choice-number{color:var(--cyan);border-color:#82cacb;background:#0f3346}
+.choice.correct{background:#163e3e;border-color:#8bd3b5;border-left-color:#c4f2c8;box-shadow:0 0 18px #a6d9c41a,3px 3px 0 #020d19;animation:choice-confirm .4s var(--ease) both}
+.choice.correct .choice-label,.choice.correct .choice-number{color:#d2f5d6}
+.choice.correct .choice-number{background:#143b37;border-color:#93ceb0}
+.choice.wrong{background:#442238;border-color:#d981a1;border-left-color:#ffb8cb;box-shadow:0 0 18px #ff8cab1a,3px 3px 0 #020d19;animation:choice-miss .4s ease-out both}
+.choice.wrong .choice-label,.choice.wrong .choice-number{color:#ffe4ec}
+.choice.wrong .choice-number{background:#371d30;border-color:#d789a4}
+.choice:disabled{opacity:.62;cursor:default}
+.choice.selected:disabled,.choice.correct:disabled,.choice.wrong:disabled{opacity:1;cursor:default}
+#question-timer{margin-top:auto;width:100%;padding-top:3px}
+#question-timer .timer-info{font-size:12px;line-height:1.7;margin-top:0;margin-bottom:9px;color:#adc6d2}
+#question-timer .timer-info strong,#question-timer .timer-info #timer-count{font-family:'VT323',monospace;font-size:1.5rem;line-height:1.2;font-weight:400;color:var(--cyan)}
+#question-timer .timer-track{height:4px}
+.flight-game .game-hint{font-size:12px;line-height:1.8;letter-spacing:.035em;max-width:100%;margin:17px auto 0;color:#95b6c8}
+.flight-game .game-hint kbd{display:inline-block;background:#0a2237;border:1px solid #4f788d;padding:0 4px;box-shadow:1px 1px 0 #020d19;color:#bad6df;font:inherit}
+.feedback-banner{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:20;max-width:min(540px,calc(100% - 70px));width:max-content;padding:17px 25px;background:#0b243bee;border:1px solid #63988f;border-left:4px solid var(--cyan);box-shadow:5px 5px 0 #020d1980,0 0 40px #020d1955;text-align:center;color:#bdd9dc;font-size:14px;line-height:1.8;pointer-events:none;animation:flight-feedback .28s var(--ease) both}
+.feedback-banner:empty{display:none}
+.feedback-banner strong{display:block;font-family:'VT323',monospace;font-size:2.2rem;font-weight:400;line-height:1.1;color:var(--cyan);margin:0 0 7px;letter-spacing:.025em}
+.feedback-banner.correct{border-color:#7dc8af;border-left-color:#b3f0c4;background:#103832ee}
+.feedback-banner.correct strong{color:#bff4d0}
+.feedback-banner.danger{border-color:#b16e8e;border-left-color:var(--coral);background:#382139f2}
+.feedback-banner.danger strong{color:#ffc0d1}
+/* Crashes are short, dramatic feedback; the result sheet follows in normal flow. */
+.crash-overlay{position:fixed;inset:0;z-index:24;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:radial-gradient(ellipse at 50% 45%,#431b3244,#061221b3);pointer-events:none;padding:120px 25px 80px;text-align:center;animation:crash-veil .45s ease-out both}
+.crash-word{font-family:'VT323',monospace;font-size:clamp(4.4rem,10vw,7rem);line-height:.9;letter-spacing:.06em;color:#ffd5d9;-webkit-text-stroke:1px #8a4e6d;text-shadow:5px 4px 0 #b64a77,8px 7px 0 #061627;max-width:100%;margin:0;animation:crash-word-in .7s var(--ease) both}
+.crash-reason{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.9;color:#f0c5d3;max-width:490px;margin:0}
+.crash-overlay .crash-puff{height:85px;width:85px;background:#ffd9c855;clip-path:polygon(30% 0,60% 0,60% 15%,85% 15%,85% 35%,100% 35%,100% 65%,80% 65%,80% 90%,55% 90%,55% 100%,25% 100%,25% 80%,0 80%,0 40%,15% 40%,15% 15%,30% 15%);animation:crash-puff .85s ease-out both}
+.flight-results{margin-top:124px;margin-bottom:40px;padding-top:29px;padding-bottom:32px}
+.flight-results .result-depth{font-size:clamp(4rem,8vw,5.4rem);margin:20px 0 25px}
+.flight-results h1{font-family:'VT323',monospace;font-size:3.3rem;line-height:1.05;letter-spacing:.035em;color:#eaf6ea}
+.flight-results .eyebrow{font-size:12px;line-height:1.8;letter-spacing:.14em}
+.run-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;margin:24px 0 25px}
+.run-metrics>div{background:#0e2b40;border:1px solid #365f76;box-shadow:2px 2px 0 #020d19;padding:16px 7px 14px;min-width:0}
+.run-metrics strong{display:block;font-family:'VT323',monospace;font-size:2rem;font-weight:400;line-height:1.2;color:var(--cyan);margin-bottom:7px;overflow-wrap:anywhere}
+.run-metrics small,.run-metrics span{font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.7;color:#9bbacb;display:block}
+.crash-explanation{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.9;margin:18px 0 20px;padding:14px 15px;text-align:left;background:#3121378c;border-left:3px solid #d284a3;color:#cfc0d0;overflow-wrap:anywhere}
+.crash-explanation strong{color:#f2c6d8;font-weight:500}
+.last-answer{font-family:'IBM Plex Mono',monospace;text-align:left;padding:17px 15px;margin:19px 0 25px;border:1px solid #3c6177;border-left:3px solid #6db0b9;background:#071d30b3;font-size:14px;color:#c0d8df;line-height:1.85;overflow-wrap:anywhere}
+.last-answer h2,.last-answer h3{font-family:'VT323',monospace;font-size:1.9rem;line-height:1.15;color:#c8e8e4;margin:0 0 12px}
+.last-answer p{font-size:14px;line-height:1.85;margin:9px 0;color:#b2ccd7}
+.last-answer strong{color:var(--cyan);font-weight:500}
+.last-answer .correct-answer{color:#b2e8ca}
+.last-answer small{font-size:12px;color:#99b7c8;line-height:1.8}
+.last-answer a,.last-answer .source-link{font-size:12px;line-height:1.9;color:#9edce0;text-decoration:underline;text-decoration-color:#54899a;text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+.last-answer a:hover{color:#e2fffa;text-decoration-color:var(--cyan)}
+.last-answer .source,.last-answer .sources,.last-answer .verification-sources{margin-top:13px;padding-top:10px;border-top:1px solid #4d718455;display:flex;flex-wrap:wrap;gap:8px 15px}
+.flight-results .actions{margin-top:24px}
+.flight-results .actions .button{min-height:48px;font-size:14px}
+.flight-results>.start-note{font-size:12px;line-height:1.9;margin-top:20px}
+.flight-results details{margin:20px 0;text-align:left}
+.flight-results details summary{font-size:14px;line-height:1.8;color:#accbd6;cursor:pointer}
+@keyframes choice-confirm{0%{transform:scale(.98)}60%{transform:scale(1.025)}100%{transform:scale(1)}}
+@keyframes choice-miss{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}65%{transform:translateX(3px)}}
+@keyframes flight-feedback{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+@keyframes crash-veil{from{opacity:0}to{opacity:1}}
+@keyframes crash-word-in{0%{opacity:0;transform:scale(1.2) rotate(-3deg)}60%{opacity:1;transform:scale(.97) rotate(1deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes crash-puff{0%{opacity:0;transform:scale(.2)}40%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.65)}}
+@media(min-height:950px){.flight-home .home-heading{top:8vh}.flight-home .home-bottom{top:61%}.flight-game .question-content{padding-top:18vh;padding-bottom:8vh}.choice-grid{margin-top:35px;gap:15px}.choice{min-height:100px}}
+@media(max-width:900px){
+ .flight-home .home-heading h1{font-size:clamp(5.8rem,12vw,7rem)}
+ .flight-home .home-bottom{width:calc(100% - 130px)}
+ .mode-picker{gap:6px;padding:8px}
+ .mode-option{min-height:65px;padding:9px 5px}
+ .mode-name{font-size:1.35rem}
+ .mode-detail{font-size:12px;line-height:1.5}
+ .flight-game .question-content{padding-top:148px}
+ .flight-game .question-panel{padding:19px 22px}
+ .choice-grid{gap:11px}
+ .choice{gap:11px;padding:15px 12px;min-height:84px}
+ .choice-number{flex-basis:28px;min-height:29px;font-size:1.5rem}
+ .altitude-rail{right:13px;width:48px}
+ .feedback-banner{max-width:calc(100% - 130px)}
+ .flight-results .run-metrics{gap:8px}
+}
+@media(max-width:640px){
+ .flight-home .home-heading{top:7.5vh;left:20px;right:20px}
+ .flight-home .home-heading .edition{font-size:12px;letter-spacing:.08em;line-height:1.6;margin-bottom:14px}
+ .flight-home .home-heading h1{font-size:clamp(4.2rem,18vw,5.7rem);line-height:.8;letter-spacing:.06em;white-space:normal;margin-bottom:20px}
+ .flight-home .home-heading h1 br{display:block}
+ .flight-home .home-heading .tagline{font-size:12px;line-height:1.8;max-width:305px}
+ .flight-home .home-bottom{top:56.5%;width:calc(100% - 48px)}
+ .flight-home .home-bottom .primary{min-height:55px;margin-top:14px;font-size:1.4rem;letter-spacing:.045em;padding:12px 8px}
+ .mode-picker{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:8px}
+ .mode-option{min-height:43px;padding:6px 8px;gap:2px;flex-direction:row;justify-content:space-between;text-align:left}
+ .mode-option[data-mode="mix"],.mode-option:first-child{grid-column:1 / -1;justify-content:center;gap:13px;min-height:40px}
+ .mode-option[aria-pressed="true"]:after{top:3px;right:3px;width:3px;height:3px;box-shadow:-3px 0 #ff8cab44}
+ .mode-name{font-size:1.25rem;line-height:1;letter-spacing:.025em}
+ .mode-detail{font-size:12px;line-height:1.35;text-align:right;max-width:75px}
+ .mode-option[data-mode="mix"] .mode-detail,.mode-option:first-child .mode-detail{max-width:none}
+ .flight-home .home-meta{font-size:12px;line-height:1.6;margin-top:14px;gap:10px 18px;justify-content:center}
+ .flight-home .home-meta a{font-size:12px;padding-bottom:3px}
+ .flight-status{gap:5px;padding-top:6px;min-width:78px}
+ #hud-streak{font-size:1.3rem;letter-spacing:0}
+ #hud-mode{font-size:12px;letter-spacing:.025em;line-height:1.3}
+ .hud-box.speed small{font-size:12px;letter-spacing:0}
+ .hud-box.speed strong{font-size:1.4rem}
+ .hud-box.height strong{font-size:1.4rem}
+ #flight-hud{width:calc(100% - 108px);gap:6px}
+ #flight-hud .hud-box{min-width:62px;padding:7px 7px 8px}
+ .score-chip{top:76px;padding:5px 9px;font-size:12px;line-height:1.3;letter-spacing:.02em;gap:6px}
+ .score-chip #hud-score{font-size:1.1rem}
+ .altitude-rail{right:8px;top:116px;bottom:24px;width:27px;gap:8px;font-size:12px}
+ .altitude-rail strong{font-size:1rem;writing-mode:vertical-rl;letter-spacing:.035em}
+ .altitude-rail .rail-track:before{width:6px}.altitude-rail .rail-track:after{width:10px}
+ .altitude-rail .level-label{font-size:12px;line-height:1.4;writing-mode:vertical-rl}
+ .altitude-rail>span{font-size:12px;line-height:1.4}
+ .flight-game.game{width:calc(100% - 48px);padding:0 8px 24px}
+ .flight-game .game-top{top:118px;left:8px;right:8px;font-size:12px;line-height:1.5}
+ .flight-game .game-top .text-button,.flight-game .question-counter{font-size:12px}
+ .flight-game .question-content{padding-top:153px;padding-bottom:26px;min-height:100dvh}
+ .flight-game .question-panel{padding:17px 18px;min-height:0}
+ .flight-game .category-tag{font-size:12px;letter-spacing:.075em;line-height:1.7;margin-bottom:11px}
+ .flight-game .question-title{font-size:2.05rem;line-height:1.06;letter-spacing:0;margin-bottom:11px}
+ .flight-game .question-note{font-size:12px;line-height:1.8}
+ .choice-grid{grid-template-columns:1fr;gap:8px;margin:19px 0 20px}
+ .choice{min-height:61px;gap:13px;padding:11px 13px;box-shadow:2px 2px 0 #020d19}
+ .choice-number{flex-basis:28px;min-height:29px;font-size:1.6rem}
+ .choice-label{font-size:14px;font-weight:400;line-height:1.65}
+ .choice:hover:not(:disabled){transform:translateY(-1px);box-shadow:2px 3px 0 #020d19}
+ .choice.selected,.choice.correct,.choice.wrong{box-shadow:0 0 14px #7ee5df10,2px 2px 0 #020d19}
+ #question-timer{padding-top:0}
+ #question-timer .timer-info{font-size:12px;line-height:1.7;margin-bottom:8px;gap:8px}
+ #question-timer .timer-info strong,#question-timer .timer-info #timer-count{font-size:1.4rem}
+ #question-timer .timer-track{height:3px}
+ .flight-game .game-hint{font-size:12px;line-height:1.8;margin-top:14px;letter-spacing:0}
+ .feedback-banner{max-width:calc(100% - 58px);width:calc(100% - 70px);padding:16px 17px;font-size:14px;line-height:1.8}
+ .feedback-banner strong{font-size:2rem;line-height:1.05;margin-bottom:9px}
+ .crash-overlay{padding:125px 28px 70px;gap:20px}
+ .crash-word{font-size:clamp(3.2rem,14vw,5rem);line-height:.95;letter-spacing:.04em;text-shadow:3px 3px 0 #b64a77,5px 5px 0 #061627}
+ .crash-reason{font-size:14px;line-height:1.85;max-width:300px}
+ .flight-results{margin-top:123px;padding:24px 15px 29px}
+ .flight-results h1{font-size:2.7rem;line-height:1.05}
+ .flight-results .eyebrow{font-size:12px;letter-spacing:.08em;line-height:1.8}
+ .flight-results .result-depth{font-size:3.7rem;line-height:1.05;margin:21px 0 22px}
+ .flight-results .result-depth small{font-size:1.45rem}
+ .run-metrics{gap:7px;margin:21px 0}
+ .run-metrics>div{padding:14px 5px 12px}
+ .run-metrics strong{font-size:1.75rem;margin-bottom:7px}
+ .run-metrics small,.run-metrics span{font-size:12px;line-height:1.6}
+ .crash-explanation{font-size:14px;line-height:1.85;padding:13px 12px;margin:19px 0}
+ .last-answer{font-size:14px;line-height:1.85;padding:14px 12px;margin:18px 0 22px}
+ .last-answer h2,.last-answer h3{font-size:1.8rem;line-height:1.15;margin-bottom:12px}
+ .last-answer p{font-size:14px;line-height:1.85}
+ .last-answer small,.last-answer a{font-size:12px;line-height:1.85}
+ .last-answer .source,.last-answer .sources,.last-answer .verification-sources{gap:8px 12px}
+ .flight-results .actions{gap:11px;margin-top:22px}
+ .flight-results .actions .button{width:100%;font-size:14px;min-height:47px}
+ .flight-results>.start-note{font-size:12px;line-height:1.8}
+ .flight-results details summary{font-size:14px;line-height:1.8}
+}
+@media(max-width:360px){
+ .flight-home .home-bottom{width:calc(100% - 40px)}
+ .mode-picker{gap:6px;padding:7px}
+ .mode-option{padding-left:7px;padding-right:7px;gap:4px}
+ .mode-name{font-size:1.2rem}
+ .mode-detail{max-width:66px;font-size:12px}
+ .flight-home .home-meta{gap:9px 12px}
+ .flight-status{min-width:66px}
+ #hud-streak{font-size:1.2rem}
+ #hud-mode{font-size:12px;letter-spacing:-.03em}
+ #flight-hud .hud-box{min-width:57px;padding-left:6px;padding-right:6px}
+ #flight-hud .hud-box strong{font-size:1.3rem}
+ .flight-game .question-panel{padding:16px}
+ .flight-game .question-title{font-size:1.95rem}
+ .choice{padding:10px 11px;gap:11px}
+ .choice-label{font-size:14px}
+}
+@media(max-height:720px) and (min-width:641px){
+ .flight-home .home-heading{top:5vh}
+ .flight-home .home-heading h1{font-size:5.8rem;line-height:.78;margin-bottom:17px}
+ .flight-home .home-heading .edition{margin-bottom:10px}
+ .flight-home .home-heading .tagline{font-size:12px}
+ .flight-home .home-bottom{top:56%}
+ .mode-option{min-height:61px;padding:8px 6px}
+ .flight-home .home-bottom .primary{min-height:58px;font-size:1.6rem;margin-top:15px}
+ .flight-home .home-meta{margin-top:14px}
+ .flight-game .question-content{padding-top:145px;padding-bottom:26px}
+ .flight-game .question-panel{padding-top:16px;padding-bottom:17px}
+ .flight-game .question-title{font-size:2.5rem}
+ .choice-grid{margin-top:20px;margin-bottom:19px;gap:11px}
+ .choice{min-height:74px;padding:13px}
+ .flight-game .game-hint{margin-top:13px}
+}
+@media(max-width:640px) and (max-height:720px){
+ .flight-home .home-heading{top:5.5vh}
+ .flight-home .home-heading .edition{font-size:12px;margin-bottom:11px;line-height:1.5}
+ .flight-home .home-heading h1{font-size:3.8rem;line-height:.78;margin-bottom:17px}
+ .flight-home .home-heading .tagline{font-size:12px;line-height:1.7;max-width:295px}
+ .flight-home .home-bottom{top:53%}
+ .mode-picker{gap:6px;padding:7px}
+ .mode-option{min-height:40px;padding:5px 7px}
+ .mode-option[data-mode="mix"],.mode-option:first-child{min-height:35px}
+ .mode-name{font-size:1.2rem}
+ .mode-detail{font-size:12px;line-height:1.3}
+ .flight-home .home-bottom .primary{min-height:50px;font-size:1.3rem;margin-top:12px}
+ .flight-home .home-meta{font-size:12px;line-height:1.5;margin-top:12px;gap:8px 13px}
+ .flight-game .question-content{padding-top:148px;padding-bottom:22px}
+ .flight-game .question-panel{padding:15px 17px}
+ .flight-game .question-title{font-size:1.95rem;line-height:1.05}
+ .flight-game .category-tag{margin-bottom:9px}
+ .choice-grid{margin:16px 0 18px;gap:7px}
+ .choice{min-height:57px;padding:9px 12px}
+ .choice-number{min-height:28px;flex-basis:27px;font-size:1.5rem}
+ .flight-game .game-hint{margin-top:12px}
+ .run-metrics{gap:6px}
+ .run-metrics strong{font-size:1.6rem}
+}
+@media(prefers-reduced-motion:reduce){
+ #sky-canvas,.mode-option,.choice,.choice.correct,.choice.wrong,.feedback-banner,.crash-overlay,.crash-word,.crash-puff,.altitude-rail .rail-track i{transition:none!important;animation:none!important}
+ .choice:hover:not(:disabled),.choice:active:not(:disabled){transform:none}
+}
+
+/* Recovery actions remain clickable; the flight clock is never restarted by them. */
+.feedback-banner:has(button){pointer-events:auto}
+.feedback-banner button{margin-top:12px}
+body.in-flight .footer{display:none}
+.archive-row h2{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.6;margin:0 0 7px}
+.info-card h2{font-size:1.8rem;line-height:1.1}
+.error-plane{height:120px;width:190px;margin:0 auto 20px}
+.resume-link{display:block;margin:16px auto 0;color:#c0dce0}
+/* Make the aircraft fall visible after the answer is locked, including on phones. */
+body[data-screen="crashing"] .question-content{opacity:.08;transform:translateY(18px);transition:opacity .4s ease,transform .5s ease;pointer-events:none}
+body[data-screen="crashing"] .feedback-banner{display:none}
+@media(prefers-reduced-motion:reduce){body[data-screen="crashing"] .question-content{transition:none;transform:none}}
+
+/* Fixed-size result art and compact phone instruments keep the game visible. */
+.result-plane{width:150px;height:110px;margin:0 auto 15px}
+@media(max-width:640px){
+ .flight-home .mode-detail{display:none}
+ .flight-home .mode-picker{padding:7px;gap:6px}
+ .flight-home .mode-option{min-height:40px;justify-content:center}
+ .flight-home .mode-option[data-mode="mix"]{min-height:34px}
+ .flight-status{min-width:0;flex:1}
+ #hud-streak{font-size:1.2rem;letter-spacing:0}
+ #flight-hud .hud-box{min-width:68px;padding-left:8px;padding-right:8px}
+ .flight-home .home-bottom .primary{margin-top:12px;min-height:56px}
+}
+@media(max-width:640px) and (max-height:680px){
+ .landing.flight-home{min-height:740px;overflow:visible}
+ .flight-home .home-heading{top:32px}
+ .flight-home .home-bottom{top:360px}
+ body:has(.flight-home) .footer{position:relative;bottom:auto;margin-top:0;padding-top:8px}
+}
+
+/* The flight station now has a daily departure and unlimited free departures. */
+.landing.flight-home.updated-home{min-height:max(930px,100svh);overflow:visible;padding-bottom:60px}
+.flight-home.updated-home .home-heading{top:6vh}
+.flight-home.updated-home .home-bottom{top:52%;width:min(700px,calc(100% - 64px));padding-bottom:28px}
+body:has(.flight-home.updated-home) .footer{position:relative;left:auto;right:auto;bottom:auto;padding:16px 20px 25px;margin-top:0;font-size:12px;opacity:.8}
+.daily-launch{position:relative;width:100%;margin:0 0 23px;background:#091f33e8;border:1px solid #7ba6ad;box-shadow:4px 4px 0 #020d19,inset 0 0 0 3px #123149}
+.daily-launch:before{content:'';position:absolute;top:-1px;left:-1px;width:5px;height:5px;background:var(--coral);pointer-events:none;z-index:1}
+.daily-launch#daily-start{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:20px;row-gap:5px;align-items:center;width:100%;min-height:91px;padding:15px 19px;background:#091f33e8;border:1px solid #7ba6ad;border-left:3px solid #8dbabf;color:#d9ece7;text-align:left;transition:background .2s,border-color .2s}
+.daily-launch#daily-start:hover{background:#163b50cf;border-left-color:var(--cyan)}
+.daily-launch#daily-start:focus-visible{outline:2px dashed var(--cyan);outline-offset:5px}
+.daily-launch#daily-start:disabled{opacity:.65;cursor:wait}
+.daily-title{display:block;grid-column:1;grid-row:1;font-family:'VT323',monospace;font-size:1.95rem;font-weight:400;line-height:1.05;letter-spacing:.075em;color:var(--coral)}
+.daily-description{display:block;grid-column:1 / -1;grid-row:2;font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.7;color:#b3cfd9;overflow-wrap:anywhere}
+.daily-state{display:block;grid-column:2;grid-row:1;max-width:230px;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.7;letter-spacing:.025em;color:var(--cyan);text-align:right;overflow-wrap:anywhere}
+.daily-state.active,.daily-state[data-state="active"],.daily-launch.active .daily-state,.daily-launch[data-state="active"] .daily-state{color:var(--gold)}
+.daily-state.finished,.daily-state[data-state="finished"],.daily-launch.finished .daily-state,.daily-launch[data-state="finished"] .daily-state{color:#aed9c7}
+.daily-launch.active,.daily-launch[data-state="active"]{border-color:#b3a575}
+.daily-launch.finished,.daily-launch[data-state="finished"]{border-color:#659b92}
+.mode-section-label{font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.7;letter-spacing:.12em;color:#92b2c5;text-align:left;padding-left:2px;margin:0 0 11px}
+.updated-home .mode-picker{margin-top:0}
+.updated-home .home-meta{font-size:12px;line-height:1.75;gap:11px 18px;justify-content:center}
+.updated-home .resume-link{font-size:12px;line-height:1.8;display:table;margin:15px auto 0;max-width:100%;text-align:center;padding:4px 0}
+/* The aircraft condition is always visible and never relies on flashing color. */
+#hud-condition{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.5;letter-spacing:.045em;color:#add9ca;white-space:nowrap}
+#hud-condition.warning,#hud-condition.recovering,#hud-condition[data-state="recovery"],#hud-condition[data-condition="recovering"]{color:var(--gold)}
+#hud-condition.danger,#hud-condition.last-chance,#hud-condition[data-state="last-chance"],#hud-condition[data-condition="last-chance"]{color:#ffafbd}
+.flight-status:has(#hud-condition){gap:5px;padding-top:4px}
+.flight-status:has(#hud-condition) .score-chip{top:103px}
+.flight-game:has(.recovery-banner) .question-content{padding-top:160px}
+.difficulty-label{display:inline;white-space:normal;color:#b3cbd4;font-size:12px;line-height:1.7;letter-spacing:.055em}
+.difficulty-badge{display:inline-flex;align-items:center;gap:7px;vertical-align:middle;padding:3px 8px;margin-left:9px;border:1px solid #60858e;border-left:3px solid #8abeb4;background:#102e3e;color:#c5e8d6;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;line-height:1.5;letter-spacing:.02em;text-transform:none;white-space:nowrap}
+.difficulty-badge[data-level="1"]{border-color:#5c8f85;border-left-color:#a6d9c4;color:#b8e5cc;background:#15343b}
+.difficulty-badge[data-level="2"]{border-color:#8b8258;border-left-color:var(--gold);color:#eadca9;background:#303239}
+.difficulty-badge[data-level="3"]{border-color:#a46982;border-left-color:var(--coral);color:#f3bfce;background:#36283b}
+.feedback-banner.warning{border-color:#a89663;border-left-color:var(--gold);background:#30303deF;color:#e7d4b0}
+.feedback-banner.warning strong{color:#f5df9a}
+.feedback-banner .altitude-loss{display:block;color:#ffd2a3;font-family:'VT323',monospace;font-size:1.6rem;line-height:1.2;letter-spacing:.025em;margin-top:8px}
+.recovery-banner{--condition-color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;line-height:1.8;color:#e4d5af;padding:12px 14px;margin:17px 0 0;border:1px solid #8a7c56;border-left:3px solid var(--condition-color);background:#2e2d3bcc;box-shadow:2px 2px 0 #020d1933;overflow-wrap:anywhere}
+.recovery-banner strong{color:#fae5ab;font-weight:500}
+.recovery-banner small{display:block;font-size:12px;line-height:1.8;color:#cbbf9d;margin-top:5px}
+.recovery-banner.danger,.recovery-banner.last-chance,.recovery-banner[data-level="2"],.recovery-banner[data-state="last-chance"]{--condition-color:#ff9eaf;border-color:#9a6278;background:#3a2435cc;color:#e8bec9}
+.recovery-banner.danger strong,.recovery-banner.last-chance strong,.recovery-banner[data-level="2"] strong{color:#ffc7d4}
+.flight-game.recovering .question-panel{border-top-color:#d3b47499;box-shadow:0 0 0 4px #171d29,8px 8px 0 #040c1640;animation:recovery-panel-breathe 4s ease-in-out infinite}
+.flight-game.recovering .timer-bar{background:#e9d18e;box-shadow:0 0 12px #f5db8322}
+.flight-game.recovering .timer-bar.urgent{background:#ff9cab}
+.flight-game.recovering #question-timer .timer-info #timer-count{color:#f0d99e}
+.flight-game.recovering .choice-grid{margin-top:17px}
+/* Record height and the current landing height remain separate in the logbook. */
+.flight-results.daily-result .eyebrow{color:var(--gold)}
+.flight-results.free-result .eyebrow{color:var(--coral)}
+.daily-result .result-depth small,.free-result .result-depth small{display:inline;font-family:'VT323',monospace;font-size:1.6rem;line-height:1.4;letter-spacing:.02em}
+.result-height-label,.height-caption,.peak-caption{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.8;letter-spacing:.055em;color:#abc8d4;margin:8px auto 0}
+.height-summary,.altitude-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0 24px;text-align:center}
+.height-summary>div,.altitude-summary>div{padding:14px 8px 13px;border:1px solid #3f667d;background:#0c283e;min-width:0}
+.height-summary strong,.altitude-summary strong{display:block;font-family:'VT323',monospace;font-size:2rem;font-weight:400;line-height:1.2;color:var(--cyan);overflow-wrap:anywhere}
+.height-summary span,.height-summary small,.altitude-summary span,.altitude-summary small{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.7;color:#9ebcca;margin-top:7px}
+.daily-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0 30px}
+.daily-stats .stat-box,.daily-stats .info-card{min-width:0;padding:23px 17px}
+.daily-stats strong{font-family:'VT323',monospace;font-size:2.4rem;font-weight:400;line-height:1.2;color:var(--cyan);overflow-wrap:anywhere}
+.daily-stats h2,.daily-stats h3{font-family:'VT323',monospace;font-size:2rem;line-height:1.1;color:#d2e8e7;margin-bottom:13px}
+.daily-stats p,.daily-stats label{font-size:14px;line-height:1.8;color:#afcad5}
+.daily-stats span,.daily-stats small{font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.8;color:#a4c1cd}
+@keyframes recovery-panel-breathe{0%,100%{border-top-color:#d3b47477}50%{border-top-color:#ead191cc}}
+@media(min-height:1000px){.flight-home.updated-home .home-bottom{top:53%}.landing.flight-home.updated-home{min-height:max(1020px,100svh)}}
+@media(max-width:900px){.flight-home.updated-home .home-bottom{width:calc(100% - 130px)}.daily-launch#daily-start{padding:14px 16px;column-gap:16px}.daily-state{max-width:180px}.daily-description{font-size:14px}.daily-stats{gap:13px}.daily-stats .stat-box,.daily-stats .info-card{padding:22px 15px}}
+@media(max-width:640px){
+ .landing.flight-home.updated-home{min-height:1030px;overflow:visible;padding-bottom:60px}
+ .flight-home.updated-home .home-heading{top:7.5vh}
+ .flight-home.updated-home .home-bottom{top:470px;width:calc(100% - 48px);padding-bottom:28px}
+ body:has(.flight-home.updated-home) .footer{position:relative;bottom:auto;padding:17px 18px 26px;margin:0;font-size:12px}
+ .daily-launch{margin-bottom:22px;box-shadow:3px 3px 0 #020d19}
+ .daily-launch#daily-start{min-height:98px;padding:13px 13px 14px;column-gap:12px;row-gap:7px;align-items:start}
+ .daily-title{font-size:1.7rem;line-height:1.05;letter-spacing:.045em}
+ .daily-state{max-width:125px;font-size:12px;line-height:1.65;letter-spacing:0}
+ .daily-description{font-size:14px;line-height:1.75}
+ .mode-section-label{font-size:12px;line-height:1.8;letter-spacing:.08em;margin-bottom:11px}
+ .updated-home .mode-picker{grid-template-columns:repeat(2,minmax(0,1fr));padding:8px;gap:7px}
+ .updated-home .mode-option{min-height:51px;flex-direction:column;justify-content:center;gap:3px;padding:7px 6px;text-align:center}
+ .updated-home .mode-option:first-child,.updated-home .mode-option[data-mode="mix"]{grid-column:1 / -1;min-height:48px;flex-direction:row;gap:11px}
+ .updated-home .mode-name{font-size:1.3rem;line-height:1}
+ .flight-home.updated-home .mode-detail{display:block;font-size:12px;line-height:1.55;max-width:none;text-align:center}
+ .flight-home.updated-home .home-bottom .primary{margin-top:15px;min-height:55px;font-size:1.4rem;letter-spacing:.04em}
+ .updated-home .home-meta{font-size:12px;line-height:1.8;gap:10px 16px;margin-top:17px}
+ .updated-home .home-meta>span{width:100%}
+ .updated-home .home-meta a{font-size:12px}
+ .updated-home .resume-link{font-size:12px;line-height:1.8;margin:16px auto 0;max-width:100%}
+ #hud-condition{font-size:12px;line-height:1.4;letter-spacing:0}
+ .flight-status:has(#hud-condition){padding-top:3px;gap:4px}
+ .flight-status:has(#hud-condition) .score-chip{top:100px}
+ .flight-game:has(.recovery-banner) .question-content{padding-top:168px}
+ .difficulty-label{font-size:12px;line-height:1.8;letter-spacing:.025em}
+ .difficulty-badge{display:inline-flex;font-size:14px;line-height:1.4;letter-spacing:0;margin:6px 6px 0 0;padding:4px 7px;white-space:normal}
+ .feedback-banner.warning{font-size:14px;line-height:1.8}
+ .feedback-banner .altitude-loss{font-size:1.5rem;margin-top:8px}
+ .recovery-banner{font-size:14px;line-height:1.85;padding:11px 12px;margin:15px 0 0}
+ .recovery-banner small{font-size:12px;line-height:1.8}
+ .flight-game.recovering .choice-grid{margin-top:15px}
+ .height-summary,.altitude-summary{gap:8px;margin:19px 0 22px}
+ .height-summary>div,.altitude-summary>div{padding:13px 7px}
+ .height-summary strong,.altitude-summary strong{font-size:1.8rem}
+ .height-summary span,.height-summary small,.altitude-summary span,.altitude-summary small{font-size:12px;line-height:1.7}
+ .daily-result .result-depth small,.free-result .result-depth small{font-size:1.45rem}
+ .result-height-label,.height-caption,.peak-caption{font-size:12px;line-height:1.8;letter-spacing:.02em}
+ .daily-stats{gap:10px;margin:21px 0 26px}
+ .daily-stats .stat-box,.daily-stats .info-card{padding:19px 10px}
+ .daily-stats strong{font-size:2rem}
+ .daily-stats h2,.daily-stats h3{font-size:1.7rem;line-height:1.15;margin-bottom:12px}
+ .daily-stats p,.daily-stats label{font-size:14px;line-height:1.85}
+ .daily-stats span,.daily-stats small{font-size:12px;line-height:1.8}
+}
+@media(max-width:360px){.flight-home.updated-home .home-bottom{width:calc(100% - 40px)}.daily-launch#daily-start{padding:13px 11px}.daily-state{max-width:110px}.daily-title{font-size:1.6rem}.updated-home .mode-option{padding-left:5px;padding-right:5px}.daily-stats{grid-template-columns:1fr}.daily-stats .stat-box,.daily-stats .info-card{padding:21px 18px}}
+@media(max-width:640px) and (max-height:720px){
+ .landing.flight-home.updated-home{min-height:970px;padding-bottom:60px}
+ .flight-home.updated-home .home-heading{top:5.5vh}
+ .flight-home.updated-home .home-bottom{top:max(380px,calc(48svh + 60px))}
+ .flight-home.updated-home .home-bottom .primary{min-height:53px;margin-top:15px;font-size:1.35rem}
+ .flight-home.updated-home .mode-detail{font-size:12px;line-height:1.55}
+ .flight-game:has(.recovery-banner) .question-content{padding-top:164px}
+}
+@media(prefers-reduced-motion:reduce){.daily-launch#daily-start,.flight-game.recovering .question-panel,.feedback-banner.warning{animation:none!important;transition:none!important}}
+/* Keep the enlarged station in normal flow, so translated copy and resumed flights
+   can add height without ever crossing the legal footer. The top spacer leaves
+   the parked aircraft visible at its existing viewport position. */
+.flight-home.updated-home .home-bottom{position:relative;left:auto;top:auto;transform:none;translate:none;margin:0 auto;padding-top:max(470px,52svh);padding-bottom:28px}
+@media(min-height:1000px){.flight-home.updated-home .home-bottom{padding-top:53svh}}
+@media(max-width:640px){.flight-home.updated-home .home-bottom{top:auto;left:auto;padding-top:470px;position:relative;margin:0 auto;transform:none;translate:none}}
+@media(max-width:640px) and (max-height:720px){.flight-home.updated-home .home-bottom{top:auto;padding-top:max(380px,calc(48svh + 60px))}}
+body:has(.flight-game.recovering) #hud-condition{color:var(--gold)}
+body:has(.flight-game .recovery-banner.danger) #hud-condition,body:has(.flight-game .recovery-banner.last-chance) #hud-condition,body:has(.flight-game .recovery-banner[data-level="2"]) #hud-condition{color:#ffafbd}
+/* Flight-end labels can wrap beside the record on narrow screens. */
+.archive-row:has(.flight-log-icon)>div{min-width:0;flex:1}
+.flight-end-label{flex:0 1 100px;font-size:12px;line-height:1.6;text-align:right;overflow-wrap:anywhere}
+@media(max-width:640px){.flight-end-label{flex-basis:76px;font-size:12px}.archive-row:has(.flight-log-icon){gap:10px}}
+
+/* Ten-question daily courses and their learning cards retain the flight HUD. */
+.daily-mode-note{display:block;grid-column:1 / -1;font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.75;letter-spacing:.025em;color:#9dd7da;margin:4px 0 0;overflow-wrap:anywhere}
+.daily-launch#daily-start:has(.daily-mode-note){row-gap:7px;padding-bottom:16px}
+.question-progress{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;line-height:1.6;letter-spacing:.025em;color:var(--cyan);white-space:nowrap}
+.question-panel .question-progress{padding:4px 8px;margin:0 0 12px;border:1px solid #4c8192;background:#0b293d}
+.learning-card{--learning-accent:var(--cyan);position:relative;display:block;width:100%;min-width:0;margin:20px 0 0;padding:21px 23px 22px;border:1px solid #517e8f;border-left:3px solid var(--learning-accent);background:#0a2339f2;box-shadow:4px 4px 0 #020d1955;text-align:left;overflow-wrap:anywhere;animation:learning-arrive .45s var(--ease) both;pointer-events:auto}
+.learning-card.correct{--learning-accent:#a6d9c4;border-color:#5d998c;background:#102f38f2}
+.learning-card.warning{--learning-accent:var(--gold);border-color:#91825b;background:#2d2d3df2}
+.learning-card.danger,.learning-card.wrong{--learning-accent:var(--coral);border-color:#a16b87;background:#342339f2}
+.learning-kicker{display:block;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;line-height:1.65;letter-spacing:.065em;text-transform:uppercase;color:var(--learning-accent,var(--cyan));margin:0 0 12px}
+.learning-card h1,.learning-card h2{font-family:'VT323',monospace;font-size:2.2rem;font-weight:400;line-height:1.12;letter-spacing:.015em;color:#e3f4eb;margin:0 0 15px;text-wrap:pretty}
+.learning-card h1 strong,.learning-card h2 strong{font-weight:400;color:#d2f3df}
+.learning-card p,.learning-explanation{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:400;line-height:1.85;letter-spacing:0;color:#bfd5df;margin:0 0 17px;text-wrap:pretty}
+.learning-card .learning-explanation strong{font-weight:500;color:#e0f0ed}
+.learning-card .fact-source{font-size:14px;line-height:1.85;color:#8faebb;padding-top:11px;margin:14px 0 20px;border-top:1px solid #50728555}
+.learning-card .fact-source a{font-size:14px;line-height:1.85;color:#a2dcde;text-decoration:underline;text-decoration-color:#5c8f9a;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+.learning-card .fact-source a:hover{color:#e3fffa;text-decoration-color:var(--cyan)}
+.learning-card .fact-source a:focus-visible{outline:2px dashed var(--cyan);outline-offset:4px}
+.learning-card .altitude-loss{font-family:'VT323',monospace;font-size:1.75rem;color:#f2c19c;line-height:1.25}
+.next-question-button,.learning-card .next-question-button{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;margin:19px 0 0;padding:13px 18px;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;line-height:1.6;letter-spacing:.025em;background:#1b4254;border:1px solid #7bb7b9;box-shadow:3px 3px 0 #020d19;color:#e5f6ed;text-align:center}
+.next-question-button:hover{background:#275365;border-color:var(--cyan)}
+.next-question-button:focus-visible{outline:2px dashed var(--cyan);outline-offset:5px}
+.next-question-button:disabled{opacity:.6;cursor:wait}
+.flight-game:has(.learning-card) .question-content{padding-bottom:40px;height:auto;min-height:100dvh}
+.flight-game:has(.learning-card) .choice-grid{margin-bottom:0}
+/* A learning card remains in normal layout even if an older feedback wrapper is reused. */
+.feedback-banner:has(.learning-card){position:relative;left:auto;top:auto;transform:none;translate:none;z-index:auto;max-width:none;width:100%;padding:0;border:0;border-left:0;background:none;box-shadow:none;animation:none;text-align:left;pointer-events:auto}
+.feedback-banner:has(.learning-card) .learning-card{margin-top:20px}
+body[data-screen="learning"] .footer{display:none}
+@keyframes learning-arrive{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+
+/* Pilot aliases and daily rankings use the same stepped logbook panels. */
+.leaderboard-page{width:min(900px,calc(100% - 160px));padding-bottom:45px}
+.leaderboard-page .page-header{max-width:690px;margin-bottom:28px}
+.leaderboard-page .page-header>p:last-child{font-size:16px;line-height:1.85}
+.leaderboard-date-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;padding:14px 0 18px;margin:19px 0 8px;border-bottom:1px solid #4c718955;flex-wrap:wrap}
+.leaderboard-date-nav>span,.leaderboard-date-nav>strong,.leaderboard-date-nav>time{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;line-height:1.7;color:#bdd8df;text-align:center;overflow-wrap:anywhere}
+.leaderboard-date-nav .button,.leaderboard-date-nav button{min-height:44px;font-size:14px;line-height:1.6;padding:10px 14px}
+.leaderboard-date-nav input{min-height:45px;max-width:100%;padding:10px 12px;border:1px solid #527e91;background:#0a2237;color:#d7ede7;font-family:'IBM Plex Mono',monospace;font-size:16px;line-height:1.5;border-radius:0;color-scheme:dark;min-width:0}
+.leaderboard-list{list-style:none;margin:0 0 25px;padding:0;width:100%;border-top:1px solid #5a8396}
+.leaderboard-row{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr) minmax(110px,155px);align-items:center;gap:7px 18px;padding:18px 15px 18px 11px;background:#0b23397d;border:1px solid transparent;border-bottom-color:#50758b55;border-left:3px solid transparent;min-width:0}
+.leaderboard-row:nth-child(2n){background:#0a20346b}
+.leaderboard-row.is-you{border-left-color:var(--coral);border-top-color:#5c8a91;border-right-color:#5c8a91;border-bottom-color:#5c8a91;background:#173c4bce;box-shadow:inset 0 0 0 2px #0c293c}
+.leaderboard-rank{display:block;font-family:'VT323',monospace;font-size:2rem;font-weight:400;line-height:1;color:#82a9ba;text-align:center;min-width:0}
+.leaderboard-row:nth-child(1) .leaderboard-rank{color:var(--gold)}
+.leaderboard-row:nth-child(2) .leaderboard-rank{color:#c7dbe5}
+.leaderboard-row:nth-child(3) .leaderboard-rank{color:#e5b292}
+.leaderboard-pilot{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:500;line-height:1.65;color:#d4e8e9;min-width:0;overflow-wrap:anywhere}
+.leaderboard-pilot strong{font-family:inherit;font-size:16px;font-weight:500;color:inherit}
+.leaderboard-row.is-you .leaderboard-pilot{color:#d0f0e8}
+.leaderboard-height{font-family:'VT323',monospace;font-size:2rem;font-weight:400;line-height:1.1;color:var(--cyan);text-align:right;white-space:nowrap;min-width:0}
+.leaderboard-height strong{font:inherit;color:inherit}
+.leaderboard-height small,.leaderboard-height>span{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.6;color:#a0bfcc;font-weight:400;white-space:normal}
+.leaderboard-meta{display:block;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;line-height:1.7;color:#91b2c4;overflow-wrap:anywhere;margin-top:5px}
+.leaderboard-row>.leaderboard-meta{grid-column:2 / -1;margin-top:0}
+.leaderboard-pilot .leaderboard-meta{margin-top:5px}
+.pilot-form{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:11px 12px;padding:22px 23px;margin:24px 0 29px;border:1px solid #477389;border-left:3px solid #71a8b2;background:#0c263cee;box-shadow:4px 4px 0 #020d1944;min-width:0}
+.pilot-form label,.pilot-form legend{display:block;grid-column:1 / -1;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;line-height:1.7;letter-spacing:.035em;color:#b8d7de;margin:0}
+.pilot-form input{width:100%;min-width:0;min-height:49px;background:#061a2bf2;border:1px solid #648b9b;border-radius:0;box-shadow:inset 0 0 0 2px #0c2539;padding:12px 14px;font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:400;line-height:1.5;color:#e4f2e9;caret-color:var(--coral)}
+.pilot-form input::placeholder{color:#7f9fb2;opacity:1}
+.pilot-form input:focus{border-color:var(--cyan);outline:2px dashed var(--cyan);outline-offset:4px}
+.pilot-form input[aria-invalid="true"]{border-color:#f09aaa}
+.pilot-form .button,.pilot-form button{min-height:49px;font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.6;padding:12px 18px}
+.pilot-form p,.pilot-form .pilot-note,.pilot-form [role="status"]{grid-column:1 / -1;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;line-height:1.85;color:#9fbdcc;margin:2px 0 0;overflow-wrap:anywhere}
+.leaderboard-empty{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:400;line-height:1.9;text-align:center;color:#a9c5d2;padding:35px 25px;margin:22px 0 28px;border:1px dashed #4f788c;background:#0921368c}
+.leaderboard-empty h2{font-family:'VT323',monospace;font-size:2.5rem;font-weight:400;line-height:1.1;color:#cfe9e4;margin:0 0 17px}
+.leaderboard-empty p{font-size:16px;line-height:1.85;margin:0;color:#a9c5d2}
+.leaderboard-empty .button{margin-top:22px;font-size:14px}
+/* A completed ten-question course celebrates the landing instead of showing a crash. */
+.daily-finish-overlay{position:fixed;inset:0;z-index:24;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:115px 30px 75px;background:radial-gradient(ellipse at 50% 45%,#447c6e30,#071a2cb8);text-align:center;pointer-events:none;animation:daily-finish-arrive .7s var(--ease) both}
+.daily-finish-overlay>svg,.daily-finish-overlay .finish-plane,.daily-finish-overlay .result-plane{width:180px;height:135px;max-width:75%;margin:0 auto 5px;animation:finish-plane-float 3s ease-in-out infinite}
+.daily-finish-overlay .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;line-height:1.7;letter-spacing:.13em;color:var(--gold);margin:0}
+.daily-finish-overlay h1,.daily-finish-overlay .finish-word,.daily-finish-overlay .daily-finish-word{font-family:'VT323',monospace;font-size:clamp(3rem,7vw,5rem);font-weight:400;line-height:.98;letter-spacing:.04em;color:#e9fff0;text-shadow:3px 3px #2b665e,0 0 25px #a6d9c426;margin:0;max-width:100%}
+.daily-finish-overlay p,.daily-finish-overlay .finish-caption{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:400;line-height:1.9;color:#c0e1dc;max-width:570px;margin:0}
+.flight-results.daily-complete,.flight-results.completed,.daily-result.completed{border-color:#79b9aa;box-shadow:0 0 0 1px #79b9aa,0 0 0 5px #061422,8px 8px 0 #020c1666}
+.flight-results.daily-complete .eyebrow,.flight-results.completed .eyebrow,.daily-result.completed .eyebrow{color:var(--gold)}
+.flight-results.daily-complete .crash-explanation,.flight-results.completed .crash-explanation,.daily-result.completed .crash-explanation{background:#163d3a99;border-left-color:#9fd6bd;color:#c6e5d9}
+@keyframes daily-finish-arrive{from{opacity:0;transform:translateY(-9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes finish-plane-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+@media(max-width:900px){.leaderboard-page{width:calc(100% - 120px)}.leaderboard-row{grid-template-columns:36px minmax(0,1fr) 135px;gap:7px 14px;padding-left:9px}.leaderboard-height{font-size:1.9rem}.pilot-form{padding:20px}.learning-card{padding:20px 21px}}
+@media(max-width:640px){
+ .daily-mode-note{font-size:14px;line-height:1.85;letter-spacing:0;margin-top:4px}
+ .daily-launch#daily-start:has(.daily-mode-note){padding-bottom:16px;row-gap:8px}
+ .question-progress{font-size:14px;line-height:1.6;letter-spacing:0}
+ .game-top .question-progress{font-size:14px;max-width:none}
+ .question-panel .question-progress{padding:4px 7px;margin-bottom:12px}
+ .learning-card{padding:18px 15px 19px;margin-top:18px;box-shadow:3px 3px 0 #020d1944}
+ .learning-kicker{font-size:14px;line-height:1.7;letter-spacing:.035em;margin-bottom:12px}
+ .learning-card h1,.learning-card h2{font-size:2rem;line-height:1.12;letter-spacing:0;margin-bottom:14px}
+ .learning-card p,.learning-explanation{font-size:16px;line-height:1.85;margin-bottom:16px}
+ .learning-card .fact-source{font-size:14px;line-height:1.85;margin:13px 0 18px;padding-top:10px}
+ .learning-card .fact-source a{font-size:14px;line-height:1.85}
+ .learning-card .altitude-loss{font-size:1.6rem}
+ .next-question-button,.learning-card .next-question-button{font-size:14px;line-height:1.7;min-height:52px;padding:13px 12px;margin-top:18px}
+ .flight-game:has(.learning-card) .question-content{padding-bottom:35px}
+ .leaderboard-page{width:calc(100% - 42px);padding-left:10px;padding-right:10px;padding-bottom:35px}
+ .leaderboard-page .page-header{margin-bottom:25px}
+ .leaderboard-page .page-header>p:last-child{font-size:16px;line-height:1.85}
+ .leaderboard-date-nav{gap:11px 9px;padding-bottom:17px;margin-top:17px;justify-content:space-between}
+ .leaderboard-date-nav .button,.leaderboard-date-nav button{font-size:14px;min-height:43px;padding:10px 11px}
+ .leaderboard-date-nav>span,.leaderboard-date-nav>strong,.leaderboard-date-nav>time{font-size:14px;line-height:1.7}
+ .leaderboard-date-nav input{font-size:16px;min-height:45px;padding:10px;width:100%}
+ .leaderboard-row{grid-template-columns:29px minmax(0,1fr) 104px;gap:6px 10px;padding:16px 8px 16px 5px}
+ .leaderboard-rank{font-size:1.75rem}
+ .leaderboard-pilot,.leaderboard-pilot strong{font-size:16px;line-height:1.6;font-weight:400}
+ .leaderboard-height,.leaderboard-height strong{font-size:1.75rem;line-height:1.1}
+ .leaderboard-height small,.leaderboard-height>span{font-size:14px;line-height:1.6}
+ .leaderboard-meta{font-size:14px;line-height:1.75;margin-top:6px}
+ .leaderboard-row>.leaderboard-meta{grid-column:2 / -1}
+ .pilot-form{grid-template-columns:minmax(0,1fr);padding:18px 15px;margin:22px 0 26px;gap:12px;box-shadow:3px 3px 0 #020d1944}
+ .pilot-form label,.pilot-form legend{font-size:14px;line-height:1.75}
+ .pilot-form input{font-size:16px;line-height:1.5;min-height:49px;padding:12px}
+ .pilot-form .button,.pilot-form button{font-size:14px;line-height:1.6;min-height:49px;width:100%;padding:12px 13px}
+ .pilot-form p,.pilot-form .pilot-note,.pilot-form [role="status"]{font-size:14px;line-height:1.85}
+ .leaderboard-empty{font-size:16px;line-height:1.9;padding:28px 17px;margin-top:20px}
+ .leaderboard-empty h2{font-size:2.2rem;line-height:1.1;margin-bottom:15px}
+ .leaderboard-empty p{font-size:16px;line-height:1.85}
+ .daily-finish-overlay{gap:18px;padding:120px 25px 65px}
+ .daily-finish-overlay>svg,.daily-finish-overlay .finish-plane,.daily-finish-overlay .result-plane{width:150px;height:115px;max-width:80%}
+ .daily-finish-overlay .eyebrow{font-size:14px;line-height:1.8;letter-spacing:.07em}
+ .daily-finish-overlay h1,.daily-finish-overlay .finish-word,.daily-finish-overlay .daily-finish-word{font-size:3.15rem;line-height:1.03;letter-spacing:.02em}
+ .daily-finish-overlay p,.daily-finish-overlay .finish-caption{font-size:16px;line-height:1.85;max-width:315px}
+}
+@media(max-width:360px){.leaderboard-row{grid-template-columns:25px minmax(0,1fr) 88px;gap:6px 8px;padding-right:6px}.leaderboard-height,.leaderboard-height strong{font-size:1.6rem}.leaderboard-meta{font-size:14px}.leaderboard-date-nav{gap:10px 7px}.leaderboard-date-nav .button,.leaderboard-date-nav button{padding-left:9px;padding-right:9px}}
+@media(max-height:700px){.daily-finish-overlay{gap:15px;padding-top:108px;padding-bottom:45px}.daily-finish-overlay>svg,.daily-finish-overlay .finish-plane,.daily-finish-overlay .result-plane{width:130px;height:100px}.daily-finish-overlay h1,.daily-finish-overlay .finish-word,.daily-finish-overlay .daily-finish-word{font-size:3rem}}
+@media(prefers-reduced-motion:reduce){.learning-card,.daily-finish-overlay,.daily-finish-overlay .finish-plane,.daily-finish-overlay .result-plane,.daily-finish-overlay>svg{animation:none!important;transition:none!important;transform:none!important}}
+
+/* Untimed explanations and the personal ranking stay readable in normal flow. */
+.learning-flight .learning-card{margin-top:0}
+.learning-flight .learning-card .learning-question{font-size:16px;line-height:1.8;color:#a7c7d3;margin-bottom:18px}
+.learning-values{margin:20px 0 0;border-top:1px solid #547b8d66;padding-top:15px;color:#b6cfda;font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.8}
+.learning-values summary{font-family:inherit;font-size:14px;line-height:1.8;color:#c2dce1;cursor:pointer;padding:2px 0 5px}
+.learning-values summary:focus-visible{outline:2px dashed var(--cyan);outline-offset:4px}
+.learning-values ul,.learning-values ol{list-style:none;padding:0;margin:12px 0 0}
+.learning-values li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #4b6b7c55;min-width:0}
+.learning-values li span{min-width:0;overflow-wrap:anywhere}
+.learning-values li strong{font-weight:500;color:#d0e9e7;text-align:right;min-width:0;overflow-wrap:anywhere}
+.pilot-hint{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;line-height:1.85;letter-spacing:0;color:#9fbdcc;overflow-wrap:anywhere}
+.pilot-form .pilot-hint{grid-column:1 / -1;margin:2px 0 0}
+.leaderboard-date-nav label{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;line-height:1.7;color:#bdd8df}
+.leaderboard-date-nav label input{display:block;margin-top:7px}
+.own-rank{margin:24px 0 29px;padding:18px 19px;border:1px solid #719795;border-left:3px solid var(--coral);background:#143646df;box-shadow:3px 3px 0 #020d1955;text-align:left;min-width:0;overflow-wrap:anywhere}
+.own-rank>p,.own-rank>span{font-family:'IBM Plex Mono',monospace;font-size:16px;line-height:1.85;color:#c6dfdf;margin:0}
+.own-rank>strong{display:block;font-family:'VT323',monospace;font-size:2rem;font-weight:400;line-height:1.2;color:var(--cyan);margin:7px 0}
+.own-rank .leaderboard-row{border:0;background:none;padding:5px 0;box-shadow:none}
+.own-rank .leaderboard-rank{color:var(--cyan)}
+.result-ranking{margin:22px 0 25px;padding:20px 19px;border:1px solid #547e88;border-left:3px solid var(--gold);background:#12313ddd;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:16px;line-height:1.85;color:#bfd9dd;overflow-wrap:anywhere}
+.result-ranking>p{font-size:16px;line-height:1.85;margin:0 0 12px;color:#bfd9dd}
+.result-ranking>p:last-child{margin-bottom:0}
+.result-ranking>strong{display:block;font-family:'VT323',monospace;font-size:2.3rem;font-weight:400;line-height:1.15;color:var(--gold);margin:0 0 11px}
+.result-ranking .button{margin-top:8px;font-size:14px;line-height:1.6;min-height:48px}
+.result-ranking .leaderboard-meta{font-size:14px;line-height:1.8;margin-top:8px}
+body[data-screen="finishing"] .footer{display:none}
+@media(max-width:640px){
+ .learning-flight .learning-card{margin-top:0}
+ .learning-values{font-size:14px;margin-top:18px;padding-top:13px}
+ .learning-values li{flex-direction:column;align-items:flex-start;gap:3px;padding:10px 0}
+ .learning-values li strong{text-align:left}
+ .leaderboard-date-nav label{width:100%;font-size:14px}
+ .own-rank{margin:21px 0 25px;padding:17px 14px}
+ .own-rank>p,.own-rank>span{font-size:16px;line-height:1.85}
+ .own-rank>strong{font-size:1.9rem}
+ .result-ranking{margin:20px 0 23px;padding:18px 14px;font-size:16px;line-height:1.85}
+ .result-ranking>strong{font-size:2rem;line-height:1.2}
+ .result-ranking>p{font-size:16px;line-height:1.85}
+ .result-ranking .button{width:100%;font-size:14px;min-height:49px}
+}
