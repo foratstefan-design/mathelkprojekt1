@@ -7,6 +7,7 @@ Ein eigenständiges Wissensspiel auf Oberstufenniveau mit einer prozeduralen Pix
 Node.js **22.13 oder neuer**, empfohlen Node 24. Keine npm-Pakete erforderlich.
 
 ```sh
+git clone https://github.com/foratstefan-design/mathelkprojekt1.git mathelkprojekt
 cd mathelkprojekt
 npm start
 ```
@@ -167,4 +168,4 @@ Der Browser speichert unter `hoehenflug-` eine anonyme Gerätekennung, Einstellu
 
 ## GitHub
 
-Repository-Name: `mathelkprojekt`. GitHub Actions prüft bei Pushes und Pull Requests Tests, Worker-Build und Backend-Smoke-Test mit Node.js 24. Es werden keine API-Schlüssel benötigt. Laufzeitdaten, Datenbanken, Zugangsdaten und die Konfiguration der ursprünglichen Website sind nicht Bestandteil dieses Repositories.
+GitHub-Repository: [foratstefan-design/mathelkprojekt1](https://github.com/foratstefan-design/mathelkprojekt1). Projektname: `mathelkprojekt`. GitHub Actions prüft bei Pushes und Pull Requests Tests, Worker-Build und Backend-Smoke-Test mit Node.js 24. Es werden keine API-Schlüssel benötigt. Laufzeitdaten, Datenbanken, Zugangsdaten und die Konfiguration der ursprünglichen Website sind nicht Bestandteil dieses Repositories.
