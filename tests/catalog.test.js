@@ -142,7 +142,7 @@ test('simultaneous daily starts freeze one shared set and its permanently reserv
     const [qa,qb]=await Promise.all([f.call('next',{runId:a.id}),f.call('next',{runId:b.id},peer)]);
     assert.deepEqual(qa.question,qb.question);assert.equal(qa.timeLimitMs,qb.timeLimitMs);
     const dailyFamily=qa.question.familyId;
-    assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_challenges').get().n,1);
+    assert.equal(f.sqlite.prepare('SELECT (SELECT COUNT(*) FROM daily_challenges)+(SELECT COUNT(*) FROM daily_challenge_revisions) AS n').get().n,1);
     assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_question_slots').get().n,10);
     const free=await f.call('start',{mode:'mix'}),question=await f.call('next',{runId:free.id});
     assert.notEqual(question.question.familyId,dailyFamily);

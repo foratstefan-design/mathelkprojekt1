@@ -228,9 +228,9 @@ test('legacy migration preserves old records and the exact previously armed ques
   } finally { f.sqlite.close(); }
 });
 
-function insertRanked(f, { id, device, day, altitude = 2000, score = 100, elapsed = 1000, started = 1000, status = 'finished', version = 3, index = 10, mode = 'rare' }) {
-  f.sqlite.prepare(`INSERT INTO runs(id,device,mode,seed,status,question_index,streak,score,altitude,started_at,finished_at,flight_kind,day,start_altitude,peak_altitude,correct_total,content_version,competition_version,answer_elapsed_ms)
-    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(id,device,mode,day,status,index,0,score,altitude,started,status === 'finished' ? started + 10000 : null,'daily',day,1500,Math.max(1500,altitude),5,2,version,elapsed);
+function insertRanked(f, { id, device, day, altitude = 2000, score = 100, elapsed = 1000, started = 1000, status = 'finished', version = 3, index = 10, mode = 'rare', revision=day==='2026-11-25'?1:0 }) {
+  f.sqlite.prepare(`INSERT INTO runs(id,device,mode,seed,status,question_index,streak,score,altitude,started_at,finished_at,flight_kind,day,start_altitude,peak_altitude,correct_total,content_version,competition_version,answer_elapsed_ms,daily_revision)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(id,device,mode,day,status,index,0,score,altitude,started,status === 'finished' ? started + 10000 : null,'daily',day,1500,Math.max(1500,altitude),5,2,version,elapsed,revision);
 }
 
 test('leaderboard orders final height, points, answer time and start time while excluding all ineligible records', async () => {
@@ -279,6 +279,7 @@ test('rufnames are optional, validated, persistent and never allow markup; delet
 });
 
 test('an old v2 daily attempt retains the original buffer rule and cannot be replaced or ranked as a ten-question attempt', async () => {
+  const realNow=Date.now;Date.now=()=>Date.parse('2026-11-24T12:00:00Z');
   const f=fixture();
   try {
     const {date}=await f.call('daily'); const id='old-v2-daily';
@@ -288,11 +289,12 @@ test('an old v2 daily attempt retains the original buffer rule and cannot be rep
     let last;
     for(let index=0;index<5;index++) { const flying=await f.call('next',{runId:id}); last=await wrong(f,flying); assert.equal(last.status,index<4?'ready':'crashed'); }
     assert.equal((await f.call('start',{mode:'daily'})).id,id); assert.equal((await f.call('leaderboard')).totalFinished,0); assert.equal(last.completed,false);
-  } finally { f.sqlite.close(); }
+  } finally { Date.now=realNow;f.sqlite.close(); }
 });
 
 
 test('a stored shared day set controls every player and later position instead of reselecting from the current bank', async () => {
+  const realNow=Date.now;Date.now=()=>Date.parse('2026-11-24T12:00:00Z');
   const f=fixture(); const other='saved-set-device-1234567';
   try {
     const {date,mode}=await f.call('daily');
@@ -308,5 +310,5 @@ test('a stored shared day set controls every player and later position instead o
     assert.equal(next.timeLimitMs,19750);
     const unchanged=f.sqlite.prepare('SELECT questions_json,created_at FROM daily_challenges WHERE day=?').get(date);
     assert.equal(unchanged.questions_json,json); assert.equal(unchanged.created_at,123);
-  } finally {f.sqlite.close();}
+  } finally {Date.now=realNow;f.sqlite.close();}
 });

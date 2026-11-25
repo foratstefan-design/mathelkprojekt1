@@ -20,9 +20,10 @@ function openMenu(){document.body.classList.add('menu-open');$('#game-menu').ine
 function view(html,name){cancelAnimationFrame(clockFrame);version++;screen=name;main.innerHTML=html;const flying=['takeoff','question','feedback','finishing','saving','crashing','results'].includes(name);document.body.classList.toggle('in-dive',flying);document.body.classList.toggle('in-flight',flying);document.body.dataset.screen=name;$('#flight-hud').hidden=!flying;$('#alt-rail').hidden=!flying;document.querySelectorAll('[data-nav]').forEach(link=>link.classList.toggle('active',link.dataset.nav===(flying||name==='home'?'start':name)));closeMenu();if(flying)hud();window.scrollTo({top:0,behavior:'instant'});}
 function focusTitle(){const title=main.querySelector('h1,h2');if(title){title.tabIndex=-1;title.focus({preventScroll:true});}}
 function isDaily(state=run){return state?.kind==='daily'||state?.flightKind==='daily'||state?.mode==='daily';}
+const supersededDaily=(state=run)=>isDaily(state)&&state?.dailySuperseded===true;
 const terminal=state=>['finished','crashed','exhausted'].includes(state?.status);
 const catalogEmpty=state=>state?.status==='exhausted'||state?.poolExhausted===true;
-const competitive=state=>isDaily(state)&&(state?.competitionVersion||0)>=3;
+const competitive=state=>isDaily(state)&&!supersededDaily(state)&&(state?.competitionVersion||0)>=3;
 function hud(){
   if(!run)return;
   $('#hud-streak').textContent=(run.correctTotal??run.streak)+' RICHTIG';
@@ -63,20 +64,29 @@ async function loadDaily(expectedVersion){
     if(screen!=='home'||version!==expectedVersion)return;
     const button=$('#daily-start'),attempt=data.attempt,ended=terminal(attempt),unavailable=data.poolExhausted===true&&!attempt;
     button.disabled=unavailable;button.classList.toggle('active',Boolean(attempt&&!ended));button.classList.toggle('finished',ended);
-    $('#daily-state').textContent=unavailable?'TAGESVORRAT AUSGESCHÖPFT':ended?'HEUTIGES ERGEBNIS ANSEHEN':attempt?'TAGESFLUG FORTSETZEN':'HEUTIGEN VERSUCH STARTEN';
+    $('#daily-state').textContent=unavailable?'TAGESVORRAT AUSGESCHÖPFT':ended?'HEUTIGES ERGEBNIS ANSEHEN':attempt?'TAGESFLUG FORTSETZEN':data.refreshed?'HEUTIGEN MIX NEU STARTEN':'HEUTIGEN VERSUCH STARTEN';
     const dailyMode=data.dailyMode||data.mode||'mix';
     $('#daily-mode-note').textContent=unavailable?'Für den Tagesmix sind noch keine zehn neuen Fragen verfügbar. Dein Tagesversuch bleibt unberührt.':dailyMode==='mix'?'HEUTE: BUNTER MIX · Zehn gleiche Fragen aus verschiedenen Bereichen für alle.':'HEUTE BEREITS FESTGELEGT: '+dailyLabel(dailyMode).toUpperCase()+' · Diese Runde bleibt für alle gleich. Neue Tagesrunden werden gemischt.';
+    if(data.refreshed&&!attempt&&!unavailable)$('#daily-mode-note').textContent='HEUTE NEU GEMISCHT · Die bisherige Runde wurde ersetzt. Für den bunten Mix hast du einen neuen Tagesversuch.';
     if(attempt&&(attempt.competitionVersion||0)<3)$('#daily-mode-note').textContent='Dein heutiger Versuch läuft noch nach den bisherigen Regeln. Der neue Wettbewerb wartet beim nächsten Tagesflug.';
   }catch{
     if(screen==='home'&&version===expectedVersion){$('#daily-start').disabled=false;$('#daily-state').textContent='TAGESFLUG ÖFFNEN';}
   }
 }
 function startDaily(){return startFlight('daily');}
+function showDailyRefresh(){
+  cancelAnimationFrame(clockFrame);currentQuestion=null;pendingChoice=null;
+  if(store.get('active',null)?.id===run?.id)store.set('active',null);
+  scene.reset();scene.setMode('home');scene.setDanger?.(0);
+  view(`<section class="page"><header class="page-header"><p class="eyebrow">NEUER TAGESMIX</p><h1>Tagesflug neu gemischt.</h1><p>Der heutige Tagesflug wurde durch einen bunten Mix ersetzt. Dein bisheriger Flug bleibt im Flugbuch erhalten. Der neue Mix hat einen eigenen Tagesversuch.</p></header><div class="actions"><button class="button" id="start-refreshed-daily">NEUEN TAGESMIX STARTEN</button><button class="button secondary" id="refresh-home">ZUR FLUGSTATION</button></div></section>`,'daily-refresh');
+  $('#start-refreshed-daily').onclick=()=>startFlight('daily');
+  $('#refresh-home').onclick=()=>{replaceHash('#start');home();};focusTitle();
+}
 async function takeoff(){view(`<section class="descent-overlay takeoff-overlay"><div class="descent-mascot">${hero}</div><p class="eyebrow">TRIEBWERKE BEREIT</p><h1 class="descent-title">Freigabe zum Abheben.</h1><strong class="descent-count" id="countdown" aria-live="polite">3</strong><p class="descent-caption">Die erste Frage startet nach dem Countdown.</p></section>`,'takeoff');scene.setMode('flying');setAltitude(run.altitude,false);const count=async()=>{if(reduced.matches)return;for(const number of [3,2,1]){$('#countdown').textContent=number;await pause(700);}};await Promise.all([scene.takeoff(),count()]);run=await api('next',{runId:run.id});showFlightState();}
 async function startFlight(mode=selectedMode){
   if(busy)return;busy=true;
   try{
-    run=await api('start',{mode});if(!terminal(run))store.set('active',{id:run.id,mode:run.mode});replaceHash('#start');
+    run=await api('start',{mode});if(supersededDaily()){showDailyRefresh();return;}if(!terminal(run))store.set('active',{id:run.id,mode:run.mode});replaceHash('#start');
     scene.setMode('flying');setAltitude(run.altitude,false);scene.setDanger?.(run.danger||0);
     if(terminal(run)){results(run.latestResult);return;}
     if(run.status==='flying'){showFlightState();return;}
@@ -89,6 +99,7 @@ async function resumeFlight(){
   if(busy)return;const active=store.get('active',null);if(!active?.id){home();return;}busy=true;
   try{
     run=await api('run?id='+encodeURIComponent(active.id));
+    if(supersededDaily()){showDailyRefresh();return;}
     if(!isDaily()&&MODES.some(mode=>mode.id===run.mode))selectedMode=run.mode;
     scene.setMode('flying');setAltitude(run.altitude,false);scene.setSpeed(run.correctTotal??run.streak);scene.setDanger?.(run.danger||0);replaceHash('#start');
     if(terminal(run)){results(run.latestResult);return;}
@@ -99,6 +110,7 @@ async function resumeFlight(){
   finally{busy=false;}
 }
 function showFlightState(){
+  if(supersededDaily()){showDailyRefresh();return;}
   if(terminal(run)){results(run.latestResult);return;}
   if(run.status==='ready'&&run.latestResult){showLearning(run.latestResult);return;}
   if(!run.question)throw new Error('Die nächste Frage ist noch nicht freigegeben.');
@@ -118,6 +130,7 @@ async function submitChoice(choiceId,expired=false,retry){
   if(screen==='question')lockChoices(submission.choiceId);
   try{
     const response=await api('answer',submission);run={...run,...response};pendingChoice=null;
+    if(supersededDaily()){showDailyRefresh();return;}
     const result=response.result||run.latestResult;
     if(catalogEmpty(run)&&!result){catalogExhausted();return;}
     if(run.status==='crashed'){await endFlight(result);return;}
@@ -152,6 +165,7 @@ function showLearning(result,animating=false){
 async function advanceFlight(){
   if(busy)return;busy=true;
   try{
+    if(supersededDaily()){showDailyRefresh();return;}
     if(catalogEmpty(run)){catalogExhausted();return;}
     if(run.status==='finished'){await finishDaily();return;}
     run=await api('next',{runId:run.id});showFlightState();
@@ -173,6 +187,7 @@ async function endFlight(result){if(catalogEmpty(run)){catalogExhausted(result);
 function sourceLink(source){try{const url=new URL(source?.url);if(!['https:','http:'].includes(url.protocol)||url.username||url.password)return '';}catch{return '';}return `<a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">${esc(source.title||new URL(source.url).hostname)}</a>`;}
 function remember(){if(!run||!terminal(run))return;const entry={id:run.id,mode:run.mode,altitude:run.altitude,peakAltitude:run.peakAltitude??run.altitude,score:run.score,streak:run.streak,correctTotal:run.correctTotal??run.streak,finishedAt:run.finishedAt||Date.now()};if(!localHistory.some(item=>item.id===run.id)){localHistory=[entry,...localHistory].slice(0,100);store.set('history',localHistory);}if(store.get('active',null)?.id===run.id)store.set('active',null);}
 function results(result=run.latestResult){
+  if(supersededDaily()){showDailyRefresh();return;}
   if(catalogEmpty(run)){catalogExhausted(result);return;}
   const completed=run.status==='finished',daily=isDaily(),count=run.correctTotal??run.streak,peak=run.peakAltitude??run.altitude;
   scene.setMode(completed?'flying':'crashed');scene.setDanger(0);setAltitude(run.altitude,false);remember();
@@ -248,7 +263,7 @@ function instructions(){
   $('#help-home').onclick=()=>{replaceHash('#start');home();};
 }
 async function statistics(){scene.setMode('home');view('<section class="page"><header class="page-header"><p class="eyebrow">DEINE FLUGREKORDE</p><h1>Wie hoch war dein Höhenflug?</h1></header><div id="stats-content"><p class="loading">Flugbuch wird geöffnet …</p></div></section>','statistik');try{const stats=await api('stats');if(screen!=='statistik')return;$('#stats-content').innerHTML=`<div class="stat-boxes"><div class="stat-box"><strong>${meters(stats.bestAltitude)} m</strong><span>Höchster Flug</span></div><div class="stat-box"><strong>${stats.bestStreak||0}</strong><span>Beste Antwortserie</span></div><div class="stat-box"><strong>${stats.flights||0}</strong><span>Gestartete Flüge</span></div></div><div class="distribution"><h2>Deine Kurse</h2>${[modeInfo('daily'),...MODES].map(mode=>{const item=stats.byMode?.[mode.id]||{};return `<div class="flight-stat-row"><strong>${mode.label}</strong><span>${meters(item.bestAltitude)} m</span><small>${item.flights||0} Flüge</small></div>`;}).join('')}</div><p class="empty-note">${stats.totalCorrect||0} richtige Antworten insgesamt · ${(stats.crashes||0)+(stats.completed||0)+(stats.exhausted||0)} beendete Flüge</p>`;}catch(error){if(screen==='statistik')$('#stats-content').innerHTML=`<p class="empty-note">${esc(error.message)}</p><button class="button" id="stats-retry">Erneut versuchen</button>`;if($('#stats-retry'))$('#stats-retry').onclick=statistics;}}
-async function flightbook(){scene.setMode('home');view('<section class="page"><header class="page-header"><p class="eyebrow">DEIN FLUGBUCH</p><h1>Jeder Start eine neue Chance.</h1><p>Deine letzten 20 beendeten Flüge auf diesem Gerät.</p></header><div class="archive-list" id="history-content"><p class="loading">Flugbuch wird geöffnet …</p></div></section>','flugbuch');try{const data=await api('history');if(screen!=='flugbuch')return;const flights=data.flights||[];$('#history-content').innerHTML=flights.length?flights.map(flight=>`<article class="archive-row"><span class="flight-log-icon" aria-hidden="true">✈</span><div><h2>${meters(flight.status==='finished'?flight.altitude:flight.peakAltitude??flight.altitude)} m · ${modeInfo(flight.mode).label}</h2><p>${flight.correctTotal??flight.streak} richtig · ${flight.score} Punkte · ${new Date(flight.finishedAt).toLocaleDateString('de-DE')}</p></div><span class="flight-end-label">${flight.status==='exhausted'?'ALLES ENTDECKT':flight.status==='finished'?'10 / 10':isDaily(flight)?'RESERVE LEER':'RETTUNG VERPASST'}</span></article>`).join(''):'<p class="empty-note">Noch kein Flug eingetragen. Die Startbahn wartet auf dich.</p>';}catch(error){if(screen==='flugbuch'){$('#history-content').innerHTML=`<p>${esc(error.message)}</p><button class="button" id="history-retry">Erneut versuchen</button>`;$('#history-retry').onclick=flightbook;}}}
+async function flightbook(){scene.setMode('home');view('<section class="page"><header class="page-header"><p class="eyebrow">DEIN FLUGBUCH</p><h1>Jeder Start eine neue Chance.</h1><p>Deine letzten 20 Flüge auf diesem Gerät.</p></header><div class="archive-list" id="history-content"><p class="loading">Flugbuch wird geöffnet …</p></div></section>','flugbuch');try{const data=await api('history');if(screen!=='flugbuch')return;const flights=data.flights||[];$('#history-content').innerHTML=flights.length?flights.map(flight=>`<article class="archive-row"><span class="flight-log-icon" aria-hidden="true">✈</span><div><h2>${meters(flight.status==='finished'?flight.altitude:flight.peakAltitude??flight.altitude)} m · ${modeInfo(flight.mode).label}</h2><p>${flight.correctTotal??flight.streak} richtig · ${flight.score} Punkte · ${new Date(flight.finishedAt||flight.startedAt).toLocaleDateString('de-DE')}</p></div><span class="flight-end-label">${flight.dailySuperseded?'FRÜHERE TAGESRUNDE':flight.status==='exhausted'?'ALLES ENTDECKT':flight.status==='finished'?'10 / 10':isDaily(flight)?'RESERVE LEER':'RETTUNG VERPASST'}</span></article>`).join(''):'<p class="empty-note">Noch kein Flug eingetragen. Die Startbahn wartet auf dich.</p>';}catch(error){if(screen==='flugbuch'){$('#history-content').innerHTML=`<p>${esc(error.message)}</p><button class="button" id="history-retry">Erneut versuchen</button>`;$('#history-retry').onclick=flightbook;}}}
 function legal(privacy){scene.setMode('home');view(`<section class="page text-page"><p class="eyebrow">HÖHENFLUG</p><h1>${privacy?'Datenschutz':'Impressum'}</h1>${privacy?`<p>Dieses Pixel-Flugquiz verwendet keine Werbung oder Analyse-Tracker. Der Browser speichert eine zufällige Gerätekennung, Einstellungen und Spielstände. Das Backend speichert dazugehörige Flüge, gewählte Antwort-IDs, Zeitstempel, Rekorde und bereits gezeigte Fragefamilien in einer SQLite-kompatiblen Datenbank. Es gibt keine KI-Abfragen. Für die Tagesbestenliste kannst du einen freiwilligen Rufnamen speichern. Dieser Rufname sowie Endhöhe, Punkte und Antwortzeit abgeschlossener Tagesflüge sind für Besucher dieser Website sichtbar. Deine Gerätekennung wird dabei nicht angezeigt.</p><h2>Hosting und Schriftarten</h2><p>Sites stellt die Website bereit. Technisch notwendige Verbindungsdaten werden durch den Hostinganbieter verarbeitet. Die Schriften VT323 und IBM Plex Mono kommen von Google Fonts; Google erhält beim Laden Verbindungsdaten wie die IP-Adresse.</p><h2>Spieldaten löschen</h2><p>Die zu deiner Gerätekennung gespeicherten Flüge, Wiederholungshistorie und lokalen Spieldaten können gelöscht werden. Danach können früher gesehene Fragen erneut erscheinen. Der Vorgang lässt sich nicht rückgängig machen.</p><button class="button secondary" id="prepare-delete">Löschung vorbereiten</button><div id="delete-confirm"></div>`:`<p>Höhenflug ist ein eigenständiges Wissensspiel mit eigener Pixel-Flugwelt und eigenem Programmcode.</p><h2>Betreiberangaben</h2><p>Die verbindlichen Betreiberangaben nach § 5 DDG sind noch nicht hinterlegt. Vor einer öffentlichen Veröffentlichung müssen Name oder Firma, ladungsfähige Anschrift und Kontakt-E-Mail ergänzt werden.</p><h2>Fakten und Daten</h2><p>Die Fragen vergleichen nachvollziehbare Mengen, Wahrscheinlichkeiten, belegte Ereignisse und Allgemeinwissen. Der Wikidata-Bestand beruht auf einem gespeicherten Datenstand; Wikidata stellt diese strukturierten Daten unter CC0 bereit. Anspruchsvolle Häufigkeitsfragen nennen ihre datierten Datensätze. Die Aufgaben nennen ihre Datengrundlage. Nach jeder Antwort werden ein kurzer Lernfakt und Quellenlinks eingeblendet. Rechen- und Transferaufgaben kennzeichnen ihre Annahmen. Fehlende Betreiber- und Datenschutzangaben sind vor öffentlichem Betrieb zu vervollständigen.</p><a class="text-button" href="#datenschutz">Datenschutzhinweise lesen</a>`}</section>`,privacy?'datenschutz':'impressum');if(privacy)$('#prepare-delete').onclick=()=>{$('#delete-confirm').innerHTML='<p>Wirklich alle deine Flüge und Rekorde löschen?</p><button class="button" id="delete-yes">Ja, meine Flugdaten löschen</button>';$('#delete-yes').onclick=async()=>{try{await api('delete',{});try{for(const key of Object.keys(localStorage))if(key.startsWith('hoehenflug-'))localStorage.removeItem(key);}catch{}device=crypto.randomUUID();store.set('device',device);run=null;localHistory=[];replaceHash('#start');home();toast('Deine Flugdaten wurden gelöscht.');}catch(error){toast(error.message);}};};}
 function route(){const name=location.hash.slice(1);if(['takeoff','question','feedback','finishing','saving','crashing'].includes(screen)){replaceHash('#start');leaveFlight(name||'start');return;}switch(name){case'anleitung':instructions();break;case'statistik':statistics();break;case'flugbuch':flightbook();break;case'bestenliste':leaderboard();break;case'impressum':legal(false);break;case'datenschutz':legal(true);break;default:home();}}
 window.addEventListener('hashchange',route);$('.skip').onclick=event=>{event.preventDefault();main.focus();};document.querySelectorAll('.brand,[data-nav]').forEach(link=>link.addEventListener('click',event=>{if(link.hash===location.hash){event.preventDefault();if(['takeoff','question','feedback','finishing','saving','crashing'].includes(screen))leaveFlight(link.hash.slice(1));else route();}}));

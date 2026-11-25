@@ -171,10 +171,67 @@ assert.equal(query('#daily-start').disabled,true);
 assert.equal(query('#daily-state').textContent,'TAGESVORRAT AUSGESCHÖPFT');
 assert.match(query('#daily-mode-note').textContent,/Tagesversuch bleibt unberührt/);
 
+// The explicitly replaced day offers one fresh attempt, then resumes that attempt.
+handler=()=>({date:'2026-11-25',dailyMode:'mix',dailyRevision:1,refreshed:true,questionCount:10,attempt:null});
+await execute('loadDaily(version)');
+assert.equal(query('#daily-state').textContent,'HEUTIGEN MIX NEU STARTEN');
+assert.match(query('#daily-mode-note').textContent,/bisherige Runde wurde ersetzt/);
+assert.match(query('#daily-mode-note').textContent,/einen neuen Tagesversuch/);
+handler=()=>({date:'2026-11-25',dailyMode:'mix',dailyRevision:1,refreshed:true,questionCount:10,attempt:{status:'ready',dailyRevision:1,competitionVersion:3}});
+await execute('loadDaily(version)');
+assert.equal(query('#daily-state').textContent,'TAGESFLUG FORTSETZEN');
+assert.ok(!query('#daily-mode-note').textContent.includes('einen neuen Tagesversuch'));
+
+// An old saved round never opens as the current result or requests its ranking.
+const oldDaily={...context.fixture,id:'old-daily',kind:'daily',mode:'daily',dailyMode:'rare',dailyRevision:0,dailySuperseded:true,competitionVersion:3,questionCount:10,dailyDate:'2026-11-25',status:'finished',index:10,altitude:700,peakAltitude:900,question:null,deadline:null};
+execute("store.set('active',{id:'old-daily',mode:'daily'});busy=false;");
+handler=()=>oldDaily;calls.length=0;
+await execute('resumeFlight()');
+assert.equal(execute('screen'),'daily-refresh');
+assert.match(query('#main').innerHTML,/Tagesflug neu gemischt/);
+assert.match(query('#main').innerHTML,/bisheriger Flug bleibt im Flugbuch erhalten/);
+assert.match(query('#main').innerHTML,/NEUEN TAGESMIX STARTEN/);
+assert.equal(execute("store.get('active',null)"),null);
+assert.equal(calls.filter(c=>c.path.includes('/api/next')||c.path.includes('leaderboard')).length,0);
+
+// The same guard covers a superseded start response and direct flight-state display.
+execute("store.set('active',{id:'saved-free'});busy=false;");calls.length=0;
+await execute("startFlight('daily')");
+assert.equal(execute('screen'),'daily-refresh');
+assert.equal(execute("store.get('active',null).id"),'saved-free');
+context.oldDailyFixture={...oldDaily,status:'flying',index:2,question:q};
+execute('run=oldDailyFixture;showFlightState()');
+assert.equal(execute('screen'),'daily-refresh');
+assert.equal(execute('currentQuestion'),null);
+
+// An already open old tab is redirected when its answer returns the new flag.
+setRun({id:'old-daily',kind:'daily',mode:'daily',dailyMode:'rare',dailyRevision:0,dailyDate:'2026-11-25',competitionVersion:3,questionCount:10});
+handler=()=>({...oldDaily,status:'ready',index:1});calls.length=0;
+await execute("submitChoice('a')");
+assert.equal(execute('screen'),'daily-refresh');
+assert.equal(calls.filter(c=>c.path.includes('leaderboard')||c.path.includes('/api/next')).length,0);
+
+// Its action starts the new revision through the normal daily endpoint.
+const freshDaily={...oldDaily,id:'new-daily',dailyMode:'mix',dailyRevision:1,dailySuperseded:false,status:'ready',index:0,altitude:1500,peakAltitude:1500,latestResult:null};
+handler=path=>path.includes('/api/start')?freshDaily:{...freshDaily,status:'flying',question:q,deadline:Date.now()+25000,timeLimitMs:25000};calls.length=0;
+await query('#start-refreshed-daily').onclick();
+assert.equal(execute('screen'),'question');
+assert.equal(execute('run.id'),'new-daily');
+assert.equal(execute('run.dailyRevision'),1);
+assert.equal(calls.filter(c=>c.path.includes('/api/start')).length,1);
+assert.equal(calls.find(c=>c.path.includes('/api/start')).body.mode,'daily');
+assert.equal(execute("store.get('active',null).id"),'new-daily');
+handler=()=>({flights:[{...oldDaily,status:'flying',finishedAt:null,startedAt:Date.UTC(2026,10,25,12)}]});
+await execute('flightbook()');
+assert.match(query('#history-content').innerHTML,/FRÜHERE TAGESRUNDE/);
+assert.match(query('#history-content').innerHTML,/25\.11\.2026/);
+assert.ok(!query('#history-content').innerHTML.includes('1.1.1970'),'archived partial flights use their actual start date');
+
 // Catalog counts are supplied by the API, including the individual remaining free stock.
+execute("screen='home';version++;");
 handler=()=>({questions:3210,families:2345,remainingFreeFamilies:1234});
 await execute('loadCatalog(version)');
 assert.match(query('#catalog-note').innerHTML,/2\.345 verschiedene Fragen/);
 assert.match(query('#catalog-note').innerHTML,/3\.210 Aufgabenvarianten/);
 assert.match(query('#catalog-note').innerHTML,/1\.234 ungesehene Fragenfamilien/);
-console.log('Frontend flow checks passed: mixed ten-question days, saved historical courses, learning pause, daily finish, free crash, permanent-pool exhaustion, no daily attempt on unavailable stock, accurate catalog counts, resume, retries and safe output.');
+console.log('Frontend flow checks passed: mixed ten-question days, replacement-day attempt and superseded-round handoff, saved historical courses, learning pause, daily finish, free crash, permanent-pool exhaustion, no daily attempt on unavailable stock, accurate catalog counts, resume, retries and safe output.');
