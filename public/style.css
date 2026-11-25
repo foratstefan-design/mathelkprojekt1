@@ -607,3 +607,30 @@ body[data-screen="finishing"] .footer{display:none}
  .result-ranking>p{font-size:16px;line-height:1.85}
  .result-ranking .button{width:100%;font-size:14px;min-height:49px}
 }
+
+/* Source counts are server-reported; an exhausted catalog ends without a crash. */
+.catalog-note{display:block;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;line-height:1.8;letter-spacing:0;color:#a7cbd3;margin:18px 0 0;overflow-wrap:anywhere;text-align:center}
+.catalog-stats{padding:14px 17px;border:1px solid #507b8966;background:#0b263cd9;box-shadow:3px 3px 0 #020d1933}
+.catalog-stats strong{display:block;font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:500;line-height:1.7;color:#c5ede4}
+.catalog-stats span{display:block;font-size:14px;line-height:1.8;color:#9bbfcf;margin-top:4px}
+.catalog-exhausted{border-color:#6ba49e;box-shadow:0 0 0 1px #6ba49e,0 0 0 5px #061422,8px 8px 0 #020c1666}
+.catalog-exhausted .eyebrow{color:#c0dfaf}
+.catalog-exhausted h1{color:#d7f4e5}
+.catalog-exhausted>p:not(.eyebrow):not(.peak-caption){font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:400;line-height:1.85;letter-spacing:0;color:#b6d2dc;max-width:650px;margin:16px auto 0;overflow-wrap:anywhere}
+.catalog-exhausted .catalog-exhausted-message{color:#d5ebe5}
+.catalog-exhausted .catalog-stats{max-width:650px;margin-top:22px;text-align:left}
+.catalog-exhausted .result-depth{margin-top:27px}
+.catalog-exhausted .run-metrics{max-width:530px;margin-left:auto;margin-right:auto}
+.catalog-exhausted .actions{margin-top:28px}
+.catalog-exhausted .actions .button{font-size:14px;line-height:1.7}
+.footer{flex-wrap:wrap}
+.footer .data-attribution{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.8;gap:8px;color:#96b6c6}
+.footer .data-attribution a{font-size:14px;color:#acd7d8;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#547d8f}
+.footer .data-attribution a:hover{color:#e1f7ee}
+.footer .data-attribution a:focus-visible{outline:2px dashed var(--cyan);outline-offset:4px}
+@media(max-width:640px){.catalog-note{font-size:14px;line-height:1.85;margin-top:17px}.catalog-stats{padding:13px 12px}.catalog-stats strong{font-size:16px;line-height:1.7}.catalog-stats span{font-size:14px;line-height:1.8}.catalog-exhausted>p:not(.eyebrow):not(.peak-caption){font-size:16px;line-height:1.85;margin-top:15px}.catalog-exhausted .actions{gap:12px;margin-top:25px}.catalog-exhausted .actions .button{font-size:14px;min-height:50px}.footer .data-attribution{width:100%;justify-content:center;font-size:14px}}
+
+/* Longer sourced comparisons keep their names readable on narrow screens. */
+.flight-game .question-title{overflow-wrap:anywhere;text-wrap:pretty;max-width:100%}
+.flight-game.long-question .question-title{font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.14;letter-spacing:0}
+@media(max-width:640px){.flight-game.long-question .question-title{font-size:1.7rem;line-height:1.17}.flight-game.long-question .question-panel{padding-left:15px;padding-right:15px}}

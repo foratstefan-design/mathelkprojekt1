@@ -25,6 +25,7 @@ async function bundle(path) {
   return dependencies + '\n// ' + relative(root, path) + '\nconst { ' + exported.join(', ') + ' } = (() => {\n' + source + '\nreturn { ' + exported.join(', ') + ' };\n})();\n';
 }
 const apiSource = await bundle(resolve(root, 'lib/api.js'));
+const catalogImportSource = await bundle(resolve(root, 'lib/catalog-import.js'));
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.json': 'application/json' };
 const assets = {};
 async function collect(directory) {
@@ -36,11 +37,16 @@ async function collect(directory) {
 }
 await collect(resolve(root, 'public'));
 if (!assets['/index.html']) throw new Error('public/index.html is missing');
-const worker = apiSource + `
+const worker = apiSource + catalogImportSource + `
 const embeddedAssets = ${JSON.stringify(assets)};
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/api/admin/catalog/import') {
+      const importer = createCatalogImport({ batch: entries => env.DB.batch(entries.map(({sql,params}) => env.DB.prepare(sql).bind(...params))) }, { token: env.CATALOG_IMPORT_TOKEN });
+      if (env.CATALOG_IMPORT_TOKEN && !env.DB) return new Response('Database unavailable', { status: 503 });
+      return importer(request);
+    }
     if (url.pathname.startsWith('/api/')) {
       if (!env.DB) return new Response(JSON.stringify({ error: 'Der Spielspeicher ist gerade nicht erreichbar.' }), { status: 503, headers: { 'Content-Type': 'application/json' } });
       const api = createAPI({

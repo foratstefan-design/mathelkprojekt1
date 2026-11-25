@@ -1,0 +1,174 @@
+{
+  "url": "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2",
+  "retrievedAt": "2026-11-24T17:18:06.321Z",
+  "etag": "\"6afca015-1832128e37\"",
+  "lastModified": "Tue, 17 Nov 2026 18:42:29 GMT",
+  "range": "bytes 0-134217727",
+  "bytes": 134217728,
+  "sha256": "78f8bae8e9b098f6dd69af72033b288f37edb6d6a7a6c4a291a3239a17c203a4",
+  "additionalRanges": [
+    {
+      "offset": 8388608,
+      "end": 16777215,
+      "sha256": "932a4753a07707e5ff908d57e8684d62a589bbd24bc7bbc329c1a8721d8408f5"
+    },
+    {
+      "offset": 16777216,
+      "end": 25165823,
+      "sha256": "43c07aaeb923fa292ff38eb862fbd6a0d1d6c9a0f20fe4c036f5a6bc6b5d2988"
+    },
+    {
+      "offset": 25165824,
+      "end": 33554431,
+      "sha256": "399fba2c2d945d0cc5aceef5773ec13480faef235d4382fa290167154cc44935"
+    },
+    {
+      "offset": 33554432,
+      "end": 41943039,
+      "sha256": "4c97eb954d25f920f7e6bdd998aec0ce99a586ed5324476837a23192719af0ad"
+    },
+    {
+      "offset": 41943040,
+      "end": 50331647,
+      "sha256": "4a6da4e4971ff5c3ea3f9964c11b6c48f17b6e0da69769f8eed90969065139a8"
+    },
+    {
+      "offset": 50331648,
+      "end": 58720255,
+      "sha256": "4ae9c05c92517b2601aa5855b42ea11de9ff46c88bff4d0b0f61dac177cd48b3"
+    },
+    {
+      "offset": 58720256,
+      "end": 67108863,
+      "sha256": "6e737708fa107e81abb6c0915b11348da4b3bb91d81365afb5dad97aea18e409"
+    },
+    {
+      "offset": 67108864,
+      "end": 75497471,
+      "sha256": "ff0fc984f0576f2e10bf90e7f72dd10baef26c04ccb44bfa4ef77afb9311e441"
+    },
+    {
+      "offset": 75497472,
+      "end": 83886079,
+      "sha256": "f5e44c17faf653c7b57949701301175657f2ee650c0979680dac1bfe6869c2c9"
+    },
+    {
+      "offset": 83886080,
+      "end": 92274687,
+      "sha256": "a915a4870c6118fb20f97880ba8aae0c3e71686e9c2aa0194ff032f2afa5f607"
+    },
+    {
+      "offset": 92274688,
+      "end": 100663295,
+      "sha256": "62a1d8c7f74f53c8df8e24e27da86860677c56f5a3a68a9de7db815a4b0956c5"
+    },
+    {
+      "offset": 100663296,
+      "end": 109051903,
+      "sha256": "5c31625c20d5be7cb6a8a349c1662f5aa402d5e2479e9338b003cf99c756944e"
+    },
+    {
+      "offset": 109051904,
+      "end": 117440511,
+      "sha256": "d712d5dc3c38a6863a780e405ca55ea9a5dc71d803f70efac453f74738d0c6a4"
+    },
+    {
+      "offset": 117440512,
+      "end": 125829119,
+      "sha256": "47e2a898e62db7c8f49c81284660c1b7f482dda2d8c4f3bfabccbd69af354f1d"
+    },
+    {
+      "offset": 125829120,
+      "end": 134217727,
+      "sha256": "5682f40d4c95a812e358e806fabb18791dc287906e67afa431a9faffa12ddd3a"
+    }
+  ],
+  "ranges": [
+    {
+      "start": 0,
+      "end": 8388607,
+      "sha256": "44174b050a7215059495b95e8ce84a40e20dba46625b76253c8007e7a5bca6b1"
+    },
+    {
+      "start": 8388608,
+      "end": 16777215,
+      "sha256": "932a4753a07707e5ff908d57e8684d62a589bbd24bc7bbc329c1a8721d8408f5"
+    },
+    {
+      "start": 16777216,
+      "end": 25165823,
+      "sha256": "43c07aaeb923fa292ff38eb862fbd6a0d1d6c9a0f20fe4c036f5a6bc6b5d2988"
+    },
+    {
+      "start": 25165824,
+      "end": 33554431,
+      "sha256": "399fba2c2d945d0cc5aceef5773ec13480faef235d4382fa290167154cc44935"
+    },
+    {
+      "start": 33554432,
+      "end": 41943039,
+      "sha256": "4c97eb954d25f920f7e6bdd998aec0ce99a586ed5324476837a23192719af0ad"
+    },
+    {
+      "start": 41943040,
+      "end": 50331647,
+      "sha256": "4a6da4e4971ff5c3ea3f9964c11b6c48f17b6e0da69769f8eed90969065139a8"
+    },
+    {
+      "start": 50331648,
+      "end": 58720255,
+      "sha256": "4ae9c05c92517b2601aa5855b42ea11de9ff46c88bff4d0b0f61dac177cd48b3"
+    },
+    {
+      "start": 58720256,
+      "end": 67108863,
+      "sha256": "6e737708fa107e81abb6c0915b11348da4b3bb91d81365afb5dad97aea18e409"
+    },
+    {
+      "start": 67108864,
+      "end": 75497471,
+      "sha256": "ff0fc984f0576f2e10bf90e7f72dd10baef26c04ccb44bfa4ef77afb9311e441"
+    },
+    {
+      "start": 75497472,
+      "end": 83886079,
+      "sha256": "f5e44c17faf653c7b57949701301175657f2ee650c0979680dac1bfe6869c2c9"
+    },
+    {
+      "start": 83886080,
+      "end": 92274687,
+      "sha256": "a915a4870c6118fb20f97880ba8aae0c3e71686e9c2aa0194ff032f2afa5f607"
+    },
+    {
+      "start": 92274688,
+      "end": 100663295,
+      "sha256": "62a1d8c7f74f53c8df8e24e27da86860677c56f5a3a68a9de7db815a4b0956c5"
+    },
+    {
+      "start": 100663296,
+      "end": 109051903,
+      "sha256": "5c31625c20d5be7cb6a8a349c1662f5aa402d5e2479e9338b003cf99c756944e"
+    },
+    {
+      "start": 109051904,
+      "end": 117440511,
+      "sha256": "d712d5dc3c38a6863a780e405ca55ea9a5dc71d803f70efac453f74738d0c6a4"
+    },
+    {
+      "start": 117440512,
+      "end": 125829119,
+      "sha256": "47e2a898e62db7c8f49c81284660c1b7f482dda2d8c4f3bfabccbd69af354f1d"
+    },
+    {
+      "start": 125829120,
+      "end": 134217727,
+      "sha256": "5682f40d4c95a812e358e806fabb18791dc287906e67afa431a9faffa12ddd3a"
+    }
+  ],
+  "license": "CC0-1.0",
+  "entitiesRead": 32610,
+  "germanEntities": 28596,
+  "extractedFacts": 19148,
+  "acceptedFacts": 19136,
+  "missingLabels": 12
+}

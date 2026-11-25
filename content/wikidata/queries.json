@@ -1,0 +1,15 @@
+[
+  {"id":"film-directors","kind":"relation","property":"P57","category":"Film","scope":"regie","minimumLinks":10,"classId":"Q11424"},
+  {"id":"book-authors","kind":"relation","property":"P50","category":"Literatur","scope":"autor","minimumLinks":8},
+  {"id":"place-countries","kind":"relation","property":"P17","category":"Geografie","scope":"staat","minimumLinks":15,"coordinates":true},
+  {"id":"film-countries","kind":"relation","property":"P495","category":"Film","scope":"ursprungsland","minimumLinks":10,"classId":"Q11424"},
+  {"id":"original-languages","kind":"relation","property":"P364","category":"Kultur","scope":"originalsprache","minimumLinks":10},
+  {"id":"country-capitals","kind":"relation","property":"P36","category":"Geografie","scope":"hauptstadt","minimumLinks":25},
+  {"id":"film-publication","kind":"date","property":"P577","category":"Film","scope":"frueheste-veroeffentlichung","minimumLinks":10,"classId":"Q11424"},
+  {"id":"book-publication","kind":"date","property":"P577","category":"Literatur","scope":"frueheste-veroeffentlichung","minimumLinks":6,"classId":"Q571"},
+  {"id":"organization-inception","kind":"date","property":"P571","category":"Gründung","scope":"gruendungsjahr","minimumLinks":10,"classIds":["Q4830453","Q3918","Q847017","Q476028","Q688151"]},
+  {"id":"mountain-elevation","kind":"quantity","property":"P2044","category":"Berghöhen","scope":"hoehe-ueber-meer","minimumLinks":3,"classId":"Q8502"},
+  {"id":"place-area","kind":"quantity","property":"P2046","category":"Flächen","scope":"flaeche","minimumLinks":8,"coordinates":true},
+  {"id":"river-length","kind":"quantity","property":"P2043","category":"Flusslängen","scope":"laenge","minimumLinks":3,"classId":"Q4022"},
+  {"id":"building-height","kind":"quantity","property":"P2048","category":"Bauwerkshöhen","scope":"hoehe","minimumLinks":3,"classIds":["Q41176","Q11303","Q12518","Q16970"]}
+]

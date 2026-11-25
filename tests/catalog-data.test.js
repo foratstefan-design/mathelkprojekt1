@@ -1,0 +1,83 @@
+import test,{after} from 'node:test';
+import {loadLocalCatalog} from '../lib/local-catalog-seed.js';
+import assert from 'node:assert/strict';
+import {DatabaseSync} from 'node:sqlite';
+import {readFile,readdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {createCatalog} from '../lib/catalog.js';
+import {gradeChoice,publicQuestion,dailyModeFor} from '../lib/engine.js';
+const snapshotText=await readFile(new URL('../content/wikidata/facts.json',import.meta.url),'utf8');
+const snapshot=JSON.parse(snapshotText),facts=new Map(snapshot.facts.map(f=>[f.key,f]));
+const report=JSON.parse(await readFile(new URL('../content/catalog-report.json',import.meta.url),'utf8'));
+const db=new DatabaseSync(':memory:');db.exec('PRAGMA foreign_keys=ON');
+for(const name of (await readdir(new URL('../migrations/',import.meta.url))).filter(n=>n.endsWith('.sql')).sort())db.exec(await readFile(new URL('../migrations/'+name,import.meta.url),'utf8'));
+await loadLocalCatalog(db);
+after(()=>db.close());
+const adapter={all:async(sql,args)=>db.prepare(sql).all(...args),run:async(sql,args)=>db.prepare(sql).run(...args)};
+const catalog=createCatalog(adapter);
+
+test('the installed large catalog is backed by the recorded official Wikidata snapshot',()=>{
+  assert.equal(snapshot.license,'CC0-1.0');assert.match(snapshot.dump.url,/^https:\/\/dumps\.wikimedia\.org\/wikidatawiki\/entities\//);
+  assert.match(snapshot.dump.sha256,/^[a-f0-9]{64}$/);assert.ok(snapshot.dump.bytes>=128*1024*1024);
+  assert.ok(snapshot.facts.length>=10000);assert.equal(facts.size,snapshot.facts.length);
+  assert.equal(createHash('sha256').update(snapshotText).digest('hex'),report.sourceSnapshotSha256);
+  const installed=db.prepare('SELECT COUNT(*) AS questions,COUNT(DISTINCT family_id) AS families FROM question_catalog').get();
+  assert.equal(installed.questions,report.questions);assert.equal(installed.families,report.families);
+  assert.ok(installed.families>=8000,'independent factual questions, not a combinatorial claim');
+  assert.equal(db.prepare("SELECT COUNT(*) AS n FROM question_catalog WHERE type='general' AND pool='daily'").get().n,0,'all relation questions are playable in the free pool');
+});
+test('every imported solution and comparison value traces to its canonical source fact',()=>{
+  const mapped=new Map(db.prepare('SELECT fact_key,family_id FROM question_fact_families').all().map(r=>[r.fact_key,r.family_id]));
+  const prompts=new Set();
+  for(const row of db.prepare('SELECT id,family_id,content_json FROM question_catalog').iterate()){
+    const q=JSON.parse(row.content_json);assert.equal(q.id,row.id);assert.equal(q.familyId,row.family_id);
+    assert.ok(q.factKeys.length===1||q.factKeys.length===4);
+    assert.equal(prompts.has(q.prompt),false);prompts.add(q.prompt);
+    for(const key of q.factKeys){assert.ok(facts.has(key),key);assert.equal(mapped.get(key),q.familyId);}
+    assert.equal(new Set(q.options.map(o=>o.id)).size,4);assert.equal(new Set(q.options.map(o=>o.label)).size,4);
+    const result=gradeChoice(q,q.correctId);assert.equal(result.correct,true);assert.equal(result.options.filter(o=>o.id===q.correctId).length,1);
+    if(q.type==='general'){
+      const f=facts.get(q.factKeys[0]);assert.equal(q.correctId,'choice-'+f.objectId);assert.equal(result.correctLabel,f.objectLabel);
+    }else{
+      assert.equal(new Set(q.options.map(o=>o.value)).size,4);
+      for(const key of q.factKeys){const f=facts.get(key),option=q.options.find(o=>o.id==='choice-'+f.subjectId);assert.equal(option?.value,f.value);}
+      const values=[...q.options].sort((a,b)=>a.value-b.value);
+      assert.equal(q.correctId,(['common','later'].includes(q.type)?values.at(-1):values[0]).id);
+    }
+    const safe=publicQuestion(q,'safe',0);for(const key of ['correctId','provenance','factKeys','source','explanation'])assert.equal(key in safe,false);
+    assert.ok(safe.options.every(o=>Object.keys(o).sort().join(',')==='id,label'));
+  }
+  assert.equal(mapped.size,report.sourceFactsUsed);
+});
+test('one thousand real imported questions across flights never repeat an exposed fact family',async()=>{
+  const device='real-catalog-repeat-test',seen=new Set();
+  for(let flight=0;flight<10;flight++){
+    const id='real-flight-'+flight;
+    db.prepare('INSERT INTO runs(id,device,mode,seed,status,started_at,content_version) VALUES(?,?,?,?,?,?,2)').run(id,device,'mix',id,'ready',Date.now());
+    for(let position=0;position<100;position++){
+      db.prepare('UPDATE runs SET question_index=? WHERE id=?').run(position,id);
+      const row=db.prepare('SELECT * FROM runs WHERE id=?').get(id),q=await catalog.claimFree(row,3);
+      assert.ok(q);assert.equal(seen.has(q.familyId),false);seen.add(q.familyId);
+      assert.equal((await catalog.claimFree(row,3)).id,q.id,'retry resumes the same reserved question');
+    }
+  }
+  assert.equal(seen.size,1000);assert.equal(db.prepare('SELECT COUNT(*) AS n FROM seen_questions WHERE device=?').get(device).n,1000);
+});
+test('real daily selections stay new across days and remain disjoint from every free question',async()=>{
+  const seen=new Set();
+  for(let i=0;i<8;i++){
+    const date=new Date(Date.UTC(2027,0,1+i)).toISOString().slice(0,10),mode=dailyModeFor(date);
+    const questions=await catalog.reserveDaily(date,mode);assert.equal(questions.length,10);
+    assert.ok(questions.every(q=>q.difficulty<=2),'daily never silently escalates into challenge questions');
+    for(const q of questions){assert.equal(seen.has(q.familyId),false);seen.add(q.familyId);assert.equal(db.prepare("SELECT COUNT(*) AS n FROM question_catalog WHERE family_id=? AND pool='free'").get(q.familyId).n,0);}
+    assert.deepEqual(await catalog.reserveDaily(date,mode),questions);
+  }
+  assert.equal(seen.size,80);
+});
+test('catalog data batches are bounded and schema blocks regrouped facts and split pools',async()=>{
+  const data=await readFile(new URL('../content/catalog-import.jsonl',import.meta.url),'utf8');
+  const chunks=data.trim().split('\n');assert.ok(chunks.every(s=>Buffer.byteLength(s)<400000&&JSON.parse(s).rows.length<=50));
+  const row=db.prepare('SELECT * FROM question_catalog LIMIT 1').get();
+  assert.throws(()=>db.prepare('UPDATE question_fact_families SET family_id=? WHERE family_id=?').run('regrouped',row.family_id));
+  assert.throws(()=>db.prepare('UPDATE question_catalog SET pool=? WHERE id=?').run(row.pool==='free'?'daily':'free',row.id));
+});

@@ -6,3 +6,8 @@ node_modules/
 .wrangler/
 
 .openai/hosting.json
+
+.wikidata-cache/
+
+__pycache__/
+*.pyc

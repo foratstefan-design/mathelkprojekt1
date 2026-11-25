@@ -1,0 +1,50 @@
+{
+  "version": "e35cdd19f067cc8be8909fc5c0e63f594dc93e8e4f40f73cd4f455346652f6b4",
+  "source": "Wikidata (CC0)",
+  "updatedAt": "2026-11-24T17:18:06.321Z",
+  "downloadedFacts": 19136,
+  "acceptedFacts": 14832,
+  "sourceFactsUsed": 14711,
+  "questions": 10829,
+  "families": 8888,
+  "freeFamilies": 7908,
+  "dailyFamilies": 980,
+  "types": {
+    "common": 1716,
+    "earlier": 225,
+    "general": 6947,
+    "later": 225,
+    "rare": 1716
+  },
+  "difficulties": {
+    "1": 494,
+    "2": 6746,
+    "3": 3589
+  },
+  "categories": {
+    "Bauwerkshöhen": 16,
+    "Film": 673,
+    "Flächen": 1970,
+    "Geografie": 5983,
+    "Gründungen": 206,
+    "Kultur": 385,
+    "Literatur": 150,
+    "Längen": 98,
+    "Meereshöhen": 1348
+  },
+  "pools": {
+    "daily": 1960,
+    "free": 8869
+  },
+  "legacyAliases": 40,
+  "rejected": {
+    "invalid": 4304,
+    "multipleValues": 0,
+    "ambiguousPrompt": 35,
+    "notEnoughDistractors": 0,
+    "leftoverComparisonFacts": 54
+  },
+  "importBatches": 514,
+  "largestBatchBytes": 185024,
+  "sourceSnapshotSha256": "f59c29229702b0d3fcc08f7b50364c55f2bfae4f2e9628d6c25940cbd7fccae9"
+}

@@ -1,10 +1,16 @@
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFile, readdir } from 'node:fs/promises';
+import {loadLocalCatalog} from '../lib/local-catalog-seed.js';
 import worker from '../dist/server/index.js';
+import {seedTestCatalog} from '../tests/helpers/catalog-fixture.js';
 const sqlite = new DatabaseSync(':memory:');
 sqlite.exec('PRAGMA foreign_keys = ON;');
 for (const name of (await readdir(new URL('../migrations/', import.meta.url))).filter(name => name.endsWith('.sql')).sort()) sqlite.exec(await readFile(new URL('../migrations/' + name, import.meta.url), 'utf8'));
+await loadLocalCatalog(sqlite);
+// Catalog data is loaded separately from schema migrations, as in production.
+const usingSyntheticCatalog=sqlite.prepare('SELECT COUNT(*) AS n FROM question_catalog').get().n===0;
+if(usingSyntheticCatalog)seedTestCatalog(sqlite);
 const env = { DB: { prepare(sql) { return { bind(...params) { return {
   async all() { return { results: sqlite.prepare(sql).all(...params) }; },
   async run() { return sqlite.prepare(sql).run(...params); }
@@ -17,6 +23,9 @@ async function call(path, body) {
   return response;
 }
 assert.match((await call('/')).headers.get('content-type'), /html/);
+const catalog=await (await call('/api/catalog')).json();
+assert.ok(catalog.questions>0&&catalog.families>0);
+assert.equal('question' in catalog,false);
 let flight = await (await call('/api/start', { mode: 'mix' })).json();
 assert.equal(flight.status, 'ready');
 assert.equal(flight.question, null);
@@ -72,6 +81,8 @@ assert.equal((await (await call('/api/stats')).json()).byMode.daily.flights, 1);
 await call('/api/delete', {});
 assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM runs').get().n, 0);
 assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM pilots').get().n, 0);
+assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM seen_questions WHERE device=?').get(device).n,0);
+assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM seen_question_backfills WHERE device=?').get(device).n,0);
 assert.equal((await (await call('/api/leaderboard')).json()).totalFinished, 0);
 sqlite.close();
-console.log('Worker smoke test passed: frozen questions, rewards, rescue, three-error crash, ten-question daily competition, leaderboard, profiles, stats, history and deletion.');
+console.log('Worker smoke test passed ('+(usingSyntheticCatalog?'synthetic mechanics fixture':'imported catalog')+'): permanent reservations, frozen questions, rewards, rescue, ten-question daily competition, leaderboard, profiles, stats, history and deletion.');

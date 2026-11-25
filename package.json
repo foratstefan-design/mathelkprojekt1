@@ -11,6 +11,9 @@
     "start": "node server.mjs",
     "build": "node scripts/build.mjs",
     "build:static": "node scripts/build-static.mjs",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "questions:import": "node --use-env-proxy scripts/import-wikidata-dump.mjs",
+    "questions:import:sparql": "node --use-env-proxy scripts/import-wikidata.mjs",
+    "questions:build": "node scripts/build-catalog.mjs"
   }
 }

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
-import { readFileSync, readdirSync } from 'node:fs';
+import {applyTestSchema,seedTestCatalog} from './helpers/catalog-fixture.js';
 import { createAPI } from '../lib/api.js';
 import { timeLimitMs, dailyModeFor, dailyQuestionFor } from '../lib/engine.js';
 import { legacyQuestionFor } from '../lib/legacy-engine.js';
@@ -9,7 +9,7 @@ import { legacyQuestionFor } from '../lib/legacy-engine.js';
 function fixture({ afterWrite } = {}) {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec('PRAGMA foreign_keys = ON;');
-  for (const name of readdirSync(new URL('../migrations/', import.meta.url)).filter(name => name.endsWith('.sql')).sort()) sqlite.exec(readFileSync(new URL('../migrations/' + name, import.meta.url), 'utf8'));
+  applyTestSchema(sqlite);seedTestCatalog(sqlite);
   const api = createAPI({
     all: async (sql, params) => sqlite.prepare(sql).all(...params),
     run: async (sql, params) => { const result = sqlite.prepare(sql).run(...params); await afterWrite?.(sql, params); return result; }

@@ -35,7 +35,7 @@ const context=vm.createContext({
   FlightScene:Scene,plane:()=>'<svg></svg>',hero:'<svg></svg>',location,
   window:{scrollTo(){},addEventListener(){},history:{replaceState(a,b,value){location.hash=value;}}},
   document:{body,querySelector:query,querySelectorAll:()=>[],addEventListener(){},createElement:()=>new Element()},
-  navigator:{},fetch:async(path,init)=>{calls.push({path,body:init?.body?JSON.parse(init.body):null});const result=await handler(path,init);return new Response(JSON.stringify(result),{status:200,headers:{'Content-Type':'application/json'}});}
+  navigator:{},fetch:async(path,init)=>{calls.push({path,body:init?.body?JSON.parse(init.body):null});const result=await handler(path,init);const status=result.__httpStatus||200;const body={...result};delete body.__httpStatus;return new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json'}});}
 });
 let source=await readFile(new URL('../public/app.js',import.meta.url),'utf8');
 source=source.replace(/^import .*;\n/gm,'');
@@ -102,4 +102,56 @@ await execute("leaderboard('2026-11-20')");
 assert.equal(execute('screen'),'bestenliste');
 assert.ok(query('#leaderboard-content').innerHTML.includes('&lt;script&gt;'));
 assert.ok(!query('#leaderboard-content').innerHTML.includes('<script>'));
-console.log('Frontend flow checks passed: learning pause, explicit next, daily finish/no11th, positive animation, practice crash, saved-flight preservation, resume, idempotent retry, escaped aliases and source URLs.');
+
+
+// Reaching a finite catalog is a successful saved end, never a crash or retry loop.
+setRun({altitude:700,peakAltitude:900,score:55,correctTotal:2});
+handler=()=>response({status:'ready',altitude:700,peakAltitude:900,score:55});
+await execute("submitChoice('a')");
+scenes[0].calls.length=0;calls.length=0;
+handler=()=>response({status:'exhausted',poolExhausted:true,altitude:700,peakAltitude:900,score:55});
+await execute('advanceFlight()');
+assert.equal(execute('screen'),'results');
+assert.match(query('#main').innerHTML,/Alles entdeckt/);
+assert.match(query('#main').innerHTML,/900 <small>Meter/);
+assert.ok(!query('#main').innerHTML.includes('NOCH EIN FLUG'));
+assert.ok(!query('#main').innerHTML.includes('ABSTURZ'));
+assert.equal(scenes[0].calls.filter(x=>x[0]==='crash').length,0);
+assert.equal(execute('run.altitude'),700);
+assert.equal(calls.filter(x=>x.path.includes('/api/next')).length,1);
+
+// A resumed depleted run shows the same calm end and does not request another question.
+execute("store.set('active',{id:'run1'});busy=false;");calls.length=0;
+handler=()=>response({status:'exhausted',poolExhausted:true,altitude:700,peakAltitude:900,score:55});
+await execute('resumeFlight()');
+assert.equal(execute('screen'),'results');
+assert.match(query('#main').innerHTML,/Alles entdeckt/);
+assert.equal(calls.filter(x=>x.path.includes('/api/next')).length,0);
+assert.equal(execute("store.get('active',null)"),null);
+
+// Daily exhaustion is not a consumed attempt and must preserve another saved free flight.
+execute("store.set('active',{id:'saved-free'});screen='home';busy=false;");
+scenes[0].calls.length=0;calls.length=0;
+handler=path=>path.includes('/api/start')?{__httpStatus:409,error:'Keine zehn neuen Fragen',code:'QUESTION_POOL_EXHAUSTED',poolExhausted:true}:{};
+await execute('startDaily()');
+assert.equal(execute('screen'),'catalog');
+assert.match(query('#main').innerHTML,/Neue Tagesfragen fehlen/);
+assert.equal(execute("store.get('active',null).id"),'saved-free');
+assert.equal(scenes[0].calls.filter(x=>x[0]==='crash').length,0);
+assert.equal(calls.filter(x=>x.path.includes('/api/next')).length,0);
+
+// On the station an unavailable day is disabled without inventing an attempt.
+execute("screen='home';version++;busy=false;");
+handler=()=>({date:'2026-11-24',dailyMode:'common',questionCount:10,available:false,poolExhausted:true,attempt:null});
+await execute('loadDaily(version)');
+assert.equal(query('#daily-start').disabled,true);
+assert.equal(query('#daily-state').textContent,'TAGESVORRAT AUSGESCHÖPFT');
+assert.match(query('#daily-mode-note').textContent,/Tagesversuch bleibt unberührt/);
+
+// Catalog counts are supplied by the API, including the individual remaining free stock.
+handler=()=>({questions:3210,families:2345,remainingFreeFamilies:1234});
+await execute('loadCatalog(version)');
+assert.match(query('#catalog-note').innerHTML,/2\.345 verschiedene Fragen/);
+assert.match(query('#catalog-note').innerHTML,/3\.210 Aufgabenvarianten/);
+assert.match(query('#catalog-note').innerHTML,/1\.234 ungesehene Fragenfamilien/);
+console.log('Frontend flow checks passed: learning pause, daily finish, free crash, permanent-pool exhaustion, no daily attempt on unavailable stock, accurate catalog counts, resume, retries and safe output.');

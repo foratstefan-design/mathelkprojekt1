@@ -1,6 +1,8 @@
 # mathelkprojekt — Höhenflug
 
-Ein eigenständiges Wissensspiel auf Oberstufenniveau mit einer prozeduralen Pixel-Flugwelt. Interessante Fakten, konkrete Vergleichswerte und kurze Erklärungen verbinden Lernen mit Flugrekorden. Freie Flüge sind endlos und haben zwei Rettungschancen. Der Tagesflug besteht aus zehn gleichen Aufgaben für alle und führt eine Tagesbestenliste. Es werden keine Modellschlüssel benötigt.
+Ein eigenständiges Wissensspiel auf Oberstufenniveau mit einer prozeduralen Pixel-Flugwelt. Interessante Fakten, konkrete Vergleichswerte und kurze Erklärungen verbinden Lernen mit Flugrekorden. Freie Flüge haben keine feste Rundenzahl und zwei Rettungschancen; sie nutzen ausschließlich noch ungesehene Fragen des verfügbaren Katalogs. Der Tagesflug besteht aus zehn gleichen Aufgaben für alle und führt eine Tagesbestenliste. Es werden keine Modellschlüssel benötigt.
+
+Der mitgelieferte Wikidata-Stand enthält **8.888 unabhängige Fragefamilien** mit **10.829 Varianten** aus **14.711 verwendeten Quellfakten**. Freie Flüge nutzen 7.908 Familien, Tagesflüge einen getrennten Bestand von 980. Gegenteilige Vergleichsrichtungen gehören derselben Familie und werden pro Browser nicht als neue Frage wiederholt. Der Katalog ist endlich; ausgeschöpfte Kurse stoppen, statt alte Fakten erneut auszuspielen.
 
 ## Lokal starten
 
@@ -25,14 +27,16 @@ Der Worker-Build funktioniert ohne Anbieter-Konfiguration. Für Sites muss eine 
 
 ## Regeln
 
-Der Katalog enthält **160 Fragen**: je 32 für Häufig, Selten, Früher, Später und Allgemeinwissen. Die Einstiegsfragen verbinden zugängliches Allgemeinwissen mit interessanten Lernfakten; Vertiefung und Challenge bauen darauf auf. Jede kuratierte Frage enthält eine Erklärung und konkrete Quellen. Die Erklärungen bleiben ohne laufenden Timer sichtbar, bis „Weiterfliegen“ gewählt wird.
+Der aktive Fragenbestand liegt in einer SQLite-/D1-Datenbank und verwendet importierte Wikidata-Fakten. Die tatsächlich erzeugten Fragen, unabhängigen Fragefamilien und Quellenstände stehen in `content/catalog-report.json`; die laufende Website gibt ihren installierten Bestand über `GET /api/catalog` aus. Aufgabenvarianten derselben Faktenfamilie werden bei der Zählung getrennt von unterschiedlichen Familien angegeben. Jede Auflösung enthält die Datengrundlage, Quellen und eine kurze Erklärung. Diese Lernkarte bleibt ohne laufenden Timer sichtbar, bis „Weiterfliegen“ gewählt wird.
 
-- **Freier Flug:** Gemischt, häufigste, seltenste, frühere oder spätere Antwort. Neue Flüge starten bei 0 Metern. Ein gespeicherter Flug wird ausdrücklich über seine Kennung fortgesetzt.
+- **Freier Flug:** Gemischt, größter oder kleinster Wert, früheres oder späteres Ereignis. Neue Flüge starten bei 0 Metern. Ein gespeicherter Flug wird ausdrücklich über seine Kennung fortgesetzt.
 - Der erste Fehler oder Zeitablauf kostet bis zu **250 Meter**, der zweite in Folge bis zu **400 Meter**. Beide Male geht der Flug weiter, auch bei 0 Metern. Der **dritte Fehler in Folge** endet am Boden. Eine richtige Antwort rettet den Flug und setzt die Gefahr wieder auf 0.
-- **Tagesflug:** Ein Versuch pro Gerätekennung und Kalendertag in **Europe/Berlin**. Um **00:00 Uhr Berliner Zeit** beginnt der neue Tag. Der Modus rotiert täglich durch **Selten → Häufig → Früher → Später**, mit Selten am 19.11.2026 als Anker. Alle erhalten dieselben **zehn Fragen in derselben Reihenfolge** und dieselben Zeitfenster. Der vollständige Tagesfragensatz wird beim ersten Start unveränderlich in `daily_challenges` gespeichert; auch spätere Inhalts-Deployments würfeln laufende Tageswettbewerbe nicht neu. Der Tagesflug startet bei **1.500 Metern**; jede falsche oder abgelaufene Antwort kostet bis zu **350 Meter**, mindestens bleibt 0. Auch dort werden alle zehn Aufgaben gespielt. Erst die zehnte Antwort beendet ihn mit `status: finished`. Ein gestarteter Versuch wird fortgesetzt und kann am selben Tag nicht neu ausgewürfelt werden.
+- **Tagesflug:** Ein Versuch pro Gerätekennung und Kalendertag in **Europe/Berlin**. Um **00:00 Uhr Berliner Zeit** beginnt der neue Tag. Der Modus rotiert täglich durch **Weniger → Mehr → Früher → Später**, mit Selten am 19.11.2026 als Anker. Alle erhalten dieselben **zehn Fragen in derselben Reihenfolge** und dieselben Zeitfenster. Der vollständige Tagesfragensatz wird beim ersten Start unveränderlich in `daily_challenges` gespeichert; auch spätere Inhalts-Deployments würfeln laufende Tageswettbewerbe nicht neu. Der Tagesflug startet bei **1.500 Metern**; jede falsche oder abgelaufene Antwort kostet bis zu **350 Meter**, mindestens bleibt 0. Auch dort werden alle zehn Aufgaben gespielt. Erst die zehnte Antwort beendet ihn mit `status: finished`. Ein gestarteter Versuch wird fortgesetzt und kann am selben Tag nicht neu ausgewürfelt werden.
 - **Tagesbestenliste:** Nur vollständig beendete Tagesflüge des neuen Formats werden gewertet. Die Reihenfolge richtet sich nach der **Endhöhe**, dann Punkten, kürzerer aufsummierter Antwortzeit, früherem Start und einer stabilen Kennung. Die höchsten 20 Plätze und der eigene Platz werden angezeigt. Ein optionaler Rufname ist veränderbar; ohne Eingabe erscheint ein automatisch erzeugter Name. Es gibt weiterhin keine Anmeldung, daher gilt der Tagesversuch pro Browser-Gerätekennung, nicht geräteübergreifend pro Person.
-- Die ersten **16 Aufgaben im freien Flug** nutzen den Einstieg. Vertiefung wird frühestens ab Frage 17 und **6.000 Metern Höhengewinn** bevorzugt, Challenge frühestens ab Frage 33 und **14.000 Metern**. Beide Bedingungen müssen erfüllt sein. Neue Tagesfragensätze enthalten **acht Einstiegsfragen und zwei Vertiefungen**, ohne Challenge-Fragen. Die feste Auswahl hängt nicht von der Spielerleistung ab; bereits gespeicherte Tagesfragensätze bleiben unverändert.
-- Pro Flug werden bereits gespielte Fragen und ihre umgekehrten Vergleichsvarianten ausgelassen. Bei neuen freien Flügen berücksichtigt die Auswahl die **letzten 200 freien Antworten desselben Geräts** und bevorzugt ungesehene passende Fragefamilien. Sind die geeigneten Familien bereits bekannt, wird eine länger nicht gespielte Einstiegsfrage wiederverwendet, bevor schwierigere Inhalte vorgezogen werden. Erst wenn innerhalb eines Flugs alle passenden kuratierten Familien verbraucht sind, folgen neue Transferaufgaben. Kategorien und Fragestämme der letzten drei Aufgaben werden dabei möglichst variiert. Der endliche Fragenkatalog garantiert keine unbegrenzte Einmaligkeit über alle Flüge hinweg.
+- Die ersten **16 Aufgaben im freien Flug** nutzen den Einstieg. Vertiefung wird frühestens ab Frage 17 und **6.000 Metern Höhengewinn** bevorzugt, Challenge frühestens ab Frage 33 und **14.000 Metern**. Beide Bedingungen müssen erfüllt sein. Neue Tagesfragensätze bevorzugen **acht Einstiegsfragen und zwei Vertiefungen**. Wenn der Einstiegsvorrat nicht ausreicht, ergänzen weitere Vertiefungen den Zehnersatz; Challenge-Fragen bleiben ausgeschlossen. Die feste Auswahl hängt nicht von der Spielerleistung ab; bereits gespeicherte Tagesfragensätze bleiben unverändert.
+- **Dauerhafter Wiederholungsschutz:** Sobald eine neue Frage scharfgeschaltet wird, reserviert der Server ihre Faktenfamilie für die Gerätekennung in `seen_questions`. Auch unbeantwortetes Verlassen verbraucht diese neue Frage. Die vollständige Historie gilt über freie Flüge und Modi hinweg; umgekehrte Vergleichsvarianten gehören derselben Familie an. Bereits vorhandene Antworten und aktive Frage-Snapshots werden in diese Historie übernommen. Eine Wiederaufnahme zeigt dieselbe begonnene Frage mit ihrer bisherigen Frist; sie wählt keine neue Frage aus.
+- **Getrennte Bestände:** Freie und tägliche Fragefamilien gehören getrennten Pools an. Dadurch kann ein freier Flug keine spätere Tagesfrage vorwegnehmen. Tagesfamilien werden zusätzlich über alle Flugtage hinweg eindeutig reserviert. Alle Spieler desselben Tages erhalten weiterhin denselben unveränderlichen Zehnersatz.
+- **Kein Recycling bei leerem Katalog:** Gibt es für einen Kurs keine neue passende Frage mehr, erhält der Flug `status: exhausted` und `poolExhausted: true`. Höhe und Rekord bleiben erhalten. Die Oberfläche zeigt einen ruhigen Bestandsabschluss und bietet die Kurswahl an; sie erzeugt dafür weder alte Fragen noch neue Zufallszahlenvarianten. Fehlen zehn neue Tagesfragen, wird kein neuer Tagesversuch verbraucht. Ein endlicher Katalog wird durch neue importierte Inhalte erweitert, nicht durch Wiederholungen. Browserdaten- oder Spieldatenlöschung setzt die Gerätezuordnung und ihre Historie zurück.
 - Neue Tagesfragensätze geben für jede Frage konstant **25 Sekunden**. Bereits gespeicherte Tageswettbewerbe behalten ihre früheren Fristen von 20 Sekunden minus 250 ms je Fragenposition sowie ihre unveränderten Fragen; alle Spieler desselben Wettbewerbs bleiben vergleichbar. Freie Flüge starten mit **22 Sekunden**. Jede insgesamt richtige Antwort verkürzt das nächste Fenster um **200 ms**, bis mindestens **8 Sekunden** bleiben. Fehler setzen diesen Fortschritt nicht zurück. Im Rettungsfenster bleiben **65 %** der normalen Zeit, mindestens **6 Sekunden**. Bereits scharfgeschaltete Fragen behalten immer ihren gespeicherten Zeitrahmen.
 - Die Rückmeldung zwischen zwei Aufgaben ist untimed. Erst `/api/next` friert die konkrete nächste Frage ein und startet ihre volle Frist. Vorher bleiben die Antwortmöglichkeiten verborgen.
 - Eine richtige Antwort gibt **10–30 Punkte** nach Antwortgeschwindigkeit und **150–500 Meter** nach Geschwindigkeit und Serienbonus. Die Höchstmarke bleibt auch nach Höhenverlust gespeichert.
@@ -60,10 +64,15 @@ lib/
   legacy-engine.js        Eingefrorene Auswahl für bereits laufende v1-Fragen
   legacy-questions.js     Unveränderte alte Fakten für faire Wiederaufnahme
   api.js                  Gemeinsame SQLite-/D1-Serverlogik
+  catalog.js              Katalogauswahl und dauerhafte Fragenreservierung
+  catalog-import.js       Geschützter, atomarer Datenimport über feste Tabellen
+  local-catalog-seed.js    Lokaler Datenimport nach den Schema-Migrationen
 migrations/
   0001_initial.sql        Unverändertes ursprüngliches Node-Schema
   0002_v2.sql             Additive Felder für Tagesflug, Gefahr und Frage-Snapshot
   0003_daily_competition.sql Zehn-Fragen-Wertung, Tagesfragensatz, Antwortdauer und Rufnamen
+  0004_question_catalog.sql Katalog, gesehene Faktenfamilien und Tagesreservierungen
+  weitere SQL-Dateien     Ausschließlich additive Schemaänderungen
 drizzle/
   0000_initial.sql        Unverändertes ursprüngliches D1-Schema
   0001_v2.sql             Additive v2-Migration; kein Löschen bestehender Daten
@@ -73,6 +82,16 @@ scripts/
   build.mjs               Abhängigkeitsfreier Worker-Build
   build-static.mjs        Frontend-Build für andere Hoster
   smoke-worker.mjs        Prüfung des gebauten Workers mit SQLite-Adapter
+  import-wikidata-dump.mjs Offiziellen Wikidata-Dump begrenzt abrufen
+  extract-wikidata-dump.py Fakten aus vollständigen Dump-Einträgen lesen
+  import-wikidata.mjs     Alternativer SPARQL-Import
+  build-catalog.mjs       Katalog, Bericht und Importpakete aus Quellen erzeugen
+  upload-catalog.mjs      Serverbestand über den geschützten Import aktualisieren
+content/
+  wikidata/               Importdaten und Herkunftsnachweise
+  question-groups.json    Erzeugte Fragen und Faktenfamilien
+  catalog-report.json     Tatsächlicher Umfang und Qualitätsprüfungen
+  catalog-import.jsonl    Reproduzierbare Datenpakete, getrennt vom Schema
 tests/
   api.test.js             Timer, Rennen, Persistenz und Spielregeln
   engine.test.js          Faktenkatalog, Tagesauswahl und Bewertung
@@ -91,6 +110,7 @@ GET-Requests enthalten `device` im Querystring; POST-Requests im JSON-Body. Eine
 | Methode und Pfad | Zusätzliche Eingabe | Ergebnis |
 | --- | --- | --- |
 | POST `/api/start` | `{mode}` | Neuer freier Flug oder heutiger Tagesversuch |
+| GET `/api/catalog` | – | Installierte Fragen-/Familienzahlen und Quellenstand, ohne Lösungen |
 | GET `/api/daily` | – | Berliner Datum, Tagesmodus, zehn Aufgaben, Profil und vorhandener Versuch |
 | GET `/api/leaderboard?date=YYYY-MM-DD` | – | Top 20, eigener vollständiger Rang und Zahl beendeter Tagesflüge |
 | GET `/api/profile` | – | Gespeicherter oder automatisch erzeugter Rufname |
@@ -100,11 +120,11 @@ GET-Requests enthalten `device` im Querystring; POST-Requests im JSON-Body. Eine
 | GET `/api/run?id=…` | Flugkennung | Wiederaufnahme samt letzter Auflösung |
 | GET `/api/stats` | – | Rekorde, Serien, Gesamtzahl und `byMode` |
 | GET `/api/history` | – | Letzte 20 beendete Flüge |
-| POST `/api/delete` | – | Zugeordnete Flug- und Antwortdaten löschen |
+| POST `/api/delete` | – | Zugeordnete Flug-, Antwort- und Wiederholungsdaten löschen |
 
 `mode` ist `daily`, `mix`, `common`, `rare`, `earlier` oder `later`. `daily` wird intern mit dem täglich rotierenden Fragetyp geführt; öffentlich bleibt der Modus `daily` und `dailyMode` enthält den tatsächlichen Typ. `questionIndex` ist zwingend nötig: Antworten gehören zu genau einer serverseitigen Fragenposition; erneute Übertragung liefert dieselbe gespeicherte Wertung. Eine fremde Antwort-ID wird mit HTTP 400 abgewiesen und verbraucht die Frage nicht. Eine leere `choiceId` ist nur zusammen mit `expired:true` zulässig.
 
-Der Zustand enthält `status: ready | flying | crashed | finished`, `index`, `streak`, `score`, `altitude`, `timeLimitMs`, `deadline`, `question`, `results`, `latestResult`, `crashReason`, `startedAt` und `finishedAt`. `question` ist nur bei laufender Frist vorhanden und enthält keine Werte, Lösung, Erklärung oder Quellen. Abgabeergebnisse ergänzen unter anderem `points`, `altitudeGain`, `correct`, `correctLabel`, `options` mit Vergleichswerten und `source`. Zusätzliche Felder sind `kind`/`flightKind`, `dailyDate`, `dailyMode`, `competitionVersion`, `questionCount`, `completed`, `pilotName`, `answerElapsedMs`, `startAltitude`, `peakAltitude`, `danger`, `correctTotal`, `recovering` und `difficulty`. Die Wertung nennt außerdem `survived`, `rescued`, `altitudeLoss` und `altitudeDelta`.
+Der Zustand enthält `status: ready | flying | crashed | finished | exhausted`, `index`, `streak`, `score`, `altitude`, `timeLimitMs`, `deadline`, `question`, `results`, `latestResult`, `crashReason`, `startedAt` und `finishedAt`. `question` ist nur bei laufender Frist vorhanden und enthält keine Werte, Lösung, Erklärung oder Quellen. Abgabeergebnisse ergänzen unter anderem `points`, `altitudeGain`, `correct`, `correctLabel`, `options` mit Vergleichswerten und `source`. Zusätzliche Felder sind `kind`/`flightKind`, `dailyDate`, `dailyMode`, `competitionVersion`, `questionCount`, `completed`, `pilotName`, `answerElapsedMs`, `startAltitude`, `peakAltitude`, `danger`, `correctTotal`, `recovering` und `difficulty`. Ein ausgeschöpfter Bestand wird zusätzlich durch `poolExhausted` gekennzeichnet. Die Wertung nennt außerdem `survived`, `rescued`, `altitudeLoss` und `altitudeDelta`.
 
 `results` enthält höchstens die letzten **20 Abgaben** in zeitlicher Reihenfolge. `latestResult` ist die jüngste Auflösung, `resultCount` die Gesamtzahl aller Abgaben dieses Flugs. Die vollständige Historie bleibt in der Datenbank gespeichert; auch nach langen Serien wächst dadurch die Antwortgröße des Spielzustands nicht weiter.
 
@@ -114,11 +134,13 @@ Statistiken zählen alle gestarteten Flüge; `crashes` bezeichnet abgestürzte, 
 
 ### Sites / Cloudflare Worker und D1
 
-`.openai/hosting.json` deklariert die Datenbank als **`"d1": "DB"`**. Der Build bündelt API, Engine, Fakten und öffentliche Assets in `dist/server/index.js`. Er kopiert das Hostingmanifest und die Drizzle-Dateien nach `dist/` sowie `dist/server/drizzle/`.
+`.openai/hosting.json` deklariert die Datenbank als **`"d1": "DB"`**. Der Build bündelt API, Engine und öffentliche Assets in `dist/server/index.js`. Der große Katalog liegt in D1 statt im Browser-Bundle. Der Build kopiert das Hostingmanifest und die Drizzle-Dateien nach `dist/` sowie `dist/server/drizzle/`.
 
 Ein Veröffentlichungsarchiv aus dem Projektverzeichnis enthält `.openai/`, `dist/` und **`drizzle/` am Archivroot**. Dessen SQL und `meta/_journal.json` müssen mitgeliefert werden, damit Sites das Schema bei der Veröffentlichung anwenden kann. Nach dem Deployment müssen die native Datenbankübersicht `runs` und `answers` sowie eine vollständige Live-Spielrunde geprüft werden. Ein erfolgreicher Worker-Upload allein belegt keine angewendete Migration.
 
 Schemaänderungen als neue Migration mit neuem Journaleintrag ergänzen und angewendete Dateien unverändert lassen. Lokale Migrationen werden beim Node-Start einmalig in Dateireihenfolge angewendet und in `__local_migrations` vermerkt. Die ursprüngliche Migration bleibt unverändert; die additive v2-Migration erhält alte Flüge, Antworten und Rekorde. Keine Tabellen während Spielrequests erstellen oder ändern.
+
+Katalogdaten gehören **nicht in Schema-Migrationen**. Lokal lädt der Server `content/catalog-import.jsonl` nach den Migrationen und überspringt unveränderte Versionen. Für Sites in den Laufzeiteinstellungen ein langes zufälliges `CATALOG_IMPORT_TOKEN` als Secret setzen und mit dem Worker veröffentlichen. Anschließend `node --use-env-proxy scripts/upload-catalog.mjs https://DEINE-SPIELDOMAIN` starten und das Token verdeckt über die Standardeingabe übergeben. Es gehört weder ins Repository noch in eine URL. Ohne konfiguriertes Secret bleibt die Import-Route abgeschaltet. Der Import verwendet feste Tabellennamen, validierte gebundene Werte und atomare Pakete; ein abgebrochener Upload kann wiederholt werden. Erst nach allen Paketen wird die neue Katalogversion gesetzt. Die öffentliche API liefert keine Lösungen vor der Abgabe.
 
 ### Eigenständiger Node-Server
 
@@ -160,11 +182,21 @@ Der Worker-Smoke-Test nutzt den gebauten Worker mit lokalem SQLite-Adapter und p
 
 ## Inhalte und Erweiterungen
 
-Neue Fragen mit stabiler ID, Typ, eindeutiger richtiger Option, nachvollziehbaren Vergleichswerten und zuverlässiger Quelle in `lib/questions.js` ergänzen. Bei Häufigkeiten Datensatz, Zeitraum und Grundgesamtheit nennen; bei Jahreszahlen oder Messgrößen einheitliche Bezugsbedingungen verwenden. Danach Engine-Tests ausführen. Mögliche Erweiterungen sind Themenflüge, Sprachpakete, redaktionelle Werkzeuge und freiwillige Konten für geräteübergreifende Rekorde.
+Der Wikidata-Import ist ein redaktioneller Build-Schritt, kein Browser- oder Spielrequest. Der mitgelieferte Bestand stammt aus einem begrenzten 128-MiB-Ausschnitt des offiziellen JSON-Dumps. Der Import liest nur vollständige Einträge und dokumentiert Dump-Adresse, ETag, Abrufzeit, Bytebereiche, SHA-256 und Entitätsrevisionen in `content/wikidata/dump-manifest.json`. Der gespeicherte Faktenschnappschuss erlaubt einen erneuten Datenbank-Build ohne Netzwerk. Für einen neuen Dump-Import wird zusätzlich Python 3 mit seiner Standardbibliothek benötigt; zum Spielen und Bauen reicht Node.js. Die Offline-Parserprüfung benötigt ebenfalls Python 3. Der gespeicherte Datenstand hält Entitätskennungen, Eigenschaften, Quellen und Abrufinformationen fest. Wikidata stellt seine strukturierten Daten unter [CC0](https://www.wikidata.org/wiki/Wikidata:Licensing) bereit; die Spielgrafiken und der Programmcode haben dadurch keine andere Lizenz.
+
+```sh
+npm run questions:import             # offizieller Dump; begrenzter Download, fortsetzbarer Cache
+npm run questions:build              # Datenpakete aus dem gespeicherten Faktenstand
+npm test
+```
+
+Der Compiler verwirft mehrdeutige oder unvollständige Datensätze und führt Faktenfamilien unabhängig vom Fragetext zusammen. Fragenvarianten mit demselben Fakt erhalten dieselbe Familie. Vergleiche nutzen dieselbe Eigenschaft, Einheiten und passende Gegenstandsgruppen – etwa Flüsse mit Flüssen. Körpergrößen werden nicht als Bauwerkshöhen verwendet; kommunale Eingemeindungsdaten gelten nicht als ursprüngliche Stadtgründung. Veröffentlichungsdaten verwenden das früheste gültige erfasste Jahr statt einer späteren bevorzugten Neuauflage. Wikidata-Verlinkungszahlen dienen nur als grober Hinweis für die Schwierigkeit und gelten nicht als reale Nutzungshäufigkeit. Bestehende Gruppenzuordnungen in `content/question-groups.json` bleiben bei Erweiterungen erhalten. Neue Importpakete werden separat geladen; angewendete Schema-Migrationen und veröffentlichte Tagesfragensätze bleiben unverändert. `questions:import:sparql` ist ein alternativer Importweg; große SPARQL-Abfragen können wegen Zeitüberschreitung scheitern. Nach einem Import den Bericht `content/catalog-report.json`, Stichproben der Auflösungen sowie die Katalog- und API-Tests prüfen. Der automatische Import ersetzt keine vollständige redaktionelle Faktenprüfung.
+
+Weitere Erweiterungen können Themenflüge, Sprachpakete und freiwillige Konten für geräteübergreifende Historien sein.
 
 ## Datenschutz und Betrieb
 
-Der Browser speichert unter `hoehenflug-` eine anonyme Gerätekennung, Einstellungen und lokale Flugeinträge. Der Server speichert Kennung, Flüge, Fristen, ausgewählte Antwort-IDs und eingefrorene Wertungen. Die Löschfunktion entfernt zugehörige Backend- und lokale Daten. Eine Gerätekennung ist kein manipulationssicheres Benutzerkonto. Vor öffentlichem Betrieb tatsächliche Betreiber-, Kontakt-, Hosting- und Aufbewahrungsangaben in den rechtlichen Seiten ergänzen und an den vorgesehenen Betrieb anpassen.
+Der Browser speichert unter `hoehenflug-` eine anonyme Gerätekennung, Einstellungen und lokale Flugeinträge. Der Server speichert Kennung, Flüge, Fristen, ausgewählte Antwort-IDs, eingefrorene Wertungen und gesehene Faktenfamilien. Die Löschfunktion entfernt zugehörige Backend- und lokale Daten einschließlich der persönlichen Wiederholungshistorie. Danach können zuvor gesehene Fakten erneut ausgewählt werden. Eine Gerätekennung ist kein manipulationssicheres Benutzerkonto. Vor öffentlichem Betrieb tatsächliche Betreiber-, Kontakt-, Hosting- und Aufbewahrungsangaben in den rechtlichen Seiten ergänzen und an den vorgesehenen Betrieb anpassen.
 
 ## GitHub
 
