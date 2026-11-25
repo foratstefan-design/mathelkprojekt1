@@ -634,3 +634,51 @@ body[data-screen="finishing"] .footer{display:none}
 .flight-game .question-title{overflow-wrap:anywhere;text-wrap:pretty;max-width:100%}
 .flight-game.long-question .question-title{font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.14;letter-spacing:0}
 @media(max-width:640px){.flight-game.long-question .question-title{font-size:1.7rem;line-height:1.17}.flight-game.long-question .question-panel{padding-left:15px;padding-right:15px}}
+
+/* A protected strip keeps the actual aircraft above every question/learning
+   card. Answer maneuvers temporarily clear the cards instead of hiding flight
+   movement behind a full-screen result veil. */
+.flight-game .question-content,
+.flight-game:has(.recovery-banner) .question-content{padding-top:286px}
+.flight-game .game-top{top:254px}
+body.in-flight .flight-status:has(#hud-condition) .score-chip{top:94px}
+.flight-maneuver{position:fixed;inset:0;z-index:3;pointer-events:none;text-align:center;background:none}
+.maneuver-copy{position:absolute;left:50%;top:65%;transform:translateX(-50%);width:min(720px,calc(100% - 40px));padding:16px 20px;background:#0b243de8;border:1px solid #78a8b1;box-shadow:4px 4px 0 #06142266;color:#effff5;text-shadow:0 1px 0 #071827}
+.maneuver-copy .eyebrow{font-size:14px;line-height:1.5;margin:0 0 10px;color:#d6f5e8;letter-spacing:.14em}
+.maneuver-copy h1{font-family:'VT323',monospace;font-size:clamp(2.4rem,5.2vw,4rem);line-height:1;margin:0;letter-spacing:.025em}
+.maneuver-copy>p:last-child{font-family:'IBM Plex Mono',monospace;font-size:16px;line-height:1.65;max-width:600px;margin:14px auto 0;color:#e0f2ef}
+.maneuver-gain,.maneuver-count{display:block;font-family:'VT323',monospace;font-size:clamp(2.8rem,6vw,4.4rem);font-weight:400;line-height:1.1;color:#b9f3d1;margin-top:10px}
+.maneuver-stall .maneuver-gain{color:#ffcad5}
+.maneuver-crash .maneuver-copy{top:112px;width:min(620px,calc(100% - 36px));padding:10px 16px}
+.maneuver-crash .eyebrow{color:#ffbacb;font-size:12px;margin-bottom:6px}
+.maneuver-crash h1{font-size:2rem}
+.maneuver-crash .maneuver-copy>p:last-child{font-size:14px;line-height:1.5;margin-top:8px}
+body[data-screen="maneuver"] .score-chip,
+body[data-screen="takeoff"] .score-chip,
+body[data-screen="crashing"] .score-chip,
+body[data-screen="finishing"] .score-chip{display:none}
+body[data-screen="maneuver"] .scanlines,
+body[data-screen="crashing"] .scanlines{opacity:.045}
+body[data-screen="maneuver"] .footer,
+body[data-screen="takeoff"] .footer,
+body[data-screen="crashing"] .footer{display:none}
+@media(max-width:640px){
+ .choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .choice{min-height:82px;padding:12px 10px;gap:8px}
+ .choice-label{font-size:18px;line-height:1.3;overflow-wrap:anywhere}
+ .flight-game .recovery-banner{font-size:14px;line-height:1.55;padding:9px 11px}
+ .maneuver-copy{top:63%;width:calc(100% - 36px)}
+ .maneuver-copy h1{font-size:2.5rem;line-height:1.05}
+ .maneuver-copy>p:last-child{font-size:14px;line-height:1.7;margin-top:12px}
+ .maneuver-crash .maneuver-copy{top:112px}
+ .maneuver-crash h1{font-size:2rem}
+}
+@media(max-height:700px){
+ .maneuver-copy{top:61%}
+ .maneuver-copy h1{font-size:2.1rem}
+ .maneuver-copy .eyebrow{margin-bottom:6px}
+ .maneuver-gain,.maneuver-count{font-size:2.8rem;margin-top:5px}
+ .maneuver-crash .maneuver-copy{top:114px}
+ .maneuver-crash .eyebrow,.maneuver-crash .maneuver-copy>p:last-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){.flight-maneuver *{animation:none!important;transition:none!important}}

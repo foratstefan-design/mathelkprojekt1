@@ -18,6 +18,8 @@ const body=new Element('body'),storage=new Map();
 class Scene {
   constructor(){this.calls=[];scenes.push(this);}
   setMode(mode){this.calls.push(['mode',mode]);}
+  setFlightView(view){this.calls.push(['flightView',view]);return Promise.resolve();}
+  ascend(){this.calls.push(['ascend']);return Promise.resolve();}
   setAltitude(height){this.calls.push(['height',height]);}
   setDanger(){}setSpeed(){}reset(){}
   takeoff(){this.calls.push(['takeoff']);return Promise.resolve();}
@@ -234,4 +236,43 @@ await execute('loadCatalog(version)');
 assert.match(query('#catalog-note').innerHTML,/2\.345 verschiedene Fragen/);
 assert.match(query('#catalog-note').innerHTML,/3\.210 Aufgabenvarianten/);
 assert.match(query('#catalog-note').innerHTML,/1\.234 ungesehene Fragenfamilien/);
+
+// Real action promises, rather than a guessed timeout, gate the learning card
+// and crash results. No future question is armed during a visible maneuver.
+const deferred=()=>{let resolve;const promise=new Promise(done=>{resolve=done;});return{promise,resolve};};
+const savedAscend=Scene.prototype.ascend,savedCrash=Scene.prototype.crash,savedStall=Scene.prototype.stall;
+try{
+  let begun=deferred(),finished=deferred();
+  Scene.prototype.ascend=function(){this.calls.push(['ascend']);begun.resolve();return finished.promise;};
+  setRun();calls.length=0;handler=()=>response();
+  let pending=execute("submitChoice('a')");await begun.promise;
+  assert.equal(execute('screen'),'maneuver');
+  assert.match(query('#main').innerHTML,/Dein Flugzeug steigt sichtbar/);
+  assert.equal(query('#main').innerHTML.includes('learning-card'),false,'the card cannot cover the climb');
+  assert.equal(calls.filter(c=>c.path.includes('/api/next')).length,0);
+  finished.resolve();await pending;assert.equal(execute('screen'),'feedback');
+
+  begun=deferred();finished=deferred();
+  Scene.prototype.crash=function(){this.calls.push(['crash']);begun.resolve();return finished.promise;};
+  setRun({danger:2,altitude:400,peakAltitude:900});
+  handler=()=>response({status:'crashed',danger:3,index:0,altitude:0,peakAltitude:900,result:{...result,correct:false},latestResult:{...result,correct:false}});
+  pending=execute("submitChoice('b')");await begun.promise;
+  assert.equal(execute('screen'),'crashing');assert.match(query('#main').innerHTML,/Dein Flugzeug stürzt ab/);
+  assert.equal(query('#main').innerHTML.includes('question-panel'),false,'the dive and ground impact stay unobstructed');
+  assert.equal(query('#main').innerHTML.includes('flight-results'),false,'results wait for impact and dust');
+  finished.resolve();await pending;assert.equal(execute('screen'),'results');
+
+  begun=deferred();finished=deferred();
+  Scene.prototype.stall=function(){this.calls.push(['stall']);begun.resolve();return finished.promise;};
+  setRun({altitude:400,peakAltitude:400});
+  handler=()=>response({correctTotal:0,streak:0,danger:1,recovering:true,altitude:150,result:{...result,correct:false,altitudeGain:0,altitudeLoss:250}});
+  pending=execute("submitChoice('b')");await begun.promise;
+  assert.equal(execute('screen'),'maneuver');assert.match(query('#main').innerHTML,/stabilisiert dein Flugzeug/);
+  finished.resolve();await pending;assert.equal(execute('screen'),'feedback');assert.equal(execute('run.danger'),1);
+
+  begun=deferred();finished=deferred();
+  setRun();handler=()=>response();pending=execute("submitChoice('a')");await begun.promise;
+  execute('home()');finished.resolve();await pending;
+  assert.equal(execute('screen'),'home','leaving a maneuver never resurrects its learning screen');
+}finally{Scene.prototype.ascend=savedAscend;Scene.prototype.crash=savedCrash;Scene.prototype.stall=savedStall;}
 console.log('Frontend flow checks passed: mixed ten-question days, replacement-day attempt and superseded-round handoff, saved historical courses, learning pause, daily finish, free crash, permanent-pool exhaustion, no daily attempt on unavailable stock, accurate catalog counts, resume, retries and safe output.');

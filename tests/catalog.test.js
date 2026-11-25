@@ -26,6 +26,59 @@ function insertHistory(f,count,target){
   f.sqlite.prepare("UPDATE runs SET status='crashed',question_index=?,finished_at=? WHERE id=?").run(count,Date.now(),run.id);
 }
 
+const geography=new Set(['Geografie','Flächen','Meereshöhen','Längen','Bauwerkshöhen']);
+const broadArea=category=>geography.has(category)?'geography':category;
+function describeFamily(f,family,category,difficulty){
+  f.sqlite.prepare("UPDATE question_catalog SET category=?,difficulty=?,content_json=json_set(content_json,'$.category',?,'$.difficulty',?) WHERE family_id=?").run(category,difficulty,category,difficulty,family);
+}
+
+test('free Mix treats geography properties as one area and chooses other gentle subjects before repeating it',async()=>{
+  const f=fixture({freeFamilies:80,dailyFamilies:0}),realNow=Date.now;
+  Date.now=()=>1234567890;
+  try{
+    const areas=['Film','Literatur','Kultur','Gründungen'],geo=[...geography];
+    for(const {family_id} of f.sqlite.prepare("SELECT DISTINCT family_id FROM question_catalog WHERE pool='free'").all()){
+      const index=Number(family_id.split(':').at(-1)),other=family_id.includes(':general:')&&index<40;
+      describeFamily(f,family_id,other?areas[index%4]:geo[index%geo.length],other?2:1);
+    }
+    const run=f.run('geography-heavy-mix','mix'),questions=[];
+    for(let position=0;position<20;position++){
+      f.sqlite.prepare('UPDATE runs SET question_index=? WHERE id=?').run(position,run.id);
+      const row=f.sqlite.prepare('SELECT * FROM runs WHERE id=?').get(run.id),q=await f.catalog.claimFree(row,1);
+      assert.ok(q);questions.push(q);assert.equal((await f.catalog.claimFree(row,1)).id,q.id);
+    }
+    assert.equal(broadArea(questions[0].category),'geography','only geography has entry questions in this deliberately skewed bank');
+    assert.equal(questions[1].difficulty,2,'fresh culture at medium difficulty beats another easy geography property');
+    const topics=questions.map(q=>broadArea(q.category));
+    assert.ok(topics.filter(area=>area==='geography').length<=5);
+    assert.ok(new Set(topics).size>=4);assert.equal(new Set(questions.map(q=>q.familyId)).size,20);
+    for(let i=1;i<topics.length;i++)assert.ok(!topics.slice(Math.max(0,i-3),i).includes(topics[i]),'the previous three broad areas get a genuine cooldown, even at identical timestamps');
+    assert.ok(questions.every(q=>q.difficulty<=2));
+  }finally{Date.now=realNow;f.sqlite.close();}
+});
+
+test('Mix keeps expert questions behind available gentle questions; named modes retain their level preference',async()=>{
+  const f=fixture({freeFamilies:8,dailyFamilies:0});
+  try{
+    for(const {family_id} of f.sqlite.prepare("SELECT DISTINCT family_id FROM question_catalog WHERE pool='free'").all())describeFamily(f,family_id,'Geografie',1);
+    const film='fixture:free:general:0';describeFamily(f,film,'Film',3);
+    const run=f.run('gentle-mix','mix');
+    const first=await f.catalog.claimFree(run,1);assert.equal(first.category,'Geografie');
+    f.sqlite.prepare('UPDATE runs SET question_index=1 WHERE id=?').run(run.id);
+    const second=await f.catalog.claimFree(f.sqlite.prepare('SELECT * FROM runs WHERE id=?').get(run.id),1);
+    assert.equal(second.difficulty,1,'a locked expert topic does not replace still available gentle content');
+    f.sqlite.prepare('UPDATE runs SET question_index=2 WHERE id=?').run(run.id);
+    const expert=await f.catalog.claimFree(f.sqlite.prepare('SELECT * FROM runs WHERE id=?').get(run.id),3);
+    assert.equal(expert.familyId,film,'the fresh expert area becomes preferred once its band is requested');
+    describeFamily(f,'fixture:free:quantity:0','Film',2);
+    const named=f.run('named-course','common','named-course-device-123');
+    assert.equal((await f.catalog.claimFree(named,1)).difficulty,1);
+    f.sqlite.prepare('UPDATE runs SET question_index=1 WHERE id=?').run(named.id);
+    const next=await f.catalog.claimFree(f.sqlite.prepare('SELECT * FROM runs WHERE id=?').get(named.id),1);
+    assert.equal(next.difficulty,1);assert.equal(next.type,'common','the named course is not silently widened into general Mix');
+  }finally{f.sqlite.close();}
+});
+
 test('arming consumes a family permanently even when the flight is abandoned; inverse modes cannot replay it',async()=>{
   const f=fixture({freeFamilies:8});
   try{

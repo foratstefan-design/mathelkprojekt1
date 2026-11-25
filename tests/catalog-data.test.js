@@ -64,6 +64,22 @@ test('one thousand real imported questions across flights never repeat an expose
   }
   assert.equal(seen.size,1000);assert.equal(db.prepare('SELECT COUNT(*) AS n FROM seen_questions WHERE device=?').get(device).n,1000);
 });
+test('a fresh real Mix spans broad areas instead of disguising twenty geography questions as different properties',async()=>{
+  const geography=new Set(['Geografie','Flächen','Meereshöhen','Längen','Bauwerkshöhen']);
+  const device='real-mix-topic-balance-123',id='real-mix-topic-flight';
+  db.prepare('INSERT INTO runs(id,device,mode,seed,status,started_at,content_version) VALUES(?,?,?,?,?,?,2)').run(id,device,'mix','real-mix-area-seed','ready',Date.now());
+  const topics=[],families=new Set();
+  for(let position=0;position<20;position++){
+    db.prepare('UPDATE runs SET question_index=? WHERE id=?').run(position,id);
+    const q=await catalog.claimFree(db.prepare('SELECT * FROM runs WHERE id=?').get(id),1);
+    assert.ok(q);assert.equal(families.has(q.familyId),false);families.add(q.familyId);
+    assert.ok(q.difficulty<=2,'variety does not require an early expert question');
+    topics.push(geography.has(q.category)?'geography':q.category);
+  }
+  assert.equal(families.size,20);assert.ok(new Set(topics).size>=4);
+  assert.ok(topics.filter(topic=>topic==='geography').length<=5,'geography includes country, area, elevation, river and building comparisons together');
+  for(let i=1;i<topics.length;i++)assert.ok(!topics.slice(Math.max(0,i-3),i).includes(topics[i]));
+});
 test('real daily selections stay new across days and remain disjoint from every free question',async()=>{
   const seen=new Set();
   for(let i=0;i<8;i++){

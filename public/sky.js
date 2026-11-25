@@ -2,6 +2,8 @@ import { PLANE_SPRITE, PLANE_PALETTE } from './art.js';
 
 const ease=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
 const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
+const ACTION_MS={takeoff:1400,ascend:1400,recover:1400,stall:1100,crash:2600};
+const CRASH_IMPACT=.83;
 /** A procedural pixel world: ascent moves clouds and landscape down the screen. */
 export class FlightScene {
   constructor(canvas) {
@@ -13,14 +15,14 @@ export class FlightScene {
     this.motion=window.matchMedia('(prefers-reduced-motion: reduce)');this.reduced=this.motion.matches;
     this.mode='home';this.altitude=0;this.targetAltitude=0;this.visualAltitude=0;
     this.speed=0;this.targetSpeed=0;this.climb=0;this.takeoffP=0;this.crashP=0;
-    this.altitudeTween=null;this.action=null;this.particles=[];this.boostUntil=0;
+    this.altitudeTween=null;this.action=null;this.viewTween=null;this.flightView='home';this.maneuverLift=0;this.ascendP=1;this.particles=[];this.boostUntil=0;
     this.danger=0;this.stallP=1;this.recoverP=1;this.stallLevel=0;this.staticStall=0;
     this.frame=0;this.lastTime=0;this.dead=false;this.time=0;
     this._onResize=()=>this.resize();
     this._onMotion=()=>{
       this.reduced=this.motion.matches;cancelAnimationFrame(this.frame);
       if(this.reduced){this.altitude=this.targetAltitude;this.altitudeTween=null;this.particles.length=0;this.climb=0;
-        if(this.action){if(this.action.type==='crash'){this.crashP=1;this.mode='crashed';}else if(this.action.type==='takeoff')this.takeoffP=1;else if(this.action.type==='stall'){this.stallP=1;this.staticStall=this.stallLevel;}else this.recoverP=1;this._settleAction();}
+        if(this.action)this._completeAction();this._settleView();
         this._render(0,0);
       }else{this.staticStall=0;this.lastTime=0;this.frame=requestAnimationFrame(this._tick);}
     };
@@ -39,15 +41,28 @@ export class FlightScene {
   }
   resize(){
     if(this.dead)return;const b=this.canvas.getBoundingClientRect(),width=Math.max(1,b.width||window.innerWidth),height=Math.max(1,b.height||window.innerHeight);
-    this.cssWidth=width;this.w=Math.max(100,Math.ceil(width/3));this.h=Math.max(120,Math.ceil(height/3));
+    this.cssWidth=width;this.cssHeight=height;this.w=Math.max(100,Math.ceil(width/3));this.h=Math.max(120,Math.ceil(height/3));
     this.buffer.width=this.w;this.buffer.height=this.h;this.canvas.width=Math.round(width*Math.min(2,window.devicePixelRatio||1));this.canvas.height=Math.round(height*Math.min(2,window.devicePixelRatio||1));
     this.ctx.imageSmoothingEnabled=this.g.imageSmoothingEnabled=false;this._render(this.reduced?0:this.time,0);
   }
   setMode(mode){
     if(this.dead||!['home','flying','crashed'].includes(mode))return;
     if(mode==='home'){this.reset();return;}
-    this.mode=mode;if(mode==='crashed'){this.crashP=1;this._settleAction();}else if(!this.action)this.takeoffP=1;
+    this.mode=mode;
+    if(mode==='crashed'){this.crashP=1;this._settleAction();this._settleView();}
+    else{if(this.flightView==='home')this.flightView='question';if(!this.action)this.takeoffP=1;}
     if(this.reduced)this._render(0,0);
+  }
+  /** Reserve the top flight band while answering; show maneuvers unobstructed. */
+  setFlightView(view){
+    if(this.dead||!['question','showcase','home'].includes(view))return Promise.resolve();
+    if(view==='home'){this.reset();return Promise.resolve();}
+    if(view===this.flightView)return this.viewTween?.promise||Promise.resolve();
+    const from=this._flightAnchor();this._settleView();this.flightView=view;this.maneuverLift=0;
+    if(this.reduced){this._render(0,0);return Promise.resolve();}
+    let resolve;const promise=new Promise(done=>{resolve=done;});
+    this.viewTween={from:{x:from.x/this.w,y:from.y/this.h,scale:from.scale},progress:0,started:performance.now(),duration:320,resolve,promise};
+    return promise;
   }
   setAltitude(meters,{duration=1600}={}){
     if(this.dead)return;const n=Number(meters),target=Number.isFinite(n)?Math.max(0,Math.min(Number.MAX_SAFE_INTEGER,n)):0;this.targetAltitude=target;
@@ -56,50 +71,83 @@ export class FlightScene {
   }
   setSpeed(streak=0){this.targetSpeed=clamp(Number(streak)||0,0,30)/30;if(this.reduced)this.speed=this.targetSpeed;}
   takeoff(){
-    if(this.dead)return Promise.resolve();this._settleAction();this.mode='flying';this.takeoffP=0;this.crashP=0;this.danger=this.staticStall=0;
-    if(this.reduced){this.takeoffP=1;this._render(0,0);return Promise.resolve();}
-    return new Promise(resolve=>{this.action={type:'takeoff',started:performance.now(),duration:1400,resolve};});
+    if(this.dead)return Promise.resolve();this.takeoffOrigin=this.lastPlanePose||this._planePose(this.time);this.takeoffWorldFrom=this.visualAltitude;this._settleAction();this.mode='flying';if(this.flightView==='home')this.flightView='question';
+    this.takeoffP=0;this.crashP=0;this.maneuverLift=0;this.danger=this.staticStall=0;
+    if(this.reduced){this.takeoffP=1;this.maneuverLift=40;this._render(0,0);return Promise.resolve();}
+    return this._beginAction('takeoff');
   }
   boost(){
-    if(this.dead||this.reduced||this.mode!=='flying')return;this.boostUntil=this.time+1.3;
-    const position=this._planePosition(this.time);
-    for(let i=0;i<22;i++)this.particles.push({x:position.x-17,y:position.y+this._random(i+40)*7-3,vx:-25-this._random(i+20)*30,vy:this._random(i+30)*12-6,life:0,max:.6+this._random(i+50)*.8,color:i%3?'#f7dc9d':'#c1f2ec',size:i%4?1:2});
+    if(this.dead||this.reduced||this.mode!=='flying')return;this.boostUntil=this.time+1.6;
+    const position=this._planePosition(this.time),scale=this._flightAnchor().scale;
+    for(let i=0;i<32;i++)this.particles.push({x:position.x-17*scale,y:position.y+this._random(i+40)*9-4,vx:-35-this._random(i+20)*45,vy:this._random(i+30)*14-7,life:0,max:.8+this._random(i+50)*.9,color:i%3?'#f7dc9d':'#c1f2ec',size:i%4?1:2});
   }
-  /** Canonical run state owns persistent danger; daily mistakes can remain transient. */
   setDanger(level=0){
     if(this.dead)return;this.danger=clamp(Math.floor(Number(level)||0),0,2);this.staticStall=0;
     if(this.reduced)this._render(0,0);
   }
-  /** Brief nonterminal loss of lift. It never changes score, altitude, or flight mode. */
-  stall(level=1){
-    if(this.dead||this.mode!=='flying')return Promise.resolve();this._settleAction();
-    this.stallLevel=clamp(Number(level)||1,1,2);this.stallP=0;this.recoverP=1;this.boostUntil=0;
-    if(this.reduced){this.stallP=1;this.staticStall=this.stallLevel;this._render(0,0);return Promise.resolve();}
-    return new Promise(resolve=>{this.action={type:'stall',started:performance.now(),duration:900,resolve};});
-  }
-  /** A correct rescue clears warning smoke and gently pulls the nose up again. */
-  recover(){
-    if(this.dead||this.mode!=='flying')return Promise.resolve();this._settleAction();
-    this.danger=this.staticStall=this.stallLevel=0;this.stallP=1;this.recoverP=0;
-    if(this.reduced){this.recoverP=1;this._render(0,0);return Promise.resolve();}
-    const pending=new Promise(resolve=>{this.action={type:'recover',started:performance.now(),duration:800,resolve};});
-    this.boost();return pending;
+  /** A sustained, visible climb; the canonical score/altitude stay untouched. */
+  ascend(){return this._maneuver('ascend');}
+  stall(level=1){return this._maneuver('stall',level);}
+  recover(){return this._maneuver('recover');}
+  _maneuver(type,level=1){
+    if(this.dead||this.mode!=='flying')return Promise.resolve();
+    const origin=this.lastPlanePose||this._planePose(this.time);this._settleAction();this.maneuverLift=0;
+    if(type==='stall'){this.stallLevel=clamp(Number(level)||1,1,2);this.stallP=0;this.recoverP=this.ascendP=1;this.boostUntil=0;}
+    else{this.danger=this.staticStall=this.stallLevel=0;this.stallP=1;if(type==='recover')this.recoverP=0;else this.ascendP=0;this.boost();}
+    if(this.reduced){
+      if(type==='stall'){this.stallP=1;this.staticStall=this.stallLevel;}
+      else{this.recoverP=this.ascendP=1;this.maneuverLift=type==='ascend'?90:65;}
+      this._render(0,0);return Promise.resolve();
+    }
+    return this._beginAction(type,origin);
   }
   crash(){
-    if(this.dead)return Promise.resolve();this._settleAction();this.altitudeTween=null;this.targetAltitude=this.altitude;this.mode='crashed';this.danger=this.staticStall=0;this.crashP=0;this.crashFrom=this.altitude+(this.takeoffP||1)*350;this.particles.length=0;
+    if(this.dead)return Promise.resolve();
+    this.crashOrigin=this.lastPlanePose||this._planePose(this.time);this._settleAction();this._settleView();
+    // Aim the foremost rotated pixel at the ground, rather than letting half
+    // the aircraft pass through the runway before the impact effect begins.
+    const tilt=1.42,cs=Math.cos(tilt),sn=Math.sin(tilt);let nose={x:0,y:0};
+    for(let y=0;y<PLANE_SPRITE.length;y++)for(let x=0;x<48;x++)if(PLANE_PALETTE[PLANE_SPRITE[y][x]])for(const [dx,dy] of [[0,0],[1,0],[0,1],[1,1]]){
+      const px=x-24+dx,py=y-11+dy,point={x:(px*cs-py*sn)*this.crashOrigin.scale,y:(px*sn+py*cs)*this.crashOrigin.scale};
+      if(point.y>nose.y)nose=point;
+    }
+    this.crashNose=nose;
+    this.altitudeTween=null;this.targetAltitude=this.altitude;this.mode='crashed';this.danger=this.staticStall=0;this.crashP=0;
+    this.crashFrom=Math.max(this.altitude,this.visualAltitude||0);this.maneuverLift=0;this.particles.length=0;
     if(this.reduced){this.crashP=1;this._render(0,0);return Promise.resolve();}
-    return new Promise(resolve=>{this.action={type:'crash',started:performance.now(),duration:2200,resolve};});
+    return this._beginAction('crash');
   }
   reset(){
-    if(this.dead)return;this._settleAction();this.mode='home';this.altitude=this.targetAltitude=0;this.altitudeTween=null;this.takeoffP=this.crashP=this.climb=0;this.danger=this.staticStall=this.stallLevel=0;this.stallP=this.recoverP=1;this.speed=this.targetSpeed=0;this.particles.length=0;this._render(this.reduced?0:this.time,0);
+    if(this.dead)return;this._settleAction();this._settleView();this.mode='home';this.flightView='home';this.maneuverLift=0;
+    this.altitude=this.targetAltitude=0;this.altitudeTween=null;this.takeoffP=this.crashP=this.climb=0;
+    this.danger=this.staticStall=this.stallLevel=0;this.stallP=this.recoverP=this.ascendP=1;this.speed=this.targetSpeed=0;
+    this.boostUntil=0;this.lastPlanePose=this.crashOrigin=this.takeoffOrigin=null;this.particles.length=0;this._render(this.reduced?0:this.time,0);
   }
   destroy(){
-    if(this.dead)return;this.dead=true;cancelAnimationFrame(this.frame);this._settleAction();window.removeEventListener('resize',this._onResize);this.motion.removeEventListener?.('change',this._onMotion);this.observer?.disconnect();this.particles.length=0;this.buffer.width=this.buffer.height=1;
+    if(this.dead)return;this.dead=true;cancelAnimationFrame(this.frame);this._settleAction();this._settleView();window.removeEventListener('resize',this._onResize);this.motion.removeEventListener?.('change',this._onMotion);this.observer?.disconnect();this.particles.length=0;this.buffer.width=this.buffer.height=1;
+  }
+  _beginAction(type,origin){
+    const anchor=this._flightAnchor(),bob=this.reduced?0:this._cssY(Math.sin(this.time*1.9)*3);
+    return new Promise(resolve=>{this.action={type,started:performance.now(),duration:ACTION_MS[type],resolve,from:origin?{dip:origin.y-anchor.y-bob,wobble:origin.x-anchor.x,tilt:origin.tilt-this._baseTilt(this.time)}:null};});
   }
   _settleAction(){if(this.action){const {resolve}=this.action;this.action=null;resolve();}}
+  _settleView(){if(this.viewTween){const {resolve}=this.viewTween;this.viewTween=null;resolve();}}
+  _completeAction(){
+    const type=this.action?.type;
+    if(type==='takeoff'){this.takeoffP=1;this.maneuverLift=40;}
+    else if(type==='crash')this.crashP=1;
+    else if(type==='stall'){this.stallP=1;if(this.reduced)this.staticStall=this.stallLevel;}
+    else if(type==='ascend'){this.ascendP=1;this.maneuverLift=90;}
+    else if(type==='recover'){this.recoverP=1;this.maneuverLift=65;}
+    this._settleAction();
+  }
   _animate(now){
     if(this.altitudeTween){const a=this.altitudeTween,p=clamp((now-a.started)/a.duration,0,1);this.altitude=a.from+(a.to-a.from)*ease(p);if(p===1)this.altitudeTween=null;}
-    if(this.action){const a=this.action,p=clamp((now-a.started)/a.duration,0,1);if(a.type==='takeoff')this.takeoffP=ease(p);else if(a.type==='crash')this.crashP=p;else if(a.type==='stall')this.stallP=p;else if(a.type==='recover')this.recoverP=p;if(p===1)this._settleAction();}
+    if(this.viewTween){const a=this.viewTween;a.progress=clamp((now-a.started)/a.duration,0,1);if(a.progress===1)this._settleView();}
+    if(this.action){const a=this.action,p=clamp((now-a.started)/a.duration,0,1);
+      if(a.type==='takeoff')this.takeoffP=ease(p);else if(a.type==='crash')this.crashP=p;else if(a.type==='stall')this.stallP=p;else if(a.type==='recover')this.recoverP=p;else if(a.type==='ascend')this.ascendP=p;
+      if(p===1)this._completeAction();
+    }
   }
   _random(seed){let n=Math.imul((seed|0)^0x9e3779b9,1597334677);n=Math.imul(n^n>>>16,2246822507);return((n^n>>>13)>>>0)/4294967296;}
   _rect(x,y,w,h,color){if(w<=0||h<=0)return;this.g.fillStyle=color;this.g.fillRect(Math.round(x),Math.round(y),Math.ceil(w),Math.ceil(h));}
@@ -113,7 +161,8 @@ export class FlightScene {
   _render(time,dt){
     if(this.dead||!this.w)return;const g=this.g,w=this.w,h=this.h;g.globalAlpha=1;
     const crash=this.mode==='crashed';
-    this.visualAltitude=crash?Math.max(0,(this.crashFrom||this.altitude)*(1-ease(Math.min(1,this.crashP/.83)))):this.altitude+(this.mode==='flying'?350*this.takeoffP:0);
+    const takingOff=this.action?.type==='takeoff',flightHeight=this.altitude+(this.mode==='flying'?350*this.takeoffP:0);
+    this.visualAltitude=crash?Math.max(0,(this.crashFrom||this.altitude)*(1-ease(Math.min(1,this.crashP/.74)))):takingOff?this.takeoffWorldFrom+(this.altitude+350-this.takeoffWorldFrom)*this.takeoffP:flightHeight;
     this.camera=this.visualAltitude*h/2200;
     // Start controls begin below 56%; keep the runway and parked plane above them.
     const groundBase=this.mode==='home'?.52:this.mode==='flying'?.52+.25*this.takeoffP:.77;
@@ -122,7 +171,7 @@ export class FlightScene {
     this._stars(time);this._sun(time);this._clouds(time);
     if(this.groundY<h+70)this._landscape(time);
     this._trails(time);this._plane(time);this._effects(dt,time);
-    if(crash&&this.crashP>=.78)this._impact(time);
+    if(crash&&this.crashP>=CRASH_IMPACT)this._impact(time);
     this.ctx.imageSmoothingEnabled=false;this.ctx.drawImage(this.buffer,0,0,w,h,0,0,this.canvas.width,this.canvas.height);
   }
   _stars(time){
@@ -166,37 +215,62 @@ export class FlightScene {
     // A tiny windsock supplies scale and a direction for the takeoff.
     const sx=w*.13,sy=ground+2;this._rect(sx,sy-24,1,24,'#315d71');this._rect(sx+1,sy-24,8,3,'#f09c9d');this._rect(sx+9,sy-23,5,3,'#efcead');this._rect(sx+14,sy-22,4,2,'#f09c9d');
   }
+  _cssY(pixels){return pixels*this.h/this.cssHeight;}
+  _cssX(pixels){return pixels*this.w/this.cssWidth;}
+  _viewAnchor(view){
+    if(view==='home')return{x:this.w*.5,y:this.h*.48,scale:this.cssWidth<550?.75:1};
+    if(view==='showcase')return{x:this.w*.5,y:this.h*.38,scale:this.cssWidth<550?1.3:1.65};
+    return{x:this.w*.5,y:this._cssY(Math.min(180,this.cssHeight*.3)),scale:this.cssWidth<550?.78:.9};
+  }
+  _flightAnchor(){
+    const target=this._viewAnchor(this.flightView);
+    if(this.viewTween){const a=this.viewTween,p=ease(a.progress);return{x:a.from.x*this.w+(target.x-a.from.x*this.w)*p,y:a.from.y*this.h+(target.y-a.from.y*this.h)*p,scale:a.from.scale+(target.scale-a.from.scale)*p};}
+    return{...target,y:target.y-this._cssY(this.maneuverLift)};
+  }
+  _baseTilt(time){return-.075*this.takeoffP-this.climb*.12-(this.boostUntil>time?.06:0);}
   _rescuePose(time){
-    const stall=this.action?.type==='stall'?Math.sin(Math.PI*this.stallP):0;
-    const recovery=this.action?.type==='recover'?Math.sin(Math.PI*this.recoverP):0;
-    const warning=this.danger;
-    return {
-      dip:warning*.9+stall*(5+this.stallLevel*2)-recovery*5+this.staticStall*2,
-      tilt:warning*.045+stall*(.25+this.stallLevel*.1)-recovery*.16+this.staticStall*.12,
-      wobble:this.reduced?0:Math.sin(time*6.2)*(warning*.35+stall*1.6)
-    };
+    const warning=Math.max(this.danger,this.staticStall);
+    const oscillation=this.reduced?0:Math.sin(time*(warning===2?8:6.5));
+    const pose={dip:this._cssY(warning*4+oscillation*(warning===2?11:warning?7:0)),tilt:warning*.04+(this.reduced?0:Math.sin(time*7.3)*(warning===2?.17:warning?.1:0)),wobble:this.reduced?0:this._cssX(Math.sin(time*9)*(warning===2?5:warning?3:0))};
+    const a=this.action;if(!a||!['stall','recover','ascend'].includes(a.type))return pose;
+    const p=a.type==='stall'?this.stallP:a.type==='recover'?this.recoverP:this.ascendP,blend=ease(clamp(p/.28,0,1));
+    if(a.from)for(const key of ['dip','tilt','wobble'])pose[key]=a.from[key]+(pose[key]-a.from[key])*blend;
+    if(a.type==='stall'){
+      const pulse=Math.sin(Math.PI*p);pose.dip+=this._cssY(pulse*(this.stallLevel===2?85:60));pose.tilt+=pulse*(this.stallLevel===2?.62:.45);pose.wobble+=this._cssX(Math.sin(time*15)*pulse*4);
+    }else{
+      const target=a.type==='ascend'?90:65,lift=target*(1-Math.pow(1-p,3))+Math.sin(Math.PI*p)*25;
+      pose.dip-=this._cssY(lift);pose.tilt-=Math.sin(Math.PI*p)*.32;
+    }
+    return pose;
   }
-  _flightY(){return this.cssWidth<550?Math.min(130/3,this.h*.22):this.h*.57;}
-  _planePosition(time){
-    const cruiseY=this._flightY();
-    const home=this.mode==='home',flying=this.mode==='flying';let x=this.w*(home?.5:.22),y=home?this.h*.48:cruiseY;
-    if(flying){const rescue=this._rescuePose(time);y=this.h*.48+(cruiseY-this.h*.48)*this.takeoffP+(this.reduced?0:Math.sin(time*1.9)*1.3)+rescue.dip;x=this.w*(.5-.28*this.takeoffP)+rescue.wobble;}
-    if(this.mode==='crashed'){const p=this.crashP;const fall=clamp((p-.16)/.66,0,1);x=this.w*.22+Math.sin(Math.min(1,fall)*Math.PI*.5)*this.w*.13;y=cruiseY+Math.pow(fall,1.5)*(this.h*.84-cruiseY);}
-    return{x,y};
+  _flightY(){return this._flightAnchor().y;}
+  _impactPosition(){return{x:this.w*.62,y:this.groundY};}
+  _planePose(time){
+    if(this.mode==='home')return{...this._viewAnchor('home'),tilt:0};
+    if(this.mode==='crashed'){
+      const origin=this.crashOrigin||{...this._viewAnchor('question'),tilt:0},p=this.crashP,fall=clamp((p-.1)/(CRASH_IMPACT-.1),0,1);
+      if(p>=CRASH_IMPACT)return{...this._impactPosition(),tilt:1.42,scale:origin.scale};
+      const spiral=Math.sin(fall*Math.PI*2)*Math.sin(fall*Math.PI),destination={x:this.w*.62-(this.crashNose?.x||0),y:this.h*.77-(this.crashNose?.y||0)};
+      return{x:origin.x+(destination.x-origin.x)*fall+this._cssX(32*spiral),y:origin.y+(destination.y-origin.y)*Math.pow(fall,1.65),tilt:origin.tilt+(1.42-origin.tilt)*ease(fall)+Math.sin(fall*Math.PI*4)*.2*Math.sin(fall*Math.PI),scale:origin.scale};
+    }
+    const anchor=this._flightAnchor(),home=this._viewAnchor('home'),rescue=this._rescuePose(time),bob=this.reduced?0:this._cssY(Math.sin(time*1.9)*3);
+    if(this.action?.type==='takeoff'){const source=this.takeoffOrigin||{...home,tilt:0},targetY=anchor.y-this._cssY(40),p=this.takeoffP;return{x:source.x+(anchor.x-source.x)*p,y:source.y+(targetY-source.y)*p+bob*p,tilt:source.tilt+(this._baseTilt(time)-source.tilt)*p,scale:source.scale+(anchor.scale-source.scale)*p};}
+    return{x:home.x+(anchor.x-home.x)*this.takeoffP+rescue.wobble,y:home.y+(anchor.y-home.y)*this.takeoffP+bob+rescue.dip,tilt:this._baseTilt(time)+rescue.tilt,scale:home.scale+(anchor.scale-home.scale)*this.takeoffP};
   }
+  _planePosition(time){const{x,y}=this._planePose(time);return{x,y};}
   _plane(time){
-    if(this.mode==='crashed'&&this.crashP>=.8)return;const g=this.g,p=this._planePosition(time),scale=this.w<210?.75:1;let tilt=0;
-    if(this.mode==='flying'){const rescue=this._rescuePose(time);tilt=-.09*this.takeoffP-this.climb*.18-(this.boostUntil>time?.08:0)+rescue.tilt+(this.reduced?0:Math.sin(time*7)*this.danger*.018);}
-    if(this.mode==='crashed'){const fall=clamp((this.crashP-.13)/.67,0,1);tilt=fall*1.48;}
-    const shake=this.mode==='crashed'&&this.crashP<.22&&!this.reduced?Math.sin(time*24)*1.2:0;
-    g.save();g.translate(Math.round(p.x+shake),Math.round(p.y));g.rotate(tilt);g.scale(scale,scale);
+    const p=this._planePose(time);this.lastPlanePose=p;
+    if(this.mode==='crashed'&&this.crashP>=CRASH_IMPACT)return;
+    const g=this.g,shake=this.mode==='crashed'&&this.crashP<.13&&!this.reduced?this._cssX(Math.sin(time*24)*3):0;
+    g.save();g.translate(Math.round(p.x+shake),Math.round(p.y));g.rotate(p.tilt);g.scale(p.scale,p.scale);
     for(let y=0;y<PLANE_SPRITE.length;y++)for(let x=0;x<48;){const c=PLANE_SPRITE[y][x];if(!PLANE_PALETTE[c]){x++;continue;}let end=x+1;while(end<48&&PLANE_SPRITE[y][end]===c)end++;this._rect(x-24,y-11,end-x,1,PLANE_PALETTE[c]);x=end;}
-    if(this.mode!=='crashed'&&!this.reduced){g.globalAlpha=.5;this._rect(14,Math.floor(time*14)%2?-5:-8,1,12,'#e4efdf');g.globalAlpha=1;}
+    if(this.mode!=='crashed'&&!this.reduced){g.globalAlpha=.65;this._rect(14,Math.floor(time*14)%2?-5:-8,1,12,'#e4efdf');g.globalAlpha=1;}
     g.restore();
   }
   _trails(time){
     if(this.mode!=='flying'||this.reduced)return;const p=this._planePosition(time);this.g.globalAlpha=.18;
-    for(let i=0;i<5;i++){const length=12+i*4,wind=((time*(12+this.speed*25)+i*21)%100);this._rect(p.x-25-wind,p.y+(i-2)*4,length,1,i%2?'#e0eee0':'#aacbd4');}
+    const boost=this.boostUntil>time;
+    for(let i=0;i<(boost?9:5);i++){const length=(boost?24:12)+i*4,wind=((time*(boost?65:12+this.speed*25)+i*21)%100);this._rect(p.x-25-wind,p.y+(i-(boost?4:2))*4,length,1,boost?'#f8e3ac':i%2?'#e0eee0':'#aacbd4');}
     this.g.globalAlpha=1;
   }
   _effects(dt,time){
@@ -212,12 +286,14 @@ export class FlightScene {
       }
       this.g.globalAlpha=1;
     }
-    if(this.mode==='crashed'&&this.crashP<.8){const plane=this._planePosition(time);for(let i=0;i<7;i++){const age=((this.crashP*2.5+i*.12)%1),x=plane.x-9-age*24,y=plane.y-5-age*14;this.g.globalAlpha=(1-age)*.7;this._rect(x,y,3+age*5,3+age*4,i%2?'#758392':'#b2a5a5');}this.g.globalAlpha=1;}
+    if(this.mode==='crashed'&&this.crashP<CRASH_IMPACT){const plane=this._planePosition(time);for(let i=0;i<7;i++){const age=((this.crashP*2.5+i*.12)%1),x=plane.x-9-age*24,y=plane.y-5-age*14;this.g.globalAlpha=(1-age)*.7;this._rect(x,y,3+age*5,3+age*4,i%2?'#758392':'#b2a5a5');}this.g.globalAlpha=1;}
   }
   _impact(time){
-    const x=this.w*.35,y=this.h*.84,p=clamp((this.crashP-.78)/.22,0,1),radius=4+ease(p)*14;
-    this.g.globalAlpha=this.reduced?.75:1-p*.45;
-    for(let i=0;i<10;i++){const angle=i/10*Math.PI*2;this._rect(x+Math.cos(angle)*radius,y+Math.sin(angle)*radius*.5,4+i%3,3+i%2,i%3?'#b7b0a0':'#e5c9aa');}
-    this.g.globalAlpha=1;this._rect(x-7,y+2,11,3,'#c57b90');this._rect(x+2,y,6,2,'#ffe1bc');this._rect(x-2,y+6,3,2,'#294b60');
+    const{x,y}=this._impactPosition(),p=clamp((this.crashP-CRASH_IMPACT)/(1-CRASH_IMPACT),0,1),radius=this._cssX(8+ease(p)*54);
+    this.g.globalAlpha=this.reduced?.75:1-p*.4;
+    for(let i=0;i<16;i++){const angle=i/16*Math.PI*2;this._rect(x+Math.cos(angle)*radius,y+Math.sin(angle)*radius*.42-2,4+i%3,3+i%2,i%3?'#b7b0a0':'#e5c9aa');}
+    // The wreck and dust share the exact ground contact used by the dive.
+    this.g.globalAlpha=1;this._rect(x-7,y-2,11,3,'#c57b90');this._rect(x+2,y-3,6,2,'#ffe1bc');this._rect(x-2,y+1,3,2,'#294b60');
+    for(let i=0;i<5;i++){const age=this.reduced?(i+.5)/5:((time*.3+i/5)%1);this.g.globalAlpha=(1-age)*.55;this._rect(x-3-age*8,y-5-age*18,3+age*5,3+age*4,i%2?'#64717f':'#a6a4a2');}this.g.globalAlpha=1;
   }
 }
