@@ -59,14 +59,19 @@ assert.ok(flight.peakAltitude > 0);
 assert.equal((await (await call('/api/stats')).json()).bestStreak, 4);
 assert.equal((await (await call('/api/history')).json()).flights.length, 1);
 let daily = await (await call('/api/start', { mode: 'daily' })).json();
+assert.equal(daily.dailyMode,'mix');
 assert.equal(daily.altitude, 1500);
 assert.equal(daily.timeLimitMs, 25000);
 assert.equal((await (await call('/api/start', { mode: 'daily' })).json()).id, daily.id);
+const dailyTypes=new Set(),dailyCategories=new Set();
 for (let error = 0; error < 10; error++) {
   daily = await (await call('/api/next', { runId: daily.id })).json();
   assert.equal(daily.timeLimitMs, 25000);
+  dailyTypes.add(daily.question.type);dailyCategories.add(daily.question.category);
   daily = await (await call('/api/answer', { runId: daily.id, questionId: daily.question.id, questionIndex: daily.index, choiceId: null, expired: true })).json();
 }
+assert.deepEqual([...dailyTypes].sort(),['common','earlier','general','later','rare']);
+assert.ok(dailyCategories.size>=5);
 assert.equal(daily.status, 'finished');
 assert.equal(daily.index, 10);
 assert.equal(daily.completed, true);

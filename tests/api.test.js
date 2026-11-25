@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import {applyTestSchema,seedTestCatalog} from './helpers/catalog-fixture.js';
 import { createAPI } from '../lib/api.js';
-import { timeLimitMs, dailyModeFor, dailyQuestionFor } from '../lib/engine.js';
+import { timeLimitMs, dailyQuestionFor } from '../lib/engine.js';
 import { legacyQuestionFor } from '../lib/legacy-engine.js';
 
 function fixture({ afterWrite } = {}) {
@@ -77,18 +77,18 @@ test('daily competition has one fixed ten-question attempt, equal questions and 
   const f = fixture(); const secondDevice = 'another-test-device-1234567';
   try {
     const day = await f.call('daily');
-    assert.equal(day.available, true); assert.equal(day.questionCount, 10); assert.equal(day.mode, dailyModeFor(day.date)); assert.equal(day.profile.name.startsWith('Pilot-'), true);
+    assert.equal(day.available, true); assert.equal(day.questionCount, 10); assert.equal(day.mode, 'mix'); assert.equal(day.profile.name.startsWith('Pilot-'), true);
     const [a, b] = await Promise.all([f.call('start', { mode: 'daily' }), f.call('start', { mode: 'daily' })]);
     assert.equal(a.id, b.id); assert.equal(a.mode, 'daily'); assert.equal(a.dailyMode, day.mode); assert.equal(a.competitionVersion, 3); assert.equal(a.questionCount, 10); assert.equal(a.altitude, 1500); assert.equal(a.timeLimitMs, 25000);
     const other = await f.call('start', { mode: 'daily' }, secondDevice);
     let result, otherResult;
-    const ids = new Set(), families = new Set();
+    const ids = new Set(), families = new Set(), types = new Set(), categories = new Set();
     for (let index = 0; index < 10; index++) {
       const flying = await f.call('next', { runId: a.id });
       const otherFlying = await f.call('next', { runId: other.id }, secondDevice);
       assert.deepEqual(flying.question, otherFlying.question, 'everyone sees the same question irrespective of previous results');
       assert.equal(flying.timeLimitMs, otherFlying.timeLimitMs); assert.equal(flying.timeLimitMs, timeLimitMs(index, { daily: true }));
-      assert.equal(flying.question.type, day.mode);
+      types.add(flying.question.type); categories.add(flying.question.category);
       const full = q(f, flying); assert.equal(ids.has(full.id), false); assert.equal(families.has(full.familyId), false); ids.add(full.id); families.add(full.familyId);
       result = await wrong(f, flying);
       otherResult = await f.call('answer', post(otherFlying, q(f, otherFlying).correctId), secondDevice);
@@ -96,6 +96,7 @@ test('daily competition has one fixed ten-question attempt, equal questions and 
       assert.equal(result.status, index < 9 ? 'ready' : 'finished'); assert.equal(result.index, index + 1); assert.equal(result.completed, index === 9);
       if (index < 9) assert.equal((await f.call('leaderboard')).totalFinished, 0);
     }
+    assert.deepEqual([...types].sort(),['common','earlier','general','later','rare']);assert.ok(categories.size>=5);
     assert.equal(result.crashReason, null); assert.equal(result.timeLimitMs,timeLimitMs(9,{daily:true})); assert.equal(result.resultCount, 10); assert.ok(result.finishedAt); assert.equal(otherResult.status, 'finished');
     const repeated = await f.call('answer', { runId: a.id, questionIndex: 9, questionId: result.latestResult.questionId, choiceId: result.latestResult.correctId });
     assert.deepEqual(repeated.result, result.latestResult); assert.equal(repeated.resultCount, 10);
@@ -107,13 +108,13 @@ test('daily competition has one fixed ten-question attempt, equal questions and 
   } finally { f.sqlite.close(); }
 });
 
-test('daily rotation follows rare, common, earlier, later on successive Berlin days', async () => {
+test('new Berlin days always get a fresh ten-question mixed competition', async () => {
   const f = fixture(); const realNow = Date.now;
   try {
-    for (const [date, expected] of [['2026-11-19','rare'], ['2026-11-20','common'], ['2026-11-21','earlier'], ['2026-11-22','later'], ['2026-11-23','rare']]) {
+    for (const date of ['2026-11-19','2026-11-20','2026-11-21','2026-11-22','2026-11-23']) {
       Date.now = () => Date.parse(date + 'T12:00:00Z');
       const day = await f.call('daily'); const run = await f.call('start', { mode: 'daily' });
-      assert.equal(day.mode, expected); assert.equal(run.dailyMode, expected); assert.equal(day.label.length > 0, true);
+      assert.equal(day.mode,'mix'); assert.equal(run.dailyMode,'mix'); assert.equal(run.questionCount,10); assert.equal(day.label.length > 0, true);
     }
   } finally { Date.now = realNow; f.sqlite.close(); }
 });

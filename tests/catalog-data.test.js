@@ -5,7 +5,7 @@ import {DatabaseSync} from 'node:sqlite';
 import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {createCatalog} from '../lib/catalog.js';
-import {gradeChoice,publicQuestion,dailyModeFor} from '../lib/engine.js';
+import {gradeChoice,publicQuestion} from '../lib/engine.js';
 const snapshotText=await readFile(new URL('../content/wikidata/facts.json',import.meta.url),'utf8');
 const snapshot=JSON.parse(snapshotText),facts=new Map(snapshot.facts.map(f=>[f.key,f]));
 const report=JSON.parse(await readFile(new URL('../content/catalog-report.json',import.meta.url),'utf8'));
@@ -67,10 +67,12 @@ test('one thousand real imported questions across flights never repeat an expose
 test('real daily selections stay new across days and remain disjoint from every free question',async()=>{
   const seen=new Set();
   for(let i=0;i<8;i++){
-    const date=new Date(Date.UTC(2027,0,1+i)).toISOString().slice(0,10),mode=dailyModeFor(date);
+    const date=new Date(Date.UTC(2027,0,1+i)).toISOString().slice(0,10),mode='mix';
     const questions=await catalog.reserveDaily(date,mode);assert.equal(questions.length,10);
     assert.ok(questions.every(q=>q.difficulty<=2),'daily never silently escalates into challenge questions');
-    for(const q of questions){assert.equal(seen.has(q.familyId),false);seen.add(q.familyId);assert.equal(db.prepare("SELECT COUNT(*) AS n FROM question_catalog WHERE family_id=? AND pool='free'").get(q.familyId).n,0);}
+    assert.deepEqual([...new Set(questions.map(q=>q.type))].sort(),['common','earlier','general','later','rare']);
+    const categoryCounts=new Map();for(const q of questions)categoryCounts.set(q.category,(categoryCounts.get(q.category)||0)+1);assert.ok(categoryCounts.size>=5);assert.ok([...categoryCounts.values()].every(n=>n<=2));
+    for(const q of questions){assert.equal(seen.has(q.familyId),false);seen.add(q.familyId);assert.equal(db.prepare("SELECT COUNT(*) AS n FROM seen_questions WHERE family_id=?").get(q.familyId).n,0,'mixed days never borrow an already exposed free fact');}
     assert.deepEqual(await catalog.reserveDaily(date,mode),questions);
   }
   assert.equal(seen.size,80);

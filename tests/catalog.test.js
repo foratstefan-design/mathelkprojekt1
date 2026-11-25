@@ -162,6 +162,70 @@ test('an empty daily catalog consumes no attempt and reports an explicit safe ex
   }finally{f.sqlite.close();}
 });
 
+test('the mixed day spans topics and all question styles, and quarantines borrowed knowledge from free games',async()=>{
+  const f=fixture({freeFamilies:40,dailyFamilies:40});
+  try{
+    const day=await f.catalog.reserveDaily('2027-02-01','mix');
+    assert.equal(day.length,10);assert.equal(new Set(day.map(q=>q.familyId)).size,10);
+    assert.deepEqual([...new Set(day.map(q=>q.type))].sort(),['common','earlier','general','later','rare']);
+    assert.equal(day.filter(q=>q.type==='general').length,4);
+    const counts=new Map();for(const q of day)counts.set(q.category,(counts.get(q.category)||0)+1);
+    assert.ok(counts.size>=5);assert.ok([...counts.values()].every(n=>n<=2));
+    assert.ok(day.every(q=>q.difficulty<=2));
+    assert.deepEqual(await f.catalog.reserveDaily('2027-02-01','mix'),day);
+    const second=await f.catalog.reserveDaily('2027-02-02','mix');
+    assert.ok(second.every(q=>!day.some(old=>old.familyId===q.familyId)));
+    f.sqlite.prepare("UPDATE question_catalog SET enabled=0 WHERE family_id NOT IN (SELECT family_id FROM daily_question_slots)").run();
+    assert.equal(await f.catalog.claimFree(f.run('free-after-mixed'),1),null,'daily knowledge stays unavailable even for another device');
+  }finally{f.sqlite.close();}
+});
+
+test('mixed days exclude historical exposure from every device, including legacy aliases',async()=>{
+  const f=fixture({freeFamilies:30,dailyFamilies:30});
+  try{
+    const family=f.sqlite.prepare("SELECT family_id FROM question_catalog WHERE pool='free' AND type='general' AND difficulty=1 LIMIT 1").get().family_id;
+    f.sqlite.prepare('INSERT INTO question_family_aliases(alias_family_id,family_id) VALUES(?,?)').run('historical-author-question',family);
+    insertHistory(f,225,'historical-author-question');
+    const day=await f.catalog.reserveDaily('2027-03-01','mix');
+    assert.equal(day.some(q=>q.familyId===family),false);
+    assert.equal(f.sqlite.prepare("SELECT COUNT(*) AS n FROM seen_questions WHERE family_id='historical-author-question'").get().n,1);
+    assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_question_slots').get().n,10);
+  }finally{f.sqlite.close();}
+});
+
+test('an advertised mixed day requires knowledge, number and time questions from several topics',async()=>{
+  for(const shortage of ['time','topics']){
+    const f=fixture({freeFamilies:30,dailyFamilies:30});
+    try{
+      if(shortage==='time')f.sqlite.prepare("UPDATE question_catalog SET enabled=0 WHERE type IN ('earlier','later')").run();
+      else f.sqlite.prepare("UPDATE question_catalog SET category='Only one topic'").run();
+      assert.equal(await f.catalog.dailyAvailable('2027-03-03','mix'),false);
+      await assert.rejects(()=>f.catalog.reserveDaily('2027-03-03','mix'),CatalogPoolExhaustedError);
+      assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_question_slots').get().n,0);
+    }finally{f.sqlite.close();}
+  }
+});
+
+test('a free exposure racing the mixed-day insert invalidates the whole plan and safely retries',async()=>{
+  const f=fixture({freeFamilies:30,dailyFamilies:30});
+  try{
+    const run=f.run('racing-free'),injected=[];
+    const catalog=createCatalog({all:async(sql,params)=>f.sqlite.prepare(sql).all(...params),run:async(sql,params)=>{
+      if(sql.includes('WITH chosen(position,family_id,question_id,content_json)')&&!injected.length){
+        for(let i=0;i<params.length-1;i+=4){
+          const q=JSON.parse(params[i+3]);if(q.type!=='general')continue;
+          f.sqlite.prepare('INSERT INTO seen_questions(device,family_id,question_id,first_seen_at,run_id,position) VALUES(?,?,?,?,?,?)').run(f.device,q.familyId,q.id,Date.now(),run.id,0);injected.push(q.familyId);break;
+        }
+      }
+      return f.sqlite.prepare(sql).run(...params);
+    }});
+    const questions=await catalog.reserveDaily('2027-03-02','mix');
+    assert.equal(injected.length,1);assert.equal(questions.length,10);
+    assert.ok(questions.every(q=>q.familyId!==injected[0]));
+    assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_question_slots').get().n,10);
+  }finally{f.sqlite.close();}
+});
+
 test('catalog constraints reject moving a fact or family and inconsistent stored question content',()=>{
   const f=fixture({freeFamilies:1,dailyFamilies:12});
   try{

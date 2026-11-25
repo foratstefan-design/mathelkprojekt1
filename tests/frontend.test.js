@@ -60,9 +60,9 @@ handler=()=>({...context.fixture,index:1,question:{...q,id:'q2'}});
 await execute('advanceFlight()');
 assert.equal(execute('screen'),'question');
 assert.equal(calls.filter(x=>x.path.includes('/api/next')).length,1,'explicit next starts question');
-setRun({kind:'daily',mode:'daily',dailyMode:'rare',competitionVersion:3,questionCount:10,dailyDate:'2026-11-20',index:9,altitude:350,peakAltitude:900});
+setRun({kind:'daily',mode:'daily',dailyMode:'mix',competitionVersion:3,questionCount:10,dailyDate:'2026-11-20',index:9,altitude:350,peakAltitude:900});
 scenes[0].calls.length=0;calls.length=0;
-handler=path=>path.includes('leaderboard')?{own:{rank:2},totalFinished:3}:response({kind:'daily',mode:'daily',dailyMode:'rare',competitionVersion:3,questionCount:10,dailyDate:'2026-11-20',status:'finished',index:10,altitude:700,peakAltitude:900,pilotName:'Pilot'});
+handler=path=>path.includes('leaderboard')?{own:{rank:2},totalFinished:3}:response({kind:'daily',mode:'daily',dailyMode:'mix',competitionVersion:3,questionCount:10,dailyDate:'2026-11-20',status:'finished',index:10,altitude:700,peakAltitude:900,pilotName:'Pilot'});
 await execute("submitChoice('a')");
 assert.equal(execute('screen'),'feedback');
 assert.match(query('#main').innerHTML,/TAGESERGEBNIS ANSEHEN/);
@@ -72,6 +72,7 @@ assert.equal(scenes[0].calls.filter(x=>x[0]==='crash').length,0,'finished daily 
 assert.ok(scenes[0].calls.some(x=>x[0]==='recover'),'positive finish animation');
 assert.equal(execute('run.altitude'),700);
 assert.match(query('#main').innerHTML,/700 <small>Meter/);
+assert.match(query('#main').innerHTML,/BUNTER MIX/);
 assert.equal(calls.filter(x=>x.path.includes('/api/next')).length,0,'no eleventh question');
 setRun({danger:2,altitude:400,peakAltitude:900});
 handler=()=>response({status:'crashed',danger:3,index:0,altitude:0,peakAltitude:900,result:{...result,correct:false},latestResult:{...result,correct:false}});
@@ -103,6 +104,28 @@ assert.equal(execute('screen'),'bestenliste');
 assert.ok(query('#leaderboard-content').innerHTML.includes('&lt;script&gt;'));
 assert.ok(!query('#leaderboard-content').innerHTML.includes('<script>'));
 
+// New days are explicitly mixed; saved historical courses retain their label.
+execute("screen='home';version++;busy=false;");
+handler=()=>({date:'2026-11-25',mode:'mix',dailyMode:'mix',questionCount:10,available:true,attempt:null});
+await execute('loadDaily(version)');
+assert.equal(query('#daily-start').disabled,false);
+assert.equal(query('#daily-state').textContent,'HEUTIGEN VERSUCH STARTEN');
+assert.match(query('#daily-mode-note').textContent,/BUNTER MIX/);
+assert.match(query('#daily-mode-note').textContent,/Zehn gleiche Fragen aus verschiedenen Bereichen/);
+setRun({kind:'daily',mode:'daily',dailyMode:'mix',competitionVersion:3,questionCount:10,index:2});
+assert.equal(query('#hud-mode').textContent,'TAGESFLUG · BUNTER MIX');
+assert.match(query('#main').innerHTML,/FRAGE 3 \/ 10 · BUNTER MIX/);
+execute("screen='home';version++;busy=false;");
+handler=()=>({date:'2026-11-24',mode:'common',dailyMode:'common',questionCount:10,attempt:{status:'ready',competitionVersion:3}});
+await execute('loadDaily(version)');
+assert.equal(query('#daily-state').textContent,'TAGESFLUG FORTSETZEN');
+assert.match(query('#daily-mode-note').textContent,/BEREITS FESTGELEGT: MEHR/);
+assert.match(query('#daily-mode-note').textContent,/Diese Runde bleibt für alle gleich/);
+assert.match(query('#daily-mode-note').textContent,/Neue Tagesrunden werden gemischt/);
+execute('instructions()');
+assert.match(query('#main').innerHTML,/bunter Mix aus Allgemeinwissen, Mengenvergleichen und Zeitfragen/);
+assert.ok(!query('#main').innerHTML.includes('Der Modus wechselt täglich'));
+assert.equal(execute("modeInfo('mix').label"),'Mix','free course labels are unchanged');
 
 // Reaching a finite catalog is a successful saved end, never a crash or retry loop.
 setRun({altitude:700,peakAltitude:900,score:55,correctTotal:2});
@@ -154,4 +177,4 @@ await execute('loadCatalog(version)');
 assert.match(query('#catalog-note').innerHTML,/2\.345 verschiedene Fragen/);
 assert.match(query('#catalog-note').innerHTML,/3\.210 Aufgabenvarianten/);
 assert.match(query('#catalog-note').innerHTML,/1\.234 ungesehene Fragenfamilien/);
-console.log('Frontend flow checks passed: learning pause, daily finish, free crash, permanent-pool exhaustion, no daily attempt on unavailable stock, accurate catalog counts, resume, retries and safe output.');
+console.log('Frontend flow checks passed: mixed ten-question days, saved historical courses, learning pause, daily finish, free crash, permanent-pool exhaustion, no daily attempt on unavailable stock, accurate catalog counts, resume, retries and safe output.');
