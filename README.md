@@ -2,7 +2,7 @@
 
 Ein eigenständiges Wissensspiel auf Oberstufenniveau mit einer prozeduralen Pixel-Flugwelt. Interessante Fakten, konkrete Vergleichswerte und kurze Erklärungen verbinden Lernen mit Flugrekorden. Freie Flüge haben keine feste Rundenzahl und zwei Rettungschancen; sie nutzen ausschließlich noch ungesehene Fragen des verfügbaren Katalogs. Der Tagesflug besteht aus zehn gleichen Aufgaben für alle und führt eine Tagesbestenliste. Es werden keine Modellschlüssel benötigt.
 
-Der mitgelieferte Wikidata-Stand enthält **8.888 unabhängige Fragefamilien** mit **10.829 Varianten** aus **14.711 verwendeten Quellfakten**. Freie Flüge nutzen 7.908 Familien, Tagesflüge einen getrennten Bestand von 980. Gegenteilige Vergleichsrichtungen gehören derselben Familie und werden pro Browser nicht als neue Frage wiederholt. Der Katalog ist endlich; ausgeschöpfte Kurse stoppen, statt alte Fakten erneut auszuspielen.
+Der mitgelieferte Wikidata-Stand enthält **8.834 unabhängige Fragefamilien** mit **10.775 Varianten** aus **14.657 verwendeten Quellfakten**. Freie Flüge nutzen 7.854 Familien, Tagesflüge einen getrennten Bestand von 980. Gegenteilige Vergleichsrichtungen gehören derselben Familie und werden pro Browser nicht als neue Frage wiederholt. Der Katalog ist endlich; ausgeschöpfte Kurse stoppen, statt alte Fakten erneut auszuspielen.
 
 ## Lokal starten
 

@@ -21,7 +21,7 @@ test('the installed large catalog is backed by the recorded official Wikidata sn
   assert.match(snapshot.dump.sha256,/^[a-f0-9]{64}$/);assert.ok(snapshot.dump.bytes>=128*1024*1024);
   assert.ok(snapshot.facts.length>=10000);assert.equal(facts.size,snapshot.facts.length);
   assert.equal(createHash('sha256').update(snapshotText).digest('hex'),report.sourceSnapshotSha256);
-  const installed=db.prepare('SELECT COUNT(*) AS questions,COUNT(DISTINCT family_id) AS families FROM question_catalog').get();
+  const installed=db.prepare('SELECT COUNT(*) AS questions,COUNT(DISTINCT family_id) AS families FROM question_catalog WHERE enabled=1').get();
   assert.equal(installed.questions,report.questions);assert.equal(installed.families,report.families);
   assert.ok(installed.families>=8000,'independent factual questions, not a combinatorial claim');
   assert.equal(db.prepare("SELECT COUNT(*) AS n FROM question_catalog WHERE type='general' AND pool='daily'").get().n,0,'all relation questions are playable in the free pool');
@@ -29,7 +29,7 @@ test('the installed large catalog is backed by the recorded official Wikidata sn
 test('every imported solution and comparison value traces to its canonical source fact',()=>{
   const mapped=new Map(db.prepare('SELECT fact_key,family_id FROM question_fact_families').all().map(r=>[r.fact_key,r.family_id]));
   const prompts=new Set();
-  for(const row of db.prepare('SELECT id,family_id,content_json FROM question_catalog').iterate()){
+  for(const row of db.prepare('SELECT id,family_id,content_json FROM question_catalog WHERE enabled=1').iterate()){
     const q=JSON.parse(row.content_json);assert.equal(q.id,row.id);assert.equal(q.familyId,row.family_id);
     assert.ok(q.factKeys.length===1||q.factKeys.length===4);
     assert.equal(prompts.has(q.prompt),false);prompts.add(q.prompt);
@@ -47,7 +47,8 @@ test('every imported solution and comparison value traces to its canonical sourc
     const safe=publicQuestion(q,'safe',0);for(const key of ['correctId','provenance','factKeys','source','explanation'])assert.equal(key in safe,false);
     assert.ok(safe.options.every(o=>Object.keys(o).sort().join(',')==='id,label'));
   }
-  assert.equal(mapped.size,report.sourceFactsUsed);
+  const activeKeys=new Set(db.prepare('SELECT content_json FROM question_catalog WHERE enabled=1').all().flatMap(r=>JSON.parse(r.content_json).factKeys));assert.equal(activeKeys.size,report.sourceFactsUsed);
+  const retired=db.prepare('SELECT COUNT(*) AS n FROM question_catalog WHERE enabled=0').get().n;assert.equal(retired,report.retiredQuestions||0);
 });
 test('one thousand real imported questions across flights never repeat an exposed fact family',async()=>{
   const device='real-catalog-repeat-test',seen=new Set();

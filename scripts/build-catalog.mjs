@@ -28,6 +28,12 @@ function goodLabel(label){return typeof label==='string'&&label.length>=2&&label
 // rivers with rivers, buildings with buildings, and release dates with works.
 function domainFor(f){
   const d=(f.subjectDescription||'').toLowerCase();
+  if(f.propertyId==='P50'){
+    // P50 also contains traditional attribution of sermons and sacred texts.
+    // A written-work question needs an identifiable literary work/author.
+    if(/gott|allah|jesus christus|fu xi/i.test(f.objectLabel||''))return null;
+    return /roman|buch\b|novelle|gedicht|erzählung|drama|schauspiel|komödie|tragödie|epos|fabel|literarisch|literatur|enzyklopädie/.test(d)?'Literarische Werke':null;
+  }
   if(['P17','P36'].includes(f.propertyId)){
     if(/sprache|dialekt|sprachig|sprachfamilie|film\b|roman\b/.test(d))return null;
     if(/bundesstaat|provinz|region|kreis|bezirk|grafschaft|departement|county|distrikt|oblast/.test(d))return 'Regionen';
@@ -233,17 +239,26 @@ function batchesFor(table,columns,rows){
   flush();
 }
 const activeFamilies=new Set(catalog.map(row=>row.question.familyId));
-const mappings=registry.groups.filter(g=>activeFamilies.has(g.familyId)).flatMap(g=>g.factKeys.map(key=>[key,g.familyId]));
+// A refresh must also retire previously published rows rejected by new quality
+// filters. Keep them disabled for old snapshots/history and cold-start imports.
+let previousRows=[];
+try{previousRows=(await readFile(resolve(root,'content/catalog-import.jsonl'),'utf8')).trim().split('\n').filter(Boolean).map(line=>JSON.parse(line)).filter(b=>b.table==='question_catalog').flatMap(b=>b.rows);}catch(error){if(error.code!=='ENOENT')throw error;}
+const activeRows=catalog.map(({question:q,pool,promptFingerprint,selectionKey})=>({id:q.id,family_id:q.familyId,type:q.type,difficulty:q.difficulty,category:q.category,prompt_fingerprint:promptFingerprint,content_json:JSON.stringify(q),selection_key:selectionKey,pool,enabled:1}));
+const activeIds=new Set(activeRows.map(row=>row.id));
+const retiredRows=previousRows.filter(row=>!activeIds.has(row.id)).map(row=>({...row,enabled:0}));
+const activeMappings=registry.groups.filter(g=>activeFamilies.has(g.familyId)).flatMap(g=>g.factKeys.map(key=>[key,g.familyId]));
+const mappings=[...new Map([...activeMappings,...retiredRows.flatMap(row=>JSON.parse(row.content_json).factKeys.map(key=>[key,row.family_id]))].map(pair=>[pair[0],pair])).values()];
 batchesFor('question_fact_families',['fact_key','family_id'],mappings);
 const aliases=[...legacyAliases].flatMap(([old,targets])=>[...targets].filter(f=>activeFamilies.has(f)).map(f=>[old,f]));
 batchesFor('question_family_aliases',['alias_family_id','family_id'],aliases);
-batchesFor('question_catalog',['id','family_id','type','difficulty','category','prompt_fingerprint','content_json','selection_key','pool','enabled'],catalog.map(({question:q,pool,promptFingerprint,selectionKey})=>[q.id,q.familyId,q.type,q.difficulty,q.category,promptFingerprint,JSON.stringify(q),selectionKey,pool,1]));
+const catalogColumns=['id','family_id','type','difficulty','category','prompt_fingerprint','content_json','selection_key','pool','enabled'];
+batchesFor('question_catalog',catalogColumns,[...retiredRows,...activeRows].map(row=>catalogColumns.map(column=>row[column])));
 const version=digest(catalog.map(row=>row.question));
 batchesFor('question_catalog_meta',['key','value'],[['updatedAt',day],['sourceFactCount',String(facts.length)],['source','Wikidata (CC0)'],['version',version]]);
 await mkdir(resolve(root,'content'),{recursive:true});
 await writeFile(resolve(root,'content/catalog-import.jsonl'),batches.map(b=>JSON.stringify(b)).join('\n')+'\n');
 const countBy=fn=>Object.fromEntries([...new Set(catalog.map(fn))].sort().map(key=>[key,catalog.filter(row=>fn(row)===key).length]));
-const report={version,source:'Wikidata (CC0)',updatedAt:day,downloadedFacts:source.facts.length,acceptedFacts:facts.length,sourceFactsUsed:new Set(mappings.map(row=>row[0])).size,questions:catalog.length,families:activeFamilies.size,freeFamilies:new Set(catalog.filter(r=>r.pool==='free').map(r=>r.question.familyId)).size,dailyFamilies:new Set(catalog.filter(r=>r.pool==='daily').map(r=>r.question.familyId)).size,types:countBy(r=>r.question.type),difficulties:countBy(r=>r.question.difficulty),categories:countBy(r=>r.question.category),pools:countBy(r=>r.pool),legacyAliases:aliases.length,rejected,importBatches:batches.length,largestBatchBytes:Math.max(...batches.map(b=>Buffer.byteLength(JSON.stringify(b)))),sourceSnapshotSha256:digest(await readFile(snapshotPath,'utf8'))};
+const report={version,source:'Wikidata (CC0)',updatedAt:day,downloadedFacts:source.facts.length,acceptedFacts:facts.length,sourceFactsUsed:new Set(activeMappings.map(row=>row[0])).size,questions:catalog.length,families:activeFamilies.size,retiredQuestions:retiredRows.length,freeFamilies:new Set(catalog.filter(r=>r.pool==='free').map(r=>r.question.familyId)).size,dailyFamilies:new Set(catalog.filter(r=>r.pool==='daily').map(r=>r.question.familyId)).size,types:countBy(r=>r.question.type),difficulties:countBy(r=>r.question.difficulty),categories:countBy(r=>r.question.category),pools:countBy(r=>r.pool),legacyAliases:aliases.length,rejected,importBatches:batches.length,largestBatchBytes:Math.max(...batches.map(b=>Buffer.byteLength(JSON.stringify(b)))),sourceSnapshotSha256:digest(await readFile(snapshotPath,'utf8'))};
 await writeFile(resolve(root,'content/question-groups.json'),JSON.stringify(registry,null,2)+'\n');
 await writeFile(resolve(root,'content/catalog-report.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));

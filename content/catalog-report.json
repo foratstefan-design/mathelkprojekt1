@@ -1,25 +1,26 @@
 {
-  "version": "e35cdd19f067cc8be8909fc5c0e63f594dc93e8e4f40f73cd4f455346652f6b4",
+  "version": "48b948a3ee8309dff5793b8259559565eaa394bfe189c1a243a2748c02c5bb32",
   "source": "Wikidata (CC0)",
   "updatedAt": "2026-11-24T17:18:06.321Z",
   "downloadedFacts": 19136,
-  "acceptedFacts": 14832,
-  "sourceFactsUsed": 14711,
-  "questions": 10829,
-  "families": 8888,
-  "freeFamilies": 7908,
+  "acceptedFacts": 14778,
+  "sourceFactsUsed": 14657,
+  "questions": 10775,
+  "families": 8834,
+  "retiredQuestions": 54,
+  "freeFamilies": 7854,
   "dailyFamilies": 980,
   "types": {
     "common": 1716,
     "earlier": 225,
-    "general": 6947,
+    "general": 6893,
     "later": 225,
     "rare": 1716
   },
   "difficulties": {
-    "1": 494,
-    "2": 6746,
-    "3": 3589
+    "1": 486,
+    "2": 6722,
+    "3": 3567
   },
   "categories": {
     "Bauwerkshöhen": 16,
@@ -28,17 +29,17 @@
     "Geografie": 5983,
     "Gründungen": 206,
     "Kultur": 385,
-    "Literatur": 150,
+    "Literatur": 96,
     "Längen": 98,
     "Meereshöhen": 1348
   },
   "pools": {
     "daily": 1960,
-    "free": 8869
+    "free": 8815
   },
   "legacyAliases": 40,
   "rejected": {
-    "invalid": 4304,
+    "invalid": 4358,
     "multipleValues": 0,
     "ambiguousPrompt": 35,
     "notEnoughDistractors": 0,
