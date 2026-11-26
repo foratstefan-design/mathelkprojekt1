@@ -29,12 +29,12 @@ class Scene {
   crash(){this.calls.push(['crash']);return Promise.resolve();}
 }
 let handler=()=>({}),frame=0;
-const location={hash:'#anleitung',origin:'https://flight.test'};
+const location={hash:'#anleitung',origin:'https://flight.test',pathname:'/mathelkprojekt1/'};
 const context=vm.createContext({
   console,crypto,URL,Response,Intl,Date,Math,Promise,performance,setTimeout,clearTimeout,
   localStorage:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},
   matchMedia:()=>({matches:true}),requestAnimationFrame:()=>++frame,cancelAnimationFrame(){},
-  FlightScene:Scene,plane:()=>'<svg></svg>',hero:'<svg></svg>',location,
+  FlightScene:Scene,plane:()=>'<svg></svg>',hero:'<svg></svg>',location,API_ORIGIN:'',
   window:{scrollTo(){},addEventListener(){},history:{replaceState(a,b,value){location.hash=value;}}},
   document:{body,querySelector:query,querySelectorAll:()=>[],addEventListener(){},createElement:()=>new Element()},
   navigator:{},fetch:async(path,init)=>{calls.push({path,body:init?.body?JSON.parse(init.body):null});const result=await handler(path,init);const status=result.__httpStatus||200;const body={...result};delete body.__httpStatus;return new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json'}});}
@@ -275,4 +275,16 @@ try{
   execute('home()');finished.resolve();await pending;
   assert.equal(execute('screen'),'home','leaving a maneuver never resurrects its learning screen');
 }finally{Scene.prototype.ascend=savedAscend;Scene.prototype.crash=savedCrash;Scene.prototype.stall=savedStall;}
-console.log('Frontend flow checks passed: mixed ten-question days, replacement-day attempt and superseded-round handoff, saved historical courses, learning pause, daily finish, free crash, permanent-pool exhaustion, no daily attempt on unavailable stock, accurate catalog counts, resume, retries and safe output.');
+// Pages must send every request to the shared API and retain its project path
+// when a friend receives an emoji result through the platform share sheet.
+context.API_ORIGIN='https://hoehenflug.courteousclay.chatgpt.site';
+calls.length=0;handler=()=>({ok:true});
+await execute("api('daily')");await execute("api('start',{mode:'mix'})");
+assert.ok(calls.every(call=>call.path.startsWith(context.API_ORIGIN+'/api/')));
+assert.equal(calls[1].body.mode,'mix');assert.ok(calls[1].body.device);
+context.API_ORIGIN='';
+let shared;
+context.navigator.share=async value=>{shared=value;};
+await execute('share()');
+assert.ok(shared.text.endsWith('https://flight.test/mathelkprojekt1/'));
+console.log('Frontend flow checks passed, including shared API requests and GitHub Pages share links.');

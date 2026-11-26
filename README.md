@@ -132,6 +132,16 @@ Statistiken zählen alle gestarteten Flüge; `crashes` bezeichnet abgestürzte, 
 
 ## Deployment
 
+### GitHub Pages
+
+Der Workflow `.github/workflows/pages.yml` prüft das Spiel und veröffentlicht bei jedem Push auf `main` die Browseroberfläche auf GitHub Pages. Einmalig in **Settings → Pages → Build and deployment → Source** die Option **GitHub Actions** wählen. Falls der erste Lauf vorher schon fehlgeschlagen ist, unter **Actions → Publish game on GitHub Pages → Run workflow** erneut starten.
+
+Nach der Aktivierung ist der teilbare Spiellink **https://foratstefan-design.github.io/mathelkprojekt1/**. Die Seite lädt direkt von GitHub; ihre öffentliche API liegt unter `https://hoehenflug.courteousclay.chatgpt.site`. GitHub Pages führt selbst keinen Node-Server und keine SQLite-Datenbank aus. Tagesrunden, Bestenliste, Fragenbestand und Wiederholungsschutz verwenden deshalb weiterhin den bestehenden Server. Es werden keine Lösungen, Datenbankdateien oder Zugangsdaten in das Pages-Artefakt kopiert.
+
+Der Pages-Build setzt `GAME_API_ORIGIN`; `public/runtime-config.js` verwendet ohne diese Build-Einstellung dieselbe Domain wie das Frontend. API-Zugriff aus dem Browser ist für die exakte Herkunft `https://foratstefan-design.github.io` freigegeben. Für einen Fork sind Workflow und erlaubte Herkunft entsprechend anzupassen. Relative Asset-Links und Ergebnislinks funktionieren auch unter dem Repository-Unterpfad.
+
+Die GitHub-Adresse und die bisherige Spieladresse haben getrennten Browserspeicher. Vorhandene lokale Gerätekennungen und Rekorde werden beim Wechsel der Adresse nicht automatisch übernommen; der alte Spielstand bleibt an der bisherigen Adresse erreichbar.
+
 ### Sites / Cloudflare Worker und D1
 
 `.openai/hosting.json` deklariert die Datenbank als **`"d1": "DB"`**. Der Build bündelt API, Engine und öffentliche Assets in `dist/server/index.js`. Der große Katalog liegt in D1 statt im Browser-Bundle. Der Build kopiert das Hostingmanifest und die Drizzle-Dateien nach `dist/` sowie `dist/server/drizzle/`.

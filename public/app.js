@@ -1,5 +1,6 @@
 import {FlightScene} from './sky.js?v=flight-4';
 import {plane,hero} from './art.js?v=flight-4';
+import {API_ORIGIN} from './runtime-config.js?v=pages-1';
 const $=selector=>document.querySelector(selector),main=$('#main');
 const MODES=[{id:'mix',label:'Mix',detail:'Alle Flugmanöver',icon:'✦'},{id:'common',label:'Mehr',detail:'Größer, höher oder länger?',icon:'+'},{id:'rare',label:'Weniger',detail:'Kleiner, niedriger oder kürzer?',icon:'◇'},{id:'earlier',label:'Früher',detail:'Was war zuerst da?',icon:'Ⅰ'},{id:'later',label:'Später',detail:'Was kam zuletzt?',icon:'Ⅳ'}];
 const modeInfo=id=>id==='daily'?{id:'daily',label:'Tagesflug',detail:'Ein Versuch pro Tag'}:id==='general'?{id:'general',label:'Wissen',detail:'Allgemeines Wissen'}:MODES.find(mode=>mode.id===id)||MODES[0];
@@ -13,7 +14,7 @@ const esc=(text='')=>String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const meters=value=>Math.round(value||0).toLocaleString('de-DE');
 const seconds=value=>(Math.max(0,value||0)/1000).toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1})+' s';
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-async function api(path,body){const response=await fetch('/api/'+path+(body?'':(path.includes('?')?'&':'?')+'device='+encodeURIComponent(device)),{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify({device,...body}):undefined});const data=await response.json();if(!response.ok)throw Object.assign(new Error(data.error||'Die Verbindung ist gerade unterbrochen.'),{code:data.code,poolExhausted:data.poolExhausted===true});return data;}
+async function api(path,body){const response=await fetch(API_ORIGIN+'/api/'+path+(body?'':(path.includes('?')?'&':'?')+'device='+encodeURIComponent(device)),{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify({device,...body}):undefined});const data=await response.json();if(!response.ok)throw Object.assign(new Error(data.error||'Die Verbindung ist gerade unterbrochen.'),{code:data.code,poolExhausted:data.poolExhausted===true});return data;}
 function toast(message){$('#toast').textContent=message;$('#toast').classList.add('show');clearTimeout(toast.timeout);toast.timeout=setTimeout(()=>$('#toast').classList.remove('show'),4000);}
 function closeMenu(){document.body.classList.remove('menu-open');$('#game-menu').inert=true;$('#menu-toggle').setAttribute('aria-expanded','false');$('#menu-scrim').hidden=true;}
 function openMenu(){document.body.classList.add('menu-open');$('#game-menu').inert=false;$('#menu-toggle').setAttribute('aria-expanded','true');$('#menu-scrim').hidden=false;$('#menu-close').focus();}
@@ -277,7 +278,7 @@ async function leaderboard(date=leaderboardDate){
 }
 async function share(){
   const daily=competitive(run),height=daily?run.altitude:run.peakAltitude??run.altitude;
-  const text=`HÖHENFLUG · ${daily?'Tagesflug '+run.dailyDate+' · '+dailyLabel(run.dailyMode):modeInfo(run.mode).label}\n✈️ ${meters(height)} m${daily?' Endhöhe':''}\n${run.correctTotal??run.streak}${daily?' / 10':''} richtige Antworten · ${run.score} Punkte\n${location.origin}`;
+  const text=`HÖHENFLUG · ${daily?'Tagesflug '+run.dailyDate+' · '+dailyLabel(run.dailyMode):modeInfo(run.mode).label}\n✈️ ${meters(height)} m${daily?' Endhöhe':''}\n${run.correctTotal??run.streak}${daily?' / 10':''} richtige Antworten · ${run.score} Punkte\n${location.origin}${location.pathname}`;
   try{if(navigator.share)await navigator.share({title:'Höhenflug',text});else{await navigator.clipboard.writeText(text);toast('Dein Flugergebnis wurde kopiert.');}}
   catch(error){if(error.name!=='AbortError')toast('Teilen ist in diesem Browser gerade nicht verfügbar.');}
 }
