@@ -15,9 +15,11 @@ export function seedTestCatalog(sqlite,{freeFamilies=96,dailyFamilies=80}={}){
   for(const pool of ['free','daily']){
     for(const group of pool==='daily'?['quantity','time']:['quantity','time','general']){
       const size=pool==='free'?freeFamilies:dailyFamilies;
-      for(let i=0;i<size;i++){
+      // Keep named-course easy/medium fixtures stable, then add a hard band
+      // for the ordered mixed-day lesson. None of these facts ships to users.
+      for(let i=0;i<(pool==='daily'?size+Math.ceil(size/2):size);i++){
         const family='fixture:'+pool+':'+group+':'+i;
-        const difficulty=pool==='daily'?(i<Math.ceil(size*.75)?1:2):(i<Math.ceil(size*.75)?1:i<Math.ceil(size*.9375)?2:3);
+        const difficulty=pool==='daily'?(i>=size?3:i<Math.ceil(size*.75)?1:2):(i<Math.ceil(size*.75)?1:i<Math.ceil(size*.9375)?2:3);
         const keys=['test-fact:'+family];fact.run(keys[0],family);
         for(const type of group==='quantity'?['common','rare']:group==='time'?['earlier','later']:['general']){
           const id=family+':'+type;

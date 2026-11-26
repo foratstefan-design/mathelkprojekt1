@@ -2,6 +2,7 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {createHash} from 'node:crypto';
 import {questions as legacyQuestions} from '../lib/questions.js';
+import {loadSchoolCatalog} from './school-catalog.mjs';
 
 const root=resolve(import.meta.dirname,'..');
 const args=process.argv.slice(2);
@@ -223,6 +224,11 @@ for(const group of registry.groups){
     catalog.push({question,pool:group.pool,promptFingerprint,selectionKey:parseInt(digest(question.id).slice(0,8),16)});
   }
 }
+const schoolCatalog=await loadSchoolCatalog();
+for(const entry of schoolCatalog){
+  if(promptFingerprints.has(entry.promptFingerprint))throw Error('Duplicate school/imported question: '+entry.question.prompt);
+  promptFingerprints.add(entry.promptFingerprint);catalog.push(entry);
+}
 if(catalog.length<1000&&!args.includes('--allow-small'))throw Error('Refusing a tiny production catalog: '+catalog.length+' questions.');
 // Data is deliberately separate from schema migrations. Each JSONL batch is
 // validated and imported through bound statements by the local loader or the
@@ -246,19 +252,33 @@ try{previousRows=(await readFile(resolve(root,'content/catalog-import.jsonl'),'u
 const activeRows=catalog.map(({question:q,pool,promptFingerprint,selectionKey})=>({id:q.id,family_id:q.familyId,type:q.type,difficulty:q.difficulty,category:q.category,prompt_fingerprint:promptFingerprint,content_json:JSON.stringify(q),selection_key:selectionKey,pool,enabled:1}));
 const activeIds=new Set(activeRows.map(row=>row.id));
 const retiredRows=previousRows.filter(row=>!activeIds.has(row.id)).map(row=>({...row,enabled:0}));
-const activeMappings=registry.groups.filter(g=>activeFamilies.has(g.familyId)).flatMap(g=>g.factKeys.map(key=>[key,g.familyId]));
+const wikidataMappings=registry.groups.filter(g=>activeFamilies.has(g.familyId)).flatMap(g=>g.factKeys.map(key=>[key,g.familyId]));
+const activeMappings=[...wikidataMappings,...schoolCatalog.flatMap(({question:q})=>q.factKeys.map(key=>[key,q.familyId]))];
 const mappings=[...new Map([...activeMappings,...retiredRows.flatMap(row=>JSON.parse(row.content_json).factKeys.map(key=>[key,row.family_id]))].map(pair=>[pair[0],pair])).values()];
 batchesFor('question_fact_families',['fact_key','family_id'],mappings);
-const aliases=[...legacyAliases].flatMap(([old,targets])=>[...targets].filter(f=>activeFamilies.has(f)).map(f=>[old,f]));
+const schoolAliases=[
+  ['mss-general-masse-mond','school:physik-masse-gewichtskraft'],
+  ['mss-general-inflation','school:wirtschaft-inflation-grundidee'],
+  ['mss-general-opportunitaetskosten','school:wirtschaft-opportunitaetskosten'],
+  ['mss-general-doppler','school:physik-doppler-annaeherung'],
+  ['mss-general-basisrate','school:math-bayes-basisrate'],
+  ['mss-freq-normalverteilung','school:math-normalverteilung-sigma'],
+  ['mss-freq-ohm-strom','school:physik-ohmsches-gesetz'],
+  ['mss-general-photoeffekt','school:physik-photoeffekt-grenzfrequenz'],
+  ['mss-general-photoeffekt','school:physik-photon-energie-frequenz']
+].filter(([,family])=>activeFamilies.has(family));
+const aliases=[...[...legacyAliases].flatMap(([old,targets])=>[...targets].filter(f=>activeFamilies.has(f)).map(f=>[old,f])),...schoolAliases];
 batchesFor('question_family_aliases',['alias_family_id','family_id'],aliases);
 const catalogColumns=['id','family_id','type','difficulty','category','prompt_fingerprint','content_json','selection_key','pool','enabled'];
 batchesFor('question_catalog',catalogColumns,[...retiredRows,...activeRows].map(row=>catalogColumns.map(column=>row[column])));
 const version=digest(catalog.map(row=>row.question));
-batchesFor('question_catalog_meta',['key','value'],[['updatedAt',day],['sourceFactCount',String(facts.length)],['source','Wikidata (CC0)'],['version',version]]);
+const updatedAt=schoolCatalog.length?'2026-11-26T00:00:00Z':day;
+const sourceName='Wikidata (CC0) + eigene Schulfragen';
+batchesFor('question_catalog_meta',['key','value'],[['updatedAt',updatedAt],['sourceFactCount',String(facts.length+schoolCatalog.length)],['source',sourceName],['version',version]]);
 await mkdir(resolve(root,'content'),{recursive:true});
 await writeFile(resolve(root,'content/catalog-import.jsonl'),batches.map(b=>JSON.stringify(b)).join('\n')+'\n');
 const countBy=fn=>Object.fromEntries([...new Set(catalog.map(fn))].sort().map(key=>[key,catalog.filter(row=>fn(row)===key).length]));
-const report={version,source:'Wikidata (CC0)',updatedAt:day,downloadedFacts:source.facts.length,acceptedFacts:facts.length,sourceFactsUsed:new Set(activeMappings.map(row=>row[0])).size,questions:catalog.length,families:activeFamilies.size,retiredQuestions:retiredRows.length,freeFamilies:new Set(catalog.filter(r=>r.pool==='free').map(r=>r.question.familyId)).size,dailyFamilies:new Set(catalog.filter(r=>r.pool==='daily').map(r=>r.question.familyId)).size,types:countBy(r=>r.question.type),difficulties:countBy(r=>r.question.difficulty),categories:countBy(r=>r.question.category),pools:countBy(r=>r.pool),legacyAliases:aliases.length,rejected,importBatches:batches.length,largestBatchBytes:Math.max(...batches.map(b=>Buffer.byteLength(JSON.stringify(b)))),sourceSnapshotSha256:digest(await readFile(snapshotPath,'utf8'))};
+const report={version,source:sourceName,updatedAt,downloadedFacts:source.facts.length,acceptedFacts:facts.length,sourceFactsUsed:new Set(activeMappings.map(row=>row[0])).size,wikidataFactsUsed:new Set(wikidataMappings.map(row=>row[0])).size,schoolQuestions:schoolCatalog.length,schoolSubjects:[...new Set(schoolCatalog.map(r=>r.question.category))].sort(),questions:catalog.length,families:activeFamilies.size,retiredQuestions:retiredRows.length,freeFamilies:new Set(catalog.filter(r=>r.pool==='free').map(r=>r.question.familyId)).size,dailyFamilies:new Set(catalog.filter(r=>r.pool==='daily').map(r=>r.question.familyId)).size,types:countBy(r=>r.question.type),difficulties:countBy(r=>r.question.difficulty),categories:countBy(r=>r.question.category),pools:countBy(r=>r.pool),legacyAliases:aliases.length,rejected,importBatches:batches.length,largestBatchBytes:Math.max(...batches.map(b=>Buffer.byteLength(JSON.stringify(b)))),sourceSnapshotSha256:digest(await readFile(snapshotPath,'utf8'))};
 await writeFile(resolve(root,'content/question-groups.json'),JSON.stringify(registry,null,2)+'\n');
 await writeFile(resolve(root,'content/catalog-report.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));

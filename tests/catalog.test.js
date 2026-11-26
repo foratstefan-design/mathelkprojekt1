@@ -26,7 +26,7 @@ function insertHistory(f,count,target){
   f.sqlite.prepare("UPDATE runs SET status='crashed',question_index=?,finished_at=? WHERE id=?").run(count,Date.now(),run.id);
 }
 
-const geography=new Set(['Geografie','Flächen','Meereshöhen','Längen','Bauwerkshöhen']);
+const geography=new Set(['Geografie','Erdkunde','Flächen','Meereshöhen','Längen','Bauwerkshöhen']);
 const broadArea=category=>geography.has(category)?'geography':category;
 function describeFamily(f,family,category,difficulty){
   f.sqlite.prepare("UPDATE question_catalog SET category=?,difficulty=?,content_json=json_set(content_json,'$.category',?,'$.difficulty',?) WHERE family_id=?").run(category,difficulty,category,difficulty,family);
@@ -215,7 +215,7 @@ test('an empty daily catalog consumes no attempt and reports an explicit safe ex
   }finally{f.sqlite.close();}
 });
 
-test('the mixed day spans topics and all question styles, and quarantines borrowed knowledge from free games',async()=>{
+test('the mixed day has the exact 3/2/5 progression, mixed subjects and quarantined knowledge',async()=>{
   const f=fixture({freeFamilies:40,dailyFamilies:40});
   try{
     const day=await f.catalog.reserveDaily('2027-02-01','mix');
@@ -224,7 +224,7 @@ test('the mixed day spans topics and all question styles, and quarantines borrow
     assert.equal(day.filter(q=>q.type==='general').length,4);
     const counts=new Map();for(const q of day)counts.set(q.category,(counts.get(q.category)||0)+1);
     assert.ok(counts.size>=5);assert.ok([...counts.values()].every(n=>n<=2));
-    assert.ok(day.every(q=>q.difficulty<=2));
+    assert.deepEqual(day.map(q=>q.difficulty),[1,1,1,2,2,3,3,3,3,3]);
     assert.deepEqual(await f.catalog.reserveDaily('2027-02-01','mix'),day);
     const second=await f.catalog.reserveDaily('2027-02-02','mix');
     assert.ok(second.every(q=>!day.some(old=>old.familyId===q.familyId)));
@@ -246,17 +246,96 @@ test('mixed days exclude historical exposure from every device, including legacy
   }finally{f.sqlite.close();}
 });
 
-test('an advertised mixed day requires knowledge, number and time questions from several topics',async()=>{
-  for(const shortage of ['time','topics']){
+test('already frozen older mixed rounds keep their saved order and difficulty',async()=>{
+  const f=fixture({dailyFamilies:30});
+  try{
+    const date='2027-03-01-old',saved=await f.catalog.reserveDaily(date,'rare');
+    assert.deepEqual(saved.map(q=>q.difficulty),[1,1,1,1,1,1,1,1,2,2]);
+    f.sqlite.prepare('INSERT INTO daily_challenges(day,mode,questions_json,created_at) VALUES(?,?,?,?)').run(date,'mix',JSON.stringify(saved),Date.now());
+    f.sqlite.prepare('UPDATE question_catalog SET enabled=0').run();
+    assert.equal(await f.catalog.dailyAvailable(date,'mix'),true);
+    assert.deepEqual(await f.catalog.reserveDaily(date,'mix'),saved,'the new policy only chooses new immutable day sets');
+  }finally{f.sqlite.close();}
+});
+
+test('an advertised mixed day requires all three difficulty bands and several subjects',async()=>{
+  for(const shortage of ['easy','medium','hard','topics']){
     const f=fixture({freeFamilies:30,dailyFamilies:30});
     try{
-      if(shortage==='time')f.sqlite.prepare("UPDATE question_catalog SET enabled=0 WHERE type IN ('earlier','later')").run();
-      else f.sqlite.prepare("UPDATE question_catalog SET category='Only one topic'").run();
+      if(shortage==='topics')f.sqlite.prepare("UPDATE question_catalog SET category='Only one topic'").run();
+      else f.sqlite.prepare('UPDATE question_catalog SET enabled=0 WHERE difficulty=?').run({easy:1,medium:2,hard:3}[shortage]);
       assert.equal(await f.catalog.dailyAvailable('2027-03-03','mix'),false);
       await assert.rejects(()=>f.catalog.reserveDaily('2027-03-03','mix'),CatalogPoolExhaustedError);
       assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_question_slots').get().n,0);
     }finally{f.sqlite.close();}
   }
+});
+
+test('school subjects take priority without forcing comparison styles or scrambling difficulty',async()=>{
+  const f=fixture({freeFamilies:40,dailyFamilies:40});
+  try{
+    const subjects=['Mathematik','Biologie','Chemie','Physik','Deutsch','Geschichte','Informatik','Englisch'];
+    // Mark an ample set of one-answer school questions at every level.
+    // Daily mode must accept a subject mix made entirely of general questions.
+    const families=f.sqlite.prepare("SELECT DISTINCT family_id FROM question_catalog WHERE pool='daily' ORDER BY family_id").all();
+    let i=0;
+    for(const {family_id} of families){
+      describeFamily(f,family_id,subjects[i++%subjects.length],1+(Math.floor(i/subjects.length)%3));
+      f.sqlite.prepare("UPDATE question_catalog SET content_json=json_set(content_json,'$.basis','school') WHERE family_id=?").run(family_id);
+    }
+    // Remove opposite variants rather than changing immutable IDs or families.
+    f.sqlite.prepare("DELETE FROM question_catalog WHERE pool='daily' AND type IN ('rare','later')").run();
+    f.sqlite.prepare("UPDATE question_catalog SET type='general',content_json=json_set(content_json,'$.type','general') WHERE pool='daily'").run();
+    const day=await f.catalog.reserveDaily('2027-04-01','mix');
+    assert.deepEqual(day.map(q=>q.difficulty),[1,1,1,2,2,3,3,3,3,3]);
+    assert.ok(day.every(q=>q.basis==='school'));
+    assert.equal(new Set(day.map(q=>q.type)).size,1);
+    const counts=new Map();for(const q of day)counts.set(q.category,(counts.get(q.category)||0)+1);
+    assert.ok(counts.size>=5);assert.ok([...counts.values()].every(n=>n<=2));
+    assert.deepEqual(await f.catalog.reserveDaily('2027-04-01','mix'),day);
+  }finally{f.sqlite.close();}
+});
+
+test('3/2/5 availability checks unique families shared across difficulty variants',async()=>{
+  const f=fixture({freeFamilies:0,dailyFamilies:12});
+  try{
+    // Leave five hard facts, two medium facts, and three easy variants. Two
+    // easy variants are the same semantic facts needed by the hard band, so
+    // naive per-level counts would advertise an impossible ten-question set.
+    f.sqlite.prepare("UPDATE question_catalog SET enabled=0").run();
+    const families=f.sqlite.prepare("SELECT DISTINCT family_id FROM question_catalog WHERE type='common' AND pool='daily' ORDER BY family_id").all().slice(0,7).map(r=>r.family_id);
+    for(let i=0;i<families.length;i++){
+      describeFamily(f,families[i],'Subject '+i%4,i<2?2:3);
+      f.sqlite.prepare("UPDATE question_catalog SET enabled=1 WHERE family_id=?").run(families[i]);
+    }
+    for(const family of families.slice(2,5)){
+      f.sqlite.prepare("UPDATE question_catalog SET difficulty=1,content_json=json_set(content_json,'$.difficulty',1) WHERE family_id=? AND type='rare'").run(family);
+    }
+    assert.equal(await f.catalog.dailyAvailable('2027-04-02','mix'),false);
+    await assert.rejects(()=>f.catalog.reserveDaily('2027-04-02','mix'),CatalogPoolExhaustedError);
+    assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_question_slots').get().n,0);
+  }finally{f.sqlite.close();}
+});
+
+test('the planner saves easy-only facts for opening slots when shared variants are needed later',async()=>{
+  const f=fixture({freeFamilies:0,dailyFamilies:12});
+  try{
+    f.sqlite.prepare("UPDATE question_catalog SET enabled=0").run();
+    const families=f.sqlite.prepare("SELECT DISTINCT family_id FROM question_catalog WHERE type='common' AND pool='daily' ORDER BY family_id").all().slice(0,10).map(r=>r.family_id);
+    for(let i=0;i<families.length;i++){
+      describeFamily(f,families[i],'Subject '+i%5,i<3?1:i<5?2:3);
+      f.sqlite.prepare("UPDATE question_catalog SET enabled=1 WHERE family_id=?").run(families[i]);
+    }
+    // Half the hard facts also look eligible at the easy tier. Picking them
+    // now would strand the last five slots; future-family matching avoids it.
+    for(const family of families.slice(5,8))f.sqlite.prepare("UPDATE question_catalog SET difficulty=1,content_json=json_set(content_json,'$.difficulty',1) WHERE family_id=? AND type='rare'").run(family);
+    assert.equal(await f.catalog.dailyAvailable('2027-04-03','mix'),true);
+    const day=await f.catalog.reserveDaily('2027-04-03','mix');
+    assert.deepEqual(day.map(q=>q.difficulty),[1,1,1,2,2,3,3,3,3,3]);
+    assert.equal(new Set(day.map(q=>q.familyId)).size,10);
+    assert.deepEqual(new Set(day.slice(0,3).map(q=>q.familyId)),new Set(families.slice(0,3)));
+    assert.deepEqual(new Set(day.slice(5).map(q=>q.familyId)),new Set(families.slice(5)));
+  }finally{f.sqlite.close();}
 });
 
 test('a free exposure racing the mixed-day insert invalidates the whole plan and safely retries',async()=>{
@@ -277,6 +356,34 @@ test('a free exposure racing the mixed-day insert invalidates the whole plan and
     assert.ok(questions.every(q=>q.familyId!==injected[0]));
     assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_question_slots').get().n,10);
   }finally{f.sqlite.close();}
+});
+
+test('an import racing metadata or atomic reservation cannot change the ordered daily difficulty',async()=>{
+  for(const phase of ['content','insert']){
+    const f=fixture({freeFamilies:40,dailyFamilies:40});
+    try{
+      let edited=null,attempts=0;
+      function changeDifficulty(id){
+        edited=id;
+        f.sqlite.prepare("UPDATE question_catalog SET difficulty=3,content_json=json_set(content_json,'$.difficulty',3) WHERE id=?").run(id);
+      }
+      const catalog=createCatalog({all:async(sql,params)=>{
+        if(phase==='content'&&!edited&&sql.startsWith('SELECT id,content_json FROM question_catalog WHERE id IN'))changeDifficulty(params[0]);
+        return f.sqlite.prepare(sql).all(...params);
+      },run:async(sql,params)=>{
+        if(sql.includes('WITH chosen(position,family_id,question_id,content_json)')){
+          attempts++;
+          if(phase==='insert'&&!edited)changeDifficulty(JSON.parse(params[3]).id);
+        }
+        return f.sqlite.prepare(sql).run(...params);
+      }});
+      const day=await catalog.reserveDaily('2027-04-04-'+phase,'mix');
+      assert.ok(edited);assert.deepEqual(day.map(q=>q.difficulty),[1,1,1,2,2,3,3,3,3,3]);
+      assert.equal(day.slice(0,3).some(q=>q.id===edited),false);
+      assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_question_slots').get().n,10);
+      if(phase==='insert')assert.ok(attempts>=2,'the stale entire plan was rejected, then retried atomically');
+    }finally{f.sqlite.close();}
+  }
 });
 
 test('catalog constraints reject moving a fact or family and inconsistent stored question content',()=>{

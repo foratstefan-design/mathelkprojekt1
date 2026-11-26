@@ -45,7 +45,7 @@ test('ten daily questions have one mode, no reversed families, fixed progression
     const plan=Array.from({length:10},(_,i)=>dailyQuestionFor(date,i));
     assert.equal(new Set(plan.map(q=>q.id)).size,10);assert.equal(new Set(plan.map(q=>q.familyId)).size,10);
     assert.ok(plan.every(q=>q.type===dailyModeFor(date)));
-    assert.deepEqual(plan.map(q=>q.difficulty),[1,1,1,1,1,1,1,1,2,2]);
+    assert.deepEqual(plan.map(q=>q.difficulty),[1,1,1,2,2,3,3,3,3,3]);
     assert.deepEqual(plan,Array.from({length:10},(_,i)=>dailyQuestionFor(date,i)));
   }
   assert.notDeepEqual(Array.from({length:10},(_,i)=>dailyQuestionFor('2026-11-19',i).id),Array.from({length:10},(_,i)=>dailyQuestionFor('2026-11-23',i).id));

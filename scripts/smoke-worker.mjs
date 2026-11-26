@@ -15,6 +15,11 @@ const env = { DB: { prepare(sql) { return { bind(...params) { return {
   async all() { return { results: sqlite.prepare(sql).all(...params) }; },
   async run() { return sqlite.prepare(sql).run(...params); }
 }; } }; } } };
+env.DB.batch=async statements=>{
+  sqlite.exec('BEGIN IMMEDIATE');
+  try{const results=[];for(const statement of statements)results.push(await statement.run());sqlite.exec('COMMIT');return results;}
+  catch(error){sqlite.exec('ROLLBACK');throw error;}
+};
 const device = 'hoehenflug-worker-smoke-12345';
 async function call(path, body) {
   const request = new Request('https://hoehenflug.test' + path + (body ? '' : (path.includes('?') ? '&' : '?') + 'device=' + device), body ? { method: 'POST', body: JSON.stringify({ device, ...body }) } : {});
@@ -63,14 +68,16 @@ assert.equal(daily.dailyMode,'mix');
 assert.equal(daily.altitude, 1500);
 assert.equal(daily.timeLimitMs, 25000);
 assert.equal((await (await call('/api/start', { mode: 'daily' })).json()).id, daily.id);
-const dailyTypes=new Set(),dailyCategories=new Set();
+const dailyTypes=new Set(),dailyCategories=new Set(),dailyLevels=[],dailyBases=[];
 for (let error = 0; error < 10; error++) {
   daily = await (await call('/api/next', { runId: daily.id })).json();
   assert.equal(daily.timeLimitMs, 25000);
   dailyTypes.add(daily.question.type);dailyCategories.add(daily.question.category);
+  dailyLevels.push(daily.question.difficulty);dailyBases.push(daily.question.basis);
   daily = await (await call('/api/answer', { runId: daily.id, questionId: daily.question.id, questionIndex: daily.index, choiceId: null, expired: true })).json();
 }
-assert.deepEqual([...dailyTypes].sort(),['common','earlier','general','later','rare']);
+assert.deepEqual(dailyLevels,[1,1,1,2,2,3,3,3,3,3]);
+if(!usingSyntheticCatalog)assert.ok(dailyBases.every(basis=>basis==='school'),'fresh daily lessons prefer the new school subjects');
 assert.ok(dailyCategories.size>=5);
 assert.equal(daily.status, 'finished');
 assert.equal(daily.index, 10);

@@ -1,43 +1,65 @@
 {
-  "version": "48b948a3ee8309dff5793b8259559565eaa394bfe189c1a243a2748c02c5bb32",
-  "source": "Wikidata (CC0)",
-  "updatedAt": "2026-11-24T17:18:06.321Z",
+  "version": "a7528923a3d4c1629b39c53d1e35393cc0fcdeda0280ca7923fc736c45ae4916",
+  "source": "Wikidata (CC0) + eigene Schulfragen",
+  "updatedAt": "2026-11-26T00:00:00Z",
   "downloadedFacts": 19136,
   "acceptedFacts": 14778,
-  "sourceFactsUsed": 14657,
-  "questions": 10775,
-  "families": 8834,
+  "sourceFactsUsed": 14927,
+  "wikidataFactsUsed": 14657,
+  "schoolQuestions": 270,
+  "schoolSubjects": [
+    "Biologie",
+    "Chemie",
+    "Deutsch",
+    "Erdkunde",
+    "Geschichte",
+    "Informatik",
+    "Mathematik",
+    "Physik",
+    "Politik & Wirtschaft"
+  ],
+  "questions": 11045,
+  "families": 9104,
   "retiredQuestions": 54,
-  "freeFamilies": 7854,
-  "dailyFamilies": 980,
+  "freeFamilies": 7988,
+  "dailyFamilies": 1116,
   "types": {
     "common": 1716,
     "earlier": 225,
-    "general": 6893,
+    "general": 7163,
     "later": 225,
     "rare": 1716
   },
   "difficulties": {
-    "1": 486,
-    "2": 6722,
-    "3": 3567
+    "1": 576,
+    "2": 6812,
+    "3": 3657
   },
   "categories": {
     "Bauwerkshöhen": 16,
+    "Biologie": 30,
+    "Chemie": 30,
+    "Deutsch": 30,
+    "Erdkunde": 30,
     "Film": 673,
     "Flächen": 1970,
     "Geografie": 5983,
+    "Geschichte": 30,
     "Gründungen": 206,
+    "Informatik": 30,
     "Kultur": 385,
     "Literatur": 96,
     "Längen": 98,
-    "Meereshöhen": 1348
+    "Mathematik": 30,
+    "Meereshöhen": 1348,
+    "Physik": 30,
+    "Politik & Wirtschaft": 30
   },
   "pools": {
-    "daily": 1960,
-    "free": 8815
+    "daily": 2096,
+    "free": 8949
   },
-  "legacyAliases": 40,
+  "legacyAliases": 49,
   "rejected": {
     "invalid": 4358,
     "multipleValues": 0,
@@ -45,7 +67,7 @@
     "notEnoughDistractors": 0,
     "leftoverComparisonFacts": 54
   },
-  "importBatches": 514,
+  "importBatches": 524,
   "largestBatchBytes": 185024,
   "sourceSnapshotSha256": "f59c29229702b0d3fcc08f7b50364c55f2bfae4f2e9628d6c25940cbd7fccae9"
 }

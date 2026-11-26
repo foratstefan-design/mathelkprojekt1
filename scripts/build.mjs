@@ -26,6 +26,13 @@ async function bundle(path) {
 }
 const apiSource = await bundle(resolve(root, 'lib/api.js'));
 const catalogImportSource = await bundle(resolve(root, 'lib/catalog-import.js'));
+const releaseSource = await bundle(resolve(root, 'lib/catalog-release.js'));
+// A small trusted content release is embedded server-side and installed once
+// in the existing D1 database. No client can supply rows to this path.
+const catalogLines=(await readFile(resolve(root,'content/catalog-import.jsonl'),'utf8')).trim().split('\n').map(JSON.parse);
+const schoolBatches=catalogLines.map(batch=>({...batch,rows:batch.rows.filter(row=>batch.table==='question_fact_families'?row.fact_key?.startsWith('school:'):batch.table==='question_catalog'?row.id?.startsWith('school-'):batch.table==='question_family_aliases'?row.family_id?.startsWith('school:'):batch.table==='question_catalog_meta')})).filter(batch=>batch.rows.length);
+const schoolVersion=schoolBatches.find(batch=>batch.table==='question_catalog_meta')?.rows.find(row=>row.key==='version')?.value;
+const catalogRelease={id:schoolVersion,batches:schoolBatches};
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.json': 'application/json' };
 const assets = {};
 async function collect(directory) {
@@ -37,8 +44,10 @@ async function collect(directory) {
 }
 await collect(resolve(root, 'public'));
 if (!assets['/index.html']) throw new Error('public/index.html is missing');
-const worker = apiSource + catalogImportSource + `
+const worker = apiSource + catalogImportSource + releaseSource + `
 const embeddedAssets = ${JSON.stringify(assets)};
+const embeddedCatalogRelease = ${JSON.stringify(catalogRelease)};
+const installingCatalog = new WeakMap();
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -49,10 +58,17 @@ export default {
     }
     if (url.pathname.startsWith('/api/')) {
       if (!env.DB) return new Response(JSON.stringify({ error: 'Der Spielspeicher ist gerade nicht erreichbar.' }), { status: 503, headers: { 'Content-Type': 'application/json' } });
-      const api = createAPI({
+      const db={
         all: async (sql, params) => (await env.DB.prepare(sql).bind(...params).all()).results,
-        run: async (sql, params) => env.DB.prepare(sql).bind(...params).run()
-      });
+        run: async (sql, params) => env.DB.prepare(sql).bind(...params).run(),
+        batch: entries => env.DB.batch(entries.map(({sql,params})=>env.DB.prepare(sql).bind(...params)))
+      };
+      if (request.method !== 'OPTIONS' && embeddedCatalogRelease.id && embeddedCatalogRelease.batches.some(batch=>batch.table==='question_catalog')) {
+        let pending=installingCatalog.get(env.DB);
+        if(!pending){pending=installCatalogRelease(db,embeddedCatalogRelease);installingCatalog.set(env.DB,pending);pending.catch(()=>installingCatalog.delete(env.DB));}
+        await pending;
+      }
+      const api = createAPI(db);
       return api(request);
     }
     if (!['GET', 'HEAD'].includes(request.method)) return new Response('Method not allowed', { status: 405 });

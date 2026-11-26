@@ -1,0 +1,1532 @@
+[
+  {
+    "id": "bio-mitochondrien",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "Welches Zellorganell gewinnt bei der Zellatmung besonders viel ATP?",
+    "answers": [
+      "Mitochondrium",
+      "Zellkern",
+      "Golgi-Apparat",
+      "Lysosom"
+    ],
+    "explanation": "Mitochondrien wandeln die Energie energiereicher Stoffe in ATP um. ATP dient der Zelle als unmittelbar nutzbarer Energieträger.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-chloroplasten",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "In welchem Organell grüner Pflanzenzellen findet die Fotosynthese statt?",
+    "answers": [
+      "Chloroplast",
+      "Mitochondrium",
+      "Zellkern",
+      "Ribosom"
+    ],
+    "explanation": "Chloroplasten enthalten Chlorophyll. Dort wird Lichtenergie genutzt, um aus Kohlenstoffdioxid und Wasser energiereiche organische Stoffe aufzubauen.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-erythrozyten",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "Was ist die wichtigste Aufgabe roter Blutkörperchen?",
+    "answers": [
+      "Sauerstoff transportieren",
+      "Antikörper herstellen",
+      "Nahrung verdauen",
+      "Nervenimpulse übertragen"
+    ],
+    "explanation": "Rote Blutkörperchen enthalten Hämoglobin. Dieses Protein bindet Sauerstoff und ermöglicht seinen Transport von der Lunge zu den Geweben.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-duenndarm",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "Wo werden die meisten bei der Verdauung entstandenen Nährstoffbausteine aufgenommen?",
+    "answers": [
+      "Im Dünndarm",
+      "In der Speiseröhre",
+      "Im Dickdarm",
+      "In der Luftröhre"
+    ],
+    "explanation": "Die Oberfläche des Dünndarms ist durch Falten, Zotten und Mikrovilli stark vergrößert. Das erleichtert die Aufnahme von Nährstoffbausteinen in Blut und Lymphe.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-spaltoeffnungen",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "Durch welche Strukturen tauschen die meisten Laubblätter Gase mit der Luft aus?",
+    "answers": [
+      "Spaltöffnungen",
+      "Wurzelhaare",
+      "Blütenblätter",
+      "Leitbündel"
+    ],
+    "explanation": "Spaltöffnungen lassen unter anderem Kohlenstoffdioxid hinein und Sauerstoff hinaus. Über sie entweicht auch Wasserdampf; Schließzellen regulieren ihre Öffnung.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-produzenten",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "Welche Rolle hat Gras in der Nahrungskette Gras → Kaninchen → Fuchs?",
+    "answers": [
+      "Produzent",
+      "Endkonsument",
+      "Zersetzer",
+      "Parasit"
+    ],
+    "explanation": "Gras baut durch Fotosynthese organische Stoffe auf. Produzenten bilden damit die Nahrungsgrundlage für die Konsumenten einer Nahrungskette.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-insektenbeine",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "Wie viele Beine besitzt ein ausgewachsenes Insekt im typischen Körperbau?",
+    "answers": [
+      "Sechs",
+      "Vier",
+      "Acht",
+      "Zehn"
+    ],
+    "explanation": "Insekten besitzen drei Beinpaare am Brustabschnitt. Spinnen haben dagegen vier Beinpaare und gehören nicht zu den Insekten.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-kiemen",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "Welches Organ nimmt bei den meisten erwachsenen Fischen Sauerstoff aus dem Wasser auf?",
+    "answers": [
+      "Kiemen",
+      "Lunge",
+      "Schwimmblase",
+      "Seitenlinienorgan"
+    ],
+    "explanation": "An den dünnen Kiemenoberflächen diffundiert Sauerstoff aus dem Wasser ins Blut. Die große Oberfläche erleichtert den Gasaustausch.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-impfung-gedaechtnis",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "Worauf beruht der längerfristige Schutz vieler Impfungen?",
+    "answers": [
+      "Auf einem spezifischen Immungedächtnis",
+      "Auf einer dauerhaft erhöhten Körpertemperatur",
+      "Auf zusätzlichen roten Blutkörperchen",
+      "Auf einer allgemeinen Verdickung der Haut"
+    ],
+    "explanation": "Eine Impfung kann Gedächtniszellen des spezifischen Immunsystems bilden. Bei einem späteren Kontakt mit dem passenden Erreger fällt die Abwehrreaktion dadurch schneller aus.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-dna-information",
+    "category": "Biologie",
+    "difficulty": 1,
+    "prompt": "Welches Molekül speichert in menschlichen Zellen die Erbinformation?",
+    "answers": [
+      "DNA",
+      "Glucose",
+      "Cholesterin",
+      "Stärke"
+    ],
+    "explanation": "Die Reihenfolge der Basen in der DNA trägt genetische Information. Aus dieser Information kann die Zelle unter anderem Anleitungen für Proteine ableiten.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-enzym-denaturierung",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Warum verliert ein Enzym bei sehr hoher Temperatur oft seine Funktion?",
+    "answers": [
+      "Seine räumliche Struktur verändert sich",
+      "Es wird zu einem anderen Element",
+      "Seine Aminosäuren werden zu DNA",
+      "Es erhält dauerhaft mehr aktive Zentren"
+    ],
+    "explanation": "Die räumliche Struktur bestimmt die Form des aktiven Zentrums. Wird sie durch Hitze verändert, kann das Substrat häufig nicht mehr passend binden.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-osmose",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Eine nicht prall gefüllte Pflanzenzelle kommt in eine gegenüber ihrem Zellsaft hypotonische Lösung. Was geschieht durch Osmose zunächst?",
+    "answers": [
+      "Wasser strömt überwiegend in die Zelle",
+      "Salz wird aktiv aus der Zelle gepumpt",
+      "Die Zellwand löst sich sofort auf",
+      "Die DNA verlässt den Zellkern"
+    ],
+    "explanation": "Wasser bewegt sich durch die teilweise durchlässige Membran zum Bereich mit höherer Konzentration gelöster Teilchen. Der entstehende Turgor drückt den Zellinhalt gegen die Zellwand.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-meiose",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Warum ist die Meiose bei der Bildung menschlicher Keimzellen wichtig?",
+    "answers": [
+      "Sie halbiert den Chromosomensatz der Keimzellen",
+      "Sie verdoppelt alle Chromosomen nach jeder Befruchtung",
+      "Sie erzeugt ausschließlich genetisch identische Körperzellen",
+      "Sie entfernt sämtliche Geschlechtschromosomen"
+    ],
+    "explanation": "Bei der menschlichen Keimzellbildung halbiert die Meiose den Chromosomensatz. Bei der Befruchtung vereinigen sich zwei haploide Keimzellen wieder zu einer diploiden Zelle.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-heterozygot",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Bei vollständiger Dominanz ist A dominant über a. Welchen Phänotyp zeigt ein Individuum mit Aa?",
+    "answers": [
+      "Den durch A bestimmten Phänotyp",
+      "Immer den durch a bestimmten Phänotyp",
+      "Zwingend eine Mischung beider Phänotypen",
+      "Keinen der beiden Phänotypen"
+    ],
+    "explanation": "Bei vollständiger Dominanz reicht ein dominantes Allel aus, um den entsprechenden Phänotyp hervorzurufen. Heterozygot bedeutet, dass die beiden Allele verschieden sind.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-mitose-chromosomen",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Welche Aussage über die Mitose einer gewöhnlichen diploiden Körperzelle trifft zu?",
+    "answers": [
+      "Die Tochterzellen behalten den diploiden Chromosomensatz",
+      "Die Tochterzellen besitzen nur halb so viele Chromosomen",
+      "Es entstehen immer vier Keimzellen",
+      "Homologe Chromosomen paaren sich zum Crossing-over"
+    ],
+    "explanation": "Bei der Mitose werden die zuvor verdoppelten Chromosomen gleichmäßig auf zwei Tochterzellen verteilt. Die Chromosomensatzzahl bleibt dabei normalerweise erhalten.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-transpiration",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Was treibt den Wassertransport von den Wurzeln zu den Blättern eines hohen Baumes wesentlich an?",
+    "answers": [
+      "Verdunstung an den Blättern",
+      "Ein pumpendes Herz im Stamm",
+      "Fotosynthese in den Wurzelhaaren",
+      "Die aktive Bewegung jedes einzelnen Wassermoleküls"
+    ],
+    "explanation": "Die Verdunstung erzeugt einen Zug in den wasserleitenden Gefäßen. Kohäsion zwischen Wassermolekülen trägt dazu bei, die zusammenhängende Wassersäule zu erhalten.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-destruenten",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Welche Aufgabe übernehmen Pilze und Bakterien als Destruenten im Ökosystem?",
+    "answers": [
+      "Sie bauen tote organische Stoffe ab",
+      "Sie erzeugen alle Mineralstoffe durch Fotosynthese",
+      "Sie halten sämtliche Energie dauerhaft im Kreislauf",
+      "Sie verhindern jeden Stoffaustausch mit dem Boden"
+    ],
+    "explanation": "Destruenten zerlegen organisches Material und setzen dabei unter anderem anorganische Nährstoffe frei. Stoffe können so erneut von Produzenten aufgenommen werden.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-zellatmung-kohlenstoff",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Was geschieht bei der vollständigen aeroben Zellatmung mit dem Kohlenstoff der Glucose?",
+    "answers": [
+      "Er wird zu Kohlenstoffdioxid oxidiert",
+      "Er wird in molekularen Sauerstoff umgewandelt",
+      "Er verschwindet durch die Energiefreisetzung",
+      "Er wird ausschließlich in Stickstoff eingebaut"
+    ],
+    "explanation": "Bei der Zellatmung werden die Kohlenstoffatome der Glucose zu Kohlenstoffdioxid oxidiert. Atome gehen dabei nicht verloren; sie werden chemisch neu angeordnet.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-insulin",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Wie wirkt Insulin im gesunden menschlichen Körper normalerweise auf den Blutzuckerspiegel?",
+    "answers": [
+      "Es senkt ihn",
+      "Es erhöht ihn immer",
+      "Es hat ausschließlich Einfluss auf die Blutgerinnung",
+      "Es verhindert grundsätzlich die Speicherung von Glucose"
+    ],
+    "explanation": "Insulin fördert unter anderem die Aufnahme von Glucose in bestimmte Zellen und ihre Speicherung als Glykogen. Dadurch sinkt der Blutzuckerspiegel.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-aktiver-transport",
+    "category": "Biologie",
+    "difficulty": 2,
+    "prompt": "Was unterscheidet primär aktiven Membrantransport von einfacher Diffusion?",
+    "answers": [
+      "Er kann Stoffe unter Energieverbrauch gegen ihr Konzentrationsgefälle bewegen",
+      "Er findet ausschließlich ohne Membranproteine statt",
+      "Er verschiebt Stoffe immer nur entlang ihres Konzentrationsgefälles",
+      "Er benötigt grundsätzlich keine Energie"
+    ],
+    "explanation": "Beim primär aktiven Transport koppeln Membranproteine den Stofftransport unmittelbar an eine Energiequelle, häufig ATP. Dadurch können Konzentrationsunterschiede aufgebaut werden, statt sich nur auszugleichen.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-hardy-weinberg",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Im Hardy-Weinberg-Gleichgewicht beträgt die Häufigkeit des Allels a 0,3. Wie häufig ist der Genotyp aa?",
+    "answers": [
+      "9 %",
+      "30 %",
+      "42 %",
+      "70 %"
+    ],
+    "explanation": "Unter den Modellannahmen beträgt die Häufigkeit eines homozygoten Genotyps q². Für q = 0,3 ergibt das 0,09, also 9 %.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-transkription-richtung",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Der DNA-Matrizenabschnitt lautet 3′-TACG-5′. Welcher RNA-Abschnitt wird daran gebildet?",
+    "answers": [
+      "5′-AUGC-3′",
+      "5′-TACG-3′",
+      "5′-UACG-3′",
+      "5′-GCAT-3′"
+    ],
+    "explanation": "RNA wird komplementär zur Matrize und in 5′-zu-3′-Richtung aufgebaut. Dabei paart A mit U und C mit G; RNA enthält Uracil statt Thymin.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-kompetitive-hemmung",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Was kann eine kompetitive Enzymhemmung bei sonst gleichen Bedingungen abschwächen?",
+    "answers": [
+      "Eine höhere Substratkonzentration",
+      "Eine vollständige Entfernung des Substrats",
+      "Eine Zerstörung des aktiven Zentrums",
+      "Eine stärkere Denaturierung des Enzyms"
+    ],
+    "explanation": "Substrat und kompetitiver Hemmstoff konkurrieren um dasselbe aktive Zentrum. Eine höhere Substratkonzentration erhöht die Wahrscheinlichkeit, dass das Substrat bindet.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-calvinzyklus-rubisco",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Welche Aufgabe erfüllt Rubisco im Calvinzyklus?",
+    "answers": [
+      "Es katalysiert die Bindung von CO₂ an RuBP",
+      "Es spaltet Wasser am Photosystem II",
+      "Es katalysiert die Bildung von ATP aus ADP am Thylakoid",
+      "Es transportiert Elektronen zwischen den beiden Photosystemen"
+    ],
+    "explanation": "Rubisco katalysiert die erste CO₂-Fixierung des Calvinzyklus. Der aufgenommene Kohlenstoff kann anschließend in organische Verbindungen eingebaut werden.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-aktionspotential",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Was löst den schnellen Aufstrich eines typischen neuronalen Aktionspotentials aus?",
+    "answers": [
+      "Der Einstrom von Na⁺ durch spannungsabhängige Kanäle",
+      "Der Ausstrom von K⁺ durch spannungsabhängige Kanäle",
+      "Der Einstrom von Cl⁻ durch geöffnete Ionenkanäle",
+      "Der aktive Export von Na⁺ durch die Natrium-Kalium-Pumpe"
+    ],
+    "explanation": "Nach Überschreiten der Schwelle öffnen sich viele spannungsabhängige Natriumkanäle. Der Natriumeinstrom depolarisiert die Membran und öffnet weitere Kanäle.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-synapse-calcium",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Welche unmittelbare Wirkung hat Ca²⁺-Einstrom an einer typischen chemischen Synapse?",
+    "answers": [
+      "Er löst die Fusion von Transmittervesikeln mit der Membran aus",
+      "Er baut den Neurotransmitter im synaptischen Spalt ab",
+      "Er transportiert den Neurotransmitter durch das ganze Axon zurück",
+      "Er erzeugt direkt das Ruhepotential durch den Export von Na⁺"
+    ],
+    "explanation": "Calcium bindet an Proteine der Freisetzungsmaschinerie. Daraufhin verschmelzen Vesikel mit der präsynaptischen Membran und setzen Neurotransmitter frei.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-atmungskette-sauerstoff",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Welche Funktion hat Sauerstoff am Ende der mitochondrialen Atmungskette?",
+    "answers": [
+      "Er ist der letzte Elektronenakzeptor",
+      "Er liefert direkt die Kohlenstoffatome für Citrat",
+      "Er transportiert Protonen aktiv in den Intermembranraum",
+      "Er phosphoryliert ADP ohne Mitwirkung der ATP-Synthase"
+    ],
+    "explanation": "Sauerstoff nimmt am Ende Elektronen und Protonen auf; dabei entsteht Wasser. Ohne diesen Elektronenabfluss kommt die aerobe Atmungskette zum Stillstand.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-selektion-resistenz",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Warum nimmt der Anteil resistenter Bakterien unter einem passenden Antibiotikum häufig zu?",
+    "answers": [
+      "Resistente Varianten haben einen Selektionsvorteil",
+      "Jede empfindliche Zelle verändert ihr Erbgut gezielt passend zum Wirkstoff",
+      "Resistenz wird durch die Antibiotikagabe grundsätzlich nur kurzfristig antrainiert",
+      "Empfindliche und resistente Varianten haben unter dem Wirkstoff stets dieselbe Fitness"
+    ],
+    "explanation": "Bereits vorhandene oder zufällig entstehende resistente Varianten überleben die Behandlung eher. Ihre Nachkommen können dadurch einen größeren Anteil der Population bilden.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-homologie",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Menschenarm und Fledermausflügel besitzen denselben grundlegenden Knochenbau. Wofür ist das ein Beispiel?",
+    "answers": [
+      "Homologie durch gemeinsame Abstammung",
+      "Analogie durch ausschließlich ähnliche Lebensbedingungen",
+      "Konvergenz ohne gemeinsame Ausgangsstruktur",
+      "Ein gleiches Merkmal ohne Hinweis auf Verwandtschaft"
+    ],
+    "explanation": "Homologe Strukturen gehen auf eine gemeinsame Ausgangsstruktur zurück. Sie können durch Evolution sehr unterschiedliche Funktionen annehmen.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "bio-logistisches-wachstum",
+    "category": "Biologie",
+    "difficulty": 3,
+    "prompt": "Eine Population erreicht im logistischen Wachstumsmodell die Kapazitätsgrenze K. Was gilt dann?",
+    "answers": [
+      "Die modellierte Netto-Wachstumsrate ist null",
+      "Die Geburtenrate ist jetzt gleich null",
+      "Die Sterberate ist jetzt gleich null",
+      "Die modellierte Netto-Wachstumsrate ist maximal"
+    ],
+    "explanation": "Im logistischen Modell bremst die begrenzte Umweltkapazität das Wachstum. Bei K gleichen sich Zu- und Abnahme in der Modellbilanz aus; einzelne Geburten und Todesfälle können weiter stattfinden.",
+    "source": {
+      "title": "OpenStax · Biology 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/biology-2e"
+    }
+  },
+  {
+    "id": "chem-neutron",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Welches Teilchen im Atomkern ist elektrisch ungeladen?",
+    "answers": [
+      "Neutron",
+      "Proton",
+      "Elektron",
+      "Positron"
+    ],
+    "explanation": "Neutronen tragen keine elektrische Ladung. Zusammen mit den positiv geladenen Protonen bilden sie den Atomkern.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-ordnungszahl",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Was gibt die Ordnungszahl eines chemischen Elements an?",
+    "answers": [
+      "Die Zahl der Protonen im Atomkern",
+      "Die Zahl aller Teilchen im Atom",
+      "Die Zahl der Neutronen in jedem Isotop",
+      "Die Zahl der Atome in einem Molekül"
+    ],
+    "explanation": "Die Protonenzahl legt fest, um welches Element es sich handelt. Isotope desselben Elements unterscheiden sich in ihrer Neutronenzahl, nicht in der Ordnungszahl.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-kation",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Ein neutrales Atom gibt ein Elektron ab. Was entsteht?",
+    "answers": [
+      "Ein positiv geladenes Ion",
+      "Ein negativ geladenes Ion",
+      "Ein zusätzliches Neutron",
+      "Ein anderes Element mit mehr Protonen"
+    ],
+    "explanation": "Elektronen sind negativ geladen. Gibt ein Atom eines ab, überwiegt die positive Kernladung und es entsteht ein Kation.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-ph-neutral",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Welchen pH-Wert hat reines, neutrales Wasser bei 25 °C ungefähr?",
+    "answers": [
+      "7",
+      "1",
+      "3",
+      "14"
+    ],
+    "explanation": "Bei 25 °C entspricht Neutralität einem pH-Wert von etwa 7. Der neutrale pH-Wert hängt von der Temperatur ab; deshalb gehört diese Bedingung zur Frage.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-massenerhaltung",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Was gilt für die Gesamtmasse bei einer chemischen Reaktion in einem geschlossenen System?",
+    "answers": [
+      "Sie bleibt erhalten",
+      "Sie nimmt bei jeder Reaktion ab",
+      "Sie verdoppelt sich immer",
+      "Sie hängt nur von der Farbe der Produkte ab"
+    ],
+    "explanation": "Bei gewöhnlichen chemischen Reaktionen werden Atome neu angeordnet. Wenn keine Stoffe das System verlassen oder betreten, bleibt die Gesamtmasse erhalten.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-salzwasser-gemisch",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Wie wird klares Wasser mit vollständig gelöstem Kochsalz eingeordnet?",
+    "answers": [
+      "Als homogenes Gemisch",
+      "Als reines chemisches Element",
+      "Als heterogenes Gemisch mit sichtbaren Phasen",
+      "Als einzelne chemische Verbindung mit fester Zusammensetzung"
+    ],
+    "explanation": "In einer Lösung sind die gelösten Teilchen gleichmäßig verteilt. Das Gemisch wirkt einheitlich, seine Salzkonzentration kann aber unterschiedlich sein.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-fluessigkeit-teilchen",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Welches Teilchenmodell passt am besten zu einer Flüssigkeit?",
+    "answers": [
+      "Teilchen liegen eng beieinander und sind gegeneinander beweglich",
+      "Teilchen besitzen feste Plätze und bewegen sich überhaupt nicht",
+      "Teilchen sind sehr weit voneinander entfernt wie im idealen Gas",
+      "Teilchen verschwinden beim Umfüllen"
+    ],
+    "explanation": "Flüssigkeitsteilchen bleiben durch ihre Wechselwirkungen nahe beieinander, können aber ihre Nachbarn wechseln. Deshalb besitzen Flüssigkeiten ein ungefähr festes Volumen, jedoch keine feste Form.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-filtration",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Warum lässt sich vollständig gelöstes Kochsalz nicht mit gewöhnlichem Filterpapier aus Wasser entfernen?",
+    "answers": [
+      "Die gelösten Ionen passieren die Filterporen",
+      "Das Salz wird im Filter zu einem Gas",
+      "Filterpapier zieht ausschließlich Wasserstoffatome an",
+      "Das Salz ist schwerer als Wasser und verschwindet deshalb"
+    ],
+    "explanation": "Gewöhnliche Filtration trennt ungelöste Feststoffteilchen von einer Flüssigkeit. Gelöste Natrium- und Chloridionen sind zu klein und gelangen mit der Lösung durch den Filter.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-lackmus",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Wie reagiert blaues Lackmuspapier auf eine wässrige Lösung mit pH 2?",
+    "answers": [
+      "Es wird rot",
+      "Es wird immer grün",
+      "Es wird schwarz",
+      "Es bleibt bei jeder Säure blau"
+    ],
+    "explanation": "Lackmus ist ein Säure-Base-Indikator. In saurer Lösung erscheint er rot, in basischer Lösung blau.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-physikalische-aenderung",
+    "category": "Chemie",
+    "difficulty": 1,
+    "prompt": "Welcher Vorgang ist eine physikalische Veränderung ohne Bildung eines neuen Stoffes?",
+    "answers": [
+      "Eis schmilzt zu flüssigem Wasser",
+      "Eisen rostet",
+      "Holz verbrennt",
+      "Silber läuft durch eine chemische Reaktion an"
+    ],
+    "explanation": "Beim Schmelzen bleibt die chemische Zusammensetzung H₂O erhalten; nur der Aggregatzustand ändert sich. Bei chemischen Reaktionen entstehen dagegen Stoffe mit anderer Zusammensetzung oder Bindungsstruktur.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-ionenbindung",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Was hält die Ionen in einem Kochsalzkristall zusammen?",
+    "answers": [
+      "Die Anziehung zwischen entgegengesetzten elektrischen Ladungen",
+      "Gemeinsame Atomkerne benachbarter Ionen",
+      "Ausschließlich die Schwerkraft",
+      "Wasserstoffbrücken zwischen Natriumatomen"
+    ],
+    "explanation": "Natriumionen sind positiv, Chloridionen negativ geladen. Ihre elektrostatische Anziehung stabilisiert das Ionengitter.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-kovalente-bindung",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Was beschreibt eine kovalente Einfachbindung zwischen zwei Atomen?",
+    "answers": [
+      "Ein gemeinsam genutztes Elektronenpaar",
+      "Den Austausch ihrer Atomkerne",
+      "Den Verlust sämtlicher Elektronen beider Atome",
+      "Eine Bindung ausschließlich durch Neutronen"
+    ],
+    "explanation": "Bei einer kovalenten Bindung teilen Atome Elektronendichte. Im einfachen Elektronenpaarmodell wird das als gemeinsames Bindungselektronenpaar dargestellt.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-isotope",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Was unterscheidet Kohlenstoff-12 und Kohlenstoff-14 voneinander?",
+    "answers": [
+      "Die Zahl ihrer Neutronen",
+      "Die Zahl ihrer Protonen",
+      "Ihre Zugehörigkeit zu verschiedenen Elementen",
+      "Die elektrische Ladung jedes neutralen Atoms"
+    ],
+    "explanation": "Beide Isotope besitzen sechs Protonen. Kohlenstoff-12 hat sechs, Kohlenstoff-14 acht Neutronen.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-mol",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Welche Teilchenzahl entspricht einem Mol eines Stoffes ungefähr?",
+    "answers": [
+      "6,02 × 10²³",
+      "6,02 × 10³",
+      "1,00 × 10⁶",
+      "3,14 × 10⁸"
+    ],
+    "explanation": "Die Stoffmenge ein Mol enthält genau 6,02214076 × 10²³ festgelegte Teilchen. Welche Teilchen gemeint sind, etwa Atome oder Moleküle, muss angegeben werden.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-polaritaet-wasser",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Warum ist ein Wassermolekül ein Dipol?",
+    "answers": [
+      "Polare Bindungen und die gewinkelte Form ergeben eine ungleiche Ladungsverteilung",
+      "Es besitzt insgesamt eine doppelt positive Ladung",
+      "Seine beiden Wasserstoffatome sind chemisch verschiedene Elemente",
+      "Alle Bindungselektronen liegen ausschließlich im Atomkern"
+    ],
+    "explanation": "Sauerstoff zieht die Bindungselektronen stärker an als Wasserstoff. Wegen der gewinkelten Form heben sich die Bindungsdipole nicht gegenseitig auf.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-aktivierungsenergie",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Was verändert ein Katalysator bei einer chemischen Reaktion?",
+    "answers": [
+      "Er ermöglicht einen Weg mit geringerer Aktivierungsenergie",
+      "Er ändert zwangsläufig die chemische Gleichgewichtskonstante",
+      "Er verdoppelt dauerhaft die Masse der Produkte",
+      "Er macht jede endotherme Reaktion exotherm"
+    ],
+    "explanation": "Ein Katalysator bietet einen alternativen Reaktionsweg mit geringerer Aktivierungsbarriere. Er beschleunigt Hin- und Rückreaktion, verschiebt aber das Gleichgewicht bei gleicher Temperatur nicht.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-redox-elektronen",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Was bedeutet Oxidation in der modernen Redoxdefinition?",
+    "answers": [
+      "Abgabe von Elektronen",
+      "Aufnahme von Elektronen",
+      "Aufnahme von Protonen in jedem Fall",
+      "Verdampfen eines Stoffes"
+    ],
+    "explanation": "Oxidation ist Elektronenabgabe; Reduktion ist Elektronenaufnahme. Beide Teilprozesse sind in einer Redoxreaktion miteinander gekoppelt.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-saeure-base-proton",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Welche Eigenschaft definiert eine Brønsted-Säure?",
+    "answers": [
+      "Sie kann ein Proton abgeben",
+      "Sie kann nur Elektronen abgeben",
+      "Sie enthält zwingend ein Metallatom",
+      "Sie hat in jeder Konzentration pH 0"
+    ],
+    "explanation": "Nach Brønsted sind Säuren Protonendonatoren und Basen Protonenakzeptoren. Die Definition beschreibt einen Protonenübergang und ist nicht auf einen einzigen pH-Wert beschränkt.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-exotherm",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Was kennzeichnet eine exotherme Reaktion?",
+    "answers": [
+      "Sie gibt Wärme an die Umgebung ab",
+      "Sie benötigt grundsätzlich keine Aktivierungsenergie",
+      "Sie verbraucht zwangsläufig Sauerstoff",
+      "Sie kann nur unter 0 °C ablaufen"
+    ],
+    "explanation": "Bei einer exothermen Reaktion ist die Reaktionsenthalpie negativ. Trotzdem kann zunächst eine Aktivierungsbarriere überwunden werden müssen.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-struktur-organisch",
+    "category": "Chemie",
+    "difficulty": 2,
+    "prompt": "Welche funktionelle Gruppe kennzeichnet einen einfachen Alkohol wie Ethanol?",
+    "answers": [
+      "Eine Hydroxygruppe –OH",
+      "Eine Carboxygruppe –COOH",
+      "Eine Aldehydgruppe –CHO",
+      "Eine Aminogruppe –NH₂"
+    ],
+    "explanation": "Alkohole besitzen eine Hydroxygruppe an einem gesättigten Kohlenstoffatom. Die Gruppe beeinflusst unter anderem die Polarität und die Wasserstoffbrückenbildung.",
+    "source": {
+      "title": "OpenStax · Organic Chemistry (Lehrbuch)",
+      "url": "https://openstax.org/details/books/organic-chemistry"
+    }
+  },
+  {
+    "id": "chem-gleichgewicht-druck",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Beim Gleichgewicht N₂ + 3 H₂ ⇌ 2 NH₃ erhöht man bei konstanter Temperatur den Druck durch Volumenverkleinerung. Welche Seite wird begünstigt?",
+    "answers": [
+      "Die Ammoniakseite mit weniger Gasteilchen",
+      "Die Ausgangsstoffseite mit mehr Gasteilchen",
+      "Beide Seiten werden immer gleich stark begünstigt",
+      "Die Seite mit der größeren Anzahl an Stickstoffatomen"
+    ],
+    "explanation": "Links stehen vier, rechts zwei Mol gasförmiger Teilchen. Ein höherer Druck begünstigt hier die Seite mit weniger Gasteilchen; die Gleichgewichtskonstante ändert sich dabei nicht.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-puffer",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Woraus besteht ein klassischer Säure-Base-Puffer?",
+    "answers": [
+      "Aus einer schwachen Säure und ihrer konjugierten Base",
+      "Aus zwei starken Säuren gleicher Konzentration",
+      "Nur aus reinem Wasser",
+      "Aus beliebigen zwei unlöslichen Salzen"
+    ],
+    "explanation": "Die schwache Säure kann zugesetzte Base abfangen, ihre konjugierte Base zugesetzte Säure. So ändert sich der pH-Wert bei kleinen Zugaben weniger stark.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-loeslichkeitsprodukt",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Bei Silberchlorid übersteigt das Ionenprodukt c(Ag⁺) · c(Cl⁻) das Löslichkeitsprodukt. Welcher Vorgang wird dadurch begünstigt?",
+    "answers": [
+      "Die Ausfällung von festem Silberchlorid",
+      "Die weitere Auflösung von Silberchlorid",
+      "Eine bleibende Erhöhung beider Ionenkonzentrationen ohne Niederschlag",
+      "Eine spontane Vergrößerung des Löslichkeitsprodukts bei gleicher Temperatur"
+    ],
+    "explanation": "Ist das Ionenprodukt größer als das Löslichkeitsprodukt, liegt eine übersättigte Lösung vor. Die Bildung des schwer löslichen Feststoffs wird dann thermodynamisch begünstigt; die Konzentrationen gelöster Ionen können dadurch sinken.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-ester-gleichgewicht",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Welche Maßnahme begünstigt bei der Veresterung von Carbonsäure und Alkohol die Esterbildung im Gleichgewicht?",
+    "answers": [
+      "Entstandenes Wasser aus dem Gemisch entfernen",
+      "Immer mehr Produktwasser zugeben",
+      "Nur einen Katalysator zugeben, ohne sonst etwas zu ändern",
+      "Bei unveränderten Bedingungen ausschließlich länger warten"
+    ],
+    "explanation": "Wasser ist ein Produkt der Veresterung. Wird es entfernt, kann sich das Gleichgewicht in Richtung weiterer Esterbildung verschieben; ein Katalysator allein ändert die Gleichgewichtslage nicht.",
+    "source": {
+      "title": "OpenStax · Organic Chemistry (Lehrbuch)",
+      "url": "https://openstax.org/details/books/organic-chemistry"
+    }
+  },
+  {
+    "id": "chem-enthalpie-entropie",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Was bedeutet ΔG < 0 bei konstanter Temperatur und konstantem Druck für eine Reaktion?",
+    "answers": [
+      "Die Vorwärtsreaktion ist unter diesen Bedingungen thermodynamisch begünstigt",
+      "Die Reaktion muss in Sekundenbruchteilen ablaufen",
+      "Die Aktivierungsenergie ist zwingend null",
+      "Die Reaktionsenthalpie muss zwingend positiv sein"
+    ],
+    "explanation": "Eine negative Änderung der Gibbs-Energie kennzeichnet eine thermodynamisch begünstigte Richtung. Über die Reaktionsgeschwindigkeit sagt das allein nichts aus.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-sn1",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Welcher Schritt bestimmt bei einer idealisierten SN1-Reaktion typischerweise die Geschwindigkeit?",
+    "answers": [
+      "Die Bildung des Carbokations durch Abgang der Abgangsgruppe",
+      "Der gleichzeitige Angriff des Nukleophils und Abgang der Abgangsgruppe",
+      "Die abschließende schnelle Abgabe eines Protons nach dem Angriff",
+      "Die Diffusion des bereits gebildeten Produkts durch das Lösungsmittel"
+    ],
+    "explanation": "Bei SN1 entsteht zunächst in einem langsamen Schritt ein Carbokation. Der nachfolgende nukleophile Angriff ist im einfachen Modell schneller; die Geschwindigkeit hängt daher wesentlich vom Substrat ab.",
+    "source": {
+      "title": "OpenStax · Organic Chemistry (Lehrbuch)",
+      "url": "https://openstax.org/details/books/organic-chemistry"
+    }
+  },
+  {
+    "id": "chem-chiralitaet",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Wann ist ein tetraedrisches Kohlenstoffatom ein stereogenes Zentrum im einfachen Schulmodell?",
+    "answers": [
+      "Wenn es vier verschiedene Substituenten trägt",
+      "Wenn es zwei gleiche und zwei verschiedene Substituenten trägt",
+      "Wenn es drei gleiche und einen verschiedenen Substituenten trägt",
+      "Wenn alle vier Substituenten gleich sind"
+    ],
+    "explanation": "Vier verschiedene Substituenten können zwei nicht deckungsgleiche spiegelbildliche Anordnungen ermöglichen. Solche Enantiomere besitzen dieselbe Verknüpfung der Atome, aber unterschiedliche räumliche Anordnung.",
+    "source": {
+      "title": "OpenStax · Organic Chemistry (Lehrbuch)",
+      "url": "https://openstax.org/details/books/organic-chemistry"
+    }
+  },
+  {
+    "id": "chem-reaktionsordnung",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Für eine Reaktion gilt v = k · c(A)². Was bewirkt die Verdopplung von c(A) bei unverändertem k?",
+    "answers": [
+      "Die Geschwindigkeit vervierfacht sich",
+      "Die Geschwindigkeit verdoppelt sich",
+      "Die Geschwindigkeit halbiert sich",
+      "Die Geschwindigkeit bleibt unverändert"
+    ],
+    "explanation": "Die Geschwindigkeit ist hier proportional zum Quadrat der Konzentration von A. Der Faktor 2 in der Konzentration ergibt deshalb den Faktor 2² = 4 in der Geschwindigkeit.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-gleichgewichtskonstante",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Bei einem dynamischen chemischen Gleichgewicht in einem geschlossenen System gilt:",
+    "answers": [
+      "Hin- und Rückreaktion laufen gleich schnell ab",
+      "Beide Reaktionen sind vollständig zum Stillstand gekommen",
+      "Alle Ausgangsstoffe sind restlos verschwunden",
+      "Die Konzentrationen aller Stoffe sind gleich groß"
+    ],
+    "explanation": "Im dynamischen Gleichgewicht finden beide Reaktionen weiter statt. Weil ihre Geschwindigkeiten gleich sind, bleiben die makroskopischen Konzentrationen bei konstanten Bedingungen unverändert.",
+    "source": {
+      "title": "OpenStax · Chemistry 2e (Lehrbuch)",
+      "url": "https://openstax.org/details/books/chemistry-2e"
+    }
+  },
+  {
+    "id": "chem-mesomerie-benzol",
+    "category": "Chemie",
+    "difficulty": 3,
+    "prompt": "Welche Beschreibung des Benzolmoleküls passt zum Mesomeriemodell?",
+    "answers": [
+      "Die π-Elektronen sind über den Ring delokalisiert",
+      "Es liegen drei dauerhaft festgelegte isolierte Doppelbindungen vor",
+      "Der Ring besitzt abwechselnd drei lange und drei kurze C–C-Bindungen",
+      "Alle sechs Kohlenstoffatome sind tetraedrisch sp³-hybridisiert"
+    ],
+    "explanation": "Mesomere Grenzstrukturen beschreiben gemeinsam ein delokalisiertes Elektronensystem. Die sechs Kohlenstoff-Kohlenstoff-Bindungen im Benzol sind dadurch gleichwertig.",
+    "source": {
+      "title": "OpenStax · Organic Chemistry (Lehrbuch)",
+      "url": "https://openstax.org/details/books/organic-chemistry"
+    }
+  },
+  {
+    "id": "geo-wetter-klima",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Was unterscheidet Klima vom Wetter?",
+    "answers": [
+      "Klima beschreibt typische Wetterbedingungen über lange Zeiträume",
+      "Klima bezeichnet ausschließlich die Temperatur von heute",
+      "Wetter beschreibt nur Vorgänge im Erdkern",
+      "Klima kann sich grundsätzlich nicht verändern"
+    ],
+    "explanation": "Wetter ist der aktuelle Zustand der Atmosphäre. Klima beschreibt dessen statistische Eigenschaften über längere Zeiträume, häufig anhand von 30-jährigen Vergleichsperioden.",
+    "source": {
+      "title": "IPCC · AR6, naturwissenschaftliche Grundlagen",
+      "url": "https://www.ipcc.ch/report/ar6/wg1/"
+    }
+  },
+  {
+    "id": "geo-wasserkreislauf",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Wie heißt es, wenn flüssiges Wasser an seiner Oberfläche unterhalb der Siedetemperatur in die Luft übergeht?",
+    "answers": [
+      "Verdunstung",
+      "Kondensation",
+      "Gefrieren",
+      "Versickerung"
+    ],
+    "explanation": "Bei der Verdunstung gelangt Wasser in die gasförmige Phase. Kondensation ist der umgekehrte Übergang und spielt bei der Wolkenbildung eine wichtige Rolle.",
+    "source": {
+      "title": "USGS · Water Science School",
+      "url": "https://www.usgs.gov/special-topics/water-science-school"
+    }
+  },
+  {
+    "id": "geo-tageszeiten",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Was verursacht hauptsächlich den Wechsel von Tag und Nacht?",
+    "answers": [
+      "Die Drehung der Erde um ihre eigene Achse",
+      "Die jährliche Bewegung der Erde um die Sonne",
+      "Die Mondphasen",
+      "Die Bewegung der Kontinente"
+    ],
+    "explanation": "Durch die Erdrotation wenden sich Orte abwechselnd der Sonne zu und von ihr ab. Die Erdumlaufbahn ist dagegen für den jährlichen Rhythmus bedeutsam.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-massstab",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Was bedeutet der Kartenmaßstab 1 : 100.000?",
+    "answers": [
+      "1 cm auf der Karte entspricht 1 km in der Wirklichkeit",
+      "1 cm auf der Karte entspricht 100 km in der Wirklichkeit",
+      "1 km auf der Karte entspricht 1 cm in der Wirklichkeit",
+      "Jeder eingezeichnete Berg ist 100.000 m hoch"
+    ],
+    "explanation": "100.000 cm entsprechen 1.000 m oder 1 km. Ein Maßstab beschreibt das Verhältnis von Kartenlänge zur entsprechenden tatsächlichen Länge.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-erneuerbar",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Welche Energiequelle zählt zu den erneuerbaren Energien?",
+    "answers": [
+      "Wind",
+      "Steinkohle",
+      "Erdöl",
+      "Braunkohle"
+    ],
+    "explanation": "Wind entsteht durch atmosphärische Prozesse, die letztlich von der Sonneneinstrahlung angetrieben werden. Kohle und Erdöl sind fossile Energieträger, deren Neubildung geologische Zeiträume benötigt.",
+    "source": {
+      "title": "Umweltbundesamt · Klima und Energie",
+      "url": "https://www.umweltbundesamt.de/themen/klima-energie"
+    }
+  },
+  {
+    "id": "geo-aequator",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Welche gedachte Linie teilt die Erde in Nord- und Südhalbkugel?",
+    "answers": [
+      "Der Äquator",
+      "Der Nullmeridian",
+      "Der nördliche Wendekreis",
+      "Der südliche Polarkreis"
+    ],
+    "explanation": "Der Äquator liegt bei 0° geografischer Breite. Der Nullmeridian ist dagegen die Bezugslinie für geografische Länge.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-magma-lava",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Wie nennt man Magma, nachdem es an die Erdoberfläche ausgetreten ist?",
+    "answers": [
+      "Lava",
+      "Granit",
+      "Löss",
+      "Grundwasser"
+    ],
+    "explanation": "Magma ist Gesteinsschmelze im Erdinneren. An der Erdoberfläche wird die austretende Schmelze als Lava bezeichnet.",
+    "source": {
+      "title": "USGS · Earthquake Hazards Program",
+      "url": "https://www.usgs.gov/programs/earthquake-hazards"
+    }
+  },
+  {
+    "id": "geo-verwitterung",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Was ist ein Beispiel für physikalische Verwitterung?",
+    "answers": [
+      "Wasser gefriert in Felsspalten und sprengt Gestein auf",
+      "Ein Fluss lagert Sand im Meer ab",
+      "Wolken kondensieren über einem Berg",
+      "Pflanzen erzeugen Sauerstoff"
+    ],
+    "explanation": "Bei der Frostverwitterung vergrößert gefrierendes Wasser sein Volumen und übt Druck auf das Gestein aus. Das Gestein wird mechanisch zerkleinert, ohne dass dafür seine Minerale chemisch umgewandelt werden müssen.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-bevoelkerungsdichte",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Was beschreibt die Bevölkerungsdichte?",
+    "answers": [
+      "Die Zahl der Einwohner pro Flächeneinheit",
+      "Die durchschnittliche Körpergröße der Einwohner",
+      "Den Anteil bewaldeter Flächen",
+      "Die Zahl der jährlichen Niederschlagstage"
+    ],
+    "explanation": "Bevölkerungsdichte setzt Einwohnerzahl und Fläche ins Verhältnis. Häufig wird sie in Einwohnern je Quadratkilometer angegeben.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Demography",
+      "url": "https://www.britannica.com/science/demography"
+    }
+  },
+  {
+    "id": "geo-grundwasser",
+    "category": "Erdkunde",
+    "difficulty": 1,
+    "prompt": "Wo befindet sich Grundwasser?",
+    "answers": [
+      "In zusammenhängend wassergefüllten Poren und Klüften unter der Erdoberfläche",
+      "Nur in großen unterirdischen Seen",
+      "Ausschließlich in künstlich gebauten Wasserleitungen",
+      "Immer oberhalb der Wolken"
+    ],
+    "explanation": "Grundwasser füllt Hohlräume im Untergrund unterhalb des Grundwasserspiegels. Ein Grundwasserleiter muss deshalb kein sichtbarer unterirdischer Fluss oder See sein.",
+    "source": {
+      "title": "USGS · Water Science School",
+      "url": "https://www.usgs.gov/special-topics/water-science-school"
+    }
+  },
+  {
+    "id": "geo-mittelmeerklima",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Ein Klimadiagramm zeigt heiße, trockene Sommer und milde, niederschlagsreiche Winter. Welcher Klimatyp passt am besten?",
+    "answers": [
+      "Mittelmeerklima",
+      "Immerfeuchtes tropisches Regenwaldklima",
+      "Polares Eisklima",
+      "Ganzjährig gleichmäßig feuchtes Äquatorialklima"
+    ],
+    "explanation": "Das Mittelmeerklima besitzt typischerweise eine sommerliche Trockenzeit und winterliche Niederschläge. Vergleichbare Bedingungen finden sich auch in Teilen Kaliforniens, Chiles, Südafrikas und Australiens.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-regen-schatten",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Warum liegt hinter einem Gebirge häufig ein Regenschatten?",
+    "answers": [
+      "Aufsteigende Luft regnet sich auf der Luvseite ab und erwärmt sich beim Absinken im Lee",
+      "Gebirge verbrauchen sämtlichen Sauerstoff der Luft",
+      "Der Luftdruck ist auf beiden Seiten stets null",
+      "Wasser kann die Höhe eines Gebirges grundsätzlich nicht überwinden"
+    ],
+    "explanation": "Feuchte Luft kühlt beim Aufsteigen ab und kann Niederschlag bilden. Nach dem Überqueren des Gebirges sinkt die nun oft trockenere Luft ab und erwärmt sich.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-subduktion",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Was geschieht an einer Subduktionszone?",
+    "answers": [
+      "Eine Erdplatte taucht unter eine andere ab",
+      "Zwei Platten verlieren schlagartig ihre gesamte Masse",
+      "Alle Gesteine bleiben bewegungslos",
+      "Der Erdkern tritt an die Oberfläche"
+    ],
+    "explanation": "Meist sinkt dichtere ozeanische Lithosphäre unter eine andere Platte. Solche Grenzen sind häufig mit Erdbeben und Vulkanismus verbunden.",
+    "source": {
+      "title": "USGS · Earthquake Hazards Program",
+      "url": "https://www.usgs.gov/programs/earthquake-hazards"
+    }
+  },
+  {
+    "id": "geo-ozon-hoehenlage",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Warum unterscheidet man bei Ozon zwischen der Stratosphäre und der bodennahen Luft?",
+    "answers": [
+      "Hoch oben schützt es vor UV-Strahlung; bodennah kann es Gesundheit und Pflanzen schädigen",
+      "Ozon besteht nur in Bodennähe aus Sauerstoffatomen",
+      "In der Stratosphäre gibt es grundsätzlich keine Sonnenstrahlung",
+      "Bodennahes Ozon ist immer ein unschädlicher Bestandteil von reinem Wasser"
+    ],
+    "explanation": "Stratosphärisches Ozon absorbiert einen Teil der energiereichen UV-Strahlung. Bodennahes Ozon ist dagegen ein reaktives Luftschadgas und kann bei erhöhten Konzentrationen unter anderem Atemwege und Pflanzen schädigen.",
+    "source": {
+      "title": "Umweltbundesamt · Ozon",
+      "url": "https://www.umweltbundesamt.de/themen/luft/luftschadstoffe-im-ueberblick/ozon"
+    }
+  },
+  {
+    "id": "geo-versiegelung",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Welche Folge hat eine starke Bodenversiegelung bei Starkregen typischerweise?",
+    "answers": [
+      "Mehr oberflächlichen Abfluss und weniger Versickerung",
+      "Immer mehr Grundwasserneubildung",
+      "Das sofortige Verschwinden aller Flüsse",
+      "Eine vollständige Verhinderung von Überschwemmungen"
+    ],
+    "explanation": "Asphalt und andere dichte Oberflächen erschweren das Eindringen von Wasser in den Boden. Niederschlag gelangt deshalb schneller oberflächlich oder über die Kanalisation in Gewässer.",
+    "source": {
+      "title": "USGS · Water Science School",
+      "url": "https://www.usgs.gov/special-topics/water-science-school"
+    }
+  },
+  {
+    "id": "geo-delta",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Warum kann an einer Flussmündung ein Delta entstehen?",
+    "answers": [
+      "Der Fluss verliert Strömungsenergie und lagert mitgeführtes Material ab",
+      "Das Meer erzeugt dort ausschließlich neue Gebirge",
+      "Das Wasser wird durch Sonnenlicht zu Sand",
+      "Der Fluss fließt an jeder Mündung rückwärts"
+    ],
+    "explanation": "Beim Eintritt in ein stehendes Gewässer sinkt die Transportfähigkeit des Flusses häufig. Überwiegt die Ablagerung den Abtransport, können neue Landflächen und verzweigte Mündungsarme entstehen.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-demografische-bilanz",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Was gehört zur natürlichen Bevölkerungsentwicklung eines Gebietes?",
+    "answers": [
+      "Die Differenz zwischen Geburten und Sterbefällen",
+      "Die Differenz zwischen Einwanderung und Auswanderung",
+      "Die Veränderung der Landesfläche",
+      "Die Zahl neu gebauter Straßen"
+    ],
+    "explanation": "Natürliche Bevölkerungsentwicklung berücksichtigt Geburten und Sterbefälle. Wanderungen werden zusätzlich in der räumlichen Bevölkerungsbewegung erfasst.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Demography",
+      "url": "https://www.britannica.com/science/demography"
+    }
+  },
+  {
+    "id": "geo-verstaedterung",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Was bedeutet Urbanisierung im engeren demografischen Sinn?",
+    "answers": [
+      "Der Anteil der in Städten lebenden Bevölkerung nimmt zu",
+      "Jede Stadt verliert zwingend Einwohner",
+      "Landwirtschaftliche Flächen wachsen überall schneller als Städte",
+      "Alle Einwohner ziehen gleichzeitig in die Hauptstadt"
+    ],
+    "explanation": "Urbanisierung bezeichnet im demografischen Sinn einen zunehmenden städtischen Bevölkerungsanteil. Sie kann durch Land-Stadt-Wanderung und unterschiedliche Wachstumsraten entstehen.",
+    "source": {
+      "title": "Our World in Data · Urbanization",
+      "url": "https://ourworldindata.org/urbanization"
+    }
+  },
+  {
+    "id": "geo-monsun",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Welches Merkmal kennzeichnet ein Monsunsystem?",
+    "answers": [
+      "Eine großräumige jahreszeitliche Änderung der vorherrschenden Windrichtung",
+      "Einen überall auf der Erde gleich starken Dauerregen",
+      "Eine tägliche vollständige Umkehr des Magnetfelds",
+      "Eine dauerhaft gleiche Temperatur über Land und Meer"
+    ],
+    "explanation": "Land und Meer erwärmen sich im Jahresverlauf unterschiedlich stark. Daraus entstehende Druckunterschiede tragen zum saisonalen Wechsel der großräumigen Luftströmung bei.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-boeden-humus",
+    "category": "Erdkunde",
+    "difficulty": 2,
+    "prompt": "Warum ist Humus für viele landwirtschaftliche Böden wichtig?",
+    "answers": [
+      "Er verbessert unter anderem Wasser- und Nährstoffspeicherung",
+      "Er verhindert jede Tätigkeit von Bodenorganismen",
+      "Er besteht ausschließlich aus reinem Quarzsand",
+      "Er macht Dürren grundsätzlich folgenlos"
+    ],
+    "explanation": "Humus umfasst abgestorbene organische Stoffe des Bodens und ihre Umwandlungsprodukte. Er beeinflusst das Bodengefüge und kann die Speicherung von Wasser und Nährstoffen unterstützen.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-itcz",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Warum entstehen im Bereich der innertropischen Konvergenzzone häufig kräftige Niederschläge?",
+    "answers": [
+      "Feuchtwarme Luft strömt zusammen, steigt auf und kühlt ab",
+      "Luft sinkt ab, erwärmt sich und bildet dadurch dauerhaft Regenwolken",
+      "Trockene Luft strömt bodennah auseinander und wird stark komprimiert",
+      "Der Wasserdampfgehalt steigt dort ausschließlich durch absinkende Polarluft"
+    ],
+    "explanation": "Im Bereich der ITCZ treffen bodennahe Luftströmungen zusammen. Aufsteigende feuchte Luft kühlt ab; Kondensation und Konvektion begünstigen mächtige Wolken und Niederschläge.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-albedo-rueckkopplung",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Welche Wirkung beschreibt die Eis-Albedo-Rückkopplung bei Erwärmung?",
+    "answers": [
+      "Weniger helles Eis lässt mehr Sonnenenergie absorbieren und verstärkt die Erwärmung",
+      "Die dunklere Wasserfläche erhöht die Reflexion und bremst die Erwärmung",
+      "Die verringerte Reflexion senkt die Aufnahme von Sonnenenergie",
+      "Der Eisverlust verändert nur die Luftfeuchtigkeit, nicht die Strahlungsbilanz"
+    ],
+    "explanation": "Helle Eis- und Schneeflächen reflektieren viel Sonnenstrahlung. Werden sie durch dunklere Oberflächen ersetzt, steigt die absorbierte Energie; das ist eine verstärkende Rückkopplung.",
+    "source": {
+      "title": "IPCC · AR6, naturwissenschaftliche Grundlagen",
+      "url": "https://www.ipcc.ch/report/ar6/wg1/"
+    }
+  },
+  {
+    "id": "geo-coriolis",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Wie wird eine großräumige bodennahe Luftströmung auf der Nordhalbkugel durch die Corioliskraft abgelenkt?",
+    "answers": [
+      "Nach rechts relativ zu ihrer Bewegungsrichtung",
+      "Immer genau nach Norden",
+      "Nach links relativ zu ihrer Bewegungsrichtung",
+      "Überall senkrecht nach oben"
+    ],
+    "explanation": "Die Corioliskraft ergibt sich aus der Betrachtung auf der rotierenden Erde. Auf der Nordhalbkugel wirkt die horizontale Ablenkung nach rechts, auf der Südhalbkugel nach links.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-thermohalin",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Was kann die Bildung dichten Tiefenwassers im Nordatlantik begünstigen?",
+    "answers": [
+      "Die Abkühlung von salzreichem Oberflächenwasser",
+      "Die Erwärmung von salzreichem Oberflächenwasser",
+      "Die starke Verdünnung des Oberflächenwassers mit Schmelzwasser",
+      "Die Erwärmung und gleichzeitige Aussüßung des Oberflächenwassers"
+    ],
+    "explanation": "Die Dichte von Meerwasser hängt unter anderem von Temperatur und Salzgehalt ab. Kaltes, salzreiches Wasser kann dichter werden und absinken; der Prozess ist Teil der großräumigen Umwälzung.",
+    "source": {
+      "title": "IPCC · AR6, naturwissenschaftliche Grundlagen",
+      "url": "https://www.ipcc.ch/report/ar6/wg1/"
+    }
+  },
+  {
+    "id": "geo-demografischer-uebergang",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Warum wächst eine Bevölkerung im klassischen demografischen Übergang zunächst besonders stark?",
+    "answers": [
+      "Die Sterberate sinkt früher als die Geburtenrate",
+      "Die Geburtenrate sinkt früher als die Sterberate",
+      "Beide Raten sinken immer gleichzeitig und gleich stark",
+      "Die Sterberate steigt, während die Geburtenrate gleich bleibt"
+    ],
+    "explanation": "Verbesserte Versorgung und medizinischer Fortschritt können zunächst die Sterblichkeit senken. Bleibt die Geburtenrate vorerst hoch, entsteht ein großer Geburtenüberschuss.",
+    "source": {
+      "title": "Our World in Data · Demographic transition",
+      "url": "https://ourworldindata.org/demographic-transition"
+    }
+  },
+  {
+    "id": "geo-potentielle-verdunstung",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Was bedeutet eine negative klimatische Wasserbilanz, wenn sie als Niederschlag minus potenzielle Verdunstung definiert ist?",
+    "answers": [
+      "Der Niederschlag ist kleiner als der potenzielle Wasserverlust durch Verdunstung",
+      "Es verdunstet tatsächlich mehr Wasser, als überhaupt vorhanden ist",
+      "Es muss an jedem einzelnen Tag regnen",
+      "Der Grundwasserspiegel steigt zwingend überall"
+    ],
+    "explanation": "Potenzielle Verdunstung bezeichnet den möglichen Verlust bei ausreichender Wasserverfügbarkeit. Ein negativer Saldo zeigt ein klimatisches Wasserdefizit an, nicht eine unbegrenzt mögliche tatsächliche Verdunstung.",
+    "source": {
+      "title": "USGS · Water Science School",
+      "url": "https://www.usgs.gov/special-topics/water-science-school"
+    }
+  },
+  {
+    "id": "geo-isostasie",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Ein zuvor von einem mächtigen Eisschild belasteter Gesteinskörper hebt sich nach dessen Abschmelzen langsam. Welcher Prozess erklärt das?",
+    "answers": [
+      "Glazialisostatischer Ausgleich nach der Entlastung",
+      "Frostsprengung an der freigelegten Gesteinsoberfläche",
+      "Ablagerung von Flusssedimenten im Vorland",
+      "Chemische Lösung des Gesteins durch Schmelzwasser"
+    ],
+    "explanation": "Ein großer Eisschild belastet die Lithosphäre und kann sie absenken. Nach der Entlastung reagiert das Erdsystem mit einer langsamen Hebung, die lange nach dem Abschmelzen andauern kann.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-bodenversalzung",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Warum kann Bewässerung in trockenen Gebieten bei unzureichender Entwässerung den Boden versalzen?",
+    "answers": [
+      "Wasser verdunstet, während eingetragene gelöste Salze zurückbleiben",
+      "Alle gelösten Salze verdunsten schneller als das Wasser",
+      "Versickerndes Wasser erhöht unabhängig von der Entwässerung immer den Salzgehalt",
+      "Salze werden ausschließlich durch hohe Lufttemperatur neu erzeugt"
+    ],
+    "explanation": "Bewässerungswasser und aufsteigendes Grundwasser können gelöste Salze mitführen. Bei hoher Verdunstung und fehlendem Auswaschen sammeln sich diese im Wurzelraum an.",
+    "source": {
+      "title": "USGS · Water Science School",
+      "url": "https://www.usgs.gov/special-topics/water-science-school"
+    }
+  },
+  {
+    "id": "geo-loess",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Wie entsteht eine Lössdecke überwiegend?",
+    "answers": [
+      "Durch Ablagerung vom Wind transportierter feiner Sedimente",
+      "Durch Ablagerung grober Gesteinsblöcke direkt unter dem Gletschereis",
+      "Durch Ausfällung von Kalk aus Meerwasser",
+      "Durch die Abkühlung dünnflüssiger Lava"
+    ],
+    "explanation": "Löss ist ein überwiegend schluffiges, vom Wind abgelagertes Sediment. In Kaltzeiten lieferten vegetationsarme Flächen und Gletschervorfelder häufig viel transportierbares Material.",
+    "source": {
+      "title": "Encyclopaedia Britannica · Physical geography",
+      "url": "https://www.britannica.com/science/physical-geography"
+    }
+  },
+  {
+    "id": "geo-stadtwaermeinsel",
+    "category": "Erdkunde",
+    "difficulty": 3,
+    "prompt": "Warum können stark bebaute Stadtzentren nachts wärmer bleiben als ihr Umland?",
+    "answers": [
+      "Gebäude und Straßen geben gespeicherte Wärme ab; Verdunstung und Ausstrahlung sind verändert",
+      "Die geringere Wärmespeicherung versiegelter Flächen erwärmt die Luft stärker",
+      "Dichtere Bebauung verstärkt immer die nächtliche Ausstrahlung ins All",
+      "Der höhere Vegetationsanteil in Zentren verhindert dort jede Verdunstung"
+    ],
+    "explanation": "Versiegelte Oberflächen und Baukörper speichern tagsüber Energie und geben sie nachts ab. Weniger Vegetation sowie die städtische Geometrie und zusätzliche Abwärme können den Wärmeinseleffekt verstärken.",
+    "source": {
+      "title": "Umweltbundesamt · Klima und Energie",
+      "url": "https://www.umweltbundesamt.de/themen/klima-energie"
+    }
+  }
+]

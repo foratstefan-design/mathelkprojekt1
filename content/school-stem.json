@@ -1,0 +1,1532 @@
+[
+  {
+    "id": "math-prozent-anteil",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Ein Pullover kostet 80 €. Wie viel sind 20 % davon?",
+    "answers": [
+      "16 €",
+      "4 €",
+      "20 €",
+      "64 €"
+    ],
+    "explanation": "20 % sind ein Fünftel. Ein Fünftel von 80 € sind 16 €; der Preis nach einem Rabatt von 20 % wäre dagegen 64 €.",
+    "source": {
+      "title": "Wikipedia · Prozentrechnung",
+      "url": "https://de.wikipedia.org/wiki/Prozentrechnung"
+    }
+  },
+  {
+    "id": "math-brueche-addition",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Was ergibt ½ + ¼?",
+    "answers": [
+      "¾",
+      "⅙",
+      "⅜",
+      "⅔"
+    ],
+    "explanation": "Zum Addieren brauchen Brüche denselben Nenner: ½ = 2/4, also 2/4 + 1/4 = 3/4.",
+    "source": {
+      "title": "Wikipedia · Bruchrechnung",
+      "url": "https://de.wikipedia.org/wiki/Bruchrechnung"
+    }
+  },
+  {
+    "id": "math-vorzeichen-potenz",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Welchen Wert hat (−3)²?",
+    "answers": [
+      "9",
+      "−9",
+      "6",
+      "−6"
+    ],
+    "explanation": "Die Klammer wird als Ganzes quadriert: (−3) · (−3) = 9. Ohne Klammer bedeutet −3² dagegen −(3²).",
+    "source": {
+      "title": "Wikipedia · Potenz (Mathematik)",
+      "url": "https://de.wikipedia.org/wiki/Potenz_(Mathematik)"
+    }
+  },
+  {
+    "id": "math-rechteck-flaeche",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Ein Rechteck ist 6 cm lang und 4 cm breit. Wie groß ist seine Fläche?",
+    "answers": [
+      "24 cm²",
+      "20 cm²",
+      "10 cm²",
+      "48 cm²"
+    ],
+    "explanation": "Die Rechteckfläche ist Länge mal Breite: 6 cm · 4 cm = 24 cm². Der Umfang wäre 20 cm.",
+    "source": {
+      "title": "Wikipedia · Rechteck",
+      "url": "https://de.wikipedia.org/wiki/Rechteck"
+    }
+  },
+  {
+    "id": "math-dreieck-winkelsumme",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Zwei Innenwinkel eines ebenen Dreiecks sind 50° und 60°. Wie groß ist der dritte?",
+    "answers": [
+      "70°",
+      "90°",
+      "110°",
+      "130°"
+    ],
+    "explanation": "In der euklidischen Ebene beträgt die Innenwinkelsumme eines Dreiecks 180°. Daher fehlen 180° − 50° − 60° = 70°.",
+    "source": {
+      "title": "Wikipedia · Dreieck",
+      "url": "https://de.wikipedia.org/wiki/Dreieck"
+    }
+  },
+  {
+    "id": "math-lineare-gleichung",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Welche Zahl x erfüllt 3x + 5 = 20?",
+    "answers": [
+      "5",
+      "15",
+      "25/3",
+      "3"
+    ],
+    "explanation": "Zuerst zieht man auf beiden Seiten 5 ab: 3x = 15. Anschließend teilt man beide Seiten durch 3.",
+    "source": {
+      "title": "Wikipedia · Lineare Gleichung",
+      "url": "https://de.wikipedia.org/wiki/Lineare_Gleichung"
+    }
+  },
+  {
+    "id": "math-median-ausreisser",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Was ist der Median der Zahlen 2, 3, 4, 5 und 100?",
+    "answers": [
+      "4",
+      "22,8",
+      "5",
+      "100"
+    ],
+    "explanation": "Der Median ist bei einer ungeraden Anzahl der mittlere Wert der sortierten Liste. Ein einzelner großer Ausreißer beeinflusst ihn weniger stark als das arithmetische Mittel.",
+    "source": {
+      "title": "Wikipedia · Median",
+      "url": "https://de.wikipedia.org/wiki/Median"
+    }
+  },
+  {
+    "id": "math-koordinaten-xachse",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Welcher Punkt liegt im üblichen kartesischen Koordinatensystem auf der x-Achse?",
+    "answers": [
+      "(4|0)",
+      "(0|4)",
+      "(4|4)",
+      "(−4|2)"
+    ],
+    "explanation": "Auf der x-Achse ist die y-Koordinate immer 0. Die x-Koordinate darf dabei positiv, negativ oder ebenfalls 0 sein.",
+    "source": {
+      "title": "Wikipedia · Kartesisches Koordinatensystem",
+      "url": "https://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem"
+    }
+  },
+  {
+    "id": "math-wuerfel-gerade",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Ein fairer sechsseitiger Würfel wird einmal geworfen. Wie groß ist die Wahrscheinlichkeit für eine gerade Zahl?",
+    "answers": [
+      "½",
+      "⅓",
+      "⅙",
+      "⅔"
+    ],
+    "explanation": "Die geraden Ergebnisse sind 2, 4 und 6: drei von sechs gleich wahrscheinlichen Möglichkeiten. Das ergibt 3/6 = 1/2.",
+    "source": {
+      "title": "Wikipedia · Laplace-Experiment",
+      "url": "https://de.wikipedia.org/wiki/Laplace-Experiment"
+    }
+  },
+  {
+    "id": "math-proportional-verdoppeln",
+    "category": "Mathematik",
+    "difficulty": 1,
+    "prompt": "Vier gleiche Hefte kosten zusammen 8 €. Was kosten sechs dieser Hefte bei gleichem Stückpreis?",
+    "answers": [
+      "12 €",
+      "10 €",
+      "16 €",
+      "6 €"
+    ],
+    "explanation": "Ein Heft kostet 8 € / 4 = 2 €. Bei direkter Proportionalität kosten sechs Hefte daher 6 · 2 € = 12 €.",
+    "source": {
+      "title": "Wikipedia · Proportionalität",
+      "url": "https://de.wikipedia.org/wiki/Proportionalit%C3%A4t"
+    }
+  },
+  {
+    "id": "math-pythagoras-hypotenuse",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Ein rechtwinkliges Dreieck hat Katheten von 3 cm und 4 cm. Wie lang ist die Hypotenuse?",
+    "answers": [
+      "5 cm",
+      "7 cm",
+      "12 cm",
+      "√7 cm"
+    ],
+    "explanation": "Nach dem Satz des Pythagoras gilt c² = 3² + 4² = 25. Die positive Wurzel liefert c = 5 cm.",
+    "source": {
+      "title": "Wikipedia · Satz des Pythagoras",
+      "url": "https://de.wikipedia.org/wiki/Satz_des_Pythagoras"
+    }
+  },
+  {
+    "id": "math-potenzgesetze-produkt",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Welche vereinfachte Form hat x³ · x⁴?",
+    "answers": [
+      "x⁷",
+      "x¹²",
+      "2x⁷",
+      "x"
+    ],
+    "explanation": "Beim Multiplizieren von Potenzen mit derselben Basis werden die Exponenten addiert. Hier stehen insgesamt sieben Faktoren x.",
+    "source": {
+      "title": "Wikipedia · Potenz (Mathematik)",
+      "url": "https://de.wikipedia.org/wiki/Potenz_(Mathematik)"
+    }
+  },
+  {
+    "id": "math-quadratische-nullstellen",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Welche beiden Nullstellen hat f(x) = x² − 9?",
+    "answers": [
+      "−3 und 3",
+      "0 und 9",
+      "−9 und 9",
+      "Nur 3"
+    ],
+    "explanation": "x² − 9 lässt sich als (x − 3)(x + 3) schreiben. Ein Produkt ist null, wenn mindestens einer seiner Faktoren null ist.",
+    "source": {
+      "title": "Wikipedia · Quadratische Gleichung",
+      "url": "https://de.wikipedia.org/wiki/Quadratische_Gleichung"
+    }
+  },
+  {
+    "id": "math-exponentiell-wachstum",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Eine Größe wächst jedes Jahr um 10 %. Welcher Faktor beschreibt die Änderung über zwei Jahre?",
+    "answers": [
+      "1,21",
+      "1,20",
+      "0,20",
+      "2,10"
+    ],
+    "explanation": "Jedes Jahr wird mit 1,10 multipliziert. Nach zwei Jahren ist der Faktor 1,10² = 1,21; der Zuwachs des zweiten Jahres wirkt auch auf den ersten Zuwachs.",
+    "source": {
+      "title": "Wikipedia · Exponentielles Wachstum",
+      "url": "https://de.wikipedia.org/wiki/Exponentielles_Wachstum"
+    }
+  },
+  {
+    "id": "math-lineare-steigung",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Eine Gerade verläuft durch (0|2) und (3|8). Welche Steigung hat sie?",
+    "answers": [
+      "2",
+      "3",
+      "6",
+      "⅓"
+    ],
+    "explanation": "Die Steigung ist die Änderung von y geteilt durch die Änderung von x: (8 − 2)/(3 − 0) = 2.",
+    "source": {
+      "title": "Wikipedia · Steigung",
+      "url": "https://de.wikipedia.org/wiki/Steigung"
+    }
+  },
+  {
+    "id": "math-sinus-definition",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Was beschreibt sin(α) in einem rechtwinkligen Dreieck für einen spitzen Winkel α?",
+    "answers": [
+      "Gegenkathete / Hypotenuse",
+      "Ankathete / Hypotenuse",
+      "Gegenkathete / Ankathete",
+      "Hypotenuse / Gegenkathete"
+    ],
+    "explanation": "Der Sinus eines spitzen Winkels ist Gegenkathete durch Hypotenuse. Die Zuordnung der Katheten hängt vom betrachteten Winkel ab.",
+    "source": {
+      "title": "Wikipedia · Sinus und Kosinus",
+      "url": "https://de.wikipedia.org/wiki/Sinus_und_Kosinus"
+    }
+  },
+  {
+    "id": "math-logarithmus-bedeutung",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Was bedeutet log₂(8) = 3?",
+    "answers": [
+      "2³ = 8",
+      "3² = 8",
+      "8² = 3",
+      "2 · 3 = 8"
+    ],
+    "explanation": "Ein Logarithmus beantwortet die Frage nach dem Exponenten. log₂(8) fragt, mit welchem Exponenten die Basis 2 die Zahl 8 ergibt.",
+    "source": {
+      "title": "Wikipedia · Logarithmus",
+      "url": "https://de.wikipedia.org/wiki/Logarithmus"
+    }
+  },
+  {
+    "id": "math-unabhaengig-muenze",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Eine faire Münze zeigt fünfmal hintereinander Kopf. Wie groß ist beim unabhängigen sechsten Wurf die Chance auf Kopf?",
+    "answers": [
+      "50 %",
+      "Weniger als 50 %",
+      "Mehr als 50 %",
+      "0 %"
+    ],
+    "explanation": "Bei unabhängigen Würfen verändert die Vergangenheit die nächste Wahrscheinlichkeit nicht. Die Münze muss eine bisherige Folge nicht ausgleichen.",
+    "source": {
+      "title": "Wikipedia · Unabhängigkeit (Stochastik)",
+      "url": "https://de.wikipedia.org/wiki/Unabh%C3%A4ngigkeit_(Stochastik)"
+    }
+  },
+  {
+    "id": "math-varianz-streuung",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Zwei Datenreihen haben denselben Mittelwert. Was bedeutet eine größere Standardabweichung?",
+    "answers": [
+      "Die Werte streuen stärker um den Mittelwert",
+      "Es gibt automatisch mehr Werte",
+      "Der Median ist immer größer",
+      "Alle Werte sind positiv"
+    ],
+    "explanation": "Die Standardabweichung beschreibt die Streuung in derselben Einheit wie die Messwerte. Ein gleicher Mittelwert sagt noch nichts darüber aus, wie eng die Werte beieinanderliegen.",
+    "source": {
+      "title": "Wikipedia · Standardabweichung",
+      "url": "https://de.wikipedia.org/wiki/Standardabweichung"
+    }
+  },
+  {
+    "id": "math-vektor-betrag",
+    "category": "Mathematik",
+    "difficulty": 2,
+    "prompt": "Welchen Betrag hat der Vektor (0|−5)?",
+    "answers": [
+      "5",
+      "−5",
+      "0",
+      "25"
+    ],
+    "explanation": "Der Betrag eines Vektors ist seine Länge und deshalb nie negativ. Für (0|−5) ergibt sich √(0² + (−5)²) = 5.",
+    "source": {
+      "title": "Wikipedia · Euklidischer Abstand",
+      "url": "https://de.wikipedia.org/wiki/Euklidischer_Abstand"
+    }
+  },
+  {
+    "id": "math-ableitung-tangente",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "Ein Höhenprofil h(x) erfüllt h′(2) = −3. Was sagt das über den Graphen bei x = 2 aus?",
+    "answers": [
+      "Die Tangentensteigung ist dort −3",
+      "Die Höhe ist dort −3",
+      "Dort liegt sicher ein Minimum",
+      "Die Fläche bis x = 2 ist −3"
+    ],
+    "explanation": "Die erste Ableitung beschreibt die lokale Änderungsrate beziehungsweise Tangentensteigung. Sie bestimmt weder den Funktionswert noch allein die bisherige Fläche.",
+    "source": {
+      "title": "Wikipedia · Differentialrechnung",
+      "url": "https://de.wikipedia.org/wiki/Differentialrechnung"
+    }
+  },
+  {
+    "id": "math-integral-vorzeichen",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "Das bestimmte Integral einer stetigen Funktion f über ein Intervall ist 0. Warum muss f nicht überall 0 sein?",
+    "answers": [
+      "Positive und negative Flächenbeiträge können sich aufheben",
+      "Ein Integral berücksichtigt grundsätzlich keine negativen Werte",
+      "Eine stetige Funktion kann keine Nullstelle besitzen",
+      "Ein Integral misst immer nur den Funktionswert am rechten Rand"
+    ],
+    "explanation": "Ein Integral addiert vorzeichenbehaftete Flächenbeiträge. Ein Ergebnis von null muss daher nicht bedeuten, dass die Funktion überall null ist.",
+    "source": {
+      "title": "Wikipedia · Integralrechnung",
+      "url": "https://de.wikipedia.org/wiki/Integralrechnung"
+    }
+  },
+  {
+    "id": "math-kettenregel-quadrat",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "Welche Ableitung hat f(x) = (3x + 1)²?",
+    "answers": [
+      "6(3x + 1)",
+      "2(3x + 1)",
+      "6x + 1",
+      "(3x + 1)³"
+    ],
+    "explanation": "Mit der Kettenregel wird die äußere Ableitung 2(3x + 1) mit der inneren Ableitung 3 multipliziert. Daraus folgt 6(3x + 1).",
+    "source": {
+      "title": "Wikipedia · Kettenregel",
+      "url": "https://de.wikipedia.org/wiki/Kettenregel"
+    }
+  },
+  {
+    "id": "math-stationaer-kein-extremum",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "Für f(x) = x³ gilt f′(0) = 0. Warum liegt bei x = 0 trotzdem kein lokales Extremum vor?",
+    "answers": [
+      "f steigt links und rechts von 0 weiter",
+      "f(0) ist nicht definiert",
+      "Jede Ableitung ist dort positiv",
+      "Ein Extremum braucht f(0) = 1"
+    ],
+    "explanation": "Eine waagerechte Tangente ist allein keine hinreichende Bedingung für ein Extremum. x³ hat bei 0 einen stationären Wendepunkt und bleibt streng steigend.",
+    "source": {
+      "title": "Wikipedia · Sattelpunkt",
+      "url": "https://de.wikipedia.org/wiki/Sattelpunkt"
+    }
+  },
+  {
+    "id": "math-binomial-erwartungswert",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "X ist binomialverteilt mit n = 20 und p = 0,2. Welchen Erwartungswert hat X?",
+    "answers": [
+      "4",
+      "10",
+      "0,2",
+      "16"
+    ],
+    "explanation": "Für eine Binomialverteilung gilt E(X) = n · p. Der Erwartungswert 20 · 0,2 = 4 ist ein langfristiger Mittelwert, keine Garantie für jeden Versuch.",
+    "source": {
+      "title": "Wikipedia · Binomialverteilung",
+      "url": "https://de.wikipedia.org/wiki/Binomialverteilung"
+    }
+  },
+  {
+    "id": "math-bedingte-unabhaengigkeit",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "Für Ereignisse A und B gilt P(A) = ½, P(B) = ½ und P(A ∩ B) = ¼. Welche Aussage folgt?",
+    "answers": [
+      "A und B sind unabhängig",
+      "A und B schließen sich aus",
+      "A ist dasselbe Ereignis wie B",
+      "A tritt sicher ein, wenn B eintritt"
+    ],
+    "explanation": "Unabhängigkeit bedeutet P(A ∩ B) = P(A) · P(B). Hier ergibt das Produkt 1/2 · 1/2 genau 1/4.",
+    "source": {
+      "title": "Wikipedia · Unabhängigkeit (Stochastik)",
+      "url": "https://de.wikipedia.org/wiki/Unabh%C3%A4ngigkeit_(Stochastik)"
+    }
+  },
+  {
+    "id": "math-bayes-basisrate",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "Von 100 Personen sind 10 krank. Ein Test meldet alle 10 Kranken und zusätzlich 9 Gesunde als positiv. Welcher Anteil der positiv Getesteten ist tatsächlich krank?",
+    "answers": [
+      "10 von 19",
+      "10 von 100",
+      "19 von 100",
+      "9 von 10"
+    ],
+    "explanation": "Unter den 19 positiven Ergebnissen sind 10 tatsächlich Kranke und 9 falsch positive Fälle. Der positive Vorhersagewert beträgt deshalb 10/19 und ist nicht mit dem Krankenanteil in der Gesamtgruppe gleichzusetzen.",
+    "source": {
+      "title": "Wikipedia · Positiver und negativer Vorhersagewert",
+      "url": "https://de.wikipedia.org/wiki/Positiver_und_negativer_Vorhersagewert"
+    }
+  },
+  {
+    "id": "math-skalarmultiplikation-orthogonal",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "Zwei von null verschiedene reelle Vektoren haben das Skalarprodukt 0. Was folgt daraus?",
+    "answers": [
+      "Sie stehen senkrecht aufeinander",
+      "Sie sind gleich lang",
+      "Sie zeigen in dieselbe Richtung",
+      "Einer ist das Doppelte des anderen"
+    ],
+    "explanation": "Für reelle euklidische Vektoren gilt a · b = |a| |b| cos(α). Bei zwei von null verschiedenen Vektoren bedeutet ein Skalarprodukt von null einen Winkel von 90°.",
+    "source": {
+      "title": "Wikipedia · Skalarprodukt",
+      "url": "https://de.wikipedia.org/wiki/Skalarprodukt"
+    }
+  },
+  {
+    "id": "math-normalverteilung-sigma",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "X ist normalverteilt mit Mittelwert μ und Standardabweichung σ > 0. Welcher Anteil liegt ungefähr zwischen μ − σ und μ + σ?",
+    "answers": [
+      "68 %",
+      "50 %",
+      "95 %",
+      "99,7 %"
+    ],
+    "explanation": "Für eine Normalverteilung liegen ungefähr 68,3 % innerhalb einer Standardabweichung vom Mittelwert. Rund 95,4 % liegen innerhalb von zwei Standardabweichungen.",
+    "source": {
+      "title": "Wikipedia · Normalverteilung",
+      "url": "https://de.wikipedia.org/wiki/Normalverteilung"
+    }
+  },
+  {
+    "id": "math-determinante-flaeche",
+    "category": "Mathematik",
+    "difficulty": 3,
+    "prompt": "Zwei ebene Vektoren spannen ein Parallelogramm auf. Was beschreibt der Betrag ihrer 2×2-Determinante?",
+    "answers": [
+      "Die Fläche des Parallelogramms",
+      "Immer die Summe ihrer Längen",
+      "Den Winkel zwischen ihnen in Grad",
+      "Die Länge ihrer Diagonale"
+    ],
+    "explanation": "Der Betrag der Determinante zweier ebener Vektoren gibt die aufgespannte Parallelogrammfläche an. Das Vorzeichen der Determinante beschreibt zusätzlich die Orientierung.",
+    "source": {
+      "title": "Wikipedia · Determinante",
+      "url": "https://de.wikipedia.org/wiki/Determinante"
+    }
+  },
+  {
+    "id": "physik-geschwindigkeit-definition",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Ein Fahrrad fährt gleichförmig 100 m in 20 s. Wie groß ist seine Geschwindigkeit?",
+    "answers": [
+      "5 m/s",
+      "0,2 m/s",
+      "80 m/s",
+      "2.000 m/s"
+    ],
+    "explanation": "Bei gleichförmiger Bewegung gilt v = s/t. 100 m geteilt durch 20 s ergeben 5 m/s.",
+    "source": {
+      "title": "Wikipedia · Geschwindigkeit",
+      "url": "https://de.wikipedia.org/wiki/Geschwindigkeit"
+    }
+  },
+  {
+    "id": "physik-masse-gewichtskraft",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Ein Körper wird von der Erde auf den Mond gebracht. Was bleibt dabei praktisch gleich?",
+    "answers": [
+      "Seine Masse",
+      "Seine Gewichtskraft",
+      "Die Fallbeschleunigung am Ort",
+      "Die Kraft auf eine Federwaage"
+    ],
+    "explanation": "Die Masse ist eine Eigenschaft des Körpers. Seine Gewichtskraft hängt von der örtlichen Fallbeschleunigung ab und ist auf dem Mond kleiner.",
+    "source": {
+      "title": "Wikipedia · Gewichtskraft",
+      "url": "https://de.wikipedia.org/wiki/Gewichtskraft"
+    }
+  },
+  {
+    "id": "physik-dichte-schwimmen",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Ein vollständig eingetauchter Körper hat eine kleinere mittlere Dichte als Wasser. Was geschieht in ruhigem Wasser, wenn man ihn loslässt?",
+    "answers": [
+      "Er steigt auf und schwimmt teilweise eingetaucht",
+      "Er sinkt unabhängig von seiner Dichte bis zum Boden",
+      "Er bleibt unabhängig vom Auftrieb immer in derselben Tiefe",
+      "Seine Gewichtskraft verschwindet vollständig"
+    ],
+    "explanation": "Bei kleinerer mittlerer Dichte kann der Auftrieb das Gewicht schon bei teilweisem Eintauchen ausgleichen. Schwimmen bedeutet nicht, dass die Gewichtskraft verschwindet.",
+    "source": {
+      "title": "Wikipedia · Auftrieb",
+      "url": "https://de.wikipedia.org/wiki/Auftrieb"
+    }
+  },
+  {
+    "id": "physik-energie-umwandlung",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Ein fallender Ball wird schneller. Welche Energie wird dabei hauptsächlich in Bewegungsenergie umgewandelt?",
+    "answers": [
+      "Potenzielle Energie im Schwerefeld",
+      "Elektrische Energie",
+      "Kernenergie",
+      "Chemische Energie aus dem Ball"
+    ],
+    "explanation": "Beim Fallen nimmt die potenzielle Energie im Schwerefeld ab. Ohne Luftwiderstand wird sie vollständig in kinetische Energie umgewandelt.",
+    "source": {
+      "title": "Wikipedia · Potentielle Energie",
+      "url": "https://de.wikipedia.org/wiki/Potentielle_Energie"
+    }
+  },
+  {
+    "id": "physik-reihenschaltung-strom",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Zwei Widerstände liegen in einem unverzweigten Stromkreis hintereinander. Was gilt für die Stromstärke durch sie?",
+    "answers": [
+      "Sie ist durch beide gleich groß",
+      "Sie ist im zweiten immer halb so groß",
+      "Sie wird im ersten vollständig verbraucht",
+      "Sie ist nur am Pluspol vorhanden"
+    ],
+    "explanation": "In einer unverzweigten Reihenschaltung kann sich dauerhaft keine Ladung zwischen den Bauteilen ansammeln. Deshalb fließt durch beide dieselbe Stromstärke.",
+    "source": {
+      "title": "Wikipedia · Reihenschaltung",
+      "url": "https://de.wikipedia.org/wiki/Reihenschaltung"
+    }
+  },
+  {
+    "id": "physik-voltmeter-parallel",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Wie wird ein ideales Voltmeter angeschlossen, um die Spannung an einem Widerstand zu messen?",
+    "answers": [
+      "Parallel zum Widerstand",
+      "Statt der Spannungsquelle",
+      "Immer in Reihe zum Widerstand",
+      "Nur an eine Seite des Widerstands"
+    ],
+    "explanation": "Spannung ist die Potenzialdifferenz zwischen zwei Punkten. Ein Voltmeter wird an beide Anschlüsse des Bauteils gelegt, also parallel geschaltet.",
+    "source": {
+      "title": "Wikipedia · Spannungsmessgerät",
+      "url": "https://de.wikipedia.org/wiki/Spannungsmessger%C3%A4t"
+    }
+  },
+  {
+    "id": "physik-metall-ladungstraeger",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Welche Teilchen tragen in einem Metalldraht hauptsächlich den elektrischen Strom?",
+    "answers": [
+      "Bewegliche Elektronen",
+      "Protonen, die durch den Draht wandern",
+      "Neutronen",
+      "Ganze Metallatome als Flüssigkeit"
+    ],
+    "explanation": "Metalle besitzen bewegliche Leitungselektronen. Die Atomrümpfe bleiben dabei im Wesentlichen an ihren Gitterplätzen.",
+    "source": {
+      "title": "Wikipedia · Elektrischer Leiter",
+      "url": "https://de.wikipedia.org/wiki/Elektrischer_Leiter"
+    }
+  },
+  {
+    "id": "physik-schall-vakuum",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Warum kann man Schall durch ein ideales Vakuum nicht hören?",
+    "answers": [
+      "Es fehlen Teilchen als Übertragungsmedium",
+      "Schall ist dort immer zu hoch",
+      "Schall braucht zwingend Sonnenlicht",
+      "Schall wird dort zu elektrischem Strom"
+    ],
+    "explanation": "Schall ist eine mechanische Welle und benötigt ein Medium wie Luft, Wasser oder einen Festkörper. Ein ideales Vakuum enthält dafür keine Teilchen.",
+    "source": {
+      "title": "Wikipedia · Schall",
+      "url": "https://de.wikipedia.org/wiki/Schall"
+    }
+  },
+  {
+    "id": "physik-reflexion-winkel",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Ein Lichtstrahl trifft mit 30° zum Lot auf einen ebenen Spiegel. Welchen Winkel zum Lot hat der reflektierte Strahl?",
+    "answers": [
+      "30°",
+      "60°",
+      "90°",
+      "15°"
+    ],
+    "explanation": "Beim Reflexionsgesetz sind Einfalls- und Reflexionswinkel gleich groß. Beide Winkel werden zum Lot auf die Oberfläche gemessen.",
+    "source": {
+      "title": "Wikipedia · Reflexionsgesetz",
+      "url": "https://de.wikipedia.org/wiki/Reflexionsgesetz"
+    }
+  },
+  {
+    "id": "physik-blitz-donner",
+    "category": "Physik",
+    "difficulty": 1,
+    "prompt": "Warum sieht man bei einem entfernten Gewitter meist zuerst den Blitz und hört danach den Donner?",
+    "answers": [
+      "Licht breitet sich in Luft viel schneller aus als Schall",
+      "Der Blitz entsteht immer Minuten vor dem Donner",
+      "Schall bewegt sich überhaupt nicht durch Luft",
+      "Das Auge verarbeitet alle Signale langsamer als das Ohr"
+    ],
+    "explanation": "Licht erreicht uns aus üblichen Gewitterentfernungen praktisch sofort. Der Schall des Donners braucht bei etwa 340 m/s spürbar länger.",
+    "source": {
+      "title": "Wikipedia · Donner",
+      "url": "https://de.wikipedia.org/wiki/Donner"
+    }
+  },
+  {
+    "id": "physik-newton-zweites-gesetz",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "Auf einen Körper mit konstanter Masse 2 kg wirkt eine resultierende Kraft von 6 N. Welche Beschleunigung entsteht?",
+    "answers": [
+      "3 m/s²",
+      "12 m/s²",
+      "8 m/s²",
+      "⅓ m/s²"
+    ],
+    "explanation": "Für konstante Masse gilt F = m · a. Daraus folgt a = 6 N / 2 kg = 3 m/s².",
+    "source": {
+      "title": "Wikipedia · Newtonsche Gesetze",
+      "url": "https://de.wikipedia.org/wiki/Newtonsche_Gesetze"
+    }
+  },
+  {
+    "id": "physik-traegheit-bremsen",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "Ein Bus bremst plötzlich. Warum bewegt sich ein ungesicherter Fahrgast relativ zum Bus zunächst nach vorn?",
+    "answers": [
+      "Sein Körper behält aufgrund der Trägheit zunächst seine Bewegung bei",
+      "Beim Bremsen entsteht zwangsläufig eine zusätzliche Kraft nach vorn",
+      "Seine Geschwindigkeit passt sich ohne Kraft sofort dem Bus an",
+      "Seine Masse wird beim Bremsen größer"
+    ],
+    "explanation": "Ein Körper ändert seine Geschwindigkeit nur durch eine resultierende Kraft. Während der Bus langsamer wird, bewegt sich der Körper zunächst ungefähr mit seiner bisherigen Geschwindigkeit weiter.",
+    "source": {
+      "title": "Wikipedia · Trägheit",
+      "url": "https://de.wikipedia.org/wiki/Tr%C3%A4gheit"
+    }
+  },
+  {
+    "id": "physik-ohmsches-gesetz",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "Die Spannung an einem ohmschen Widerstand wird bei gleichbleibender Temperatur verdoppelt. Was passiert mit der Stromstärke?",
+    "answers": [
+      "Sie verdoppelt sich",
+      "Sie halbiert sich",
+      "Sie bleibt gleich",
+      "Sie vervierfacht sich"
+    ],
+    "explanation": "Bei einem konstanten ohmschen Widerstand gilt I = U/R. Eine doppelte Spannung führt deshalb zu einer doppelten Stromstärke.",
+    "source": {
+      "title": "Wikipedia · Ohmsches Gesetz",
+      "url": "https://de.wikipedia.org/wiki/Ohmsches_Gesetz"
+    }
+  },
+  {
+    "id": "physik-elektrische-leistung",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "An einem elektrischen Gerät liegen 12 V an, und es fließen 2 A Gleichstrom. Welche elektrische Leistung nimmt es auf?",
+    "answers": [
+      "24 W",
+      "6 W",
+      "14 W",
+      "144 W"
+    ],
+    "explanation": "Bei Gleichstrom ist die elektrische Leistung P = U · I. Volt mal Ampere ergibt Watt: 12 · 2 = 24 W.",
+    "source": {
+      "title": "Wikipedia · Elektrische Leistung",
+      "url": "https://de.wikipedia.org/wiki/Elektrische_Leistung"
+    }
+  },
+  {
+    "id": "physik-tonhoehe-frequenz",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "Zwei reine Töne sind gleich laut. Welcher Ton klingt höher?",
+    "answers": [
+      "Der mit der größeren Frequenz",
+      "Der mit der größeren Wellenlänge bei gleicher Schallgeschwindigkeit",
+      "Der mit der längeren Periodendauer",
+      "Beide müssen dieselbe Tonhöhe haben"
+    ],
+    "explanation": "Die Tonhöhe eines reinen Tons wird durch seine Frequenz bestimmt. Bei gleicher Ausbreitungsgeschwindigkeit gehört zu höherer Frequenz eine kürzere Wellenlänge.",
+    "source": {
+      "title": "Wikipedia · Tonhöhe",
+      "url": "https://de.wikipedia.org/wiki/Tonh%C3%B6he"
+    }
+  },
+  {
+    "id": "physik-brechung-zum-lot",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "Licht fällt schräg aus Luft in Wasser. In welche Richtung wird es beim Eintritt normalerweise gebrochen?",
+    "answers": [
+      "Zum Lot hin",
+      "Vom Lot weg",
+      "Immer parallel zur Oberfläche",
+      "Immer genau um 180° zurück"
+    ],
+    "explanation": "Wasser hat im sichtbaren Bereich einen höheren Brechungsindex als Luft. Beim Übergang ins optisch dichtere Medium wird ein schräger Strahl zum Lot hin gebrochen.",
+    "source": {
+      "title": "Wikipedia · Brechung (Physik)",
+      "url": "https://de.wikipedia.org/wiki/Brechung_(Physik)"
+    }
+  },
+  {
+    "id": "physik-schmelzen-temperatur",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "Reines Eis und flüssiges Wasser liegen bei Normaldruck im Gleichgewicht vor. Wohin geht zugeführte Wärme zunächst?",
+    "answers": [
+      "In das Schmelzen, während die Temperatur etwa 0 °C bleibt",
+      "Ausschließlich in einen sofortigen Anstieg auf 100 °C",
+      "In eine Vergrößerung der Masse ohne Schmelzen",
+      "Sie verschwindet vollständig"
+    ],
+    "explanation": "Während des Schmelzens wird Energie für den Phasenübergang benötigt. Solange Eis und Wasser bei Normaldruck gemeinsam im Gleichgewicht vorliegen, bleibt die Temperatur ungefähr bei 0 °C.",
+    "source": {
+      "title": "Wikipedia · Schmelzwärme",
+      "url": "https://de.wikipedia.org/wiki/Schmelzw%C3%A4rme"
+    }
+  },
+  {
+    "id": "physik-waermekapazitaet-wasser",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "Gleiche Massen Wasser und Eisen erhalten dieselbe Wärmemenge, ohne Phasenwechsel. Warum erwärmt sich Wasser weniger stark?",
+    "answers": [
+      "Wasser hat die größere spezifische Wärmekapazität",
+      "Wasser kann grundsätzlich keine Wärme aufnehmen",
+      "Eisen besitzt keine innere Energie",
+      "Die Masse des Wassers nimmt dabei zwingend ab"
+    ],
+    "explanation": "Es gilt Q = m · c · ΔT. Bei gleicher Masse und Wärmemenge führt eine größere spezifische Wärmekapazität c zu einer kleineren Temperaturänderung.",
+    "source": {
+      "title": "Wikipedia · Spezifische Wärmekapazität",
+      "url": "https://de.wikipedia.org/wiki/Spezifische_W%C3%A4rmekapazit%C3%A4t"
+    }
+  },
+  {
+    "id": "physik-hebel-drehmoment",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "Eine Tür lässt sich bei gleicher senkrecht wirkender Kraft leichter weit vom Scharnier öffnen. Warum?",
+    "answers": [
+      "Der längere Hebelarm erzeugt ein größeres Drehmoment",
+      "Die Masse der Tür wird kleiner",
+      "Die Kraft verschwindet am Scharnier",
+      "Die Erdanziehung wirkt dort nicht"
+    ],
+    "explanation": "Das Drehmoment ist bei senkrechter Krafteinwirkung Kraft mal Hebelarm. Ein größerer Abstand zur Drehachse vergrößert daher die Drehwirkung.",
+    "source": {
+      "title": "Wikipedia · Drehmoment",
+      "url": "https://de.wikipedia.org/wiki/Drehmoment"
+    }
+  },
+  {
+    "id": "physik-druck-flaeche",
+    "category": "Physik",
+    "difficulty": 2,
+    "prompt": "Dieselbe Kraft wirkt einmal auf eine große und einmal auf eine kleine Fläche. Wo ist der mittlere Druck größer?",
+    "answers": [
+      "Auf der kleineren Fläche",
+      "Auf der größeren Fläche",
+      "Auf beiden gleich, weil dieselbe Kraft wirkt",
+      "Nur vom Werkstoff abhängig, nicht von der Fläche"
+    ],
+    "explanation": "Der mittlere Druck ist p = F/A. Bei gleicher Kraft wird er größer, wenn sich die Kraft auf eine kleinere Fläche verteilt.",
+    "source": {
+      "title": "Wikipedia · Druck (Physik)",
+      "url": "https://de.wikipedia.org/wiki/Druck_(Physik)"
+    }
+  },
+  {
+    "id": "physik-kreisbewegung-beschleunigung",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Ein Körper bewegt sich gleichförmig auf einer Kreisbahn. Welche Aussage über seine Beschleunigung stimmt?",
+    "answers": [
+      "Sie zeigt zum Kreismittelpunkt",
+      "Sie ist null, weil der Geschwindigkeitsbetrag konstant ist",
+      "Sie zeigt immer tangential nach vorn",
+      "Sie zeigt stets vom Mittelpunkt weg"
+    ],
+    "explanation": "Auch bei konstantem Geschwindigkeitsbetrag ändert sich auf einer Kreisbahn die Bewegungsrichtung. Die dazugehörige Zentripetalbeschleunigung zeigt zum Mittelpunkt.",
+    "source": {
+      "title": "Wikipedia · Zentripetalkraft",
+      "url": "https://de.wikipedia.org/wiki/Zentripetalkraft"
+    }
+  },
+  {
+    "id": "physik-lenzsche-regel",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Eine Änderung des Magnetflusses induziert einen Strom in einer geschlossenen Leiterschleife. Wie wirkt dessen Magnetfeld?",
+    "answers": [
+      "Es wirkt der verursachenden Flussänderung entgegen",
+      "Es verstärkt jede Flussänderung beliebig",
+      "Es ist grundsätzlich null",
+      "Es zeigt immer nach geografisch Norden"
+    ],
+    "explanation": "Nach der Lenzschen Regel wirkt der induzierte Strom der Ursache seiner Entstehung entgegen. Diese Richtung ist mit der Energieerhaltung vereinbar.",
+    "source": {
+      "title": "Wikipedia · Lenzsche Regel",
+      "url": "https://de.wikipedia.org/wiki/Lenzsche_Regel"
+    }
+  },
+  {
+    "id": "physik-kondensator-dielektrikum",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Ein ungeladener Plattenkondensator behält seine Geometrie. Ein geeignetes Dielektrikum füllt den Plattenzwischenraum. Was geschieht mit seiner Kapazität?",
+    "answers": [
+      "Sie wird größer",
+      "Sie wird immer null",
+      "Sie wird kleiner als im Vakuum",
+      "Sie hängt danach nur von der Ladung ab"
+    ],
+    "explanation": "Für einen vollständig gefüllten idealen Plattenkondensator gilt C = ε₀ εᵣ A/d. Ein Dielektrikum mit relativer Permittivität εᵣ > 1 erhöht die Kapazität gegenüber Vakuum.",
+    "source": {
+      "title": "Wikipedia · Elektrische Kapazität",
+      "url": "https://de.wikipedia.org/wiki/Elektrische_Kapazit%C3%A4t"
+    }
+  },
+  {
+    "id": "physik-interferenz-ausloeschung",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Zwei kohärente harmonische Wellen auf demselben Seil haben gleiche Frequenz und Amplitude. Was ergibt ihre Überlagerung an einem Ort mit 180° Phasenunterschied?",
+    "answers": [
+      "Vollständige destruktive Interferenz",
+      "Immer die doppelte Amplitude",
+      "Eine doppelt so hohe Frequenz",
+      "Eine Welle mit unendlich großer Energie"
+    ],
+    "explanation": "Bei 180° Phasenunterschied trifft jeweils ein Wellenberg auf ein gleich großes Wellental. Ihre Auslenkungen addieren sich zu null.",
+    "source": {
+      "title": "Wikipedia · Interferenz (Physik)",
+      "url": "https://de.wikipedia.org/wiki/Interferenz_(Physik)"
+    }
+  },
+  {
+    "id": "physik-photoeffekt-grenzfrequenz",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Licht liegt unter der Grenzfrequenz eines Metalls. Was bewirkt beim idealisierten äußeren Photoeffekt eine höhere Intensität bei gleicher Frequenz?",
+    "answers": [
+      "Es werden weiterhin keine Elektronen ausgelöst",
+      "Die Elektronen werden sicher beliebig schnell",
+      "Die Grenzfrequenz verschwindet",
+      "Die Photonen bekommen dadurch automatisch mehr Energie"
+    ],
+    "explanation": "Beim üblichen Einphotonen-Photoeffekt muss die Energie eines einzelnen Photons die Austrittsarbeit erreichen. Eine höhere Intensität erhöht die Photonenzahl, nicht die Energie jedes Photons.",
+    "source": {
+      "title": "Wikipedia · Photoelektrischer Effekt",
+      "url": "https://de.wikipedia.org/wiki/Photoelektrischer_Effekt"
+    }
+  },
+  {
+    "id": "physik-photon-energie-frequenz",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Die Frequenz eines Photons verdoppelt sich. Was geschieht mit seiner Energie?",
+    "answers": [
+      "Sie verdoppelt sich",
+      "Sie halbiert sich",
+      "Sie bleibt unverändert",
+      "Sie vervierfacht sich"
+    ],
+    "explanation": "Die Photonenenergie beträgt E = h · f. Da h konstant ist, ist die Energie direkt proportional zur Frequenz.",
+    "source": {
+      "title": "Wikipedia · Photon",
+      "url": "https://de.wikipedia.org/wiki/Photon"
+    }
+  },
+  {
+    "id": "physik-zeitdilatation-uhr",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Eine ideale Uhr bewegt sich relativ zu einem Inertialsystem gleichförmig. Wie vergleicht dieses System ihre Zeit mit der Zeit seiner ruhenden, synchronisierten Uhren?",
+    "answers": [
+      "Die bewegte Uhr geht langsamer",
+      "Die bewegte Uhr geht schneller",
+      "Beide Zeiten sind bei jeder Geschwindigkeit exakt gleich",
+      "Die bewegte Uhr läuft rückwärts"
+    ],
+    "explanation": "Nach der speziellen Relativitätstheorie ist die Eigenzeit der bewegten Uhr zwischen geeigneten Ereignissen kleiner als die zugehörige Koordinatenzeit. Die Aussage setzt das genannte Bezugssystem voraus.",
+    "source": {
+      "title": "Wikipedia · Zeitdilatation",
+      "url": "https://de.wikipedia.org/wiki/Zeitdilatation"
+    }
+  },
+  {
+    "id": "physik-inelastischer-stoss",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Zwei Körper stoßen in einem abgeschlossenen System vollständig unelastisch zusammen und bewegen sich danach gemeinsam. Was bleibt erhalten?",
+    "answers": [
+      "Der Gesamtimpuls",
+      "Immer die gesamte kinetische Energie",
+      "Die Geschwindigkeit jedes einzelnen Körpers",
+      "Die Summe der Beträge aller Geschwindigkeiten"
+    ],
+    "explanation": "Ohne äußeren Impuls bleibt der Gesamtimpuls erhalten. Bei einem vollständig unelastischen Stoß wird ein Teil der kinetischen Energie in innere Energie und Verformung umgewandelt.",
+    "source": {
+      "title": "Wikipedia · Unelastischer Stoß",
+      "url": "https://de.wikipedia.org/wiki/Unelastischer_Sto%C3%9F"
+    }
+  },
+  {
+    "id": "physik-doppler-annaeherung",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Eine Schallquelle bewegt sich mit weniger als Schallgeschwindigkeit direkt auf einen in ruhender Luft stehenden Beobachter zu. Was hört er gegenüber der ausgesendeten Frequenz?",
+    "answers": [
+      "Eine höhere Frequenz",
+      "Eine niedrigere Frequenz",
+      "Immer dieselbe Frequenz",
+      "Keine Schallwelle mehr"
+    ],
+    "explanation": "Bei Annäherung erreichen die Wellenfronten den Beobachter in kürzeren Zeitabständen. Dieser Doppler-Effekt erhöht die wahrgenommene Frequenz.",
+    "source": {
+      "title": "Wikipedia · Doppler-Effekt",
+      "url": "https://de.wikipedia.org/wiki/Doppler-Effekt"
+    }
+  },
+  {
+    "id": "physik-unschaerferelation",
+    "category": "Physik",
+    "difficulty": 3,
+    "prompt": "Welche Aussage trifft die Heisenbergsche Unschärferelation für Ort und Impuls am besten?",
+    "answers": [
+      "Ihre quantenmechanischen Streuungen können nicht beide beliebig klein sein",
+      "Sie gilt nur für schlecht gebaute Messgeräte",
+      "Sie verbietet jede Ortsmessung",
+      "Sie bedeutet, dass die Lichtgeschwindigkeit unbekannt ist"
+    ],
+    "explanation": "Die Unschärferelation ist eine grundlegende Eigenschaft quantenmechanischer Zustände. Sie beschreibt eine Grenze für das Produkt der Streuungen von Ort und Impuls, nicht bloß technische Messfehler.",
+    "source": {
+      "title": "Wikipedia · Heisenbergsche Unschärferelation",
+      "url": "https://de.wikipedia.org/wiki/Heisenbergsche_Unsch%C3%A4rferelation"
+    }
+  },
+  {
+    "id": "info-bit-zustaende",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Wie viele unterschiedliche Werte kann ein einzelnes Bit annehmen?",
+    "answers": [
+      "2",
+      "8",
+      "10",
+      "256"
+    ],
+    "explanation": "Ein Bit hat zwei mögliche Zustände, üblicherweise 0 und 1. Mehrere Bits können kombiniert werden, um mehr Werte darzustellen.",
+    "source": {
+      "title": "Wikipedia · Bit",
+      "url": "https://de.wikipedia.org/wiki/Bit"
+    }
+  },
+  {
+    "id": "info-byte-bits",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Aus wie vielen Bits besteht heute üblicherweise ein Byte?",
+    "answers": [
+      "8",
+      "2",
+      "10",
+      "64"
+    ],
+    "explanation": "Ein Byte besteht heute üblicherweise aus acht Bits. Mit acht Bits lassen sich 2⁸ = 256 unterschiedliche Bitmuster bilden.",
+    "source": {
+      "title": "Wikipedia · Byte",
+      "url": "https://de.wikipedia.org/wiki/Byte"
+    }
+  },
+  {
+    "id": "info-hardware-software",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Was ist ein Beispiel für Hardware?",
+    "answers": [
+      "Eine Tastatur",
+      "Ein Textverarbeitungsprogramm",
+      "Ein Betriebssystem",
+      "Eine gespeicherte Spielregel im Programmcode"
+    ],
+    "explanation": "Hardware sind die physischen Bauteile eines Computersystems. Programme und ihre Anweisungen gehören zur Software.",
+    "source": {
+      "title": "Wikipedia · Hardware",
+      "url": "https://de.wikipedia.org/wiki/Hardware"
+    }
+  },
+  {
+    "id": "info-schleife-zweck",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Wozu dient eine Schleife in einem Programm?",
+    "answers": [
+      "Anweisungen wiederholt auszuführen",
+      "Zwei Werte auf Gleichheit zu vergleichen",
+      "Einen festen Wert als Namen zu deklarieren",
+      "Einen Rückgabewert an den Aufrufer zu liefern"
+    ],
+    "explanation": "Schleifen wiederholen einen Anweisungsblock, etwa für jedes Element einer Liste oder solange eine Bedingung erfüllt ist.",
+    "source": {
+      "title": "Wikipedia · Schleife (Programmierung)",
+      "url": "https://de.wikipedia.org/wiki/Schleife_(Programmierung)"
+    }
+  },
+  {
+    "id": "info-variable-zweck",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Was ist eine Variable in einem einfachen Programm?",
+    "answers": [
+      "Ein benannter Speicherplatz für einen Wert",
+      "Eine Bedingung, die immer wahr sein muss",
+      "Eine feste Wiederholungszahl für jedes Programm",
+      "Ein Unterprogramm ohne Eingabewerte"
+    ],
+    "explanation": "Variablen ordnen einem Namen einen Wert zu, den ein Programm später verwenden kann. Ob und wie ein Wert geändert werden darf, hängt von der Programmiersprache und Deklaration ab.",
+    "source": {
+      "title": "Wikipedia · Variable (Programmierung)",
+      "url": "https://de.wikipedia.org/wiki/Variable_(Programmierung)"
+    }
+  },
+  {
+    "id": "info-if-bedingung",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Wann wird der Anweisungsblock einer einfachen if-Anweisung ausgeführt?",
+    "answers": [
+      "Wenn ihre Bedingung wahr ist",
+      "Bei jedem Programm immer genau zweimal",
+      "Nur wenn der Computer offline ist",
+      "Nur wenn keine Variable verwendet wird"
+    ],
+    "explanation": "Eine if-Anweisung führt ihren Block aus, wenn die geprüfte Bedingung wahr ist. So kann ein Programm auf verschiedene Situationen reagieren.",
+    "source": {
+      "title": "Wikipedia · Bedingte Anweisung",
+      "url": "https://de.wikipedia.org/wiki/Bedingte_Anweisung"
+    }
+  },
+  {
+    "id": "info-und-verknuepfung",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Wann ist die logische Verknüpfung A UND B wahr?",
+    "answers": [
+      "Wenn A und B beide wahr sind",
+      "Wenn mindestens eine Aussage wahr ist",
+      "Wenn beide Aussagen falsch sind",
+      "Wenn genau eine Aussage wahr ist"
+    ],
+    "explanation": "Die Konjunktion UND verlangt, dass beide beteiligten Aussagen wahr sind. ODER und exklusives ODER haben andere Wahrheitstabellen.",
+    "source": {
+      "title": "Wikipedia · Konjunktion (Logik)",
+      "url": "https://de.wikipedia.org/wiki/Konjunktion_(Logik)"
+    }
+  },
+  {
+    "id": "info-browser-aufgabe",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Welche Aufgabe hat ein Webbrowser?",
+    "answers": [
+      "Webseiten laden und darstellen",
+      "Alle Webseiten im Internet als Suchmaschine indexieren",
+      "Den Internetanschluss beim Anbieter bereitstellen",
+      "Domainnamen weltweit in einem zentralen Verzeichnis vergeben"
+    ],
+    "explanation": "Ein Browser ruft Webinhalte ab und stellt sie dar. Dazu verarbeitet er beispielsweise HTML, CSS und JavaScript.",
+    "source": {
+      "title": "Wikipedia · Webbrowser",
+      "url": "https://de.wikipedia.org/wiki/Webbrowser"
+    }
+  },
+  {
+    "id": "info-backup-getrennt",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Welche Maßnahme schützt am besten vor Datenverlust durch den Defekt eines einzelnen Laptops?",
+    "answers": [
+      "Eine aktuelle Sicherung auf einem getrennten Speichermedium",
+      "Eine zweite Verknüpfung auf derselben Festplatte",
+      "Ein neuer Name für dieselbe Datei",
+      "Ein zweiter Ordner auf derselben defekten Festplatte"
+    ],
+    "explanation": "Eine getrennte Sicherung kann erhalten bleiben, wenn der Laptop ausfällt. Eine Verknüpfung ist dagegen nur ein Verweis auf die vorhandene Datei.",
+    "source": {
+      "title": "Wikipedia · Datensicherung",
+      "url": "https://de.wikipedia.org/wiki/Datensicherung"
+    }
+  },
+  {
+    "id": "info-pixel-raster",
+    "category": "Informatik",
+    "difficulty": 1,
+    "prompt": "Was ist ein Pixel in einem Rasterbild?",
+    "answers": [
+      "Ein einzelner Bildpunkt",
+      "Die vollständige Farbpalette eines Bildes",
+      "Ein Dateiformat für Vektorgrafiken",
+      "Die physische Diagonale eines Bildschirms"
+    ],
+    "explanation": "Rasterbilder bestehen aus einem Gitter von Bildpunkten. Jedem Pixel wird eine Farbe beziehungsweise ein Farbwert zugeordnet.",
+    "source": {
+      "title": "Wikipedia · Pixel",
+      "url": "https://de.wikipedia.org/wiki/Pixel"
+    }
+  },
+  {
+    "id": "info-binaerzahl-fuenf",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Welchen Dezimalwert hat die Binärzahl 101₂?",
+    "answers": [
+      "5",
+      "3",
+      "4",
+      "101"
+    ],
+    "explanation": "Die Stellenwerte von 101₂ sind 4, 2 und 1. Mit den gesetzten Bits ergibt sich 1 · 4 + 0 · 2 + 1 · 1 = 5.",
+    "source": {
+      "title": "Wikipedia · Dualsystem",
+      "url": "https://de.wikipedia.org/wiki/Dualsystem"
+    }
+  },
+  {
+    "id": "info-dns-domain",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Wozu dient DNS beim Aufruf einer Webseite hauptsächlich?",
+    "answers": [
+      "Einen Domainnamen einer IP-Adresse zuordnen",
+      "Alle Bilder einer Webseite zeichnen",
+      "Die Tastaturbelegung des Besuchers ändern",
+      "Den Inhalt jeder Webseite automatisch übersetzen"
+    ],
+    "explanation": "Das Domain Name System kann einen lesbaren Namen wie eine Webadresse zu einer passenden IP-Adresse auflösen. Die eigentlichen Webinhalte werden anschließend über andere Protokolle übertragen.",
+    "source": {
+      "title": "Wikipedia · Domain Name System",
+      "url": "https://de.wikipedia.org/wiki/Domain_Name_System"
+    }
+  },
+  {
+    "id": "info-verlustfreie-kompression",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Was kennzeichnet eine verlustfreie Datenkompression?",
+    "answers": [
+      "Die ursprünglichen Daten lassen sich exakt wiederherstellen",
+      "Sie entfernt grundsätzlich alle Bilder",
+      "Sie verkleinert jede beliebige Datei garantiert",
+      "Sie verändert die Daten immer unumkehrbar"
+    ],
+    "explanation": "Verlustfreie Verfahren erlauben eine exakte Rekonstruktion. Nicht jede Datei kann damit kleiner werden, besonders wenn sie bereits stark komprimiert ist.",
+    "source": {
+      "title": "Wikipedia · Verlustfreie Datenkompression",
+      "url": "https://de.wikipedia.org/wiki/Verlustfreie_Datenkompression"
+    }
+  },
+  {
+    "id": "info-binaersuche-voraussetzung",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Welche wichtige Voraussetzung braucht die klassische binäre Suche in einer Liste?",
+    "answers": [
+      "Die Liste ist nach dem Suchkriterium sortiert",
+      "Alle Einträge haben denselben Wert",
+      "Die Liste enthält genau zehn Einträge",
+      "Die Liste ist zufällig angeordnet"
+    ],
+    "explanation": "Binäre Suche halbiert den verbleibenden Suchbereich anhand der Reihenfolge. Ohne eine passende Sortierung kann sie nicht entscheiden, welche Hälfte ausgeschlossen werden darf.",
+    "source": {
+      "title": "Wikipedia · Binäre Suche",
+      "url": "https://de.wikipedia.org/wiki/Bin%C3%A4re_Suche"
+    }
+  },
+  {
+    "id": "info-stack-lifo",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Welche Reihenfolge beschreibt einen Stack beziehungsweise Stapel?",
+    "answers": [
+      "Zuletzt hinein, zuerst heraus",
+      "Zuerst hinein, zuerst heraus",
+      "Immer der kleinste Wert zuerst",
+      "Immer eine zufällige Auswahl"
+    ],
+    "explanation": "Ein Stack arbeitet nach LIFO: Last In, First Out. Das ähnelt einem Tellerstapel, bei dem der zuletzt aufgelegte Teller zuerst abgenommen wird.",
+    "source": {
+      "title": "Wikipedia · Stapelspeicher",
+      "url": "https://de.wikipedia.org/wiki/Stapelspeicher"
+    }
+  },
+  {
+    "id": "info-sql-where",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Welche Aufgabe hat WHERE in einer einfachen SQL-SELECT-Abfrage?",
+    "answers": [
+      "Datensätze nach einer Bedingung filtern",
+      "Die Ergebnistabelle nach einer Spalte sortieren",
+      "Mehrere Ergebniszeilen zu Gruppen zusammenfassen",
+      "Die auszugebenden Spalten auswählen"
+    ],
+    "explanation": "WHERE legt fest, welche Zeilen die angegebene Bedingung erfüllen müssen. SELECT bestimmt dagegen, welche Ausdrücke oder Spalten ausgegeben werden.",
+    "source": {
+      "title": "Wikipedia · SQL",
+      "url": "https://de.wikipedia.org/wiki/SQL"
+    }
+  },
+  {
+    "id": "info-funktion-rueckgabe",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Was bewirkt return in vielen Programmiersprachen innerhalb einer Funktion?",
+    "answers": [
+      "Es beendet den Aufruf und gibt gegebenenfalls einen Wert zurück",
+      "Es startet die Funktion automatisch wieder von vorn",
+      "Es gibt einen Wert nur auf dem Bildschirm aus",
+      "Es beendet nur die letzte Schleife, nie die Funktion"
+    ],
+    "explanation": "return beendet den aktuellen Funktionsaufruf. Ein angegebener Wert kann anschließend von der aufrufenden Stelle weiterverwendet werden.",
+    "source": {
+      "title": "Wikipedia · Funktion (Programmierung)",
+      "url": "https://de.wikipedia.org/wiki/Funktion_(Programmierung)"
+    }
+  },
+  {
+    "id": "info-client-server",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Ein Browser fordert eine Webseite von einem Webserver an. Welche Rollen haben sie in diesem Austausch?",
+    "answers": [
+      "Browser: Client; Webserver: Server",
+      "Browser: Server; Webserver: Client",
+      "Beide sind in diesem Austausch ausschließlich Clients",
+      "Beide sind in diesem Austausch ausschließlich Server"
+    ],
+    "explanation": "Der Client stellt die Anfrage, und der Server bearbeitet sie und antwortet. Diese Rollen beschreiben den konkreten Austausch, nicht zwingend unterschiedliche Gerätetypen.",
+    "source": {
+      "title": "Wikipedia · Client-Server-Modell",
+      "url": "https://de.wikipedia.org/wiki/Client-Server-Modell"
+    }
+  },
+  {
+    "id": "info-html-semantik",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Wofür wird HTML auf einer Webseite hauptsächlich verwendet?",
+    "answers": [
+      "Inhalte und ihre Struktur auszeichnen",
+      "Farben und Abstände der Elemente gestalten",
+      "Datenbankabfragen auf dem Webserver ausführen",
+      "Bilddateien automatisch komprimieren"
+    ],
+    "explanation": "HTML beschreibt unter anderem Überschriften, Absätze, Links und andere Inhaltselemente. CSS gestaltet ihre Darstellung; JavaScript kann das Verhalten ergänzen.",
+    "source": {
+      "title": "Wikipedia · Hypertext Markup Language",
+      "url": "https://de.wikipedia.org/wiki/Hypertext_Markup_Language"
+    }
+  },
+  {
+    "id": "info-fifo-warteschlange",
+    "category": "Informatik",
+    "difficulty": 2,
+    "prompt": "Ein Druckersystem bearbeitet Aufträge streng nach ihrer Eingangsreihenfolge. Welche Datenstruktur passt dazu?",
+    "answers": [
+      "Eine FIFO-Warteschlange",
+      "Ein LIFO-Stapel",
+      "Eine Prioritätswarteschlange nach Dateigröße",
+      "Ein Baum, der die Aufträge nach Namen sortiert"
+    ],
+    "explanation": "FIFO bedeutet First In, First Out. Der zuerst eingereihte Auftrag wird als erster entnommen; spätere Aufträge warten dahinter.",
+    "source": {
+      "title": "Wikipedia · Warteschlange (Datenstruktur)",
+      "url": "https://de.wikipedia.org/wiki/Warteschlange_(Datenstruktur)"
+    }
+  },
+  {
+    "id": "info-logarithmische-suche",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "Bei idealer binärer Suche verdoppelt sich die Zahl der Listeneinträge. Wie verändert sich die maximale Zahl der Suchschritte ungefähr?",
+    "answers": [
+      "Es kommt etwa ein Schritt hinzu",
+      "Sie verdoppelt sich immer",
+      "Sie vervierfacht sich",
+      "Sie wird grundsätzlich null"
+    ],
+    "explanation": "Binäre Suche hat logarithmische Schrittzahl. Da log₂(2n) = log₂(n) + 1, kostet eine Verdopplung der Datenmenge ungefähr einen zusätzlichen Halbierungsschritt.",
+    "source": {
+      "title": "Wikipedia · Binäre Suche",
+      "url": "https://de.wikipedia.org/wiki/Bin%C3%A4re_Suche"
+    }
+  },
+  {
+    "id": "info-hash-kollision",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "Was nennt man bei einer Hashfunktion eine Kollision?",
+    "answers": [
+      "Zwei verschiedene Eingaben haben denselben Hashwert",
+      "Dieselbe Eingabe ergibt bei derselben Funktion denselben Hashwert",
+      "Eine Tabelle speichert zwei verschiedene Hashwerte",
+      "Eine Hashfunktion bildet eine Eingabe auf einen Zahlenwert ab"
+    ],
+    "explanation": "Hashfunktionen bilden einen großen Eingaberaum auf einen begrenzten Wertebereich ab. Verschiedene Eingaben können deshalb denselben Hashwert erhalten.",
+    "source": {
+      "title": "Wikipedia · Hashfunktion",
+      "url": "https://de.wikipedia.org/wiki/Hashfunktion"
+    }
+  },
+  {
+    "id": "info-stabiles-sortieren",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "Was bedeutet es, dass ein Sortierverfahren stabil ist?",
+    "answers": [
+      "Einträge mit gleichem Sortierschlüssel behalten ihre relative Reihenfolge",
+      "Es läuft auf jedem Computer exakt gleich schnell",
+      "Es benötigt nie zusätzlichen Speicher",
+      "Es sortiert jede Liste bereits beim ersten Vergleich vollständig"
+    ],
+    "explanation": "Stabilität betrifft die Reihenfolge gleicher Schlüssel. Das ist etwa nützlich, wenn eine zuvor nach Vornamen sortierte Namensliste anschließend stabil nach Nachnamen sortiert wird.",
+    "source": {
+      "title": "Wikipedia · Sortierverfahren",
+      "url": "https://de.wikipedia.org/wiki/Sortierverfahren"
+    }
+  },
+  {
+    "id": "info-rekursion-abbruch",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "Warum braucht eine terminierende rekursive Lösung einen erreichbaren Basisfall?",
+    "answers": [
+      "Damit sich die Folge weiterer Aufrufe irgendwann beendet",
+      "Damit nie Parameter verwendet werden",
+      "Damit die Laufzeit grundsätzlich konstant ist",
+      "Damit die Funktion keine Werte zurückgeben kann"
+    ],
+    "explanation": "Ein Basisfall wird ohne einen weiteren rekursiven Aufruf gelöst. Die übrigen Aufrufe müssen das Problem so verändern, dass dieser Fall tatsächlich erreicht wird.",
+    "source": {
+      "title": "Wikipedia · Rekursion",
+      "url": "https://de.wikipedia.org/wiki/Rekursion"
+    }
+  },
+  {
+    "id": "info-fremdschluessel-beziehung",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "Wozu dient ein Fremdschlüssel in einer relationalen Datenbank?",
+    "answers": [
+      "Er verweist auf einen Schlüssel einer zugehörigen Tabelle",
+      "Er verschlüsselt automatisch alle Tabellen",
+      "Er macht jede referenzierende Spalte automatisch eindeutig",
+      "Er ersetzt grundsätzlich alle Primärschlüssel der Datenbank"
+    ],
+    "explanation": "Ein Fremdschlüssel bildet eine Beziehung zwischen Datensätzen ab. Eine passende Integritätsbedingung verhindert Verweise auf nicht vorhandene Schlüsselwerte.",
+    "source": {
+      "title": "Wikipedia · Fremdschlüssel",
+      "url": "https://de.wikipedia.org/wiki/Fremdschl%C3%BCssel"
+    }
+  },
+  {
+    "id": "info-normalisierung-redundanz",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "Welches Problem soll die Normalisierung einer relationalen Datenbank unter anderem verringern?",
+    "answers": [
+      "Redundante Angaben und dadurch entstehende Änderungsanomalien",
+      "Unterschiedliche Datentypen innerhalb der gesamten Datenbank",
+      "Jede Möglichkeit, Tabellen miteinander zu verknüpfen",
+      "Jede notwendige Speicherung von Schlüsselwerten"
+    ],
+    "explanation": "Wenn dieselbe Information unnötig mehrfach gespeichert wird, können widersprüchliche Änderungen entstehen. Normalisierung ordnet Daten anhand ihrer Abhängigkeiten geeigneten Tabellen zu.",
+    "source": {
+      "title": "Wikipedia · Normalisierung (Datenbank)",
+      "url": "https://de.wikipedia.org/wiki/Normalisierung_(Datenbank)"
+    }
+  },
+  {
+    "id": "info-ueberanpassung-modell",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "Ein Lernmodell erzielt auf Trainingsdaten sehr gute, auf neuen vergleichbaren Daten aber deutlich schlechtere Ergebnisse. Was ist ein naheliegendes Problem?",
+    "answers": [
+      "Überanpassung an die Trainingsdaten",
+      "Eine grundsätzlich perfekte Verallgemeinerung",
+      "Zu viele unabhängige Testdaten als Ursache jedes Fehlers",
+      "Ein Beweis, dass das Modell bewusst denkt"
+    ],
+    "explanation": "Bei Überanpassung lernt ein Modell auch zufällige Besonderheiten der Trainingsdaten. Gute Trainingswerte allein belegen deshalb keine gute Leistung auf neuen Daten.",
+    "source": {
+      "title": "Wikipedia · Überanpassung",
+      "url": "https://de.wikipedia.org/wiki/%C3%9Cberanpassung"
+    }
+  },
+  {
+    "id": "info-testdaten-trennung",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "Warum sollte ein endgültiger Testdatensatz beim Trainieren und Abstimmen eines Modells unbenutzt bleiben?",
+    "answers": [
+      "Damit er die Leistung auf bisher ungesehenen Daten möglichst unverzerrt misst",
+      "Damit das Modell die richtigen Testantworten auswendig lernt",
+      "Damit die Trainingsdaten automatisch repräsentativ werden",
+      "Damit man die Modellparameter direkt an ihm optimiert"
+    ],
+    "explanation": "Wer Modellentscheidungen wiederholt an denselben Testdaten ausrichtet, passt sich indirekt an sie an. Ein getrennt gehaltener abschließender Testsatz bewertet die Verallgemeinerung glaubwürdiger.",
+    "source": {
+      "title": "Wikipedia · Maschinelles Lernen",
+      "url": "https://de.wikipedia.org/wiki/Maschinelles_Lernen"
+    }
+  },
+  {
+    "id": "info-race-condition",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "Zwei parallele Programmteile lesen denselben Zählerstand und speichern danach jeweils ihren um eins erhöhten Wert. Warum kann eine Erhöhung verloren gehen?",
+    "answers": [
+      "Die Lese-Ändere-Schreibe-Folge ist ohne Koordination nicht atomar",
+      "Das Lesen des Zählers erhöht seinen Wert bereits automatisch",
+      "Zwei Programmteile können grundsätzlich keine gleichen Zahlen speichern",
+      "Ein einzelner Schreibzugriff addiert immer alle früheren Ergebnisse"
+    ],
+    "explanation": "Lesen beide denselben alten Wert, können beide denselben neuen Wert schreiben. Dieses Nebenläufigkeitsproblem lässt sich etwa durch passende atomare Operationen oder Synchronisierung vermeiden.",
+    "source": {
+      "title": "Wikipedia · Wettlaufsituation",
+      "url": "https://de.wikipedia.org/wiki/Wettlaufsituation"
+    }
+  },
+  {
+    "id": "info-breitensuche-kuerzester-weg",
+    "category": "Informatik",
+    "difficulty": 3,
+    "prompt": "In einem ungewichteten Graphen wird eine Breitensuche vom Startknoten ausgeführt. Was findet sie für einen erreichbaren Zielknoten?",
+    "answers": [
+      "Einen Weg mit minimaler Anzahl an Kanten",
+      "Immer einen Weg mit maximaler Länge",
+      "Nur einen Weg, wenn der Graph vollständig ist",
+      "Automatisch den billigsten Weg bei beliebigen Kantengewichten"
+    ],
+    "explanation": "Breitensuche untersucht zunächst alle Knoten in Abstand eins, dann in Abstand zwei und so weiter. Daher liefert sie in ungewichteten Graphen kürzeste Wege nach Kantenzahl.",
+    "source": {
+      "title": "Wikipedia · Breitensuche",
+      "url": "https://de.wikipedia.org/wiki/Breitensuche"
+    }
+  }
+]

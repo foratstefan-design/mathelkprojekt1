@@ -1,0 +1,1532 @@
+[
+  {
+    "id": "deutsch-subjekt-erkennen",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Welcher Satzteil ist in „Die Klasse besucht das Museum“ das Subjekt?",
+    "answers": [
+      "Die Klasse",
+      "das Museum",
+      "besucht",
+      "Die Klasse besucht"
+    ],
+    "explanation": "Das Subjekt steht im Nominativ. Die Frage „Wer besucht das Museum?“ führt zu „die Klasse“.",
+    "source": {
+      "title": "IDS grammis · Systematische Grammatik",
+      "url": "https://grammis.ids-mannheim.de/systematische-grammatik"
+    }
+  },
+  {
+    "id": "deutsch-dativobjekt",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Welcher Satzteil ist in „Mara hilft dem Kind“ das Dativobjekt?",
+    "answers": [
+      "dem Kind",
+      "Mara",
+      "hilft",
+      "Kind hilft"
+    ],
+    "explanation": "Ein Dativobjekt antwortet auf „Wem?“. Hier lautet die Frage: Wem hilft Mara?",
+    "source": {
+      "title": "IDS grammis · Systematische Grammatik",
+      "url": "https://grammis.ids-mannheim.de/systematische-grammatik"
+    }
+  },
+  {
+    "id": "deutsch-nominalisierung",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Welche Schreibweise ist richtig?",
+    "answers": [
+      "Das Lesen macht Spaß.",
+      "Das lesen macht Spaß.",
+      "das Lesen macht spaß.",
+      "Das lesen macht spaß."
+    ],
+    "explanation": "Der Artikel „das“ zeigt hier eine Nominalisierung an. Das Verb wird als Nomen gebraucht und deshalb großgeschrieben.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-praeteritum",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Welcher Satz steht im Präteritum?",
+    "answers": [
+      "Sie ging nach Hause.",
+      "Sie geht nach Hause.",
+      "Sie ist nach Hause gegangen.",
+      "Sie wird nach Hause gehen."
+    ],
+    "explanation": "„Ging“ ist die einfache Vergangenheitsform von „gehen“. Das Perfekt verwendet dagegen ein Hilfsverb und ein Partizip.",
+    "source": {
+      "title": "IDS grammis · Systematische Grammatik",
+      "url": "https://grammis.ids-mannheim.de/systematische-grammatik"
+    }
+  },
+  {
+    "id": "deutsch-dass-konjunktion",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Welche Ergänzung ist richtig: „Ich hoffe, ___ du morgen kommst“?",
+    "answers": [
+      "dass",
+      "das",
+      "der",
+      "den"
+    ],
+    "explanation": "„Dass“ leitet hier einen Nebensatz ein und ist eine Konjunktion. Es lässt sich nicht durch „dieses“, „jenes“ oder „welches“ ersetzen.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-vergleich-wie",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Welches Stilmittel steckt in „Er ist stark wie ein Löwe“?",
+    "answers": [
+      "Vergleich",
+      "Alliteration",
+      "Ellipse",
+      "Aufzählung"
+    ],
+    "explanation": "Das Wort „wie“ verbindet ausdrücklich zwei Bereiche. So entsteht ein Vergleich; die Stärke wird anschaulich dargestellt.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-alliteration",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Was haben die Wörter in „Milch macht müde“ gemeinsam?",
+    "answers": [
+      "Sie beginnen mit demselben Laut.",
+      "Sie enden mit derselben Silbe.",
+      "Sie haben dieselbe Bedeutung.",
+      "Sie bilden einen vollständigen Reim."
+    ],
+    "explanation": "Gleiche Anfangslaute benachbarter betonter Wörter heißen Alliteration. Entscheidend ist der Klang, nicht nur der Buchstabe.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-personalpronomen",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Welches Wort ist ein Personalpronomen?",
+    "answers": [
+      "wir",
+      "unter",
+      "heute",
+      "schön"
+    ],
+    "explanation": "Personalpronomen wie „ich“, „du“ und „wir“ bezeichnen Sprecher, Angesprochene oder andere Personen beziehungsweise Dinge.",
+    "source": {
+      "title": "IDS grammis · Systematische Grammatik",
+      "url": "https://grammis.ids-mannheim.de/systematische-grammatik"
+    }
+  },
+  {
+    "id": "deutsch-woertliche-rede",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Woran erkennt man im Schriftbild normalerweise wörtliche Rede?",
+    "answers": [
+      "An Anführungszeichen",
+      "An ausschließlich großen Buchstaben",
+      "An einem Semikolon nach jedem Wort",
+      "An einer vorgeschriebenen Kursivschrift"
+    ],
+    "explanation": "Wörtliche Rede gibt Gesprochenes unmittelbar wieder und wird gewöhnlich durch Anführungszeichen markiert.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-sachtext-absicht",
+    "category": "Deutsch",
+    "difficulty": 1,
+    "prompt": "Welches Ziel passt am besten zu einer sachlichen Gebrauchsanleitung?",
+    "answers": [
+      "Einen Vorgang verständlich erklären",
+      "Eine erfundene Handlung erzählen",
+      "Eine persönliche Stimmung verdichten",
+      "Ein Gedicht nachahmen"
+    ],
+    "explanation": "Eine Gebrauchsanleitung soll Handlungen nachvollziehbar machen. Eine klare Reihenfolge und eindeutige Formulierungen helfen dabei.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-metapher",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Was bedeutet die Metapher „ein Meer von Menschen“?",
+    "answers": [
+      "Eine sehr große Menschenmenge",
+      "Menschen schwimmen tatsächlich im Meer.",
+      "Die Menschenmenge besteht aus Wasser.",
+      "Es sind ausschließlich Seeleute gemeint."
+    ],
+    "explanation": "Die Größe eines Meeres wird auf eine Menschenmenge übertragen. Die Formulierung ist bildlich und nicht wörtlich zu verstehen.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-konjunktiv-indirekte-rede",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Welche Form markiert eindeutig indirekte Rede im Konjunktiv I?",
+    "answers": [
+      "Sie sagt, er sei krank.",
+      "Sie sagt, er ist krank.",
+      "Sie sagt: „Er ist krank.“",
+      "Er ist krank, sagt sie."
+    ],
+    "explanation": "„Sei“ ist Konjunktiv I von „sein“. Die Form kennzeichnet die Wiedergabe einer fremden Aussage, ohne deren Wahrheit automatisch zu bestätigen.",
+    "source": {
+      "title": "IDS grammis · Systematische Grammatik",
+      "url": "https://grammis.ids-mannheim.de/systematische-grammatik"
+    }
+  },
+  {
+    "id": "deutsch-passiv-vorgang",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Welcher Satz ist ein Vorgangspassiv?",
+    "answers": [
+      "Die Brücke wird repariert.",
+      "Die Brücke ist repariert.",
+      "Die Arbeiter reparieren die Brücke.",
+      "Die Brücke bleibt gesperrt."
+    ],
+    "explanation": "Das Vorgangspassiv wird mit „werden“ und Partizip II gebildet. Es stellt den Reparaturvorgang statt der handelnden Person in den Vordergrund.",
+    "source": {
+      "title": "IDS grammis · Systematische Grammatik",
+      "url": "https://grammis.ids-mannheim.de/systematische-grammatik"
+    }
+  },
+  {
+    "id": "deutsch-anapher",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Was wird bei einer rhetorischen Anapher wiederholt?",
+    "answers": [
+      "Ein Wort oder eine Wortgruppe am Anfang aufeinanderfolgender Einheiten",
+      "Das letzte Wort jedes Textes",
+      "Jeder Vokal innerhalb eines Wortes",
+      "Eine ganze Handlung in umgekehrter Reihenfolge"
+    ],
+    "explanation": "Zum Beispiel beginnt in „Wir lernen. Wir fragen. Wir verstehen.“ jeder Satz mit „Wir“. Das kann Aussagen rhythmisch verbinden und betonen.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-lyrisches-ich",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Was bezeichnet das „lyrische Ich“?",
+    "answers": [
+      "Die im Gedicht sprechende Instanz",
+      "Immer die reale Person des Autors",
+      "Den Leser eines beliebigen Gedichts",
+      "Ausschließlich die Hauptfigur eines Romans"
+    ],
+    "explanation": "Die Stimme eines Gedichts ist eine Textebene. Sie darf nicht ohne Beleg mit dem Leben oder der Meinung des Autors gleichgesetzt werden.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-argument-beleg",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Was stützt die These „Mehr Bäume kühlen Städte“ am besten?",
+    "answers": [
+      "Messdaten zu Temperaturen unter Bäumen und auf unbeschatteten Flächen",
+      "Die bloße Wiederholung der These",
+      "Der Satz „Das weiß doch jeder“",
+      "Eine Beleidigung der Gegenposition"
+    ],
+    "explanation": "Ein überprüfbarer, passender Beleg unterstützt eine Behauptung. Wiederholungen und persönliche Angriffe liefern keine Sachbegründung.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-reimschema",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Welches Reimschema bezeichnet einen Kreuzreim?",
+    "answers": [
+      "abab",
+      "aabb",
+      "abba",
+      "aaaa"
+    ],
+    "explanation": "Beim Kreuzreim reimen sich die erste und dritte sowie die zweite und vierte Verszeile. Die Reimpaare wechseln sich also ab.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-ellipse",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Welcher Satz ist eine Ellipse?",
+    "answers": [
+      "Je früher, desto besser.",
+      "Sie fährt heute mit dem Zug.",
+      "Weil es regnet, bleiben wir hier.",
+      "Wir haben lange über die Frage gesprochen."
+    ],
+    "explanation": "Eine Ellipse lässt grammatisch erwartbare Teile weg, die aus dem Zusammenhang ergänzt werden können. Hier fehlt beispielsweise ein ausformuliertes Prädikat.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-fokalisierung-personal",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Ein Text schildert nur, was eine Figur wahrnimmt und denkt. Welche Perspektive liegt nahe?",
+    "answers": [
+      "Eine personale, an diese Figur gebundene Perspektive",
+      "Eine unbegrenzt allwissende Perspektive",
+      "Zwingend die Perspektive des realen Autors",
+      "Ausschließlich eine Kamera ohne Gedankenwiedergabe"
+    ],
+    "explanation": "Bei personalem Erzählen ist das Wissen an eine Figur gebunden. Auch ein Erzähler in der dritten Person kann so begrenzt erzählen.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-konnotation",
+    "category": "Deutsch",
+    "difficulty": 2,
+    "prompt": "Warum kann „Köter“ anders wirken als „Hund“, obwohl beide dasselbe Tier meinen können?",
+    "answers": [
+      "„Köter“ trägt eine abwertende Nebenbedeutung.",
+      "„Köter“ ist immer ein biologischer Fachbegriff.",
+      "„Hund“ ist kein Nomen.",
+      "Beide Wörter haben in jedem Kontext dieselbe Wirkung."
+    ],
+    "explanation": "Neben der sachlichen Bedeutung können Wörter Wertungen und Gefühle mittransportieren. Diese Nebenbedeutungen nennt man Konnotationen.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-unzuverlaessiges-erzaehlen",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "Ein Ich-Erzähler widerspricht nachprüfbaren Ereignissen der Handlung. Was ist bei der Interpretation besonders wichtig?",
+    "answers": [
+      "Seine Darstellung von den im Text erkennbaren Ereignissen zu unterscheiden",
+      "Die Widersprüche sicher als bewusste Lügen des Erzählers einzuordnen",
+      "Eine spätere Selbsterklärung des Erzählers automatisch als wahr anzunehmen",
+      "Die Widersprüche ausschließlich als Versehen des realen Autors zu deuten"
+    ],
+    "explanation": "Ein unzuverlässiger Erzähler kann irren, sich selbst täuschen oder bewusst täuschen. Widersprüche und andere Textsignale helfen, seine Darstellung kritisch einzuordnen.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-erlebte-rede",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "„Morgen war die Prüfung. Wie sollte sie das nur schaffen?“ Welche Form liegt nahe, wenn dies die Gedanken einer Figur wiedergibt?",
+    "answers": [
+      "Erlebte Rede",
+      "Innerer Monolog in der Ich-Form",
+      "Indirekte Gedankenrede im Konjunktiv I",
+      "Auktorialer Kommentar außerhalb der Figurenperspektive"
+    ],
+    "explanation": "Erlebte Rede verbindet die dritte Person und die Erzählzeit mit dem inneren Blick einer Figur. Fragen oder Ausrufe können deren Gedanken unmittelbar hörbar machen.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-dramatische-ironie",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "Das Publikum weiß, dass ein Brief gefälscht ist; die handelnde Figur hält ihn für echt. Was entsteht daraus?",
+    "answers": [
+      "Dramatische Ironie durch einen Wissensvorsprung des Publikums",
+      "Unzuverlässiges Erzählen durch eine Falschinformation des Publikums",
+      "Verbale Ironie, weil die Figur das Gegenteil ihrer Worte meint",
+      "Eine Rückblende, in der die Figur bereits Erlebtes nachträglich berichtet"
+    ],
+    "explanation": "Dramatische Ironie beruht auf ungleich verteiltem Wissen. Das Publikum versteht Äußerungen und Handlungen dadurch anders als die unwissende Figur.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-hypotaxe-wirkung",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "Welche Beschreibung trifft eine hypotaktische Satzstruktur?",
+    "answers": [
+      "Ein Satzgefüge mit untergeordneten Nebensätzen",
+      "Eine Satzreihe mit nur gleichrangigen Hauptsätzen",
+      "Ein eingeschobener Kommentar ohne syntaktische Einbindung",
+      "Die Auslassung eines aus dem Kontext ergänzbaren Satzteils"
+    ],
+    "explanation": "Hypotaxe verbindet Aussagen durch Unterordnung. So lassen sich Bedingungen, Ursachen oder Einräumungen ausdrücklich miteinander verknüpfen.",
+    "source": {
+      "title": "IDS grammis · Systematische Grammatik",
+      "url": "https://grammis.ids-mannheim.de/systematische-grammatik"
+    }
+  },
+  {
+    "id": "deutsch-hermeneutischer-zirkel",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "Was beschreibt der hermeneutische Zirkel bei der Textinterpretation?",
+    "answers": [
+      "Das Wechselspiel zwischen dem Verständnis einzelner Textstellen und des ganzen Textes",
+      "Die Ableitung einer Textbedeutung ausschließlich aus der Biografie des Autors",
+      "Die Prüfung einer Deutung allein danach, wie viele Leser ihr zustimmen",
+      "Die vollständige Trennung von Textanalyse und jeder vorherigen Erwartung"
+    ],
+    "explanation": "Einzelstellen werden im Licht des Ganzen gelesen; umgekehrt verändert ihre Analyse das Gesamtverständnis. Deutungen werden dabei am Text überprüft und weiterentwickelt.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-ad-hominem",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "„Dein Vorschlag zum Stundenplan ist falsch, weil du unsympathisch bist.“ Welcher Argumentationsfehler liegt vor?",
+    "answers": [
+      "Angriff auf die Person statt Prüfung des Arguments",
+      "Verwechslung einer zeitlichen Abfolge mit einem Ursache-Wirkungs-Verhältnis",
+      "Verzerrung des Vorschlags, um eine schwächere Ersatzposition zu widerlegen",
+      "Berufung auf das fehlende Gegenteil als Beweis für die eigene Behauptung"
+    ],
+    "explanation": "Ein persönlicher Angriff sagt nichts darüber aus, ob ein Vorschlag sachlich überzeugt. Dieser Fehlschluss heißt argumentum ad hominem.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-intertextualitaet",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "Ein Roman greift erkennbar Motive und Formulierungen eines älteren Werkes auf. Was untersucht man hier besonders?",
+    "answers": [
+      "Intertextualität",
+      "Fokalisierung",
+      "Textkohäsion",
+      "Erzählgeschwindigkeit"
+    ],
+    "explanation": "Intertextualität bezeichnet Beziehungen zwischen Texten. Ein Zitat oder eine Anspielung kann Erwartungen wecken, frühere Deutungen verändern oder einen Text kommentieren.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-argument-gueltigkeit",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "„Alle Gedichte sind Texte. Dieses Werk ist ein Gedicht. Also ist dieses Werk ein Text.“ Wie ist der Schluss aufgebaut?",
+    "answers": [
+      "Deduktiv gültig: Wenn beide Voraussetzungen stimmen, muss die Folgerung stimmen.",
+      "Induktiv: Die Folgerung ist nur aufgrund zahlreicher beobachteter Einzelfälle wahrscheinlich.",
+      "Analogisch: Die Folgerung gilt wegen ähnlicher Eigenschaften zweier verschiedener Werke.",
+      "Zirkulär: Die Folgerung wird schon als Begründung für eine ihrer Voraussetzungen verwendet."
+    ],
+    "explanation": "Ein deduktiver Schluss leitet die Folgerung zwingend aus seinen Voraussetzungen ab. Ob die Voraussetzungen tatsächlich zutreffen, ist eine zusätzliche Frage.",
+    "source": {
+      "title": "Duden · Sprachwissen",
+      "url": "https://www.duden.de/sprachwissen/sprachratgeber"
+    }
+  },
+  {
+    "id": "deutsch-sprache-sprecherhaltung",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "Was verändert sich zwischen „Er behauptet, das Ergebnis sei korrekt“ und „Er bestätigt, das Ergebnis sei korrekt“ besonders?",
+    "answers": [
+      "Die sprachlich vermittelte Haltung zur Verlässlichkeit der Aussage",
+      "Die Distanz zum berichteten Vorgang wird allein durch das Tempus verändert",
+      "Der Konjunktiv I wechselt von indirekter Rede zu einem ausdrücklichen Wunsch",
+      "Der zweite Satz macht die Richtigkeit des Ergebnisses logisch zwingend"
+    ],
+    "explanation": "Verben der Redewiedergabe können eine Aussage einordnen. „Behaupten“ kann Distanz vermitteln, während „bestätigen“ ihre Geltung eher stützt.",
+    "source": {
+      "title": "IDS grammis · Systematische Grammatik",
+      "url": "https://grammis.ids-mannheim.de/systematische-grammatik"
+    }
+  },
+  {
+    "id": "deutsch-mehrdeutiger-bezug",
+    "category": "Deutsch",
+    "difficulty": 3,
+    "prompt": "Warum ist „Lea sah die Lehrerin mit dem Fernglas“ ohne Kontext mehrdeutig?",
+    "answers": [
+      "„Mit dem Fernglas“ kann sich auf das Sehen oder auf die Lehrerin beziehen.",
+      "„Die Lehrerin“ kann wegen gleicher Kasusformen Subjekt oder Akkusativobjekt sein.",
+      "Das Präteritum lässt offen, ob das Sehen vor oder nach dem Sprechzeitpunkt liegt.",
+      "„Mit“ kann hier ohne Bedeutungsunterschied Dativ oder Akkusativ verlangen."
+    ],
+    "explanation": "Die Präpositionalgruppe kann ein Mittel des Sehens oder ein Merkmal der gesehenen Person angeben. Unterschiedliche syntaktische Zuordnungen führen hier zu verschiedenen Bedeutungen.",
+    "source": {
+      "title": "IDS grammis · Systematische Grammatik",
+      "url": "https://grammis.ids-mannheim.de/systematische-grammatik"
+    }
+  },
+  {
+    "id": "geschichte-neolithische-revolution",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Welche Veränderung kennzeichnet die neolithische Revolution?",
+    "answers": [
+      "Den Übergang zu Ackerbau und Viehzucht",
+      "Den Beginn der Dampfschifffahrt",
+      "Die Erfindung der Fotografie",
+      "Die Einführung des Internets"
+    ],
+    "explanation": "Menschen begannen in verschiedenen Regionen, Pflanzen anzubauen und Tiere zu halten. Sesshaftigkeit und neue Formen des Zusammenlebens entwickelten sich damit, aber nicht überall gleichzeitig.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-mittelalter-grundherrschaft",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Worauf beruhte die mittelalterliche Grundherrschaft vor allem?",
+    "answers": [
+      "Auf Landbesitz sowie Abgaben und Diensten abhängiger Bauern",
+      "Auf allgemeinem Wahlrecht für alle Einwohner",
+      "Auf industrieller Lohnarbeit in Fabriken",
+      "Auf der vollständigen Abschaffung von Landwirtschaft"
+    ],
+    "explanation": "Grundherren verfügten über Land und erhielten Leistungen von abhängigen Bauern. Wie diese Pflichten aussahen, unterschied sich nach Ort und Zeit.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-buchdruck-folge",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Welche Entwicklung erleichterte der Buchdruck mit beweglichen Lettern in Europa besonders?",
+    "answers": [
+      "Die schnellere Verbreitung vervielfältigter Texte",
+      "Das sofortige Ende aller Zensur",
+      "Die Abschaffung sämtlicher Handschriften",
+      "Die Einführung elektrischer Nachrichten"
+    ],
+    "explanation": "Gedruckte Texte ließen sich in größerer Zahl herstellen. Das unterstützte unter anderem die Verbreitung wissenschaftlicher und religiöser Debatten.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-reformation",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Worum ging es bei der Reformation des 16. Jahrhunderts zunächst besonders?",
+    "answers": [
+      "Um Kritik an kirchlichen Lehren und Praktiken",
+      "Um die Einführung des Frauenwahlrechts",
+      "Um den Bau der Berliner Mauer",
+      "Um die Gründung der Europäischen Union"
+    ],
+    "explanation": "Religiöse Reformbewegungen kritisierten kirchliche Lehren und Praktiken. Daraus entwickelten sich Konfessionsspaltungen mit weitreichenden politischen Folgen.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-franzoesische-revolution-parole",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Welche Forderung gehört zur bekannten Losung der Französischen Revolution?",
+    "answers": [
+      "Freiheit, Gleichheit, Brüderlichkeit",
+      "Blut und Eisen",
+      "Brot und Spiele",
+      "Thron und Altar"
+    ],
+    "explanation": "Die Losung bündelte Ansprüche auf Freiheit und Gleichheit. Ihre praktische Umsetzung blieb jedoch umkämpft und schloss zunächst viele Menschen aus.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-industrialisierung-fabrik",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Welche Arbeitsform breitete sich mit der Industrialisierung besonders aus?",
+    "answers": [
+      "Maschinelle Produktion in Fabriken",
+      "Ausschließlich handschriftliche Buchproduktion",
+      "Nur unbezahlte Arbeit auf römischen Latifundien",
+      "Die vollständige Abschaffung arbeitsteiliger Produktion"
+    ],
+    "explanation": "Maschinen, neue Energiequellen und Fabriken veränderten die Produktion. Viele Menschen zogen in wachsende Städte und arbeiteten gegen Lohn.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-wahlrecht-frauen-deutschland",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Was war an der Wahl zur deutschen Nationalversammlung 1919 neu?",
+    "answers": [
+      "Frauen durften reichsweit wählen und gewählt werden.",
+      "Es durften nur Adlige wählen.",
+      "Wahlen waren erstmals ausschließlich öffentlich.",
+      "Alle bisherigen Wähler verloren dauerhaft ihr Wahlrecht."
+    ],
+    "explanation": "Das Frauenwahlrecht wurde 1918 eingeführt und bei der Wahl 1919 erstmals reichsweit ausgeübt. Politische Gleichberechtigung war damit rechtlich deutlich erweitert.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-diktatur-gegensatz",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Welches Merkmal unterscheidet eine Diktatur grundsätzlich von einer pluralistischen Demokratie?",
+    "answers": [
+      "Macht kann nicht durch freie, faire Wahlen wirksam abgelöst werden.",
+      "Es gibt öffentliche Gebäude.",
+      "Es existieren geschriebene Gesetze.",
+      "Menschen arbeiten in unterschiedlichen Berufen."
+    ],
+    "explanation": "Auch Diktaturen können Gesetze und formal Wahlen haben. Entscheidend ist, ob Macht tatsächlich frei kontrolliert und durch faire Konkurrenz abgelöst werden kann.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-berliner-mauer-zweck",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Wozu diente die 1961 errichtete Berliner Mauer vor allem?",
+    "answers": [
+      "Die Flucht aus der DDR nach West-Berlin zu verhindern",
+      "Den Autoverkehr innerhalb West-Berlins zu beschleunigen",
+      "Eine Außengrenze der Europäischen Union zu markieren",
+      "Berlin vor regelmäßigem Hochwasser zu schützen"
+    ],
+    "explanation": "Die DDR-Führung schloss mit der Mauer den bis dahin wichtigsten Fluchtweg nach Westen. Die Grenzanlagen schränkten die Bewegungsfreiheit gewaltsam ein.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-wiedervereinigung",
+    "category": "Geschichte",
+    "difficulty": 1,
+    "prompt": "Was geschah am 3. Oktober 1990?",
+    "answers": [
+      "Die DDR trat der Bundesrepublik Deutschland bei.",
+      "Die Berliner Mauer wurde errichtet.",
+      "Das Deutsche Kaiserreich wurde gegründet.",
+      "Der Erste Weltkrieg begann."
+    ],
+    "explanation": "Am 3. Oktober 1990 wurde die staatliche Einheit Deutschlands vollzogen. Der Fall der Berliner Mauer am 9. November 1989 war ein wichtiger vorausgehender Schritt.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-absolutismus",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Welcher Anspruch kennzeichnet den Absolutismus?",
+    "answers": [
+      "Der Monarch beansprucht weitreichende Herrschaftsmacht ohne parlamentarische Mitregierung.",
+      "Alle staatlichen Entscheidungen werden basisdemokratisch getroffen.",
+      "Der Staat verzichtet grundsätzlich auf Steuern.",
+      "Der Monarch wird zwingend jedes Jahr neu gewählt."
+    ],
+    "explanation": "Absolutistische Monarchen wollten Herrschaft zentralisieren. In der Praxis blieb ihre Macht etwa durch Finanzbedarf, lokale Rechte und gesellschaftliche Gruppen begrenzt.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-aufklaerung-gewaltenteilung",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Welche Idee der Aufklärung soll Machtmissbrauch erschweren?",
+    "answers": [
+      "Die Trennung und gegenseitige Kontrolle staatlicher Gewalten",
+      "Die Vereinigung aller Ämter in einer Person",
+      "Das Verbot öffentlicher Kritik",
+      "Die Vererbung aller politischen Ämter"
+    ],
+    "explanation": "Gewaltenteilung begrenzt politische Macht, indem unterschiedliche Institutionen verschiedene Aufgaben übernehmen und einander kontrollieren.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-wiener-kongress",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Welches Ziel verfolgten die europäischen Großmächte beim Wiener Kongress 1814/15 besonders?",
+    "answers": [
+      "Eine stabile Staatenordnung nach den Napoleonischen Kriegen herstellen",
+      "Die deutsche Wiedervereinigung von 1990 organisieren",
+      "Die Europäische Zentralbank gründen",
+      "Allen europäischen Kolonien sofort die Unabhängigkeit gewähren"
+    ],
+    "explanation": "Der Kongress verband territoriale Neuordnung mit dem Anspruch, monarchische Ordnung und ein Mächtegleichgewicht zu sichern. Liberale und nationale Forderungen wurden dadurch nicht einfach erfüllt.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-1848-forderungen",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Welche Forderung war für viele Revolutionäre von 1848/49 in den deutschen Staaten wichtig?",
+    "answers": [
+      "Eine Verfassung und bürgerliche Freiheitsrechte",
+      "Die Rückkehr zur römischen Republik",
+      "Die Abschaffung aller Parlamente",
+      "Der Bau einer innerdeutschen Mauer"
+    ],
+    "explanation": "Die Revolution verband liberale, nationale und soziale Anliegen. Wie weit politische Beteiligung gehen sollte, war auch unter den Revolutionären umstritten.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-imperialismus",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Was beschreibt den europäischen Imperialismus im späten 19. Jahrhundert besonders?",
+    "answers": [
+      "Den Ausbau kolonialer Herrschaft und weltpolitischer Einflusssphären",
+      "Die freiwillige Auflösung aller Kolonialreiche",
+      "Die politische Gleichstellung aller kolonisierten Bevölkerungen",
+      "Die ausschließliche Zusammenarbeit gleichberechtigter Stadtstaaten"
+    ],
+    "explanation": "Imperialistische Politik zielte auf Macht, wirtschaftliche Vorteile und Prestige. Sie ging mit Unterwerfung, Ausbeutung und rassistischen Rechtfertigungen einher.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-1914-anlass-ursache",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Warum sollte man das Attentat von Sarajevo nicht mit allen Ursachen des Ersten Weltkriegs gleichsetzen?",
+    "answers": [
+      "Ein unmittelbarer Anlass ist von längerfristigen Konflikten und Entscheidungen zu unterscheiden.",
+      "Weil ein Krieg grundsätzlich nur eine einzige Ursache hat.",
+      "Weil Bündnisse vor 1914 keine Rolle spielten.",
+      "Weil das Attentat erst nach dem Kriegsende stattfand."
+    ],
+    "explanation": "Das Attentat löste die Julikrise aus. Bündnispolitik, Machtkonflikte, Rüstung und die Entscheidungen politischer Akteure erklären zusätzlich, warum die Krise zum Krieg eskalierte.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-weimarer-verfassung",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Welche Neuerung brachte die Weimarer Verfassung gegenüber dem Kaiserreich?",
+    "answers": [
+      "Eine demokratische Republik mit einem gewählten Parlament und einem gewählten Reichspräsidenten",
+      "Eine erbliche Kaiserwürde mit abgeschafftem Parlament",
+      "Die ausschließliche Herrschaft des Militärs",
+      "Eine Verfassung ohne Wahlrecht für Frauen"
+    ],
+    "explanation": "Die Weimarer Republik verband parlamentarische Demokratie mit einer starken Stellung des Reichspräsidenten. Sie gewährte allgemeines Wahlrecht auch für Frauen.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-gleichschaltung",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Was bedeutete „Gleichschaltung“ im Nationalsozialismus?",
+    "answers": [
+      "Die Unterwerfung gesellschaftlicher und staatlicher Institutionen unter die NS-Herrschaft",
+      "Die rechtliche Stärkung unabhängiger Gewerkschaften",
+      "Die Einführung freier Konkurrenz zwischen allen Parteien",
+      "Die Trennung von Partei und Staatsgewalt"
+    ],
+    "explanation": "Organisationen, Medien und staatliche Strukturen wurden auf die Diktatur ausgerichtet oder ausgeschaltet. Dadurch verschwanden unabhängige Kontrolle und öffentliche Gegenmacht.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-marshallplan",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Welches Ziel verfolgte der Marshallplan nach dem Zweiten Weltkrieg?",
+    "answers": [
+      "Den wirtschaftlichen Wiederaufbau europäischer Staaten unterstützen",
+      "Die Berliner Mauer finanzieren",
+      "Das Römische Reich wiederherstellen",
+      "Die Einführung des Euro sofort abschließen"
+    ],
+    "explanation": "Die US-amerikanische Wiederaufbauhilfe sollte wirtschaftliche Erholung fördern und politische Stabilität stärken. Sie war zugleich Teil der Auseinandersetzung im entstehenden Kalten Krieg.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-dekolonisierung",
+    "category": "Geschichte",
+    "difficulty": 2,
+    "prompt": "Was bezeichnet Dekolonisierung?",
+    "answers": [
+      "Den Prozess, in dem koloniale Herrschaft endet und politische Unabhängigkeit entsteht",
+      "Die erstmalige Unterwerfung eines Gebiets als Kolonie",
+      "Die Einführung feudaler Grundherrschaft in Europa",
+      "Die vollständige Beseitigung aller Folgen kolonialer Herrschaft"
+    ],
+    "explanation": "Politische Unabhängigkeit beendete die Kolonialherrschaft formal. Wirtschaftliche Abhängigkeiten, Grenzkonflikte und andere koloniale Folgen konnten trotzdem fortbestehen.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-quellenkritik-interesse",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Eine Regierung veröffentlicht im Krieg einen Bericht über eigene Erfolge. Was muss Quellenkritik besonders berücksichtigen?",
+    "answers": [
+      "Entstehungssituation, Adressaten und mögliche Darstellungsinteressen",
+      "Die amtliche Herkunft als ausreichenden Beleg für eine vollständige Darstellung werten",
+      "Den Bericht nur dann als Quelle verwenden, wenn seine Aussagen durchweg neutral sind",
+      "Spätere Darstellungen grundsätzlich für verlässlicher als zeitgenössische halten"
+    ],
+    "explanation": "Eine Quelle kann gezielt informieren, rechtfertigen oder mobilisieren. Ihre Perspektive macht sie weder automatisch wahr noch wertlos, sondern muss bei der Auswertung berücksichtigt werden.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-sachurteil-werturteil",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Was unterscheidet ein historisches Werturteil besonders von einem Sachurteil?",
+    "answers": [
+      "Es bewertet einen Sachverhalt anhand ausdrücklich begründeter Normen und Maßstäbe.",
+      "Es erklärt Ursachen eines Ereignisses, ohne einen normativen Maßstab anzulegen.",
+      "Es rekonstruiert die damaligen Handlungsmöglichkeiten, ohne selbst Stellung zu beziehen.",
+      "Es prüft anhand mehrerer Quellen, ob eine Tatsachenbehauptung zutrifft."
+    ],
+    "explanation": "Ein Sachurteil beurteilt historische Zusammenhänge auf Grundlage von Belegen. Ein Werturteil ergänzt eine begründete normative Bewertung; seine Maßstäbe sollten offengelegt werden.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-nationalstaat-ausschluss",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Warum konnte die Nationalstaatsbildung des 19. Jahrhunderts zugleich integrieren und ausgrenzen?",
+    "answers": [
+      "Sie schuf Zugehörigkeit, konnte aber Minderheiten als nicht zugehörig behandeln.",
+      "Sie beseitigte regionale Identitäten vollständig und ließ deshalb keine Zugehörigkeitskonflikte zu.",
+      "Sie ersetzte kulturelle Zugehörigkeit überall durch ein einziges neutrales Wirtschaftsinteresse.",
+      "Sie gewährte automatisch allen Einwohnern dieselbe politische Teilhabe, sobald Grenzen feststanden."
+    ],
+    "explanation": "Nationale Bewegungen verbanden Menschen durch gemeinsame Symbole und politische Ziele. Die Festlegung, wer zur Nation gehört, konnte andere Gruppen zugleich ausschließen.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-soziale-frage",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Warum reicht „mehr Maschinen“ allein nicht als Erklärung der sozialen Frage im 19. Jahrhundert?",
+    "answers": [
+      "Auch Arbeitsbedingungen, fehlende Absicherung und Machtverhältnisse prägten die Lage der Arbeitenden.",
+      "Entscheidend war allein der Rückgang der Gesamtproduktion durch den Maschineneinsatz.",
+      "Die Probleme betrafen nur vorübergehende Einkommensverluste einzelner Unternehmer.",
+      "Ein höherer technischer Wirkungsgrad führte schon für sich genommen zu kürzerer Arbeitszeit für alle."
+    ],
+    "explanation": "Die soziale Frage betraf die Lebens- und Arbeitsverhältnisse großer Bevölkerungsgruppen. Industrialisierung wirkte dabei zusammen mit Urbanisierung, Lohnabhängigkeit und unzureichender sozialer Absicherung.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-versaille-weimar-erklaerung",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Warum ist „Versailles machte die NS-Herrschaft unvermeidlich“ historisch problematisch?",
+    "answers": [
+      "Die Aussage blendet spätere Entscheidungen, Krisen und Handlungsmöglichkeiten aus.",
+      "Ein Vertrag kann grundsätzlich keine innenpolitischen Entwicklungen beeinflussen.",
+      "Nur unmittelbar vor 1933 liegende Ereignisse dürfen für die Erklärung berücksichtigt werden.",
+      "Wirtschaftliche Krisen erklären politische Entscheidungen vollständig ohne weitere Faktoren."
+    ],
+    "explanation": "Der Vertrag belastete die Weimarer Republik, erklärte aber nicht allein ihr Ende. Antidemokratische Akteure, Wirtschaftskrisen und konkrete Entscheidungen waren ebenfalls entscheidend.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-machtuebertragung-1933",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Was zeigt die Ernennung Hitlers zum Reichskanzler am 30. Januar 1933 über das Ende der Weimarer Republik?",
+    "answers": [
+      "Konservative Machteliten wirkten an der Machtübertragung an die Nationalsozialisten mit.",
+      "Die NSDAP hatte zuvor durch eine absolute Stimmenmehrheit automatisch das Kanzleramt gewonnen.",
+      "Die Ernennung war gleichbedeutend mit der bereits abgeschlossenen Ausschaltung aller Institutionen.",
+      "Hindenburg war verfassungsrechtlich verpflichtet, stets den Führer der stärksten Partei zu ernennen."
+    ],
+    "explanation": "Reichspräsident Hindenburg ernannte Hitler zum Kanzler. Die Mitwirkung konservativer Eliten war ein zentraler Schritt; die anschließende Diktatur entstand durch weitere Maßnahmen und Gewalt.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-kalter-krieg-stellvertreter",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Warum widersprechen Stellvertreterkriege der Bezeichnung „Kalter Krieg“ nicht?",
+    "answers": [
+      "Die Supermächte vermieden den direkten umfassenden Krieg gegeneinander, während andere Regionen heiße Kriege erlebten.",
+      "Der Begriff bezeichnet ausschließlich die Phase vor dem ersten militärischen Konflikt in einem Drittstaat.",
+      "Die Supermächte konnten Drittstaatenkonflikte unabhängig von lokalen Interessen vollständig steuern.",
+      "Stellvertreterkriege waren vom Ost-West-Konflikt getrennt, sobald keine Supermacht eigene Truppen einsetzte."
+    ],
+    "explanation": "„Kalt“ beschreibt vor allem das Verhältnis der beiden Supermächte. Für Menschen in den betroffenen Regionen waren die militärischen Konflikte dagegen reale, oft verheerende Kriege.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "geschichte-ostpolitik-wandel",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Welcher Gedanke stand hinter der westdeutschen Ostpolitik unter Willy Brandt?",
+    "answers": [
+      "Durch Anerkennung der bestehenden Lage und Verständigung längerfristige Veränderungen ermöglichen",
+      "Verständigung erst nach der vollständigen politischen Angleichung der DDR zulassen",
+      "Die Bundesrepublik vor jeder Annäherung aus der westlichen Bündnisordnung herauslösen",
+      "Humanitäre Erleichterungen nur nach einer sofortigen staatlichen Wiedervereinigung vereinbaren"
+    ],
+    "explanation": "Die Politik setzte auf Entspannung, Verträge und praktische Erleichterungen. Annäherung sollte Konflikte mindern und Spielräume für Veränderungen schaffen.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-1989-mehrere-faktoren",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Welche Erklärung des Umbruchs von 1989 berücksichtigt mehrere historische Faktoren?",
+    "answers": [
+      "Bürgerproteste, Reformpolitik in der Sowjetunion und Krisen der DDR wirkten zusammen.",
+      "Die Öffnung beruhte allein auf einer von Beginn an planmäßig beschlossenen Wiedervereinigungspolitik der SED.",
+      "Proteste in der DDR waren nur eine Folge des Mauerfalls und konnten den Umbruch daher nicht mitprägen.",
+      "Die Reformpolitik der Sowjetunion beseitigte den Einfluss innerer gesellschaftlicher Konflikte vollständig."
+    ],
+    "explanation": "Die Öffnung der Berliner Mauer war Teil eines längeren Prozesses. Proteste, Ausreisebewegungen, wirtschaftliche Probleme und veränderte außenpolitische Bedingungen verstärkten einander.",
+    "source": {
+      "title": "Deutsches Historisches Museum · LeMO",
+      "url": "https://www.dhm.de/lemo/"
+    }
+  },
+  {
+    "id": "geschichte-erinnerung-geschichte",
+    "category": "Geschichte",
+    "difficulty": 3,
+    "prompt": "Warum können sich öffentliche Erinnerungen an dasselbe historische Ereignis verändern?",
+    "answers": [
+      "Neue Fragen, Forschungsergebnisse und gesellschaftliche Perspektiven beeinflussen die Erinnerung.",
+      "Ein Wechsel der Erinnerung beweist, dass historische Aussagen keiner Quellenprüfung unterliegen.",
+      "Nach Abschluss der Forschung lässt sich öffentliche Erinnerung unabhängig von Gegenwartsfragen festlegen.",
+      "Erinnerungen ändern sich nur durch neue Quellen, nicht durch veränderte Fragestellungen."
+    ],
+    "explanation": "Vergangenheit ist geschehen, ihre Deutung und öffentliche Erinnerung bleiben jedoch veränderlich. Historische Forschung prüft solche Deutungen anhand von Quellen und Argumenten.",
+    "source": {
+      "title": "Bundeszentrale für politische Bildung · Geschichte",
+      "url": "https://www.bpb.de/themen/geschichte/"
+    }
+  },
+  {
+    "id": "politik-gesetzgebung-parlament",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Welche Aufgabe hat ein Parlament in einer Demokratie besonders?",
+    "answers": [
+      "Gesetze beschließen und die Regierung kontrollieren",
+      "Alle Gerichtsentscheidungen selbst fällen",
+      "Wahlen dauerhaft abschaffen",
+      "Die freie Presse durch eine einzige Zeitung ersetzen"
+    ],
+    "explanation": "Ein Parlament vertritt die Bevölkerung und wirkt an der Gesetzgebung mit. Regierungs- und Parlamentsbefugnisse sind nicht dasselbe.",
+    "source": {
+      "title": "Deutscher Bundestag · Parlament",
+      "url": "https://www.bundestag.de/parlament"
+    }
+  },
+  {
+    "id": "politik-menschenwuerde",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Wie lautet der erste Satz von Artikel 1 des Grundgesetzes?",
+    "answers": [
+      "Die Würde des Menschen ist unantastbar.",
+      "Alle Menschen müssen derselben Partei angehören.",
+      "Die Regierung steht über jedem Gesetz.",
+      "Grundrechte gelten nur für die Mehrheit."
+    ],
+    "explanation": "Die Menschenwürde bindet alle staatliche Gewalt. Sie hängt nicht von Leistung, Beliebtheit oder der Zugehörigkeit zu einer Mehrheit ab.",
+    "source": {
+      "title": "Grundgesetz · Artikel 1",
+      "url": "https://www.gesetze-im-internet.de/gg/art_1.html"
+    }
+  },
+  {
+    "id": "politik-geheime-wahl",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Was bedeutet eine geheime Wahl?",
+    "answers": [
+      "Niemand muss offenlegen, wen er gewählt hat.",
+      "Niemand darf vorab wissen, wann gewählt wird.",
+      "Nur die Regierung darf das Ergebnis erfahren.",
+      "Es gibt keine öffentliche Auszählung."
+    ],
+    "explanation": "Wähler sollen ihre Entscheidung unbeobachtet und ohne nachträglichen Nachweiszwang treffen können. Die geheime Stimmabgabe schützt vor Druck.",
+    "source": {
+      "title": "Grundgesetz · Artikel 38",
+      "url": "https://www.gesetze-im-internet.de/gg/art_38.html"
+    }
+  },
+  {
+    "id": "politik-rechtsstaat",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Was gehört zu einem Rechtsstaat?",
+    "answers": [
+      "Auch staatliche Stellen sind an Recht und Gesetz gebunden.",
+      "Regierungsmitglieder dürfen jedes Gesetz ignorieren.",
+      "Gerichte müssen jede Regierungsmeinung übernehmen.",
+      "Gesetze dürfen grundsätzlich nicht veröffentlicht werden."
+    ],
+    "explanation": "Staatliches Handeln ist rechtlich gebunden und gerichtlich überprüfbar. Regierungsmacht ist dadurch begrenzt.",
+    "source": {
+      "title": "Grundgesetz · Artikel 20",
+      "url": "https://www.gesetze-im-internet.de/gg/art_20.html"
+    }
+  },
+  {
+    "id": "politik-foederalismus",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Was bedeutet Föderalismus in Deutschland?",
+    "answers": [
+      "Bund und Länder teilen sich staatliche Aufgaben.",
+      "Nur eine einzige Gemeinde entscheidet über alles.",
+      "Alle Bundesländer sind unabhängige Staaten ohne gemeinsamen Bund.",
+      "Gerichte ersetzen sämtliche Parlamente."
+    ],
+    "explanation": "Deutschland ist ein Bundesstaat. Die Länder haben eigene staatliche Zuständigkeiten, während andere Aufgaben beim Bund liegen.",
+    "source": {
+      "title": "Grundgesetz · Artikel 20",
+      "url": "https://www.gesetze-im-internet.de/gg/art_20.html"
+    }
+  },
+  {
+    "id": "politik-meinungsfreiheit",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Was schützt die Meinungsfreiheit grundsätzlich?",
+    "answers": [
+      "Die freie Äußerung von Meinungen im Rahmen der gesetzlichen Schranken",
+      "Einen Anspruch darauf, dass alle zustimmen müssen",
+      "Ein grenzenloses Recht auf jede Bedrohung",
+      "Ein Verbot, die Regierung zu kritisieren"
+    ],
+    "explanation": "Meinungsfreiheit ermöglicht auch Kritik und kontroverse Debatten. Artikel 5 nennt zugleich Grenzen, etwa allgemeine Gesetze und den Schutz der persönlichen Ehre.",
+    "source": {
+      "title": "Grundgesetz · Artikel 5",
+      "url": "https://www.gesetze-im-internet.de/gg/art_5.html"
+    }
+  },
+  {
+    "id": "wirtschaft-inflation-grundidee",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Was bezeichnet Inflation?",
+    "answers": [
+      "Einen anhaltenden Anstieg des allgemeinen Preisniveaus",
+      "Jede Preissenkung eines einzelnen Produkts",
+      "Einen unveränderten Geldwert bei steigenden Preisen",
+      "Die einmalige Produktion einer zusätzlichen Münze"
+    ],
+    "explanation": "Bei Inflation verliert Geld im Durchschnitt an Kaufkraft. Der Preis eines einzelnen Produkts reicht für diese Aussage noch nicht aus.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-angebot-nachfrage",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Die Nachfrage nach einem Produkt steigt, das Angebot bleibt unverändert. Was ist unter sonst gleichen Bedingungen zu erwarten?",
+    "answers": [
+      "Der Preis steigt tendenziell.",
+      "Der Preis muss auf null fallen.",
+      "Die Nachfrage verschwindet zwingend.",
+      "Angebot und Preis sind grundsätzlich unabhängig."
+    ],
+    "explanation": "Wenn mehr Menschen um dieselbe verfügbare Menge konkurrieren, entsteht tendenziell Aufwärtsdruck auf den Preis. Die Annahme „sonst gleich“ hält andere Einflüsse konstant.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-steuern-zweck",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Wozu dienen Steuereinnahmen unter anderem?",
+    "answers": [
+      "Zur Finanzierung öffentlicher Aufgaben wie Schulen und Straßen",
+      "Ausschließlich zur Finanzierung privater Urlaubsreisen",
+      "Zur automatischen Abschaffung aller Staatsschulden",
+      "Nur zum Drucken neuer Banknoten"
+    ],
+    "explanation": "Steuern finanzieren staatliche Leistungen und können weitere politische Ziele erfüllen. Welche Aufgaben finanziert werden, wird unter anderem in öffentlichen Haushalten festgelegt.",
+    "source": {
+      "title": "Deutscher Bundestag · Parlament",
+      "url": "https://www.bundestag.de/parlament"
+    }
+  },
+  {
+    "id": "politik-kommunale-ebene",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 1,
+    "prompt": "Welche Aufgabe liegt typischerweise auf kommunaler Ebene?",
+    "answers": [
+      "Die örtliche Abfallentsorgung organisieren",
+      "Die Außenpolitik Deutschlands allein bestimmen",
+      "Den Leitzins des Euroraums festlegen",
+      "Das Grundgesetz ohne Beteiligung anderer ändern"
+    ],
+    "explanation": "Kommunen übernehmen viele Aufgaben des unmittelbaren Lebensumfelds. Beispiele sind Abfallentsorgung, örtliche Infrastruktur und kommunale Einrichtungen.",
+    "source": {
+      "title": "Grundgesetz · Artikel 28",
+      "url": "https://www.gesetze-im-internet.de/gg/art_28.html"
+    }
+  },
+  {
+    "id": "politik-kanzlerwahl",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Wer wählt nach Artikel 63 des Grundgesetzes den Bundeskanzler oder die Bundeskanzlerin?",
+    "answers": [
+      "Der Bundestag",
+      "Die Europäische Zentralbank",
+      "Das Bundesverfassungsgericht",
+      "Alle Landesregierungen gemeinsam ohne Bundestag"
+    ],
+    "explanation": "Die Wahl erfolgt durch den Bundestag auf Vorschlag des Bundespräsidenten. Eine Bundestagswahl ist deshalb keine unmittelbare Kanzlerwahl.",
+    "source": {
+      "title": "Grundgesetz · Artikel 63",
+      "url": "https://www.gesetze-im-internet.de/gg/art_63.html"
+    }
+  },
+  {
+    "id": "politik-bundesrat",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Wessen Interessen vertreten die Mitglieder des Bundesrates institutionell?",
+    "answers": [
+      "Die Regierungen der Länder",
+      "Ausschließlich die Bundesregierung",
+      "Die Richter des Bundesverfassungsgerichts",
+      "Die nationalen Zentralbanken des Euroraums"
+    ],
+    "explanation": "Der Bundesrat besteht aus Mitgliedern der Landesregierungen. Über ihn wirken die Länder an der Gesetzgebung und Verwaltung des Bundes mit.",
+    "source": {
+      "title": "Deutscher Bundestag · Parlament",
+      "url": "https://www.bundestag.de/parlament"
+    }
+  },
+  {
+    "id": "politik-opposition",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Welche Rolle erfüllt eine parlamentarische Opposition?",
+    "answers": [
+      "Sie kontrolliert und kritisiert die Regierung und bietet politische Alternativen.",
+      "Sie ist grundsätzlich von jeder Parlamentsarbeit ausgeschlossen.",
+      "Sie ernennt automatisch alle Minister.",
+      "Sie darf der Regierung niemals widersprechen."
+    ],
+    "explanation": "Opposition ist ein regulärer Bestandteil demokratischer Konkurrenz. Kritik, Anfragen und alternative Vorschläge können die öffentliche Kontrolle stärken.",
+    "source": {
+      "title": "Deutscher Bundestag · Parlament",
+      "url": "https://www.bundestag.de/parlament"
+    }
+  },
+  {
+    "id": "politik-verhaeltniswahl",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Was ist die Grundidee einer Verhältniswahl?",
+    "answers": [
+      "Die Sitzverteilung soll die Stimmenanteile der Parteien widerspiegeln.",
+      "Jede Partei erhält unabhängig von Stimmen dieselbe Sitzzahl.",
+      "Es gewinnt grundsätzlich nur die älteste Partei.",
+      "Nur die Zahl der Wahlplakate zählt."
+    ],
+    "explanation": "Verhältniswahl zielt auf eine proportionale Abbildung von Stimmen in Mandaten. Konkrete Wahlsysteme können zusätzliche Regeln wie Sperrklauseln enthalten.",
+    "source": {
+      "title": "Deutscher Bundestag · Parlament",
+      "url": "https://www.bundestag.de/parlament"
+    }
+  },
+  {
+    "id": "politik-eu-kommission",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Welche Aufgabe hat die Europäische Kommission im üblichen EU-Gesetzgebungsverfahren besonders?",
+    "answers": [
+      "Sie schlägt neue EU-Rechtsakte vor.",
+      "Sie ersetzt allein alle nationalen Gerichte.",
+      "Sie bestimmt unmittelbar sämtliche kommunalen Haushalte.",
+      "Sie wählt allein das Europäische Parlament."
+    ],
+    "explanation": "Die Kommission besitzt bei den meisten EU-Rechtsakten das Vorschlagsrecht. Im ordentlichen Gesetzgebungsverfahren entscheiden Europäisches Parlament und Rat gemeinsam.",
+    "source": {
+      "title": "Europäische Union · Organe und Einrichtungen",
+      "url": "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies_de"
+    }
+  },
+  {
+    "id": "wirtschaft-reallohn",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Was misst der Reallohn im Unterschied zum Nominallohn?",
+    "answers": [
+      "Die Kaufkraft des Lohns unter Berücksichtigung der Preisentwicklung",
+      "Nur die Zahl auf dem Gehaltszettel ohne Preisbezug",
+      "Ausschließlich die geleisteten Überstunden",
+      "Die Zahl der Beschäftigten eines Unternehmens"
+    ],
+    "explanation": "Ein steigender Geldlohn bedeutet nicht automatisch mehr Kaufkraft. Steigen die Preise noch stärker, kann der Reallohn sinken.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-opportunitaetskosten",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Was sind Opportunitätskosten einer Entscheidung?",
+    "answers": [
+      "Der entgangene Nutzen der besten nicht gewählten Alternative",
+      "Ausschließlich jede anfallende Steuerzahlung",
+      "Nur die gedruckten Herstellungskosten von Geld",
+      "Kosten, die immer unabhängig von Entscheidungen entstehen"
+    ],
+    "explanation": "Wer Zeit oder Geld für eine Möglichkeit einsetzt, verzichtet auf andere Möglichkeiten. Opportunitätskosten erfassen den wertvollsten dieser entgangenen Alternativnutzen.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-bip-abgrenzung",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Was erfasst das Bruttoinlandsprodukt grundsätzlich?",
+    "answers": [
+      "Den Wert der im Inland innerhalb eines Zeitraums für die Endverwendung produzierten Waren und Dienstleistungen",
+      "Das gesamte Vermögen aller Einwohner",
+      "Die persönliche Zufriedenheit jedes Menschen",
+      "Ausschließlich alle Bargeldbestände der Banken"
+    ],
+    "explanation": "Das BIP misst wirtschaftliche Produktion innerhalb eines Zeitraums. Vorleistungen werden nicht doppelt mitgezählt; Vermögen ist dagegen eine Bestandsgröße und Wohlbefinden wird durch das BIP nicht vollständig erfasst.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-externer-effekt",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Eine Fabrik verursacht Luftverschmutzung, deren Kosten Nachbarn tragen. Wie nennt man dies?",
+    "answers": [
+      "Negativer externer Effekt",
+      "Positiver Skalenertrag",
+      "Vollständiger Wettbewerb ohne Nebenwirkungen",
+      "Private Ersparnis aller Betroffenen"
+    ],
+    "explanation": "Ein externer Effekt betrifft Menschen, deren Nutzen oder Kosten nicht vollständig im Marktpreis berücksichtigt werden. Umweltbelastungen sind ein typisches Beispiel.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-automatische-stabilisatoren",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 2,
+    "prompt": "Warum können Arbeitslosengeld und einkommensabhängige Steuern eine Rezession abfedern?",
+    "answers": [
+      "Transferausgaben steigen und Steuereinnahmen sinken automatisch, wodurch Einkommen gestützt werden.",
+      "Sie machen jede wirtschaftliche Krise unmöglich.",
+      "Sie beseitigen alle staatlichen Ausgaben.",
+      "Sie garantieren, dass alle Preise unverändert bleiben."
+    ],
+    "explanation": "Diese automatischen Stabilisatoren reagieren auf die Wirtschaftslage, ohne dass für jeden Fall ein neues Konjunkturprogramm beschlossen werden muss. Sie verhindern Krisen nicht vollständig.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "politik-konstruktives-misstrauensvotum",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Was macht ein Misstrauensvotum gegen den Bundeskanzler im Grundgesetz „konstruktiv“?",
+    "answers": [
+      "Der Bundestag muss zugleich mit der erforderlichen Mehrheit einen Nachfolger wählen.",
+      "Der Bundestag muss lediglich mit einfacher Mehrheit den bisherigen Kanzler abwählen.",
+      "Der Bundespräsident muss vor der Abstimmung eine Neuwahl des Bundestages anordnen.",
+      "Der Bundesrat muss den vom Bundestag vorgeschlagenen Nachfolger vorher bestätigen."
+    ],
+    "explanation": "Artikel 67 verlangt eine neue Regierungsmehrheit statt einer bloßen Mehrheit gegen den bisherigen Kanzler. Das soll handlungsunfähige Regierungskrisen erschweren.",
+    "source": {
+      "title": "Grundgesetz · Artikel 67",
+      "url": "https://www.gesetze-im-internet.de/gg/art_67.html"
+    }
+  },
+  {
+    "id": "politik-ewigkeitsklausel",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Was schützt die sogenannte Ewigkeitsklausel des Grundgesetzes?",
+    "answers": [
+      "Bestimmte Grundprinzipien, etwa die in Artikeln 1 und 20 niedergelegten Grundsätze, vor Verfassungsänderungen",
+      "Den gesamten Wortlaut jedes Grundrechtsartikels vor jeder denkbaren Verfassungsänderung",
+      "Jede Verfassungsnorm, solange eine Änderung nicht zusätzlich durch einen Volksentscheid bestätigt wird",
+      "Nur den Bestand der Länder, während Demokratie und Menschenwürde mit Zweidrittelmehrheit änderbar bleiben"
+    ],
+    "explanation": "Artikel 79 Absatz 3 entzieht zentrale Verfassungsprinzipien auch einer verfassungsändernden Mehrheit. Er schützt außerdem die Gliederung des Bundes in Länder und deren grundsätzliche Mitwirkung an der Gesetzgebung.",
+    "source": {
+      "title": "Grundgesetz · Artikel 79",
+      "url": "https://www.gesetze-im-internet.de/gg/art_79.html"
+    }
+  },
+  {
+    "id": "politik-freies-mandat",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Welche Folge hat das freie Mandat von Bundestagsabgeordneten?",
+    "answers": [
+      "Sie sind rechtlich an Aufträge und Weisungen nicht gebunden.",
+      "Sie müssen ihr Mandat abgeben, sobald sie in einer Abstimmung von ihrer Fraktion abweichen.",
+      "Sie können während der Wahlperiode durch verbindliche Einzelweisungen ihres Wahlkreises gelenkt werden.",
+      "Sie dürfen politische Zusagen machen, werden dadurch aber rechtlich an ihr Abstimmungsverhalten gebunden."
+    ],
+    "explanation": "Artikel 38 beschreibt Abgeordnete als Vertreter des ganzen Volkes, die nur ihrem Gewissen unterworfen sind. Politische Abstimmung in Fraktionen ist möglich, rechtlicher Weisungszwang jedoch nicht.",
+    "source": {
+      "title": "Grundgesetz · Artikel 38",
+      "url": "https://www.gesetze-im-internet.de/gg/art_38.html"
+    }
+  },
+  {
+    "id": "politik-mehrheit-minderheitenschutz",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Warum reicht das Mehrheitsprinzip allein nicht für eine rechtsstaatliche Demokratie?",
+    "answers": [
+      "Auch Mehrheiten sind durch Grundrechte und den Schutz von Minderheiten begrenzt.",
+      "Grundrechte binden nur die Regierung, während ein Parlamentsbeschluss von ihnen frei ist.",
+      "Ein wiederholter Wahlsieg berechtigt die Mehrheit, Minderheiten dauerhaft von Wahlen auszuschließen.",
+      "Die demokratische Legitimation eines Gesetzes ersetzt bereits die Prüfung seiner Verfassungsmäßigkeit."
+    ],
+    "explanation": "Demokratie verbindet politische Mehrheitsentscheidungen mit verbindlichen Rechten und Verfahren. Grundrechte schützen Menschen auch gegen Entscheidungen einer Mehrheit.",
+    "source": {
+      "title": "Grundgesetz · Artikel 1",
+      "url": "https://www.gesetze-im-internet.de/gg/art_1.html"
+    }
+  },
+  {
+    "id": "wirtschaft-realer-zins",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Der nominale Jahreszins beträgt 4 %, die jährliche Inflation 6 %. Was gilt näherungsweise für den realen Zins?",
+    "answers": [
+      "Er beträgt etwa −2 %.",
+      "Er beträgt etwa +10 %.",
+      "Er beträgt etwa +2 %.",
+      "Er beträgt etwa −6 %."
+    ],
+    "explanation": "Näherungsweise gilt: realer Zins gleich nominaler Zins minus Inflationsrate. Trotz positivem Geldzins kann die Kaufkraft des angelegten Betrags sinken.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-leitzins-wirkung",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Warum kann eine Leitzinserhöhung die Inflation dämpfen?",
+    "answers": [
+      "Kredite werden tendenziell teurer, wodurch Nachfrage und Investitionen schwächer wachsen können.",
+      "Höhere Zinsen senken hauptsächlich die Produktionskosten kreditfinanzierter Unternehmen.",
+      "Eine Leitzinserhöhung erhöht zuerst die Kreditnachfrage und senkt dadurch die Preise.",
+      "Der Leitzins legt unmittelbar fest, um wie viel jedes Unternehmen seine Preise senken muss."
+    ],
+    "explanation": "Geldpolitik wirkt über mehrere Übertragungskanäle und mit Verzögerung. Eine schwächere gesamtwirtschaftliche Nachfrage kann den Preisdruck verringern.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-preiselastizitaet",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Was bedeutet eine betragsmäßig hohe Preiselastizität der Nachfrage?",
+    "answers": [
+      "Die nachgefragte Menge reagiert prozentual stark auf Preisänderungen.",
+      "Der absolute Rückgang der Menge ist groß, unabhängig von der prozentualen Preisänderung.",
+      "Die nachgefragte Menge reagiert prozentual stark auf Änderungen des Einkommens.",
+      "Die nachgefragte Menge reagiert prozentual nur schwach auf Preisänderungen."
+    ],
+    "explanation": "Preiselastizität vergleicht die prozentuale Mengenänderung mit der prozentualen Preisänderung. Bei elastischer Nachfrage können höhere Preise die Verkaufsmenge stark verringern.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-oeffentliches-gut",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Welche Merkmale kennzeichnen ein reines öffentliches Gut im ökonomischen Sinn?",
+    "answers": [
+      "Nichtausschließbarkeit und Nichtrivalität im Konsum",
+      "Nichtausschließbarkeit und Rivalität im Konsum",
+      "Ausschließbarkeit und Nichtrivalität im Konsum",
+      "Ausschließbarkeit und Rivalität im Konsum"
+    ],
+    "explanation": "Bei einem reinen öffentlichen Gut lassen sich Nichtzahler kaum ausschließen und die Nutzung durch eine Person verringert die Nutzungsmöglichkeiten anderer nicht. Staatlicher Besitz allein ist dafür kein ausreichendes Kriterium.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-komparativer-vorteil",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Wann hat ein Land bei einem Gut einen komparativen Vorteil?",
+    "answers": [
+      "Wenn seine Opportunitätskosten dafür niedriger sind als im anderen Land",
+      "Wenn es das Gut mit weniger Arbeitsstunden je Stück als das andere Land herstellt",
+      "Wenn es bei allen Gütern zugleich eine höhere absolute Arbeitsproduktivität erreicht",
+      "Wenn sein Exporterlös für das Gut unabhängig von den Produktionskosten am höchsten ist"
+    ],
+    "explanation": "Komparative Vorteile beruhen auf relativen Kosten. Deshalb kann Spezialisierung auch dann beiden Seiten nutzen, wenn eine Seite bei allen Gütern absolut produktiver ist.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  },
+  {
+    "id": "wirtschaft-information-asymmetrie",
+    "category": "Politik & Wirtschaft",
+    "difficulty": 3,
+    "prompt": "Ein Gebrauchtwagenverkäufer kennt versteckte Mängel, der Käufer nicht. Welches Problem liegt vor?",
+    "answers": [
+      "Asymmetrische Information",
+      "Ein negativer externer Effekt zulasten unbeteiligter Dritter",
+      "Ein öffentliches Gut mit einem Trittbrettfahrerproblem",
+      "Ein Nachfragemonopol aufgrund eines einzigen Käufers"
+    ],
+    "explanation": "Ungleich verteilte Information kann Entscheidungen und Preise verzerren. Garantien, unabhängige Prüfungen und Offenlegung können das Informationsproblem verringern.",
+    "source": {
+      "title": "Deutsche Bundesbank · Glossar",
+      "url": "https://www.bundesbank.de/de/service/glossar"
+    }
+  }
+]

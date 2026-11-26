@@ -6,9 +6,11 @@ import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {createCatalog} from '../lib/catalog.js';
 import {gradeChoice,publicQuestion} from '../lib/engine.js';
+import {loadSchoolCatalog} from '../scripts/school-catalog.mjs';
 const snapshotText=await readFile(new URL('../content/wikidata/facts.json',import.meta.url),'utf8');
 const snapshot=JSON.parse(snapshotText),facts=new Map(snapshot.facts.map(f=>[f.key,f]));
 const report=JSON.parse(await readFile(new URL('../content/catalog-report.json',import.meta.url),'utf8'));
+const school=new Map((await loadSchoolCatalog()).map(({question})=>[question.id,question]));
 const db=new DatabaseSync(':memory:');db.exec('PRAGMA foreign_keys=ON');
 for(const name of (await readdir(new URL('../migrations/',import.meta.url))).filter(n=>n.endsWith('.sql')).sort())db.exec(await readFile(new URL('../migrations/'+name,import.meta.url),'utf8'));
 await loadLocalCatalog(db);
@@ -24,7 +26,8 @@ test('the installed large catalog is backed by the recorded official Wikidata sn
   const installed=db.prepare('SELECT COUNT(*) AS questions,COUNT(DISTINCT family_id) AS families FROM question_catalog WHERE enabled=1').get();
   assert.equal(installed.questions,report.questions);assert.equal(installed.families,report.families);
   assert.ok(installed.families>=8000,'independent factual questions, not a combinatorial claim');
-  assert.equal(db.prepare("SELECT COUNT(*) AS n FROM question_catalog WHERE type='general' AND pool='daily'").get().n,0,'all relation questions are playable in the free pool');
+  assert.equal(db.prepare("SELECT COUNT(*) AS n FROM question_catalog WHERE type='general' AND pool='daily' AND json_extract(content_json,'$.basis')='wikidata'").get().n,0,'Wikidata relation questions start in the free pool');
+  assert.equal(school.size,270);assert.equal(report.schoolQuestions,270);assert.equal(report.schoolSubjects.length,9);
 });
 test('every imported solution and comparison value traces to its canonical source fact',()=>{
   const mapped=new Map(db.prepare('SELECT fact_key,family_id FROM question_fact_families').all().map(r=>[r.fact_key,r.family_id]));
@@ -33,10 +36,13 @@ test('every imported solution and comparison value traces to its canonical sourc
     const q=JSON.parse(row.content_json);assert.equal(q.id,row.id);assert.equal(q.familyId,row.family_id);
     assert.ok(q.factKeys.length===1||q.factKeys.length===4);
     assert.equal(prompts.has(q.prompt),false);prompts.add(q.prompt);
-    for(const key of q.factKeys){assert.ok(facts.has(key),key);assert.equal(mapped.get(key),q.familyId);}
+    for(const key of q.factKeys){assert.ok(q.basis==='school'?school.has(q.id):facts.has(key),key);assert.equal(mapped.get(key),q.familyId);}
     assert.equal(new Set(q.options.map(o=>o.id)).size,4);assert.equal(new Set(q.options.map(o=>o.label)).size,4);
     const result=gradeChoice(q,q.correctId);assert.equal(result.correct,true);assert.equal(result.options.filter(o=>o.id===q.correctId).length,1);
-    if(q.type==='general'){
+    if(q.basis==='school'){
+      const authored=school.get(q.id);assert.deepEqual(q,authored);
+      assert.equal(q.provenance.kind,'original-school-question');assert.ok(q.source.url.startsWith('https://'));assert.ok(q.explanation.length>=40);
+    }else if(q.type==='general'){
       const f=facts.get(q.factKeys[0]);assert.equal(q.correctId,'choice-'+f.objectId);assert.equal(result.correctLabel,f.objectLabel);
     }else{
       assert.equal(new Set(q.options.map(o=>o.value)).size,4);
@@ -65,7 +71,7 @@ test('one thousand real imported questions across flights never repeat an expose
   assert.equal(seen.size,1000);assert.equal(db.prepare('SELECT COUNT(*) AS n FROM seen_questions WHERE device=?').get(device).n,1000);
 });
 test('a fresh real Mix spans broad areas instead of disguising twenty geography questions as different properties',async()=>{
-  const geography=new Set(['Geografie','Flächen','Meereshöhen','Längen','Bauwerkshöhen']);
+  const geography=new Set(['Geografie','Erdkunde','Flächen','Meereshöhen','Längen','Bauwerkshöhen']);
   const device='real-mix-topic-balance-123',id='real-mix-topic-flight';
   db.prepare('INSERT INTO runs(id,device,mode,seed,status,started_at,content_version) VALUES(?,?,?,?,?,?,2)').run(id,device,'mix','real-mix-area-seed','ready',Date.now());
   const topics=[],families=new Set();
@@ -85,8 +91,8 @@ test('real daily selections stay new across days and remain disjoint from every 
   for(let i=0;i<8;i++){
     const date=new Date(Date.UTC(2027,0,1+i)).toISOString().slice(0,10),mode='mix';
     const questions=await catalog.reserveDaily(date,mode);assert.equal(questions.length,10);
-    assert.ok(questions.every(q=>q.difficulty<=2),'daily never silently escalates into challenge questions');
-    assert.deepEqual([...new Set(questions.map(q=>q.type))].sort(),['common','earlier','general','later','rare']);
+    assert.deepEqual(questions.map(q=>q.difficulty),[1,1,1,2,2,3,3,3,3,3],'daily difficulty advances in the fixed three/two/five order');
+    assert.ok(new Set(questions.map(q=>q.type)).size>=1,'subject variety does not require every comparison style');
     const categoryCounts=new Map();for(const q of questions)categoryCounts.set(q.category,(categoryCounts.get(q.category)||0)+1);assert.ok(categoryCounts.size>=5);assert.ok([...categoryCounts.values()].every(n=>n<=2));
     for(const q of questions){assert.equal(seen.has(q.familyId),false);seen.add(q.familyId);assert.equal(db.prepare("SELECT COUNT(*) AS n FROM seen_questions WHERE family_id=?").get(q.familyId).n,0,'mixed days never borrow an already exposed free fact');}
     assert.deepEqual(await catalog.reserveDaily(date,mode),questions);
