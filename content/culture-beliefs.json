@@ -1,0 +1,812 @@
+[
+  {
+    "id": "belief-weihnachten",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was feiern Christinnen und Christen an Weihnachten?",
+    "answers": [
+      "Die Geburt Jesu",
+      "Die Auferstehung Jesu",
+      "Die Übergabe der Tora",
+      "Das Ende des Ramadan"
+    ],
+    "explanation": "Weihnachten erinnert im Christentum an die Geburt Jesu. Die Feier bezieht sich auf die christliche Überlieferung und wird je nach Kirche und Kalender unterschiedlich gestaltet.",
+    "source": {
+      "title": "Wikipedia · Weihnachten",
+      "url": "https://de.wikipedia.org/wiki/Weihnachten"
+    }
+  },
+  {
+    "id": "belief-ramadan",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was kennzeichnet den Ramadan für viele praktizierende Musliminnen und Muslime?",
+    "answers": [
+      "Fasten von der Morgendämmerung bis zum Sonnenuntergang",
+      "Eine tägliche Pilgerfahrt nach Jerusalem",
+      "Ein grundsätzliches Verbot gemeinsamer Mahlzeiten",
+      "Eine zwölfmonatige Fastenzeit"
+    ],
+    "explanation": "Ramadan ist der islamische Fastenmonat. Es gibt unter anderem Ausnahmen für Kinder, Erkrankte und Reisende; nach Sonnenuntergang wird das Fasten gebrochen.",
+    "source": {
+      "title": "Wikipedia · Ramadan",
+      "url": "https://de.wikipedia.org/wiki/Ramadan"
+    }
+  },
+  {
+    "id": "belief-synagoge",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie heißt ein jüdisches Gebets- und Versammlungshaus?",
+    "answers": [
+      "Synagoge",
+      "Moschee",
+      "Gurdwara",
+      "Kathedrale"
+    ],
+    "explanation": "Eine Synagoge dient jüdischen Gemeinden als Ort für Gebet, Zusammenkunft und Lernen. Ein einzelnes Gebäude kann mehrere dieser Aufgaben verbinden.",
+    "source": {
+      "title": "Wikipedia · Synagoge",
+      "url": "https://de.wikipedia.org/wiki/Synagoge"
+    }
+  },
+  {
+    "id": "belief-koran",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche Schrift gilt im Islam als zentrale Offenbarungsschrift?",
+    "answers": [
+      "Der Koran",
+      "Die Tora",
+      "Der Guru Granth Sahib",
+      "Der Pali-Kanon"
+    ],
+    "explanation": "Der Koran ist die zentrale heilige Schrift des Islam. Musliminnen und Muslime verstehen ihn als Offenbarung Gottes an Mohammed; dies ist eine religiöse Glaubensaussage.",
+    "source": {
+      "title": "Wikipedia · Koran",
+      "url": "https://de.wikipedia.org/wiki/Koran"
+    }
+  },
+  {
+    "id": "belief-buddha-titel",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bedeutet der buddhistische Titel „Buddha“ ungefähr?",
+    "answers": [
+      "Der Erwachte",
+      "Der Weltschöpfer",
+      "Der Hohepriester",
+      "Der Gesetzeskönig"
+    ],
+    "explanation": "Buddha bedeutet ungefähr „Erwachter“. Der Titel bezeichnet im Buddhismus einen Menschen, der grundlegende Einsicht gewonnen hat; er ist kein Titel für einen Schöpfergott.",
+    "source": {
+      "title": "Wikipedia · Buddha",
+      "url": "https://de.wikipedia.org/wiki/Buddha"
+    }
+  },
+  {
+    "id": "belief-diwali",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welches hinduistische Fest ist besonders als Lichterfest bekannt?",
+    "answers": [
+      "Diwali",
+      "Pessach",
+      "Vesakh",
+      "Jom Kippur"
+    ],
+    "explanation": "Diwali wird in vielen hinduistischen Traditionen mit Lichtern gefeiert. Seine Erzählungen und Bedeutungen unterscheiden sich regional; auch andere indische Religionen kennen Feiern zu dieser Zeit.",
+    "source": {
+      "title": "Wikipedia · Diwali",
+      "url": "https://de.wikipedia.org/wiki/Diwali"
+    }
+  },
+  {
+    "id": "belief-gurdwara",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Zu welcher Religion gehört ein Gurdwara als Versammlungs- und Gebetsstätte?",
+    "answers": [
+      "Zum Sikhismus",
+      "Zum Judentum",
+      "Zum Islam",
+      "Zum Buddhismus"
+    ],
+    "explanation": "Ein Gurdwara ist eine religiöse und gemeinschaftliche Stätte des Sikhismus. Dort stehen unter anderem das Hören der religiösen Schrift und gemeinsames Zusammenkommen im Mittelpunkt.",
+    "source": {
+      "title": "Wikipedia · Gurdwara",
+      "url": "https://de.wikipedia.org/wiki/Gurdwara"
+    }
+  },
+  {
+    "id": "belief-humanismus",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was steht bei einem säkularen Humanismus besonders im Mittelpunkt?",
+    "answers": [
+      "Menschliche Würde und verantwortliches Handeln ohne religiöse Begründung",
+      "Die Herrschaft einer bestimmten Priestergruppe",
+      "Die Ablehnung jeder Form wissenschaftlicher Forschung",
+      "Die Verpflichtung aller Menschen auf dieselbe Offenbarungsschrift"
+    ],
+    "explanation": "Säkularer Humanismus begründet Werte mit menschlichen Bedürfnissen, Vernunft und Verantwortung. Der Begriff Humanismus umfasst darüber hinaus verschiedene historische und religiöse Strömungen.",
+    "source": {
+      "title": "Wikipedia · Humanismus",
+      "url": "https://de.wikipedia.org/wiki/Humanismus"
+    }
+  },
+  {
+    "id": "belief-schabbat",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wann beginnt nach jüdischer Tradition der wöchentliche Schabbat?",
+    "answers": [
+      "Am Freitag bei Sonnenuntergang",
+      "Am Samstag um zwölf Uhr mittags",
+      "Am Sonntag bei Sonnenaufgang",
+      "Am Montag um Mitternacht"
+    ],
+    "explanation": "Im jüdischen Kalender beginnt ein Tag am Abend. Daher reicht der Schabbat ungefähr vom Sonnenuntergang am Freitag bis zum Einbruch der Nacht am Samstag.",
+    "source": {
+      "title": "Wikipedia · Schabbat",
+      "url": "https://de.wikipedia.org/wiki/Schabbat"
+    }
+  },
+  {
+    "id": "belief-kreuz-christentum",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "An welches Ereignis der christlichen Überlieferung erinnert das Kreuz besonders?",
+    "answers": [
+      "An die Kreuzigung Jesu",
+      "An die Geburt Moses",
+      "An Mohammeds Auswanderung",
+      "An Buddhas Erwachen"
+    ],
+    "explanation": "Das Kreuz verweist im Christentum besonders auf den Tod Jesu durch Kreuzigung. Seine religiöse Bedeutung wird häufig zusammen mit dem Glauben an die Auferstehung verstanden.",
+    "source": {
+      "title": "Wikipedia · Kreuz (Christentum)",
+      "url": "https://de.wikipedia.org/wiki/Kreuz_(Christentum)"
+    }
+  },
+  {
+    "id": "belief-gebetsrichtung",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Zu welchem Ort ist die islamische Gebetsrichtung Qibla ausgerichtet?",
+    "answers": [
+      "Zur Kaaba in Mekka",
+      "Zum Petersdom in Rom",
+      "Zum Ganges in Indien",
+      "Zur Geburtskirche in Bethlehem"
+    ],
+    "explanation": "Die Qibla bezeichnet die Gebetsrichtung zur Kaaba in Mekka. Die tatsächliche Himmelsrichtung hängt davon ab, an welchem Ort sich die betende Person befindet.",
+    "source": {
+      "title": "Wikipedia · Qibla",
+      "url": "https://de.wikipedia.org/wiki/Qibla"
+    }
+  },
+  {
+    "id": "belief-tora",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche Texte umfasst die Tora im engeren Sinn?",
+    "answers": [
+      "Die fünf Bücher Mose",
+      "Die vier Evangelien",
+      "Die Briefe des Paulus",
+      "Die Spruchsammlung des Konfuzius"
+    ],
+    "explanation": "Im engeren Sinn bezeichnet Tora die fünf Bücher Mose, den ersten Teil der jüdischen Bibel. In weiterem Sinn kann der Begriff auch jüdische Lehre und Weisung meinen.",
+    "source": {
+      "title": "Wikipedia · Tora",
+      "url": "https://de.wikipedia.org/wiki/Tora"
+    }
+  },
+  {
+    "id": "belief-meditation",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wozu dienen viele buddhistische Meditationsübungen?",
+    "answers": [
+      "Zur Schulung von Aufmerksamkeit und Einsicht",
+      "Zum Ersetzen jeder Form ethischen Handelns",
+      "Zum sicheren Vorhersagen zukünftiger Ereignisse",
+      "Zum Erwerb eines vererbbaren religiösen Amtes"
+    ],
+    "explanation": "Buddhistische Meditation kann Aufmerksamkeit, Sammlung und Einsicht schulen. Die Übungen unterscheiden sich zwischen den Traditionen und stehen gewöhnlich in einem größeren religiösen und ethischen Zusammenhang.",
+    "source": {
+      "title": "Wikipedia · Meditation",
+      "url": "https://de.wikipedia.org/wiki/Meditation"
+    }
+  },
+  {
+    "id": "belief-ganges",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welcher Fluss gilt vielen Hindus als besonders heilig?",
+    "answers": [
+      "Der Ganges",
+      "Der Rhein",
+      "Die Donau",
+      "Die Themse"
+    ],
+    "explanation": "Der Ganges besitzt für viele Hindus eine besondere religiöse Bedeutung. Er wird in unterschiedlichen Traditionen mit Reinigung, heiligen Orten und religiösen Erzählungen verbunden.",
+    "source": {
+      "title": "Wikipedia · Ganges",
+      "url": "https://de.wikipedia.org/wiki/Ganges"
+    }
+  },
+  {
+    "id": "belief-weltanschauung",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bezeichnet der Begriff „Weltanschauung“?",
+    "answers": [
+      "Grundlegende Vorstellungen über Welt, Mensch und Werte",
+      "Nur die Wettervorhersage für einen Ort",
+      "Ausschließlich die Regeln einer einzelnen Sportart",
+      "Nur die geografische Lage eines Landes"
+    ],
+    "explanation": "Eine Weltanschauung umfasst grundlegende Deutungen der Welt und der Stellung des Menschen. Sie kann religiös oder nichtreligiös sein und muss nicht in jeder Frage vollständig ausgearbeitet sein.",
+    "source": {
+      "title": "Wikipedia · Weltanschauung",
+      "url": "https://de.wikipedia.org/wiki/Weltanschauung"
+    }
+  },
+  {
+    "id": "belief-ostern",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was feiern christliche Kirchen an Ostern?",
+    "answers": [
+      "Nach christlichem Glauben die Auferstehung Jesu",
+      "Die Geburt Jesu in Bethlehem",
+      "Die Übergabe der Zehn Gebote am Sinai",
+      "Die Entstehung des islamischen Kalenders"
+    ],
+    "explanation": "Ostern ist im Christentum das Fest der Auferstehung Jesu. Die Aussage über die Auferstehung gehört zum christlichen Glauben und unterscheidet sich von einer naturwissenschaftlich überprüfbaren Behauptung.",
+    "source": {
+      "title": "Wikipedia · Ostern",
+      "url": "https://de.wikipedia.org/wiki/Ostern"
+    }
+  },
+  {
+    "id": "belief-zakat",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Funktion hat die Zakat im Islam grundsätzlich?",
+    "answers": [
+      "Eine religiös verpflichtende Abgabe zur Unterstützung bestimmter Bedürftiger",
+      "Eine freiwillige Wallfahrt zu jeder beliebigen Stadt",
+      "Eine Speisevorschrift für das tägliche Abendessen",
+      "Eine Erlaubnis zur Aufhebung aller anderen religiösen Pflichten"
+    ],
+    "explanation": "Die Zakat ist eine der grundlegenden Pflichten des Islam. Für die Abgabe gelten Voraussetzungen und Regeln; sie dient unter anderem der Unterstützung bedürftiger Menschen.",
+    "source": {
+      "title": "Wikipedia · Zakāt",
+      "url": "https://de.wikipedia.org/wiki/Zakāt"
+    }
+  },
+  {
+    "id": "belief-pessach",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "An welche Erzählung erinnert das jüdische Pessachfest besonders?",
+    "answers": [
+      "An den Auszug der Israeliten aus Ägypten",
+      "An die Geburt Jesu in Bethlehem",
+      "An Mohammeds Auswanderung nach Medina",
+      "An die erste Predigt Buddhas"
+    ],
+    "explanation": "Pessach erinnert an die in der Tora erzählte Befreiung aus der Knechtschaft in Ägypten. Beim Sederabend werden diese Erinnerung und ihre Bedeutung durch Erzählungen und symbolische Speisen lebendig gehalten.",
+    "source": {
+      "title": "Wikipedia · Pessach",
+      "url": "https://de.wikipedia.org/wiki/Pessach"
+    }
+  },
+  {
+    "id": "belief-vier-wahrheiten",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welches Thema verbindet die vier edlen Wahrheiten im Buddhismus besonders?",
+    "answers": [
+      "Leiden, seine Ursachen und einen Weg zu seiner Überwindung",
+      "Die Erschaffung der Welt in einer festgelegten Zahl von Tagen",
+      "Die Wahl eines erblichen Oberhaupts aller Religionen",
+      "Die Verpflichtung zu einer einzigen heiligen Sprache"
+    ],
+    "explanation": "Die vier edlen Wahrheiten gehören zu den grundlegenden buddhistischen Lehren. Sie behandeln das Leiden beziehungsweise die Unzulänglichkeit des Daseins, seine Entstehung und einen Weg zur Befreiung.",
+    "source": {
+      "title": "Wikipedia · Vier edle Wahrheiten",
+      "url": "https://de.wikipedia.org/wiki/Vier_edle_Wahrheiten"
+    }
+  },
+  {
+    "id": "belief-karma",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Worum geht es beim Begriff Karma in vielen Religionen indischen Ursprungs?",
+    "answers": [
+      "Um Handlungen und ihre Folgen",
+      "Um einen allmächtigen Schöpfer mit diesem Eigennamen",
+      "Um das Verbot jeder Form von Lernen",
+      "Um die unveränderliche Vorhersage jedes künftigen Ereignisses"
+    ],
+    "explanation": "Karma bedeutet zunächst Handlung und bezeichnet Zusammenhänge zwischen Handeln und Folgen. Hinduistische, buddhistische und weitere Traditionen deuten diese Zusammenhänge unterschiedlich; Karma ist nicht einfach ein anderes Wort für unabänderliches Schicksal.",
+    "source": {
+      "title": "Wikipedia · Karma",
+      "url": "https://de.wikipedia.org/wiki/Karma"
+    }
+  },
+  {
+    "id": "belief-langar",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was kennzeichnet den Langar in vielen Sikh-Gemeinden?",
+    "answers": [
+      "Eine gemeinsame, grundsätzlich allen offenstehende kostenlose Mahlzeit",
+      "Ein ausschließlich erblichen Priestern vorbehaltenes Festessen",
+      "Ein Fastenritual ohne gemeinsames Essen",
+      "Eine kostenpflichtige Aufnahmeprüfung in die Gemeinde"
+    ],
+    "explanation": "Langar bezeichnet die gemeinschaftliche Küche und Mahlzeit eines Gurdwara. Sie soll unter anderem Gleichheit und Dienst an anderen ausdrücken, unabhängig von Herkunft, Religion oder sozialem Status.",
+    "source": {
+      "title": "Wikipedia · Langar",
+      "url": "https://de.wikipedia.org/wiki/Langar"
+    }
+  },
+  {
+    "id": "belief-agnostizismus",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Aussage beschreibt eine agnostische Position zur Existenz Gottes am besten?",
+    "answers": [
+      "Sie betont Grenzen oder Unsicherheit des Wissens darüber.",
+      "Sie verlangt zwingend den Glauben an mehrere Gottheiten.",
+      "Sie beweist mit einer Messung die Nichtexistenz jeder Gottheit.",
+      "Sie setzt eine bestimmte heilige Schrift als einzige Wissensquelle voraus."
+    ],
+    "explanation": "Agnostizismus betrifft die Frage, ob und wie Menschen über die Existenz Gottes Wissen erlangen können. Er ist daher begrifflich von der Frage zu unterscheiden, woran eine Person tatsächlich glaubt.",
+    "source": {
+      "title": "Wikipedia · Agnostizismus",
+      "url": "https://de.wikipedia.org/wiki/Agnostizismus"
+    }
+  },
+  {
+    "id": "belief-atheismus",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was haben atheistische Positionen im grundlegenden Sinn gemeinsam?",
+    "answers": [
+      "Sie vertreten keinen Glauben an Gottheiten.",
+      "Sie halten jede ethische Regel grundsätzlich für sinnlos.",
+      "Sie gehören zwingend derselben politischen Partei an.",
+      "Sie vertreten immer denselben Beweis über die Entstehung des Universums."
+    ],
+    "explanation": "Atheismus bezeichnet fehlenden oder verneinten Glauben an Gottheiten. Daraus folgt allein noch keine bestimmte politische Haltung, Ethik oder vollständige Erklärung der Welt.",
+    "source": {
+      "title": "Wikipedia · Atheismus",
+      "url": "https://de.wikipedia.org/wiki/Atheismus"
+    }
+  },
+  {
+    "id": "belief-saekularer-staat",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was bedeutet religiöse Neutralität eines säkularen Rechtsstaats grundsätzlich?",
+    "answers": [
+      "Er darf Menschen nicht allein wegen ihres Glaubens oder Nichtglaubens benachteiligen.",
+      "Er muss jede private religiöse Betätigung verbieten.",
+      "Er muss alle Bürger zur größten Religion verpflichten.",
+      "Er darf religiösen Menschen grundsätzlich keine öffentlichen Ämter erlauben."
+    ],
+    "explanation": "Ein säkularer Staat unterscheidet staatliche Herrschaft von religiösen Institutionen. Religiöse Neutralität schützt sowohl Glaubende als auch Nichtglaubende; ihre genaue rechtliche Ausgestaltung variiert zwischen Staaten.",
+    "source": {
+      "title": "Wikipedia · Säkularität",
+      "url": "https://de.wikipedia.org/wiki/Säkularität"
+    }
+  },
+  {
+    "id": "belief-goldene-regel",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Idee drückt die „Goldene Regel“ in vielen ethischen Traditionen aus?",
+    "answers": [
+      "Das eigene Handeln auch aus der Perspektive der anderen beurteilen",
+      "Alle Entscheidungen allein am eigenen kurzfristigen Vorteil messen",
+      "Den gesellschaftlichen Rang einer Person als einziges moralisches Kriterium verwenden",
+      "Nur solche Regeln befolgen, die einen finanziellen Gewinn versprechen"
+    ],
+    "explanation": "Die Goldene Regel verbindet den Umgang mit anderen mit der Frage, wie man selbst behandelt werden möchte. Ähnliche Formulierungen kommen in mehreren religiösen und nichtreligiösen Traditionen vor.",
+    "source": {
+      "title": "Wikipedia · Goldene Regel",
+      "url": "https://de.wikipedia.org/wiki/Goldene_Regel"
+    }
+  },
+  {
+    "id": "belief-tanach",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Wie stehen Tora und Tanach im Judentum zueinander?",
+    "answers": [
+      "Die Tora ist ein Teil des Tanach.",
+      "Der Tanach ist ausschließlich eine Übersetzung des Korans.",
+      "Die Tora ist ein späterer Name für das Neue Testament.",
+      "Tanach und Tora bezeichnen zwei völlig getrennte Religionen."
+    ],
+    "explanation": "Der Tanach umfasst Tora, Propheten und Schriften. Die Tora bildet darin den ersten Teil; die Begriffe bezeichnen daher nicht einfach zwei voneinander unabhängige Bücher.",
+    "source": {
+      "title": "Wikipedia · Tanach",
+      "url": "https://de.wikipedia.org/wiki/Tanach"
+    }
+  },
+  {
+    "id": "belief-hidschra",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welches Ereignis bildet den Ausgangspunkt der islamischen Zeitrechnung?",
+    "answers": [
+      "Die Hidschra, Mohammeds Auswanderung von Mekka nach Medina",
+      "Die Geburt Jesu nach christlicher Überlieferung",
+      "Die Zerstörung Jerusalems durch die Römer im Jahr 70",
+      "Die Veröffentlichung der ersten gedruckten Gutenberg-Bibel"
+    ],
+    "explanation": "Die islamische Zeitrechnung bezieht sich auf das Jahr der Hidschra im Jahr 622 der üblichen Zeitrechnung. Gemeint ist Mohammeds Auswanderung von Mekka nach Medina, nicht sein Geburtsjahr.",
+    "source": {
+      "title": "Wikipedia · Hidschra",
+      "url": "https://de.wikipedia.org/wiki/Hidschra"
+    }
+  },
+  {
+    "id": "belief-trinitarisch",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was meint die Trinität im trinitarischen Christentum?",
+    "answers": [
+      "Ein Gott in den drei Personen Vater, Sohn und Heiliger Geist",
+      "Drei voneinander unabhängige Schöpfergötter",
+      "Drei historische Verfasser eines einzigen Evangeliums",
+      "Die Aufteilung aller Kirchen auf drei politische Herrscher"
+    ],
+    "explanation": "Die Trinitätslehre spricht von einem Gott in drei Personen. Sie wird von vielen christlichen Kirchen vertreten, aber nicht von sämtlichen Gruppen, die sich als christlich verstehen.",
+    "source": {
+      "title": "Wikipedia · Trinität",
+      "url": "https://de.wikipedia.org/wiki/Trinität"
+    }
+  },
+  {
+    "id": "belief-samsara",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was bezeichnet Samsara in vielen hinduistischen und buddhistischen Lehren?",
+    "answers": [
+      "Den Kreislauf von Geburt, Tod und Wiedergeburt",
+      "Eine jährliche Pilgerreise nach Mekka",
+      "Eine Abstimmung über das Oberhaupt aller Religionen",
+      "Den unveränderlichen Anfangstag eines Sonnenkalenders"
+    ],
+    "explanation": "Samsara bezeichnet den Kreislauf wiederholter Existenz. Wie Wiedergeburt und Befreiung daraus verstanden werden, unterscheidet sich zwischen hinduistischen und buddhistischen Traditionen.",
+    "source": {
+      "title": "Wikipedia · Samsara",
+      "url": "https://de.wikipedia.org/wiki/Samsara"
+    }
+  },
+  {
+    "id": "belief-negative-religionsfreiheit",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was schützt die negative Religionsfreiheit?",
+    "answers": [
+      "Das Recht, keiner Religion anzugehören und nicht zu religiösen Handlungen gezwungen zu werden",
+      "Das Recht, anderen Menschen jede religiöse Betätigung zu verbieten",
+      "Die Pflicht, eine Religion ausschließlich privat auszuüben",
+      "Die Befugnis des Staates, die Religion jedes Einzelnen festzulegen"
+    ],
+    "explanation": "Religionsfreiheit schützt nicht nur das Praktizieren einer Religion. Zu ihr gehört auch, keinen Glauben zu haben, eine Religionsgemeinschaft zu verlassen und nicht zum Mitmachen gezwungen zu werden.",
+    "source": {
+      "title": "Wikipedia · Religionsfreiheit",
+      "url": "https://de.wikipedia.org/wiki/Religionsfreiheit"
+    }
+  },
+  {
+    "id": "belief-deskriptiv-normativ",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was unterscheidet eine deskriptive von einer normativen Aussage über religiöses Handeln?",
+    "answers": [
+      "Sie beschreibt vorhandene Praxis, statt festzulegen, was moralisch sein soll.",
+      "Sie muss von einer religiösen Autorität ausgesprochen werden.",
+      "Sie ist grundsätzlich eine Handlungsanweisung für alle Menschen.",
+      "Sie bewertet allein die Folgen einer Handlung als gut oder schlecht."
+    ],
+    "explanation": "Eine deskriptive Aussage beschreibt, was Menschen tun oder vertreten. Eine normative Aussage formuliert dagegen einen Anspruch darüber, wie Menschen handeln sollen; beide Ebenen sollten beim Vergleichen von Weltanschauungen unterschieden werden.",
+    "source": {
+      "title": "Wikipedia · Ethik",
+      "url": "https://de.wikipedia.org/wiki/Ethik"
+    }
+  },
+  {
+    "id": "belief-sein-sollen",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum folgt aus „Viele Menschen handeln so“ noch nicht automatisch „Alle sollen so handeln“?",
+    "answers": [
+      "Für eine Sollensfolgerung fehlt eine zusätzliche normative Voraussetzung.",
+      "Weil Aussagen über häufiges Verhalten grundsätzlich nicht überprüfbar sind.",
+      "Weil jede häufige Handlung logisch falsch sein muss.",
+      "Weil moralische Regeln nur aus Abstimmungen stammen können."
+    ],
+    "explanation": "Eine Beschreibung dessen, was ist, begründet allein noch keine Forderung darüber, was sein soll. Für den Übergang wird eine zusätzliche wertende oder normative Voraussetzung benötigt.",
+    "source": {
+      "title": "Wikipedia · Humesches Gesetz",
+      "url": "https://de.wikipedia.org/wiki/Humesches_Gesetz"
+    }
+  },
+  {
+    "id": "belief-kant-verallgemeinerung",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Welche Frage entspricht Kants Prüfung einer Handlungsregel besonders?",
+    "answers": [
+      "Könnte ich wollen, dass die Regel meines Handelns allgemein gilt?",
+      "Würde diese Handlung meinen persönlichen Gewinn maximieren?",
+      "Hat die Mehrheit diese Handlung schon immer ausgeführt?",
+      "Bringt die Handlung unabhängig von ihrer Regel die angenehmsten unmittelbaren Folgen?"
+    ],
+    "explanation": "Beim kategorischen Imperativ prüft Kant unter anderem die Verallgemeinerbarkeit einer Maxime. Gemeint ist nicht, eine bloß verbreitete Gewohnheit oder den eigenen Vorteil zum alleinigen Maßstab zu machen.",
+    "source": {
+      "title": "Wikipedia · Kategorischer Imperativ",
+      "url": "https://de.wikipedia.org/wiki/Kategorischer_Imperativ"
+    }
+  },
+  {
+    "id": "belief-utilitarismus",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Welche Begründung ist besonders typisch für einen klassischen handlungsutilitaristischen Ansatz?",
+    "answers": [
+      "Eine Handlung ist danach zu beurteilen, wie sie das gesamte Wohlergehen der Betroffenen beeinflusst.",
+      "Eine moralische Pflicht darf niemals zugunsten eines besseren Gesamtergebnisses verletzt werden.",
+      "Für die Bewertung zählt vorrangig, ob die Handlung einen tugendhaften Charakter ausdrückt.",
+      "Die Richtigkeit richtet sich ausschließlich danach, was eine Gesellschaft traditionell billigt."
+    ],
+    "explanation": "Klassischer Handlungsutilitarismus bewertet Handlungen anhand ihrer Folgen für das Wohlergehen. Dieser Maßstab kann mit anderen Ansätzen in Spannung geraten, etwa wenn Rechte Einzelner gegen einen Gesamtnutzen abgewogen werden.",
+    "source": {
+      "title": "Wikipedia · Utilitarismus",
+      "url": "https://de.wikipedia.org/wiki/Utilitarismus"
+    }
+  },
+  {
+    "id": "belief-pflichtethik",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was kennzeichnet eine deontologische Ethik gegenüber einer rein folgenorientierten Bewertung?",
+    "answers": [
+      "Pflichten und Handlungsregeln besitzen einen eigenständigen moralischen Stellenwert.",
+      "Alle moralischen Urteile richten sich ausschließlich nach der Summe angenehmer Folgen.",
+      "Nur die Tugenden einer Person werden beurteilt, niemals ihre Handlungen.",
+      "Rechtliche Zulässigkeit und moralische Richtigkeit sind definitionsgemäß immer identisch."
+    ],
+    "explanation": "Deontologische Ansätze betonen Pflichten oder Grenzen des Handelns, die nicht allein vom erreichbaren Nutzen abhängen. Daraus folgt nicht, dass alle deontologischen Theorien in jeder Einzelfrage dieselben Regeln vertreten.",
+    "source": {
+      "title": "Wikipedia · Deontologische Ethik",
+      "url": "https://de.wikipedia.org/wiki/Deontologische_Ethik"
+    }
+  },
+  {
+    "id": "belief-tugendethik",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Welcher Schwerpunkt ist für Tugendethik besonders charakteristisch?",
+    "answers": [
+      "Die Ausbildung guter Charakterhaltungen und praktischer Urteilskraft",
+      "Die Beurteilung einzelner Handlungen ausschließlich nach ihrem gesamten erreichbaren Nutzen",
+      "Die Prüfung von Handlungsregeln ausschließlich auf ihre ausnahmslose Verallgemeinerbarkeit",
+      "Die Ableitung moralischer Richtigkeit allein aus der jeweils geltenden Rechtsordnung"
+    ],
+    "explanation": "Tugendethische Ansätze fragen besonders danach, welche Haltungen einen guten Charakter und gelingendes Handeln ausmachen. Dabei spielen Übung, Erfahrung und praktische Urteilskraft eine wichtige Rolle.",
+    "source": {
+      "title": "Wikipedia · Tugendethik",
+      "url": "https://de.wikipedia.org/wiki/Tugendethik"
+    }
+  },
+  {
+    "id": "belief-innere-vielfalt",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Zwei Angehörige derselben Religion deuten eine Vorschrift verschieden. Welche Schlussfolgerung ist fachlich am besten begründet?",
+    "answers": [
+      "Religiöse Zugehörigkeit allein legt eine konkrete Auslegung nicht eindeutig fest.",
+      "Mindestens eine der beiden Personen kann definitionsgemäß nicht zu dieser Religion gehören.",
+      "Die Religion besitzt deshalb weder Texte noch Traditionen.",
+      "Auslegungsunterschiede beweisen, dass es keine gemeinsamen religiösen Bezugspunkte gibt."
+    ],
+    "explanation": "Innerhalb einer Religion können unterschiedliche Schulen, Konfessionen und persönliche Deutungen bestehen. Für einen fairen Vergleich muss man konkrete Traditionen und Kontexte betrachten, statt alle Angehörigen gleichzusetzen.",
+    "source": {
+      "title": "Wikipedia · Religionswissenschaft",
+      "url": "https://de.wikipedia.org/wiki/Religionswissenschaft"
+    }
+  },
+  {
+    "id": "belief-anatta",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was wird mit der buddhistischen Lehre Anatta besonders bestritten?",
+    "answers": [
+      "Die Annahme eines dauerhaften, unveränderlichen Selbst",
+      "Die Annahme, dass absichtsvolle Handlungen spätere Folgen besitzen können",
+      "Die Bedeutung von Übung für die Veränderung menschlicher Gewohnheiten",
+      "Die Möglichkeit, Vergänglichkeit durch eigene Erfahrung zu untersuchen"
+    ],
+    "explanation": "Anatta bedeutet ungefähr Nicht-Selbst. Die Lehre bestreitet ein dauerhaftes, unveränderliches Selbst; sie ist nicht einfach die Behauptung, Menschen hätten keine Erfahrungen oder könnten für Handlungen keine Verantwortung tragen.",
+    "source": {
+      "title": "Wikipedia · Anatta",
+      "url": "https://de.wikipedia.org/wiki/Anatta"
+    }
+  },
+  {
+    "id": "belief-moksha",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was bezeichnet Moksha in vielen hinduistischen Traditionen?",
+    "answers": [
+      "Befreiung aus dem Kreislauf der Wiedergeburten",
+      "Eine angenehmere Wiedergeburt innerhalb desselben Kreislaufs",
+      "Die gesellschaftliche Zugehörigkeit zu einer bestimmten Berufsgruppe",
+      "Das Ansammeln religiöser Verdienste mit weiteren Wiedergeburten als letztem Ziel"
+    ],
+    "explanation": "Moksha bezeichnet die Befreiung aus Samsara. Verschiedene hinduistische Traditionen beschreiben diese Befreiung und die Wege dorthin unterschiedlich, etwa durch Erkenntnis, Hingabe oder entsprechendes Handeln.",
+    "source": {
+      "title": "Wikipedia · Moksha",
+      "url": "https://de.wikipedia.org/wiki/Moksha"
+    }
+  },
+  {
+    "id": "belief-sikh-guru-granth",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Welche Rolle hat der Guru Granth Sahib nach dem Verständnis der Sikh-Tradition?",
+    "answers": [
+      "Die heilige Schrift besitzt die bleibende Autorität des Guru.",
+      "Die Schrift gilt als voneinander unabhängige Offenbarung mehrerer Schöpfergötter.",
+      "Die Schrift ist ausschließlich eine historische Liste vergangener Herrscher ohne religiöse Bedeutung.",
+      "Die Schrift legt fest, dass religiöse Autorität ausschließlich an einen erblichen Priesterstand übergeht."
+    ],
+    "explanation": "Der Guru Granth Sahib ist die heilige Schrift des Sikhismus und wird als bleibender Guru anerkannt. Guru bezeichnet hier religiöse Lehr- und Orientierungsautorität, nicht eine Mehrzahl unabhängiger Schöpfergötter.",
+    "source": {
+      "title": "Wikipedia · Guru Granth Sahib",
+      "url": "https://de.wikipedia.org/wiki/Guru_Granth_Sahib"
+    }
+  },
+  {
+    "id": "belief-talmud-auslegung",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Welche Funktion hat der Talmud für das rabbinische Judentum besonders?",
+    "answers": [
+      "Er überliefert Auslegungen und Diskussionen über religiöse Lehre und Lebenspraxis.",
+      "Er ist ausschließlich eine wörtliche Übersetzung der fünf Bücher Mose ins Deutsche.",
+      "Er enthält allein einen verbindlichen Kalender ohne Auslegungsdiskussionen.",
+      "Er ersetzt die jüdische Bibel durch die christlichen Evangelien."
+    ],
+    "explanation": "Der Talmud verbindet die Mischna mit ausführlichen Diskussionen und Auslegungen. Gerade das Nebeneinander von Argumenten und Gegenpositionen ist für sein Verständnis wichtig.",
+    "source": {
+      "title": "Wikipedia · Talmud",
+      "url": "https://de.wikipedia.org/wiki/Talmud"
+    }
+  },
+  {
+    "id": "belief-symbol-kontext",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum sollte man die Bedeutung eines religiösen Symbols im jeweiligen Kontext untersuchen?",
+    "answers": [
+      "Dasselbe Zeichen kann in verschiedenen Traditionen oder Situationen unterschiedliche Bedeutungen erhalten.",
+      "Eine ähnliche Form beweist stets eine historische Übernahme mit unveränderter Bedeutung.",
+      "Für die Deutung zählt ausschließlich die heutige Mehrheitsbedeutung, nie die Entstehungsgeschichte.",
+      "Die Bedeutung lässt sich unabhängig vom Gebrauch allein aus der geometrischen Form ableiten."
+    ],
+    "explanation": "Symbole erhalten ihre Bedeutung durch Gebrauch, Überlieferung und Deutung. Formale Ähnlichkeit allein beweist deshalb weder identische Bedeutung noch eine vollständige Übereinstimmung der beteiligten Traditionen.",
+    "source": {
+      "title": "Wikipedia · Religionswissenschaft",
+      "url": "https://de.wikipedia.org/wiki/Religionswissenschaft"
+    }
+  },
+  {
+    "id": "belief-wissenschaft-pruefbarkeit",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine Aussage über einen Naturvorgang wird als naturwissenschaftlicher Befund bezeichnet. Welche Anforderung ist dafür besonders wichtig?",
+    "answers": [
+      "Sie muss an nachvollziehbaren Beobachtungen oder Untersuchungen überprüfbar sein.",
+      "Ein einzelner bestätigender Befund muss sämtliche Alternativerklärungen endgültig ausschließen.",
+      "Eine logisch widerspruchsfreie Erklärung genügt auch ohne jeden Bezug zu Beobachtungen.",
+      "Die Zustimmung anerkannter Fachpersonen ersetzt eine Offenlegung der Untersuchungsmethode."
+    ],
+    "explanation": "Naturwissenschaftliche Aussagen werden an methodisch nachvollziehbaren Beobachtungen und Untersuchungen geprüft. Ob eine Aussage Trost oder Sinn vermittelt, ist eine andere Frage als ihre naturwissenschaftliche Überprüfbarkeit.",
+    "source": {
+      "title": "Wikipedia · Naturwissenschaft",
+      "url": "https://de.wikipedia.org/wiki/Naturwissenschaft"
+    }
+  },
+  {
+    "id": "belief-schleier-nichtwissen",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was soll Rawls’ Gedankenexperiment eines „Schleiers des Nichtwissens“ bei der Wahl gerechter Regeln bewirken?",
+    "answers": [
+      "Eigene spätere Vorteile nicht zum Maßstab der Regeln machen",
+      "Die Regeln erst dann wählen, wenn jede Person ihre spätere gesellschaftliche Stellung bereits kennt",
+      "Genau gleiche Einkommen als einzig denkbare gerechte Verteilung von vornherein voraussetzen",
+      "Bestehende Besitzverhältnisse ohne weitere Begründung als endgültigen Gerechtigkeitsmaßstab setzen"
+    ],
+    "explanation": "Im Gedankenexperiment wissen die Beteiligten nicht, welche gesellschaftliche Stellung sie später einnehmen werden. Dadurch sollen sie Regeln unparteiischer beurteilen und nicht passend zum eigenen Vorteil zuschneiden.",
+    "source": {
+      "title": "Wikipedia · Schleier des Nichtwissens",
+      "url": "https://de.wikipedia.org/wiki/Schleier_des_Nichtwissens"
+    }
+  },
+  {
+    "id": "belief-mondkalender-verschiebung",
+    "category": "Religionen & Weltanschauungen",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum beginnt Ramadan im gregorianischen Kalender von Jahr zu Jahr meist ungefähr elf Tage früher?",
+    "answers": [
+      "Der islamische Mondkalender hat ein kürzeres Jahr als der gregorianische Sonnenkalender.",
+      "Das islamische Jahr besteht grundsätzlich aus nur zehn Monaten.",
+      "Der gregorianische Kalender hat jedes Jahr einen zusätzlichen Monat.",
+      "Ramadan wird immer auf denselben Wochentag im März verschoben."
+    ],
+    "explanation": "Der islamische Kalender verwendet zwölf Mondmonate und hat ungefähr 354 Tage. Deshalb wandern seine Monate durch die Jahreszeiten des gregorianischen Kalenders mit ungefähr 365 Tagen.",
+    "source": {
+      "title": "Wikipedia · Islamischer Kalender",
+      "url": "https://de.wikipedia.org/wiki/Islamischer_Kalender"
+    }
+  }
+]

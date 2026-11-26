@@ -1,0 +1,1622 @@
+[
+  {
+    "id": "schoolx-en-library",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Was bedeutet das englische Wort „library“ normalerweise?",
+    "answers": [
+      "Bibliothek",
+      "Buchhandlung",
+      "Bücherei-Ausweis",
+      "Labor"
+    ],
+    "explanation": "Eine library verleiht oder erschließt Bücher und andere Medien. Eine Buchhandlung heißt dagegen bookshop oder bookstore.",
+    "source": {
+      "title": "Cambridge Dictionary · library",
+      "url": "https://dictionary.cambridge.org/dictionary/english/library"
+    }
+  },
+  {
+    "id": "schoolx-en-third-person",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welche Ergänzung ist im Simple Present richtig: „She ___ to school every day“?",
+    "answers": [
+      "goes",
+      "go",
+      "going",
+      "gone"
+    ],
+    "explanation": "Im Simple Present erhält das Verb bei he, she und it gewöhnlich ein -s. Bei go lautet die Form goes.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-an-apple",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welche Form ergänzt den unbestimmten Artikel richtig: „___ apple a day“?",
+    "answers": [
+      "An",
+      "A",
+      "The a",
+      "A an"
+    ],
+    "explanation": "Vor einem gesprochenen Vokallaut verwendet man an statt a. Entscheidend ist der Laut am Wortanfang, nicht allein der Buchstabe.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-children",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Wie lautet die übliche englische Mehrzahl von „child“?",
+    "answers": [
+      "children",
+      "childs",
+      "childes",
+      "childrens"
+    ],
+    "explanation": "Child hat die unregelmäßige Pluralform children. Ein zusätzliches Plural-s kommt daran nicht.",
+    "source": {
+      "title": "Cambridge Dictionary · child",
+      "url": "https://dictionary.cambridge.org/dictionary/english/child"
+    }
+  },
+  {
+    "id": "schoolx-en-they",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welches englische Personalpronomen ersetzt „Maya and Ben“ als Subjekt?",
+    "answers": [
+      "they",
+      "he",
+      "it",
+      "we"
+    ],
+    "explanation": "They bezeichnet hier die beiden genannten Personen. We würde die sprechende Person einschließen.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-blue",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welche Farbe bezeichnet das englische Wort „blue“?",
+    "answers": [
+      "Blau",
+      "Braun",
+      "Gelb",
+      "Grau"
+    ],
+    "explanation": "Blue bedeutet blau; brown, yellow und grey bezeichnen andere Farben. Farbwörter können im Englischen als Adjektive verwendet werden.",
+    "source": {
+      "title": "Cambridge Dictionary · blue",
+      "url": "https://dictionary.cambridge.org/dictionary/english/blue"
+    }
+  },
+  {
+    "id": "schoolx-en-my",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welche Ergänzung bedeutet „mein Buch“: „___ book“?",
+    "answers": [
+      "my",
+      "me",
+      "I",
+      "mine"
+    ],
+    "explanation": "My steht als Possessivbegleiter direkt vor einem Nomen. Mine ersetzt dagegen eine ganze Besitzangabe, etwa in „This is mine“.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-went",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welche Form ist die einfache Vergangenheit von „go“?",
+    "answers": [
+      "went",
+      "goed",
+      "gone",
+      "going"
+    ],
+    "explanation": "Go bildet das Simple Past unregelmäßig als went. Gone ist das Partizip, etwa in „has gone“.",
+    "source": {
+      "title": "Cambridge Dictionary · go",
+      "url": "https://dictionary.cambridge.org/dictionary/english/go"
+    }
+  },
+  {
+    "id": "schoolx-en-half-past",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welche Uhrzeit meint „half past seven“?",
+    "answers": [
+      "7:30 Uhr",
+      "6:30 Uhr",
+      "7:15 Uhr",
+      "7:45 Uhr"
+    ],
+    "explanation": "Half past seven bezeichnet eine halbe Stunde nach sieben. Das deutsche „halb acht“ meint dieselbe Uhrzeit.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-can-ability",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Was drückt „can“ in „Lena can swim“ hauptsächlich aus?",
+    "answers": [
+      "Eine Fähigkeit",
+      "Eine Handlung gestern",
+      "Einen Besitz",
+      "Eine abgeschlossene Pflicht"
+    ],
+    "explanation": "Can beschreibt hier, dass Lena schwimmen kann. Das Modalverb steht vor der Grundform des folgenden Verbs.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-since-point",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Ergänzung passt: „We have lived here ___ 2020“?",
+    "answers": [
+      "since",
+      "for",
+      "during",
+      "while"
+    ],
+    "explanation": "Since nennt den Beginn eines bis zum betrachteten Zeitpunkt reichenden Zeitraums. For würde eine Dauer wie „for six years“ einleiten.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-much-water",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Ergänzung ist für eine Mengenfrage nach Wasser richtig: „How ___ water do we need?“",
+    "answers": [
+      "much",
+      "many",
+      "few",
+      "several"
+    ],
+    "explanation": "Water wird hier als nicht zählbares Nomen verwendet, daher fragt man how much. How many steht bei zählbaren Dingen im Plural.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-first-conditional",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Ergänzung passt zum üblichen First Conditional: „If it rains tomorrow, we ___ at home“?",
+    "answers": [
+      "will stay",
+      "would have stayed",
+      "had stayed",
+      "would stayed"
+    ],
+    "explanation": "Für eine mögliche zukünftige Bedingung verbindet das First Conditional häufig if plus Simple Present mit will plus Grundform.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-relative-who",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welches Relativpronomen passt als Subjekt: „The woman ___ lives next door is a doctor“?",
+    "answers": [
+      "who",
+      "which",
+      "whose",
+      "whom"
+    ],
+    "explanation": "Who kann sich als Subjekt eines Relativsatzes auf eine Person beziehen. Whose drückt Besitz aus, whom ist eine Objektform.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-passive-letter",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Form ist das Passiv zu „Someone wrote the letter yesterday“?",
+    "answers": [
+      "The letter was written yesterday.",
+      "The letter has write yesterday.",
+      "The letter wrote yesterday.",
+      "The letter was writing yesterday."
+    ],
+    "explanation": "Das Passiv im Simple Past wird mit was oder were und dem Partizip gebildet. Die handelnde Person muss dabei nicht genannt werden.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-indirect-question",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche höfliche indirekte Frage ist grammatisch richtig?",
+    "answers": [
+      "Could you tell me where the station is?",
+      "Could you tell me where is the station?",
+      "Could you tell me where does the station is?",
+      "Could you tell me where the station be?"
+    ],
+    "explanation": "In der eingebetteten Frage steht das Subjekt vor dem Verb: „where the station is“. Die Wortstellung einer direkten Frage wird nicht übernommen.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-well-adverb",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Ergänzung beschreibt die Art des Spielens richtig: „She plays the piano very ___“?",
+    "answers": [
+      "well",
+      "good",
+      "betterly",
+      "goodly"
+    ],
+    "explanation": "Well ist hier das Adverb zu good und beschreibt, wie sie spielt. Good wäre beispielsweise in „She is a good pianist“ ein Adjektiv.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-actually",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Was bedeutet „actually“ in „Actually, I disagree“ am ehesten?",
+    "answers": [
+      "Tatsächlich beziehungsweise eigentlich",
+      "Aktuell beziehungsweise derzeit",
+      "Sofort beziehungsweise eilig",
+      "Zufällig beziehungsweise ungeplant"
+    ],
+    "explanation": "Actually bedeutet hier eigentlich oder tatsächlich. Das deutsche aktuell wird meist mit current oder currently wiedergegeben.",
+    "source": {
+      "title": "Cambridge Dictionary · actually",
+      "url": "https://dictionary.cambridge.org/dictionary/english/actually"
+    }
+  },
+  {
+    "id": "schoolx-en-used-to",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Was besagt „I used to walk to school“ normalerweise?",
+    "answers": [
+      "Früher ging ich regelmäßig zu Fuß zur Schule.",
+      "Ich muss morgen erstmals zur Schule gehen.",
+      "Ich bin gerade auf dem Schulweg.",
+      "Ich nutzte die Schule als Spazierweg."
+    ],
+    "explanation": "Used to plus Grundform beschreibt eine frühere Gewohnheit oder einen früheren Zustand, der heute gewöhnlich nicht mehr besteht.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-past-continuous",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Ergänzung betont die schon laufende Handlung: „I ___ when the phone rang“?",
+    "answers": [
+      "was sleeping",
+      "have slept",
+      "had sleep",
+      "am slept"
+    ],
+    "explanation": "Das Past Continuous beschreibt eine Handlung, die zu einem vergangenen Zeitpunkt gerade lief. Das Klingeln unterbricht hier den beschriebenen Schlaf.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-formal-subjunctive",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Welche Form verwendet den Subjunctive im formellen amerikanischen Englisch: „The committee recommends that he ___ present“?",
+    "answers": [
+      "be",
+      "is",
+      "was",
+      "has"
+    ],
+    "explanation": "Nach einer Empfehlung kann das formelle amerikanische Englisch den Subjunctive verwenden: Die Verbform bleibt hier be.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-negative-inversion",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Welche Fortsetzung ist nach dem vorangestellten „Never before“ standardsprachlich richtig?",
+    "answers": [
+      "had she seen such a view.",
+      "she had seen such a view.",
+      "she seen had such a view.",
+      "had seen she such a view."
+    ],
+    "explanation": "Ein vorangestellter negativer Ausdruck wie never before löst hier die Umstellung von Hilfsverb und Subjekt aus.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-admit-gerund",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Welche Ergänzung ist standardsprachlich richtig: „She admitted ___ the window“?",
+    "answers": [
+      "breaking",
+      "to break",
+      "break",
+      "broken"
+    ],
+    "explanation": "Admit kann direkt eine -ing-Form als Ergänzung erhalten: „admitted breaking“. Ein bloßer to-Infinitiv ist in dieser Konstruktion nicht die Standardform.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-modal-perfect-deduction",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Welche Form drückt eine starke Schlussfolgerung über die Vergangenheit aus?",
+    "answers": [
+      "She must have left.",
+      "She might have left.",
+      "She should have left.",
+      "She could leave."
+    ],
+    "explanation": "Must have plus Partizip drückt eine starke Vermutung über etwas Vergangenes aus. Might have ist unsicherer; should have kann eine unerfüllte Erwartung ausdrücken.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-participle-reference",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Welcher Satz ordnet den einleitenden Partizipialsatz logisch der Person zu, die die Hausaufgaben beendet hat?",
+    "answers": [
+      "Having finished her homework, Maya went outside.",
+      "Having finished her homework, the door opened.",
+      "Having finished her homework, the garden was quiet.",
+      "Having finished her homework, the bus arrived."
+    ],
+    "explanation": "Das unausgesprochene Subjekt des einleitenden Partizipialsatzes soll zum Subjekt des Hauptsatzes passen. Hier ist Maya die handelnde Person.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-reported-future",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Wie lautet bei regulärer Zeitenverschiebung die indirekte Rede zu „I will call“ nach „She said ...“?",
+    "answers": [
+      "... that she would call.",
+      "... that she will called.",
+      "... that she had call.",
+      "... that she would called."
+    ],
+    "explanation": "Bei regulärem Backshift nach einem vergangenen Einleitungsverb wird will zu would. Danach steht weiterhin die Grundform call.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-cleft-focus",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Was wird in „It was Maya who solved the problem“ besonders hervorgehoben?",
+    "answers": [
+      "Die Identität der lösenden Person",
+      "Die Dauer der Lösung",
+      "Das genaue Datum der Lösung",
+      "Die Schwierigkeit des Problems"
+    ],
+    "explanation": "Die It-cleft-Konstruktion hebt Maya hervor. Sie kann etwa den Eindruck korrigieren, jemand anderes habe das Problem gelöst.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-relative-comma-meaning",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Was legt „My brothers, who live in Paris, are visiting“ durch die Kommas nahe?",
+    "answers": [
+      "Alle hier gemeinten Brüder leben in Paris.",
+      "Nur die nicht in Paris lebenden Brüder kommen.",
+      "Es ist offen, ob irgendein Bruder in Paris lebt.",
+      "Die Brüder besuchen zum ersten Mal Paris."
+    ],
+    "explanation": "Der nicht einschränkende Relativsatz fügt eine Zusatzinformation über die gesamte genannte Gruppe hinzu. Ohne Kommas könnte er eine Teilgruppe auswählen.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-neither-agreement",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Welche Antwort stimmt „I do not enjoy long flights“ ebenfalls verneinend zu?",
+    "answers": [
+      "Neither do I.",
+      "So do I.",
+      "Neither am I.",
+      "Neither I do."
+    ],
+    "explanation": "Nach der verneinten Aussage mit do verwendet die zustimmende Kurzantwort neither plus Hilfsverb plus Subjekt. „So do I“ wäre eine bejahende Übereinstimmung.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-en-perfect-continuous",
+    "category": "Englisch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Welche Form betont besonders die Dauer einer Tätigkeit, die bis jetzt andauert?",
+    "answers": [
+      "She has been working for two hours.",
+      "She worked two hours yesterday.",
+      "She will work for two hours.",
+      "She had worked before we arrived."
+    ],
+    "explanation": "Das Present Perfect Continuous verbindet eine bisherige Zeitspanne mit einer Tätigkeit bis in die Gegenwart. Im Vordergrund steht ihr Verlauf.",
+    "source": {
+      "title": "British Council · English grammar reference",
+      "url": "https://learnenglish.britishcouncil.org/grammar/english-grammar-reference"
+    }
+  },
+  {
+    "id": "schoolx-math-kreisumfang-radius",
+    "category": "Mathematik",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Der Radius eines Kreises verdoppelt sich. Wie verändert sich sein Umfang?",
+    "answers": [
+      "Er verdoppelt sich.",
+      "Er vervierfacht sich.",
+      "Er halbiert sich.",
+      "Er bleibt gleich."
+    ],
+    "explanation": "Für den Umfang gilt U = 2πr. Er wächst daher proportional zum Radius; die Kreisfläche würde dagegen quadratisch wachsen.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Kreis",
+      "url": "https://de.wikipedia.org/wiki/Kreis"
+    }
+  },
+  {
+    "id": "schoolx-math-teilbarkeit-drei",
+    "category": "Mathematik",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Woran erkennt man die Teilbarkeit einer natürlichen Zahl durch 3?",
+    "answers": [
+      "Ihre Quersumme ist durch 3 teilbar.",
+      "Ihre letzte Ziffer ist gerade.",
+      "Ihre letzte Ziffer ist 3.",
+      "Die Zahl hat genau drei Ziffern."
+    ],
+    "explanation": "Eine Zahl hat bei Division durch 3 denselben Rest wie ihre Quersumme. Deshalb kann man die Teilbarkeit an der Quersumme prüfen.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Teilbarkeitsregel",
+      "url": "https://de.wikipedia.org/wiki/Teilbarkeitsregel"
+    }
+  },
+  {
+    "id": "schoolx-math-betrag-zahlengerade",
+    "category": "Mathematik",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Was beschreibt der Betrag |−7| auf der Zahlengeraden?",
+    "answers": [
+      "Den Abstand der Zahl −7 von 0",
+      "Die Zahl sieben Schritte links von −7",
+      "Das Vorzeichen der Zahl −7",
+      "Den Kehrwert von −7"
+    ],
+    "explanation": "Der Betrag einer reellen Zahl ist ihr nicht negativer Abstand von null. Deshalb gilt |−7| = 7.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Betragsfunktion",
+      "url": "https://de.wikipedia.org/wiki/Betragsfunktion"
+    }
+  },
+  {
+    "id": "schoolx-physik-kraft-einheit",
+    "category": "Physik",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "In welcher SI-Einheit wird eine Kraft angegeben?",
+    "answers": [
+      "Newton",
+      "Joule",
+      "Watt",
+      "Pascal"
+    ],
+    "explanation": "Das Newton ist die Einheit der Kraft. Joule misst Energie, Watt Leistung und Pascal Druck.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Newton (Einheit)",
+      "url": "https://de.wikipedia.org/wiki/Newton_(Einheit)"
+    }
+  },
+  {
+    "id": "schoolx-physik-magnet-gleiche-pole",
+    "category": "Physik",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Was geschieht, wenn man die Nordpole zweier gewöhnlicher Stabmagnete einander nähert?",
+    "answers": [
+      "Sie stoßen sich ab.",
+      "Sie ziehen sich immer an.",
+      "Sie verlieren sofort ihren Magnetismus.",
+      "Einer wird dadurch dauerhaft zum Südpol."
+    ],
+    "explanation": "Gleichnamige Magnetpole stoßen sich ab, ungleichnamige ziehen sich an. Ein gewöhnlicher Stabmagnet besitzt stets beide Pole.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Magnet",
+      "url": "https://de.wikipedia.org/wiki/Magnet"
+    }
+  },
+  {
+    "id": "schoolx-physik-waermeleitung-loeffel",
+    "category": "Physik",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Warum wird das herausragende Ende eines Metalllöffels in heißem Tee nach einiger Zeit warm?",
+    "answers": [
+      "Wärme wird im Metall weitergeleitet.",
+      "Der Löffel erzeugt durch Ruhe Strom.",
+      "Der Tee vergrößert die Masse des Löffels.",
+      "Kälte strömt aus dem Metall in die Luft."
+    ],
+    "explanation": "Bei der Wärmeleitung wird Energie innerhalb eines Stoffes übertragen. Metalle leiten Wärme meist deutlich besser als Holz oder Kunststoff.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Wärmeleitung",
+      "url": "https://de.wikipedia.org/wiki/W%C3%A4rmeleitung"
+    }
+  },
+  {
+    "id": "schoolx-info-algorithmus",
+    "category": "Informatik",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Was bezeichnet ein Algorithmus grundsätzlich?",
+    "answers": [
+      "Eine eindeutige Folge von Schritten zur Lösung einer Aufgabe",
+      "Ein beliebiges elektronisches Gerät",
+      "Eine ausschließlich geheime Zeichenfolge",
+      "Die Bildschirmgröße eines Computers"
+    ],
+    "explanation": "Ein Algorithmus beschreibt ein Verfahren in klaren Schritten. Er muss nicht auf einem Computer ausgeführt werden; auch schriftliche Verfahren können Algorithmen sein.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Algorithmus",
+      "url": "https://de.wikipedia.org/wiki/Algorithmus"
+    }
+  },
+  {
+    "id": "schoolx-info-eingabe-ausgabe",
+    "category": "Informatik",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welches Gerät dient an einem gewöhnlichen Computer hauptsächlich der Ausgabe von Informationen?",
+    "answers": [
+      "Ein Bildschirm",
+      "Eine Tastatur",
+      "Eine Computermaus",
+      "Ein Mikrofon"
+    ],
+    "explanation": "Der Bildschirm stellt Ergebnisse sichtbar dar und ist damit ein Ausgabegerät. Tastatur, Maus und Mikrofon liefern dagegen Eingaben.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Ausgabegerät",
+      "url": "https://de.wikipedia.org/wiki/Ausgabeger%C3%A4t"
+    }
+  },
+  {
+    "id": "schoolx-info-tabellenkalkulation-formel",
+    "category": "Informatik",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Mit welchem Zeichen beginnen Formeln in verbreiteten Tabellenkalkulationen wie Excel und LibreOffice Calc?",
+    "answers": [
+      "=",
+      "#",
+      "@",
+      "?"
+    ],
+    "explanation": "Das Gleichheitszeichen kennzeichnet den Zellinhalt als Formel. So kann etwa =A1+A2 zwei Zellwerte addieren.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Tabellenkalkulation",
+      "url": "https://de.wikipedia.org/wiki/Tabellenkalkulation"
+    }
+  },
+  {
+    "id": "schoolx-bio-lungenblaeschen",
+    "category": "Biologie",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Wo findet der Gasaustausch zwischen Atemluft und Blut in der menschlichen Lunge hauptsächlich statt?",
+    "answers": [
+      "An den Lungenbläschen",
+      "Im Kehlkopf",
+      "In den Stimmbändern",
+      "An den Nasenhaaren"
+    ],
+    "explanation": "Die Lungenbläschen besitzen dünne Wände und eine große Gesamtoberfläche. Dort können Sauerstoff und Kohlenstoffdioxid zwischen Luft und Blut diffundieren.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Lungenbläschen",
+      "url": "https://de.wikipedia.org/wiki/Lungenbl%C3%A4schen"
+    }
+  },
+  {
+    "id": "schoolx-bio-biodiversitaet",
+    "category": "Biologie",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Was umfasst biologische Vielfalt neben der Artenvielfalt ebenfalls?",
+    "answers": [
+      "Genetische Vielfalt und Vielfalt der Ökosysteme",
+      "Nur die Körpergröße von Tieren",
+      "Nur die Zahl der Haustiere",
+      "Ausschließlich die Temperatur eines Lebensraums"
+    ],
+    "explanation": "Biodiversität betrachtet verschiedene Ebenen: Gene, Arten und Ökosysteme. Die Artenzahl allein erfasst daher nicht die ganze biologische Vielfalt.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Biodiversität",
+      "url": "https://de.wikipedia.org/wiki/Biodiversit%C3%A4t"
+    }
+  },
+  {
+    "id": "schoolx-chem-edelgase-aussenschale",
+    "category": "Chemie",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Warum reagieren Edelgase unter gewöhnlichen Bedingungen meist nur wenig?",
+    "answers": [
+      "Ihre äußere Elektronenschale ist vollständig besetzt.",
+      "Sie besitzen grundsätzlich keine Elektronen.",
+      "Ihre Atome enthalten keine Protonen.",
+      "Sie bestehen stets aus Wassermolekülen."
+    ],
+    "explanation": "Eine vollständig besetzte Außenschale ist energetisch besonders stabil. Edelgase sind deshalb meist reaktionsträge, jedoch nicht ausnahmslos unfähig zu reagieren.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Edelgase",
+      "url": "https://de.wikipedia.org/wiki/Edelgase"
+    }
+  },
+  {
+    "id": "schoolx-chem-element-verbindung",
+    "category": "Chemie",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welche Aussage unterscheidet Wasser H₂O von dem Element Sauerstoff O₂?",
+    "answers": [
+      "Wasser enthält Atome verschiedener Elemente.",
+      "Wasser enthält überhaupt keine Atome.",
+      "Sauerstoff enthält immer Wasserstoffatome.",
+      "Jedes Molekül ist automatisch ein chemisches Element."
+    ],
+    "explanation": "Eine chemische Verbindung besteht aus mindestens zwei verschiedenen Elementen. O₂ enthält dagegen ausschließlich Sauerstoffatome.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Chemische Verbindung",
+      "url": "https://de.wikipedia.org/wiki/Chemische_Verbindung"
+    }
+  },
+  {
+    "id": "schoolx-geo-hoehenlinien",
+    "category": "Erdkunde",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Was verbinden Höhenlinien auf einer topografischen Karte?",
+    "answers": [
+      "Punkte gleicher Höhe",
+      "Orte mit gleicher Einwohnerzahl",
+      "Gebiete mit identischer Vegetation",
+      "Alle Straßen gleicher Breite"
+    ],
+    "explanation": "Eine Höhenlinie verbindet Stellen mit derselben Höhenlage. Eng beieinander liegende Höhenlinien weisen häufig auf ein steileres Gelände hin.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Höhenlinie",
+      "url": "https://de.wikipedia.org/wiki/H%C3%B6henlinie"
+    }
+  },
+  {
+    "id": "schoolx-geo-kartenlegende",
+    "category": "Erdkunde",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Wozu dient die Legende einer Karte?",
+    "answers": [
+      "Sie erklärt die verwendeten Zeichen und Farben.",
+      "Sie legt automatisch das Kartenalter fest.",
+      "Sie ersetzt jeden Maßstab durch Ortsnamen.",
+      "Sie zeigt ausschließlich historische Sagen."
+    ],
+    "explanation": "Die Legende macht Kartensymbole und Farbflächen verständlich. Ohne sie kann dieselbe Farbe je nach Karte Unterschiedliches bedeuten.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Legende (Karte)",
+      "url": "https://de.wikipedia.org/wiki/Legende_(Karte)"
+    }
+  },
+  {
+    "id": "schoolx-deutsch-aufzaehlung-komma",
+    "category": "Deutsch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welche Zeichensetzung ist in dieser einfachen Aufzählung standardsprachlich richtig?",
+    "answers": [
+      "Wir kaufen Äpfel, Birnen und Brot.",
+      "Wir kaufen, Äpfel Birnen und Brot.",
+      "Wir kaufen Äpfel Birnen, und Brot.",
+      "Wir kaufen Äpfel Birnen und, Brot."
+    ],
+    "explanation": "Gleichrangige Glieder einer Aufzählung werden durch Kommas getrennt. Vor dem einfachen verbindenden und steht hier kein Komma.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Kommaregeln",
+      "url": "https://de.wikipedia.org/wiki/Kommaregeln"
+    }
+  },
+  {
+    "id": "schoolx-deutsch-antonym",
+    "category": "Deutsch",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Welches Wort ist ein Antonym, also ein Bedeutungsgegensatz, zu „groß“?",
+    "answers": [
+      "klein",
+      "riesig",
+      "gewaltig",
+      "enorm"
+    ],
+    "explanation": "Antonyme drücken entgegengesetzte Bedeutungen aus. Riesig, gewaltig und enorm liegen dagegen auf derselben Bedeutungsseite wie groß.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Antonym",
+      "url": "https://de.wikipedia.org/wiki/Antonym"
+    }
+  },
+  {
+    "id": "schoolx-geschichte-renaissance-antike",
+    "category": "Geschichte",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Worauf griffen viele Künstler und Gelehrte der europäischen Renaissance besonders zurück?",
+    "answers": [
+      "Auf Vorbilder der griechischen und römischen Antike",
+      "Ausschließlich auf zukünftige Raumfahrtprogramme",
+      "Auf die völlige Ablehnung jedes alten Textes",
+      "Nur auf Fabrikproduktion des 19. Jahrhunderts"
+    ],
+    "explanation": "Renaissance bedeutet Wiedergeburt und bezeichnet unter anderem die erneute Auseinandersetzung mit antiken Texten, Kunstformen und Vorstellungen vom Menschen.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Renaissance",
+      "url": "https://de.wikipedia.org/wiki/Renaissance"
+    }
+  },
+  {
+    "id": "schoolx-wirtschaft-brutto-netto",
+    "category": "Politik & Wirtschaft",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Was bedeutet „Nettolohn“ gegenüber „Bruttolohn“ bei einer üblichen Lohnabrechnung?",
+    "answers": [
+      "Lohn nach den entsprechenden Abzügen",
+      "Lohn einschließlich aller Arbeitgeberkosten",
+      "Lohn vor sämtlichen Abzügen",
+      "Ausschließlich der gesetzliche Mindestlohn"
+    ],
+    "explanation": "Vom Bruttolohn werden etwa Lohnsteuer und Arbeitnehmeranteile zur Sozialversicherung abgezogen. Der verbleibende Auszahlungsbetrag ist der Nettolohn.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Arbeitsentgelt",
+      "url": "https://de.wikipedia.org/wiki/Arbeitsentgelt"
+    }
+  },
+  {
+    "id": "schoolx-wirtschaft-knappheit",
+    "category": "Politik & Wirtschaft",
+    "basis": "school",
+    "difficulty": 1,
+    "prompt": "Was meint Knappheit als wirtschaftliches Grundproblem?",
+    "answers": [
+      "Verfügbare Mittel reichen nicht aus, um alle Wünsche zugleich zu erfüllen.",
+      "Jede Ware muss jederzeit kostenlos sein.",
+      "Nur sehr teure Luxusgüter können knapp sein.",
+      "Alle Menschen haben dieselben Bedürfnisse."
+    ],
+    "explanation": "Knappheit entsteht im Verhältnis begrenzter Mittel zu möglichen Verwendungen. Deshalb müssen Haushalte, Unternehmen und Staat Entscheidungen treffen.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Knappheit",
+      "url": "https://de.wikipedia.org/wiki/Knappheit"
+    }
+  },
+  {
+    "id": "schoolx-math-parallele-geraden",
+    "category": "Mathematik",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Zwei verschiedene Geraden in der Ebene sind parallel. Wie viele Lösungen hat das zugehörige lineare Gleichungssystem?",
+    "answers": [
+      "Keine",
+      "Genau eine",
+      "Genau zwei",
+      "Unendlich viele"
+    ],
+    "explanation": "Eine gemeinsame Lösung wäre ein Schnittpunkt beider Geraden. Verschiedene parallele Geraden haben keinen solchen Punkt.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Lineares Gleichungssystem",
+      "url": "https://de.wikipedia.org/wiki/Lineares_Gleichungssystem"
+    }
+  },
+  {
+    "id": "schoolx-math-arithmetische-folge",
+    "category": "Mathematik",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Woran erkennt man eine arithmetische Folge?",
+    "answers": [
+      "Die Differenz benachbarter Glieder ist konstant.",
+      "Der Quotient benachbarter Glieder ist immer 2.",
+      "Jedes Glied ist das Quadrat des vorherigen.",
+      "Alle Glieder müssen positive Primzahlen sein."
+    ],
+    "explanation": "Bei einer arithmetischen Folge kommt jeweils dieselbe Differenz hinzu. Bei einer geometrischen Folge ist dagegen der Multiplikationsfaktor konstant.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Arithmetische Folge",
+      "url": "https://de.wikipedia.org/wiki/Arithmetische_Folge"
+    }
+  },
+  {
+    "id": "schoolx-math-bogenmass",
+    "category": "Mathematik",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welchem Bogenmaß entspricht ein gestreckter Winkel von 180°?",
+    "answers": [
+      "π",
+      "2π",
+      "π/2",
+      "1/π"
+    ],
+    "explanation": "Ein Vollwinkel von 360° entspricht 2π Radiant. Ein gestreckter Winkel ist dessen Hälfte und entspricht daher π Radiant.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Radiant",
+      "url": "https://de.wikipedia.org/wiki/Radiant"
+    }
+  },
+  {
+    "id": "schoolx-physik-parallelschaltung-spannung",
+    "category": "Physik",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Zwei Widerstände sind ideal parallel an dieselbe Spannungsquelle angeschlossen. Was gilt für ihre Spannungen?",
+    "answers": [
+      "An beiden liegt dieselbe Spannung an.",
+      "Der größere Widerstand hat stets die größere Spannung.",
+      "Die Spannung ist an beiden Widerständen null.",
+      "Die beiden Spannungen müssen entgegengesetzte Vorzeichen haben."
+    ],
+    "explanation": "Parallele Zweige sind jeweils mit denselben beiden Knoten verbunden. Deshalb liegt zwischen ihren Enden dieselbe Potenzialdifferenz an.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Parallelschaltung",
+      "url": "https://de.wikipedia.org/wiki/Parallelschaltung"
+    }
+  },
+  {
+    "id": "schoolx-physik-hydrostatischer-druck",
+    "category": "Physik",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Wie verändert sich der hydrostatische Druck in ruhendem Wasser beim tieferen Abtauchen?",
+    "answers": [
+      "Er nimmt mit der Tiefe zu.",
+      "Er nimmt mit der Tiefe ab.",
+      "Er bleibt unabhängig von der Tiefe gleich.",
+      "Er hängt nur von der Schwimmgeschwindigkeit ab."
+    ],
+    "explanation": "Über einem tieferen Punkt lastet eine größere Wassersäule. Für den zusätzlichen hydrostatischen Druck gilt bei konstanter Dichte p = ρgh.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Hydrostatischer Druck",
+      "url": "https://de.wikipedia.org/wiki/Hydrostatischer_Druck"
+    }
+  },
+  {
+    "id": "schoolx-physik-frequenz-periodendauer",
+    "category": "Physik",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Beziehung gilt zwischen Frequenz f und Periodendauer T einer periodischen Schwingung?",
+    "answers": [
+      "f = 1/T",
+      "f = T²",
+      "f = T",
+      "f = 1 + T"
+    ],
+    "explanation": "Die Frequenz zählt die Schwingungen pro Zeit. Die Periodendauer bezeichnet die Zeit für eine Schwingung; beide Größen sind Kehrwerte.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Periodendauer",
+      "url": "https://de.wikipedia.org/wiki/Periodendauer"
+    }
+  },
+  {
+    "id": "schoolx-info-ip-pakete",
+    "category": "Informatik",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Warum können Router ein Datenpaket in einem IP-Netz zum passenden nächsten Netz weiterleiten?",
+    "answers": [
+      "Sie berücksichtigen die Zieladresse und ihre Routinginformationen.",
+      "Sie müssen den ganzen Inhalt der Webseite verstehen.",
+      "Jede Zieladresse nennt den vollständigen Quelltext.",
+      "Router können nur direkt angeschlossene Tastaturen erkennen."
+    ],
+    "explanation": "Router verwenden IP-Zieladressen und Routingtabellen für die Weiterleitung. Der Inhalt einer Webseite muss dafür nicht inhaltlich verstanden werden.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Router",
+      "url": "https://de.wikipedia.org/wiki/Router"
+    }
+  },
+  {
+    "id": "schoolx-info-primaerschluessel",
+    "category": "Informatik",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Bedingung muss ein Primärschlüssel in einer relationalen Tabelle erfüllen?",
+    "answers": [
+      "Er identifiziert jeden Datensatz eindeutig.",
+      "Sein Wert muss in jeder Zeile gleich sein.",
+      "Er muss immer den Namen einer Person enthalten.",
+      "Er darf grundsätzlich nur aus einer Ziffer bestehen."
+    ],
+    "explanation": "Ein Primärschlüssel unterscheidet die Datensätze einer Tabelle eindeutig und enthält keine Nullwerte. Er kann auch aus mehreren Spalten bestehen.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Primärschlüssel",
+      "url": "https://de.wikipedia.org/wiki/Prim%C3%A4rschl%C3%BCssel"
+    }
+  },
+  {
+    "id": "schoolx-info-modulo",
+    "category": "Informatik",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Was liefert die Modulo-Operation 17 mod 5 bei nicht negativen ganzen Zahlen?",
+    "answers": [
+      "Den Rest 2",
+      "Den Quotienten 3",
+      "Die Summe 22",
+      "Das Produkt 85"
+    ],
+    "explanation": "Bei der Ganzzahldivision gilt 17 = 3 · 5 + 2. Modulo liefert den Rest dieser Division.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Modulo",
+      "url": "https://de.wikipedia.org/wiki/Modulo"
+    }
+  },
+  {
+    "id": "schoolx-bio-dna-basenpaar",
+    "category": "Biologie",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Basen bilden in der gewöhnlichen DNA-Doppelhelix ein komplementäres Paar?",
+    "answers": [
+      "Adenin und Thymin",
+      "Adenin und Guanin",
+      "Cytosin und Thymin",
+      "Guanin und Thymin"
+    ],
+    "explanation": "In DNA paart sich Adenin mit Thymin und Guanin mit Cytosin. Diese Ergänzung ermöglicht unter anderem das Kopieren der Basenfolge.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Basenpaar",
+      "url": "https://de.wikipedia.org/wiki/Basenpaar"
+    }
+  },
+  {
+    "id": "schoolx-bio-parasitismus",
+    "category": "Biologie",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Beziehung beschreibt Parasitismus?",
+    "answers": [
+      "Ein Organismus profitiert auf Kosten eines geschädigten Wirts.",
+      "Beide Organismen profitieren immer gleich stark.",
+      "Beide Organismen werden grundsätzlich getötet.",
+      "Keiner der beiden Organismen wird beeinflusst."
+    ],
+    "explanation": "Ein Parasit nutzt Ressourcen seines Wirts und schädigt ihn dabei. Das unterscheidet Parasitismus von einem wechselseitig nützlichen Zusammenleben.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Parasitismus",
+      "url": "https://de.wikipedia.org/wiki/Parasitismus"
+    }
+  },
+  {
+    "id": "schoolx-chem-elektronegativitaet-periode",
+    "category": "Chemie",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Wie entwickelt sich die Elektronegativität bei Hauptgruppenelementen innerhalb einer Periode im Allgemeinen von links nach rechts?",
+    "answers": [
+      "Sie nimmt tendenziell zu.",
+      "Sie nimmt stets auf null ab.",
+      "Sie bleibt bei allen Elementen exakt gleich.",
+      "Sie hängt ausschließlich von der Neutronenzahl ab."
+    ],
+    "explanation": "Innerhalb einer Periode steigt die Anziehung der Bindungselektronen im Allgemeinen an. Für Edelgase werden dabei je nach Skala keine üblichen Werte angegeben.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Elektronegativität",
+      "url": "https://de.wikipedia.org/wiki/Elektronegativit%C3%A4t"
+    }
+  },
+  {
+    "id": "schoolx-chem-reaktionsgleichung-ausgleich",
+    "category": "Chemie",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Koeffizienten gleichen die Gleichung für die Bildung von Wasser aus?",
+    "answers": [
+      "2 H₂ + O₂ → 2 H₂O",
+      "H₂ + O₂ → H₂O",
+      "H₂ + 2 O₂ → H₂O",
+      "2 H₂ + 2 O₂ → 2 H₂O"
+    ],
+    "explanation": "Beim Ausgleichen müssen auf beiden Seiten gleich viele Atome jeder Elementsorte stehen. In der richtigen Gleichung sind es vier H- und zwei O-Atome.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Reaktionsgleichung",
+      "url": "https://de.wikipedia.org/wiki/Reaktionsgleichung"
+    }
+  },
+  {
+    "id": "schoolx-geo-el-nino",
+    "category": "Erdkunde",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Was kennzeichnet ein El-Niño-Ereignis im tropischen Pazifik unter anderem?",
+    "answers": [
+      "Ungewöhnlich warmes Oberflächenwasser im zentralen und östlichen Äquatorialpazifik",
+      "Ungewöhnlich kaltes Oberflächenwasser im zentralen und östlichen Äquatorialpazifik",
+      "Eine allein durch Mondanziehung verursachte kurzfristige Flutwelle",
+      "Eine jahreszeitliche Windumkehr über dem Indischen Ozean ohne Pazifikbezug"
+    ],
+    "explanation": "El Niño ist eine Phase der gekoppelten Schwankungen von Ozean und Atmosphäre im tropischen Pazifik. Es kann Wetterabläufe auch in weit entfernten Regionen beeinflussen.",
+    "source": {
+      "title": "Fachlicher Hintergrund · El Niño",
+      "url": "https://de.wikipedia.org/wiki/El_Ni%C3%B1o"
+    }
+  },
+  {
+    "id": "schoolx-geo-bevoelkerungspyramide",
+    "category": "Erdkunde",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Eine Bevölkerungspyramide hat eine im Vergleich zu mittleren Altersgruppen sehr breite Basis. Worauf deutet das zunächst hin?",
+    "answers": [
+      "Auf einen hohen Anteil junger Menschen",
+      "Auf das völlige Fehlen von Geburten",
+      "Auf eine ausschließlich alte Bevölkerung",
+      "Auf gleiche Einwohnerzahlen in allen Altersgruppen"
+    ],
+    "explanation": "Die Basis stellt die jüngsten Altersgruppen dar. Eine breite Basis zeigt viele junge Menschen, sagt aber allein noch nicht jede zukünftige Entwicklung voraus.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Altersstruktur",
+      "url": "https://de.wikipedia.org/wiki/Altersstruktur"
+    }
+  },
+  {
+    "id": "schoolx-deutsch-plusquamperfekt",
+    "category": "Deutsch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Zeitform drückt „Sie hatte das Buch gelesen“ aus?",
+    "answers": [
+      "Plusquamperfekt",
+      "Präsens",
+      "Futur I",
+      "Präteritum"
+    ],
+    "explanation": "Das Plusquamperfekt wird mit hatte oder war und dem Partizip gebildet. Es kann eine Handlung als früher als einen anderen vergangenen Zeitpunkt darstellen.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Plusquamperfekt",
+      "url": "https://de.wikipedia.org/wiki/Plusquamperfekt"
+    }
+  },
+  {
+    "id": "schoolx-deutsch-inhaltsangabe",
+    "category": "Deutsch",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Welche Vorgehensweise passt zu einer sachlichen Inhaltsangabe eines erzählenden Textes?",
+    "answers": [
+      "Die wesentlichen Handlungsschritte knapp und überwiegend im Präsens wiedergeben",
+      "Spannung durch ein absichtlich offenes Ende erzeugen",
+      "Den Text mit erfundenen Handlungsteilen fortsetzen",
+      "Vor allem die eigene Begeisterung ausführlich darstellen"
+    ],
+    "explanation": "Eine Inhaltsangabe informiert konzentriert über das Wesentliche und wird üblicherweise im Präsens verfasst. Ausschmückungen und persönliche Bewertungen gehören nicht zum Kern.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Inhaltsangabe",
+      "url": "https://de.wikipedia.org/wiki/Inhaltsangabe"
+    }
+  },
+  {
+    "id": "schoolx-geschichte-staendeordnung",
+    "category": "Geschichte",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Was prägte die Stellung eines Menschen in einer frühneuzeitlichen Ständeordnung besonders?",
+    "answers": [
+      "Die Zugehörigkeit zu einem meist durch Geburt bestimmten Stand",
+      "Ein einheitliches allgemeines Wahlrecht",
+      "Die monatlich neu ausgeloste gesellschaftliche Stellung",
+      "Allein die Zahl bestandener Schulprüfungen"
+    ],
+    "explanation": "Ständische Gesellschaften ordneten Menschen Gruppen mit unterschiedlichen Rechten und Pflichten zu. Die Standeszugehörigkeit war häufig durch Geburt bestimmt.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Ständeordnung",
+      "url": "https://de.wikipedia.org/wiki/St%C3%A4ndeordnung"
+    }
+  },
+  {
+    "id": "schoolx-politik-subsidiaritaet",
+    "category": "Politik & Wirtschaft",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Was besagt das Subsidiaritätsprinzip im politischen Grundgedanken?",
+    "answers": [
+      "Eine höhere Ebene soll übernehmen, was eine nähere Ebene nicht ausreichend leisten kann.",
+      "Jede Entscheidung soll immer auf der höchsten Ebene fallen.",
+      "Staatliche Aufgaben dürfen niemals aufgeteilt werden.",
+      "Nur private Unternehmen dürfen öffentliche Aufgaben erledigen."
+    ],
+    "explanation": "Subsidiarität begründet eine Zuständigkeit höherer Ebenen dann, wenn eine niedrigere Ebene eine Aufgabe nicht ausreichend bewältigen kann. Es bedeutet keine pauschale Ablehnung übergeordneter Zusammenarbeit.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Subsidiarität",
+      "url": "https://de.wikipedia.org/wiki/Subsidiarit%C3%A4t"
+    }
+  },
+  {
+    "id": "schoolx-wirtschaft-tarifvertrag",
+    "category": "Politik & Wirtschaft",
+    "basis": "school",
+    "difficulty": 2,
+    "prompt": "Wer schließt in Deutschland typischerweise einen Tarifvertrag?",
+    "answers": [
+      "Eine Gewerkschaft und ein Arbeitgeber oder Arbeitgeberverband",
+      "Ein Amtsgericht und alle Kundinnen eines Geschäfts",
+      "Ausschließlich die Bundesregierung und die Europäische Zentralbank",
+      "Ein Finanzamt und der Deutsche Wetterdienst"
+    ],
+    "explanation": "Tarifverträge werden von den Tarifparteien vereinbart. Sie können etwa Entgelt, Arbeitszeiten und weitere Arbeitsbedingungen regeln.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Tarifvertrag",
+      "url": "https://de.wikipedia.org/wiki/Tarifvertrag"
+    }
+  },
+  {
+    "id": "schoolx-math-zweite-ableitung-minimum",
+    "category": "Mathematik",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Für eine zweimal stetig differenzierbare Funktion gilt f′(a) = 0 und f″(a) > 0. Was folgt?",
+    "answers": [
+      "Bei a liegt ein striktes lokales Minimum.",
+      "Bei a liegt sicher ein lokales Maximum.",
+      "Die Tangentensteigung ist bei a positiv.",
+      "Bei a muss eine Wendestelle vorliegen."
+    ],
+    "explanation": "Die erste Ableitung ist null und die positive zweite Ableitung zeigt dort eine nach oben gekrümmte Umgebung. Dies ist ein hinreichendes Kriterium für ein striktes lokales Minimum.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Kurvendiskussion",
+      "url": "https://de.wikipedia.org/wiki/Kurvendiskussion"
+    }
+  },
+  {
+    "id": "schoolx-math-dimension-abhaengigkeit",
+    "category": "Mathematik",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Warum sind drei Vektoren des zweidimensionalen reellen Vektorraums stets linear abhängig?",
+    "answers": [
+      "Die Dimension erlaubt höchstens zwei linear unabhängige Vektoren.",
+      "Drei Vektoren in dieser Ebene müssen dieselbe Länge haben.",
+      "Je zwei Koordinaten machen jede Dreiergruppe zu einer Basis.",
+      "Lineare Unabhängigkeit erfordert ausschließlich positive Koordinaten."
+    ],
+    "explanation": "Die Dimension eines Vektorraums entspricht der Größe einer Basis. Mehr als zwei Vektoren in ℝ² können deshalb nicht alle linear unabhängig sein.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Lineare Unabhängigkeit",
+      "url": "https://de.wikipedia.org/wiki/Lineare_Unabh%C3%A4ngigkeit"
+    }
+  },
+  {
+    "id": "schoolx-math-p-wert",
+    "category": "Mathematik",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Was beschreibt ein p-Wert in einem üblichen Signifikanztest?",
+    "answers": [
+      "Unter der Nullhypothese die Wahrscheinlichkeit für ein mindestens so extremes Testergebnis",
+      "Die Wahrscheinlichkeit, dass die Nullhypothese wahr ist",
+      "Die Wahrscheinlichkeit einer erfolgreichen Wiederholung der Studie",
+      "Die Größe des beobachteten Effekts ohne Bezug auf ein Modell"
+    ],
+    "explanation": "Der p-Wert wird unter Annahme der Nullhypothese berechnet. Er ist weder deren Wahrheitswahrscheinlichkeit noch ein Maß für die praktische Größe des Effekts.",
+    "source": {
+      "title": "Fachlicher Hintergrund · P-Wert",
+      "url": "https://de.wikipedia.org/wiki/P-Wert"
+    }
+  },
+  {
+    "id": "schoolx-physik-resonanz",
+    "category": "Physik",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Wann kann die Amplitude einer schwach gedämpften, erzwungenen Schwingung besonders groß werden?",
+    "answers": [
+      "Wenn die Anregungsfrequenz nahe an der Eigenfrequenz liegt",
+      "Wenn die Anregungsfrequenz weit oberhalb der Eigenfrequenz liegt",
+      "Wenn die Dämpfung bei gleicher Anregung sehr stark erhöht wird",
+      "Wenn eine zuvor ruhende Schwingung nicht mehr angeregt wird"
+    ],
+    "explanation": "Nahe der Resonanzfrequenz wird Energie besonders wirksam in die Schwingung übertragen. Dämpfung begrenzt dabei die erreichbare Amplitude.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Resonanz",
+      "url": "https://de.wikipedia.org/wiki/Resonanz"
+    }
+  },
+  {
+    "id": "schoolx-physik-faraday-betrag",
+    "category": "Physik",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Wovon hängt der Betrag der induzierten Spannung einer unveränderten Spule nach dem Induktionsgesetz unmittelbar ab?",
+    "answers": [
+      "Von der zeitlichen Änderungsrate des magnetischen Flusses",
+      "Allein vom augenblicklichen Wert des magnetischen Flusses",
+      "Nur vom elektrischen Widerstand des Spulendrahts",
+      "Von der Dauer eines vollständig zeitlich konstanten magnetischen Flusses"
+    ],
+    "explanation": "Die induzierte Spannung ist proportional zur Änderung des magnetischen Flusses pro Zeit und zur Windungszahl. Ein zeitlich konstanter Fluss erzeugt keine solche Induktionsspannung.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Elektromagnetische Induktion",
+      "url": "https://de.wikipedia.org/wiki/Elektromagnetische_Induktion"
+    }
+  },
+  {
+    "id": "schoolx-physik-carnot-grenze",
+    "category": "Physik",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Warum kann eine zyklische Wärmekraftmaschine zwischen zwei endlichen positiven Reservoirtemperaturen nicht die gesamte aufgenommene Wärme in Arbeit umwandeln?",
+    "answers": [
+      "Sie muss nach dem zweiten Hauptsatz auch Wärme an ein kälteres Reservoir abgeben.",
+      "Der erste Hauptsatz verbietet grundsätzlich jede Umwandlung von Wärme in Arbeit.",
+      "Ihr Arbeitsgas muss nach jedem vollständigen Kreisprozess vollständig verbraucht sein.",
+      "Reibung ist selbst bei einer ideal reversiblen Maschine zwingend die einzige Ursache."
+    ],
+    "explanation": "Auch eine ideale reversible Maschine hat durch den zweiten Hauptsatz einen begrenzten Wirkungsgrad. Der Grenzfall wird durch die Carnot-Beziehung beschrieben.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Carnot-Prozess",
+      "url": "https://de.wikipedia.org/wiki/Carnot-Prozess"
+    }
+  },
+  {
+    "id": "schoolx-info-halteproblem",
+    "category": "Informatik",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Was besagt die Unentscheidbarkeit des allgemeinen Halteproblems?",
+    "answers": [
+      "Es gibt keinen Algorithmus, der für jedes Programm und jede Eingabe korrekt entscheidet, ob es anhält.",
+      "Kein konkretes Programm kann jemals auf Terminierung geprüft werden.",
+      "Nur die schnelle Entscheidung ist unmöglich; ein langsamer universeller Entscheider existiert.",
+      "Durch längeres Warten lässt sich auch bei endlosen Programmen stets sicher entscheiden, dass sie endlos laufen."
+    ],
+    "explanation": "Das Ergebnis betrifft eine universelle Entscheidungsmethode für beliebige Programme. Für einzelne Programme oder eingeschränkte Klassen kann Terminierung trotzdem beweisbar sein.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Halteproblem",
+      "url": "https://de.wikipedia.org/wiki/Halteproblem"
+    }
+  },
+  {
+    "id": "schoolx-info-quadratische-laufzeit",
+    "category": "Informatik",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Die Laufzeit wächst näherungsweise wie n². Wie verändert sich bei hinreichend großem n die Laufzeit ungefähr, wenn n verdoppelt wird?",
+    "answers": [
+      "Sie vervierfacht sich.",
+      "Sie verdoppelt sich.",
+      "Sie wächst nur um einen festen Schritt.",
+      "Sie verachtfacht sich."
+    ],
+    "explanation": "Bei quadratischem Wachstum gilt (2n)² = 4n². Die Aussage beschreibt den dominierenden Laufzeitanteil und keine exakte Sekundenmessung jedes Programms.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Zeitkomplexität",
+      "url": "https://de.wikipedia.org/wiki/Zeitkomplexit%C3%A4t"
+    }
+  },
+  {
+    "id": "schoolx-info-reine-funktion",
+    "category": "Informatik",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Welche Eigenschaft kennzeichnet eine reine Funktion im funktionalen Programmiermodell?",
+    "answers": [
+      "Gleiche Eingaben ergeben gleiche Ausgaben, ohne beobachtbare Seiteneffekte.",
+      "Ein konstanter Rückgabewert erlaubt beliebige Änderungen globaler Variablen.",
+      "Rein bedeutet lediglich, dass ausschließlich Rekursion statt Schleifen verwendet wird.",
+      "Rein bedeutet lediglich, dass der Quelltext keine Kommentare enthält."
+    ],
+    "explanation": "Reine Funktionen verändern keinen von außen beobachtbaren Zustand. Ihre Ergebnisse hängen ausschließlich von ihren Eingaben ab, was das Nachvollziehen erleichtert.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Reine Funktion",
+      "url": "https://de.wikipedia.org/wiki/Reine_Funktion"
+    }
+  },
+  {
+    "id": "schoolx-bio-spleissen",
+    "category": "Biologie",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Was geschieht beim üblichen Spleißen einer eukaryotischen prä-mRNA?",
+    "answers": [
+      "Introns werden entfernt und Exons miteinander verknüpft.",
+      "Exons werden entfernt und Introns miteinander verknüpft.",
+      "Ribosomen übersetzen die RNA in eine Aminosäurekette.",
+      "Ein RNA-Polymerasekomplex kopiert DNA in eine neue RNA."
+    ],
+    "explanation": "Spleißen ist ein Schritt der RNA-Verarbeitung. Durch alternatives Spleißen können aus einer prä-mRNA unterschiedliche reife RNA-Varianten entstehen.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Spleißen (Biologie)",
+      "url": "https://de.wikipedia.org/wiki/Splei%C3%9Fen_(Biologie)"
+    }
+  },
+  {
+    "id": "schoolx-bio-gruendereffekt",
+    "category": "Biologie",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Wenige Individuen gründen zufällig eine isolierte Population mit anderen Allelhäufigkeiten als die Ursprungspopulation. Welcher Mechanismus ist hier besonders gemeint?",
+    "answers": [
+      "Gründereffekt als Form genetischer Drift",
+      "Gerichtete Selektion durch einen nachgewiesenen Fitnessvorteil",
+      "Genfluss durch fortdauernde Zuwanderung aus der Ursprungspopulation",
+      "Eine bloße Änderung der Transkriptionshäufigkeit ohne Änderung der Allelhäufigkeiten"
+    ],
+    "explanation": "Eine kleine Gründergruppe bildet die genetische Vielfalt der Ursprungspopulation möglicherweise nur zufällig verzerrt ab. Dafür ist kein Selektionsvorteil erforderlich.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Gründereffekt",
+      "url": "https://de.wikipedia.org/wiki/Gr%C3%BCndereffekt"
+    }
+  },
+  {
+    "id": "schoolx-chem-hessscher-satz",
+    "category": "Chemie",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Was folgt aus dem Satz von Hess für die Enthalpieänderung einer Reaktion?",
+    "answers": [
+      "Sie hängt bei gleichen Anfangs- und Endzuständen nicht vom Reaktionsweg ab.",
+      "Sie entspricht grundsätzlich der Aktivierungsenergie der langsamsten Teilreaktion.",
+      "Sie lässt sich allein aus der Reaktionsgeschwindigkeit berechnen.",
+      "Sie wird bei jedem zusätzlichen Reaktionsschritt zwangsläufig größer."
+    ],
+    "explanation": "Enthalpie ist eine Zustandsgröße. Deshalb können die Enthalpieänderungen geeigneter Teilreaktionen zur gesamten Reaktionsenthalpie addiert werden.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Satz von Hess",
+      "url": "https://de.wikipedia.org/wiki/Satz_von_Hess"
+    }
+  },
+  {
+    "id": "schoolx-chem-polykondensation",
+    "category": "Chemie",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Was unterscheidet eine typische Polykondensation von einer gewöhnlichen Additionspolymerisation?",
+    "answers": [
+      "Beim Verknüpfen werden kleine Moleküle wie Wasser abgespalten.",
+      "Es werden ausschließlich Kohlenstoff-Doppelbindungen ohne Nebenprodukte geöffnet.",
+      "Jede Kettenverknüpfung muss ausschließlich durch freie Radikale erfolgen.",
+      "Wasser ist bei sämtlichen Polykondensationen zwingend das einzige mögliche Nebenprodukt."
+    ],
+    "explanation": "Bei der Polykondensation reagieren funktionelle Gruppen unter Abspaltung kleiner Moleküle. Bei einer üblichen Additionspolymerisation werden solche Moleküle nicht als Nebenprodukte der Kettenverknüpfung abgespalten.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Polykondensation",
+      "url": "https://de.wikipedia.org/wiki/Polykondensation"
+    }
+  },
+  {
+    "id": "schoolx-geo-agglomerationsvorteil",
+    "category": "Erdkunde",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Warum kann die räumliche Nähe vieler Unternehmen derselben Branche einen Standort attraktiver machen?",
+    "answers": [
+      "Zulieferer, Fachkräfte und Wissen können leichter geteilt oder erreicht werden.",
+      "Bodenpreise und Löhne müssen durch die Konzentration grundsätzlich sinken.",
+      "Die räumliche Nähe garantiert einen rechtlichen Schutz vor neuen Mitbewerbern.",
+      "Mit der Branchenkonzentration entfällt grundsätzlich die Konkurrenz um Fachkräfte."
+    ],
+    "explanation": "Agglomerationsvorteile können aus gemeinsamen Arbeitsmärkten, spezialisierten Zulieferern und Wissensaustausch entstehen. Sie sind mögliche Vorteile, keine Erfolgsgarantie.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Agglomerationseffekt",
+      "url": "https://de.wikipedia.org/wiki/Agglomerationseffekt"
+    }
+  },
+  {
+    "id": "schoolx-geo-choroplethen-vergleich",
+    "category": "Erdkunde",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Eine Farbflächenkarte soll die Häufigkeit einer Krankheit in unterschiedlich bevölkerungsreichen Staaten vergleichen. Welche Größe ist meist geeigneter als absolute Fallzahlen?",
+    "answers": [
+      "Fälle je vergleichbarer Einwohnerzahl",
+      "Fälle je Quadratkilometer Staatsfläche",
+      "Den Anteil jedes Staates an allen weltweiten Fällen",
+      "Die Differenz zur absoluten Fallzahl des bevölkerungsreichsten Staates"
+    ],
+    "explanation": "Für einen Vergleich der Belastung sind relative Größen wie Fälle je 100.000 Einwohner oft aussagekräftiger. Absolute Fallzahlen hängen stark von der Größe der Bevölkerung ab.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Choroplethenkarte",
+      "url": "https://de.wikipedia.org/wiki/Choroplethenkarte"
+    }
+  },
+  {
+    "id": "schoolx-deutsch-praesupposition",
+    "category": "Deutsch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Was wird mit „Mia hat aufgehört zu rauchen“ normalerweise vorausgesetzt?",
+    "answers": [
+      "Mia hat zuvor geraucht.",
+      "Mia raucht zum Zeitpunkt der Aussage weiterhin.",
+      "Mia plant erstmals mit dem Rauchen anzufangen.",
+      "Mia wird in Zukunft sicher wieder anfangen."
+    ],
+    "explanation": "Das Verb aufhören setzt normalerweise einen früheren Zustand oder eine frühere Tätigkeit voraus. Eine solche mittransportierte Voraussetzung nennt man Präsupposition.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Präsupposition",
+      "url": "https://de.wikipedia.org/wiki/Pr%C3%A4supposition"
+    }
+  },
+  {
+    "id": "schoolx-deutsch-implikatur-einige",
+    "category": "Deutsch",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "„Einige haben bestanden“ wird oft als „nicht alle“ verstanden. Warum kann „einige, vielleicht sogar alle“ dennoch widerspruchsfrei sein?",
+    "answers": [
+      "„Nicht alle“ kann eine aufhebbare Implikatur statt notwendiger Wortbedeutung sein.",
+      "„Einige“ bezeichnet sprachlich eine festgelegte genaue Anzahl.",
+      "Der erste Satz wäre logisch zwingend falsch, sobald alle bestanden haben.",
+      "Die Ergänzung macht aus dem Indikativ nachträglich den Konjunktiv I."
+    ],
+    "explanation": "Eine Implikatur ergänzt den wörtlichen Gehalt im jeweiligen Gespräch. Anders als ein logischer Widerspruch kann diese Zusatzannahme durch weiteren Kontext zurückgenommen werden.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Konversationelle Implikatur",
+      "url": "https://de.wikipedia.org/wiki/Konversationelle_Implikatur"
+    }
+  },
+  {
+    "id": "schoolx-geschichte-epochengrenze",
+    "category": "Geschichte",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Warum behandelt die Geschichtswissenschaft eine Epochengrenze wie „476: Ende der Antike“ nicht als überall gleichzeitigen völligen Neubeginn?",
+    "answers": [
+      "Epochengrenzen sind Ordnungsmodelle; Übergänge verlaufen regional und sachlich verschieden.",
+      "Eine politische Epochengrenze legt zugleich den Abschluss sämtlicher wirtschaftlicher Prozesse fest.",
+      "Eine Periodisierung ist nur brauchbar, wenn keine Entwicklung über die Grenze hinweg fortbesteht.",
+      "Der gleiche Periodisierungsbegriff muss für alle Weltregionen dieselben Anfangs- und Endjahre haben."
+    ],
+    "explanation": "Periodisierungen helfen, lange Entwicklungen zu strukturieren. Ein politisches Ereignis setzt jedoch nicht sämtliche kulturellen, wirtschaftlichen und sozialen Prozesse gleichzeitig zurück.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Periodisierung",
+      "url": "https://de.wikipedia.org/wiki/Periodisierung"
+    }
+  },
+  {
+    "id": "schoolx-politik-erforderlichkeit",
+    "category": "Politik & Wirtschaft",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Bei einer Verhältnismäßigkeitsprüfung gibt es ein gleich geeignetes, aber weniger belastendes Mittel. Welche Stufe ist besonders betroffen?",
+    "answers": [
+      "Erforderlichkeit",
+      "Geeignetheit",
+      "Angemessenheit",
+      "Das Vorliegen eines legitimen Zwecks"
+    ],
+    "explanation": "Erforderlichkeit verlangt, unter gleich geeigneten Mitteln das mildere zu wählen. Davon zu unterscheiden sind Geeignetheit und die abschließende Angemessenheit.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Verhältnismäßigkeitsprinzip (Deutschland)",
+      "url": "https://de.wikipedia.org/wiki/Verh%C3%A4ltnism%C3%A4%C3%9Figkeitsprinzip_(Deutschland)"
+    }
+  },
+  {
+    "id": "schoolx-wirtschaft-versunkene-kosten",
+    "category": "Politik & Wirtschaft",
+    "basis": "school",
+    "difficulty": 3,
+    "prompt": "Ein bereits gezahlter Betrag ist nicht zurückzuholen. Welche Rolle sollte er bei einer rationalen Entscheidung zwischen künftigen Alternativen spielen?",
+    "answers": [
+      "Als versunkene Kosten sollte er nicht allein die weitere Wahl bestimmen.",
+      "Er macht eine Fortsetzung sinnvoll, selbst wenn alle künftigen Alternativen besser wären.",
+      "Er muss zusätzlich als künftig erneut anfallende Zahlung jeder Alternative zugerechnet werden.",
+      "Er erhöht allein durch seine vergangene Höhe den künftig erzielbaren Nutzen."
+    ],
+    "explanation": "Versunkene Kosten lassen sich durch die aktuelle Entscheidung nicht mehr ändern. Für die Wahl sind daher vor allem künftig beeinflussbare Kosten und Nutzen relevant.",
+    "source": {
+      "title": "Fachlicher Hintergrund · Versunkene Kosten",
+      "url": "https://de.wikipedia.org/wiki/Versunkene_Kosten"
+    }
+  }
+]

@@ -114,8 +114,8 @@ assert.equal(query('#daily-start').disabled,false);
 assert.equal(query('#daily-state').textContent,'HEUTIGEN VERSUCH STARTEN');
 assert.match(query('#daily-mode-note').textContent,/BUNTER MIX/);
 assert.match(query('#daily-mode-note').textContent,/Zehn gleiche Fragen aus verschiedenen Bereichen/);
-assert.equal(query('#daily-plan').textContent,'3 LEICHT · 2 MITTEL · 5 SCHWER');
-assert.match(query('#daily-mode-note').textContent,/Zuerst 3 leichte, dann 2 mittlere und 5 schwere Fragen/);
+assert.equal(query('#daily-plan').textContent,'3 LEICHT · 4 MITTEL · 3 SCHWER');
+assert.match(query('#daily-mode-note').textContent,/Zuerst 3 leichte, dann 4 mittlere und 3 schwere Fragen/);
 setRun({kind:'daily',mode:'daily',dailyMode:'mix',competitionVersion:3,questionCount:10,index:2});
 assert.equal(query('#hud-mode').textContent,'TAGESFLUG · BUNTER MIX');
 assert.match(query('#main').innerHTML,/FRAGE 3 \/ 10 · BUNTER MIX/);
@@ -130,21 +130,32 @@ execute('instructions()');
 assert.match(query('#main').innerHTML,/bunter Mix aus Allgemeinwissen, Mengenvergleichen und Zeitfragen/);
 assert.ok(!query('#main').innerHTML.includes('Der Modus wechselt täglich'));
 assert.equal(execute("modeInfo('mix').label"),'Mix','free course labels are unchanged');
-assert.match(query('#main').innerHTML,/genau 3 leichte, 2 mittelschwere und 5 schwere Fragen in dieser Reihenfolge/);
-assert.match(query('#main').innerHTML,/270 eigenständig formulierten Schulfragen in neun Fächern/);
+assert.match(query('#main').innerHTML,/genau 3 leichte, 4 mittelschwere und 3 schwere Fragen in dieser Reihenfolge/);
+assert.match(query('#main').innerHTML,/eigenständig formulierten Schul- und Wissensfragen/);
+for(const topic of ['Literatur','Musik','Religionen und Weltanschauungen','Kunst','Sport','Alltagswissenschaft'])assert.ok(query('#main').innerHTML.includes(topic));
 assert.ok(!query('#main').innerHTML.includes('acht Einstiegsfragen'));
 
 // Stored days report their own plan; new daily badges show each actual tier.
 execute("screen='home';version++;busy=false;");
 handler=()=>({dailyMode:'mix',progressiveDaily:false,difficultyPlan:[1,1,1,1,1,1,1,1,2,2],attempt:null});
 await execute('loadDaily(version)');
-assert.equal(query('#daily-plan').textContent,'GESPEICHERTE TAGESRUNDE · UNVERÄNDERTE FRAGEN');
-for(const [difficulty,label,index] of [[1,'LEICHT',0],[2,'MITTEL',3],[3,'SCHWER',5]]){
+assert.equal(query('#daily-plan').textContent,'8 LEICHT · 2 MITTEL · 0 SCHWER');
+// The previously published 3/2/5 lesson keeps its actual saved plan, including
+// when an older server still marks that former progression as current.
+handler=()=>({dailyMode:'mix',progressiveDaily:true,difficultyPlan:[1,1,1,2,2,3,3,3,3,3],attempt:{status:'ready',competitionVersion:3}});
+await execute('loadDaily(version)');
+assert.equal(query('#daily-plan').textContent,'3 LEICHT · 2 MITTEL · 5 SCHWER');
+assert.ok(!query('#daily-mode-note').textContent.includes('4 mittlere'));
+assert.equal(query('#daily-state').textContent,'TAGESFLUG FORTSETZEN');
+for(const [difficulty,label,index] of [[1,'LEICHT',0],[2,'MITTEL',3],[3,'SCHWER',7]]){
   setRun({kind:'daily',mode:'daily',dailyMode:'mix',competitionVersion:3,questionCount:10,index,question:{...q,category:'Mathematik',difficulty,basis:'school',basisLabel:'Schulwissen · Mathematik'}});
   assert.match(query('#main').innerHTML,new RegExp('data-level="'+difficulty+'">'+label+'</span>'));
   assert.match(query('#main').innerHTML,/Schulwissen · Mathematik/);
   assert.ok(!query('#main').innerHTML.includes(result.explanation),'future explanations stay hidden');
 }
+setRun({kind:'daily',mode:'daily',dailyMode:'mix',competitionVersion:3,questionCount:10,index:4,question:{...q,category:'Musik',difficulty:2,basis:'curated',basisLabel:'Wissen · Musik'}});
+assert.match(query('#main').innerHTML,/Wissen · Musik/);
+assert.ok(!query('#main').innerHTML.includes('Schulwissen · Musik'));
 setRun({question:{...q,difficulty:2}});
 assert.match(query('#main').innerHTML,/data-level="2">VERTIEFUNG<\/span>/,'free-flight labels stay intact');
 

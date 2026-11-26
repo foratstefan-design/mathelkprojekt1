@@ -76,9 +76,10 @@ for (let error = 0; error < 10; error++) {
   dailyLevels.push(daily.question.difficulty);dailyBases.push(daily.question.basis);
   daily = await (await call('/api/answer', { runId: daily.id, questionId: daily.question.id, questionIndex: daily.index, choiceId: null, expired: true })).json();
 }
-assert.deepEqual(dailyLevels,[1,1,1,2,2,3,3,3,3,3]);
-if(!usingSyntheticCatalog)assert.ok(dailyBases.every(basis=>basis==='school'),'fresh daily lessons prefer the new school subjects');
+assert.deepEqual(dailyLevels,[1,1,1,2,2,2,2,3,3,3]);
+if(!usingSyntheticCatalog)assert.ok(dailyBases.every(basis=>['school','curated'].includes(basis)),'fresh daily lessons prefer authored school and culture topics');
 assert.ok(dailyCategories.size>=5);
+if(!usingSyntheticCatalog){for(const topic of ['Literatur','Musik','Religionen & Weltanschauungen'])assert.ok(dailyCategories.has(topic),topic);assert.ok(dailyBases.filter(basis=>basis==='school').length>=3);}
 assert.equal(daily.status, 'finished');
 assert.equal(daily.index, 10);
 assert.equal(daily.completed, true);

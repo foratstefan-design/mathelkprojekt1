@@ -1,0 +1,1622 @@
+[
+  {
+    "id": "art-portraet",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was steht bei einem Porträt besonders im Mittelpunkt?",
+    "answers": [
+      "Die Darstellung eines Menschen",
+      "Die Darstellung eines unbelebten Obstarrangements",
+      "Ein Lageplan einer Stadt",
+      "Eine Tabelle mit Messwerten"
+    ],
+    "explanation": "Ein Porträt zeigt einen Menschen oder mehrere Menschen. Neben dem Aussehen können Haltung, Kleidung und Umgebung etwas über die dargestellte Person vermitteln.",
+    "source": {
+      "title": "Wikipedia · Porträt",
+      "url": "https://de.wikipedia.org/wiki/Portr%C3%A4t"
+    }
+  },
+  {
+    "id": "art-stillleben",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie nennt man ein Bild, das vor allem angeordnete unbelebte Gegenstände zeigt?",
+    "answers": [
+      "Stillleben",
+      "Historienbild",
+      "Landschaftsgemälde",
+      "Selbstporträt"
+    ],
+    "explanation": "Ein Stillleben macht unbelebte Dinge wie Gefäße, Blumen oder Früchte zum Hauptmotiv. Ihre Anordnung und mögliche Symbolik können dabei bewusst gestaltet sein.",
+    "source": {
+      "title": "Wikipedia · Stillleben",
+      "url": "https://de.wikipedia.org/wiki/Stillleben"
+    }
+  },
+  {
+    "id": "art-skulptur-raeumlich",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was unterscheidet eine freistehende Skulptur besonders von einer Zeichnung auf Papier?",
+    "answers": [
+      "Sie besitzt eine körperliche, räumliche Ausdehnung.",
+      "Sie muss immer aus Marmor bestehen.",
+      "Sie kann nur aus einer Richtung betrachtet werden.",
+      "Sie darf keine menschliche Figur darstellen."
+    ],
+    "explanation": "Eine freistehende Skulptur nimmt Raum ein und lässt sich aus verschiedenen Blickrichtungen betrachten. Die Wirkung kann sich beim Umrunden deutlich verändern.",
+    "source": {
+      "title": "Wikipedia · Skulptur",
+      "url": "https://de.wikipedia.org/wiki/Skulptur"
+    }
+  },
+  {
+    "id": "art-aquarell-wasser",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Womit werden klassische Aquarellfarben beim Malen verdünnt?",
+    "answers": [
+      "Mit Wasser",
+      "Mit Speiseöl",
+      "Mit geschmolzenem Wachs",
+      "Mit Benzin"
+    ],
+    "explanation": "Aquarellfarben bestehen aus Pigmenten und einem wasserlöslichen Bindemittel. Häufig bleiben sie auf dem Papier durchsichtig, sodass der helle Untergrund mitwirkt.",
+    "source": {
+      "title": "Wikipedia · Aquarell",
+      "url": "https://de.wikipedia.org/wiki/Aquarell"
+    }
+  },
+  {
+    "id": "art-collage-material",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche Arbeitsweise ist typisch für eine Collage?",
+    "answers": [
+      "Verschiedene ausgeschnittene oder gerissene Teile zu einem Bild zusammensetzen",
+      "Ein Motiv nur durch Vertiefungen in Stein ausarbeiten",
+      "Eine Metallplatte ausschließlich polieren",
+      "Alle Farben eines Bildes nachträglich auswaschen"
+    ],
+    "explanation": "Bei einer Collage werden vorhandene Materialien zu einer neuen Bildfläche zusammengefügt. Auch Fotos, Zeitungsausschnitte oder Stoffstücke können neue Beziehungen zueinander erhalten.",
+    "source": {
+      "title": "Wikipedia · Collage",
+      "url": "https://de.wikipedia.org/wiki/Collage"
+    }
+  },
+  {
+    "id": "art-mosaik-steine",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Woraus setzt sich ein klassisches Mosaik zusammen?",
+    "answers": [
+      "Aus vielen kleinen aneinandergefügten Teilen",
+      "Aus genau einem langen Pinselstrich",
+      "Aus einer einzigen ungeformten Tonkugel",
+      "Aus einer nur mündlich erzählten Geschichte"
+    ],
+    "explanation": "Ein Mosaik entsteht aus vielen kleinen Elementen, etwa Stein- oder Glasstücken. Aus der Entfernung verbinden sich diese Teile optisch zu Formen und Bildern.",
+    "source": {
+      "title": "Wikipedia · Mosaik",
+      "url": "https://de.wikipedia.org/wiki/Mosaik"
+    }
+  },
+  {
+    "id": "art-museum-aufgaben",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche Aufgabe gehört neben dem Ausstellen besonders zu einem Kunstmuseum?",
+    "answers": [
+      "Kunstwerke sammeln, erforschen und bewahren",
+      "Jedes ausgestellte Werk nach kurzer Zeit verbrauchen",
+      "Die Herkunft aller Sammlungsstücke geheim halten",
+      "Nur Kopien sammeln und Originale ausschließen"
+    ],
+    "explanation": "Museen bewahren und erforschen Sammlungen für Gegenwart und Zukunft. Deshalb gehören etwa geeignete Lagerung, Dokumentation und die Untersuchung der Herkunft zu ihrer Arbeit.",
+    "source": {
+      "title": "Wikipedia · Museum",
+      "url": "https://de.wikipedia.org/wiki/Museum"
+    }
+  },
+  {
+    "id": "art-abstraktion",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bedeutet es, wenn ein Gemälde als gegenstandslos bezeichnet wird?",
+    "answers": [
+      "Es zeigt keine erkennbaren Gegenstände als Motiv.",
+      "Es wurde ohne Farben hergestellt.",
+      "Es besitzt keinen materiellen Bildträger.",
+      "Es kann grundsätzlich keine Wirkung auslösen."
+    ],
+    "explanation": "Gegenstandslose Kunst arbeitet beispielsweise mit Linien, Farben und Flächen, ohne erkennbare Dinge abzubilden. Auch solche Formen können Bewegung, Spannung oder Ruhe vermitteln.",
+    "source": {
+      "title": "Wikipedia · Abstrakte Kunst",
+      "url": "https://de.wikipedia.org/wiki/Abstrakte_Kunst"
+    }
+  },
+  {
+    "id": "art-palette",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wozu dient eine Malpalette typischerweise?",
+    "answers": [
+      "Zum Bereitstellen und Mischen von Farben",
+      "Zum dauerhaften Einrahmen eines Gemäldes",
+      "Zum Brennen keramischer Gegenstände",
+      "Zum Beleuchten einer Ausstellung"
+    ],
+    "explanation": "Auf einer Palette werden Farben bereitgestellt und gemischt, bevor sie auf den Bildträger kommen. Das Wort kann außerdem die Auswahl der in einem Werk verwendeten Farben bezeichnen.",
+    "source": {
+      "title": "Wikipedia · Malerei",
+      "url": "https://de.wikipedia.org/wiki/Malerei"
+    }
+  },
+  {
+    "id": "art-skizze",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was ist eine Skizze im künstlerischen Arbeitsprozess häufig?",
+    "answers": [
+      "Eine rasche erste Erfassung einer Idee oder Form",
+      "Die verbindliche Versicherung eines Kunstwerks",
+      "Ein ausschließlich fertig gedrucktes Plakat",
+      "Eine chemische Untersuchung des Firnisses"
+    ],
+    "explanation": "Eine Skizze hält wesentliche Formen oder Ideen mit wenigen Mitteln fest. Sie kann der Vorbereitung dienen, aber auch als eigenständige Arbeit betrachtet werden.",
+    "source": {
+      "title": "Wikipedia · Skizze",
+      "url": "https://de.wikipedia.org/wiki/Skizze"
+    }
+  },
+  {
+    "id": "art-zentralperspektive",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was geschieht in einer zentralperspektivischen Zeichnung mit parallelen Linien, die direkt in die Tiefe führen?",
+    "answers": [
+      "Sie laufen im Bild auf einen gemeinsamen Fluchtpunkt zu.",
+      "Sie werden im Bild zwingend zu Kreisen.",
+      "Sie bleiben auf dem Papier überall gleich weit voneinander entfernt.",
+      "Sie müssen hinter dem Horizont wieder auseinanderlaufen."
+    ],
+    "explanation": "Die Zentralperspektive bildet räumliche Tiefe mit einem Fluchtpunkt ab. Die Linien sind im dargestellten Raum parallel, nähern sich im zweidimensionalen Bild aber einander an.",
+    "source": {
+      "title": "Wikipedia · Zentralperspektive",
+      "url": "https://de.wikipedia.org/wiki/Zentralperspektive"
+    }
+  },
+  {
+    "id": "art-impressionismus-licht",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Bildabsicht passt besonders zum Impressionismus?",
+    "answers": [
+      "Einen flüchtigen Eindruck von Licht und Atmosphäre erfassen",
+      "Alle Gegenstände ausschließlich aus geometrischen Grundkörpern zerlegen",
+      "Jede Szene als detailgenaue technische Bauzeichnung gestalten",
+      "Die Farbe vollständig aus der Malerei entfernen"
+    ],
+    "explanation": "Impressionistische Malerei interessiert sich häufig für wechselndes Licht und den unmittelbaren Seheindruck. Sichtbare Pinselstriche und gebrochene Farben können diesen momenthaften Eindruck unterstützen.",
+    "source": {
+      "title": "Wikipedia · Impressionismus",
+      "url": "https://de.wikipedia.org/wiki/Impressionismus"
+    }
+  },
+  {
+    "id": "art-expressionismus-ausdruck",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Warum verwenden expressionistische Bilder häufig stark veränderte Farben und Formen?",
+    "answers": [
+      "Um subjektive Empfindungen und Ausdruck zu steigern",
+      "Um grundsätzlich jede persönliche Sicht auszuschließen",
+      "Um ausschließlich die exakten Materialfarben zu protokollieren",
+      "Um die Bilder für farbenblindes Sehen zu normieren"
+    ],
+    "explanation": "Im Expressionismus kann die äußere Erscheinung zugunsten eines inneren Ausdrucks verändert werden. Eine unnatürliche Farbe ist deshalb nicht automatisch ein Versehen.",
+    "source": {
+      "title": "Wikipedia · Expressionismus",
+      "url": "https://de.wikipedia.org/wiki/Expressionismus"
+    }
+  },
+  {
+    "id": "art-kubismus-ansichten",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Gestaltung ist für den Kubismus besonders typisch?",
+    "answers": [
+      "Ein Motiv in geometrisierte Formen und mehrere Ansichten zerlegen",
+      "Nur zufällig verwischte Wasserfarben ohne Formen verwenden",
+      "Jedes Motiv ausschließlich als Schattenriss darstellen",
+      "Ein Motiv immer aus nur einem festgelegten Blickpunkt abzeichnen"
+    ],
+    "explanation": "Kubistische Bilder können mehrere Ansichten eines Gegenstands auf einer Bildfläche verbinden. Dadurch wird die übliche einheitliche Perspektive bewusst aufgebrochen.",
+    "source": {
+      "title": "Wikipedia · Kubismus",
+      "url": "https://de.wikipedia.org/wiki/Kubismus"
+    }
+  },
+  {
+    "id": "art-surrealismus-traum",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Bildidee passt besonders zum Surrealismus?",
+    "answers": [
+      "Alltägliche Dinge in traumhaft unerwarteten Zusammenhängen zeigen",
+      "Nur amtliche Landkarten möglichst unverändert kopieren",
+      "Gegenstände nach einer verbindlichen technischen Norm zeichnen",
+      "In jedem Werk ausschließlich die gleiche geometrische Fläche wiederholen"
+    ],
+    "explanation": "Surrealistische Werke greifen häufig Träume, Unbewusstes und überraschende Verbindungen auf. Gerade die Verbindung vertrauter Dinge mit einer unmöglichen Situation kann irritieren.",
+    "source": {
+      "title": "Wikipedia · Surrealismus",
+      "url": "https://de.wikipedia.org/wiki/Surrealismus"
+    }
+  },
+  {
+    "id": "art-fresko-putz",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Worauf werden die Pigmente bei einem echten Fresko aufgetragen?",
+    "answers": [
+      "Auf noch feuchten Kalkputz",
+      "Auf eine vollständig trockene Glasplatte",
+      "Auf eine mit Öl getränkte Leinwand",
+      "Auf eine heiße Metallgussform"
+    ],
+    "explanation": "Beim Fresko werden wassergebundene Pigmente auf frischen Kalkputz aufgetragen. Während der Putz abbindet, werden die Farben in die entstehende Oberfläche eingebunden.",
+    "source": {
+      "title": "Wikipedia · Fresko",
+      "url": "https://de.wikipedia.org/wiki/Fresko"
+    }
+  },
+  {
+    "id": "art-linolschnitt-hochdruck",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Teile eines eingefärbten Linolschnitts geben beim üblichen Hochdruck Farbe an das Papier ab?",
+    "answers": [
+      "Die stehen gebliebenen erhöhten Flächen",
+      "Nur die tief herausgeschnittenen Rinnen",
+      "Ausschließlich die Rückseite der Linolplatte",
+      "Nur die unberührten Papierkanten"
+    ],
+    "explanation": "Beim Hochdruck werden die erhöhten Bereiche eingefärbt und abgedruckt. Herausgeschnittene Stellen bleiben bei dieser Arbeitsweise gewöhnlich ohne Druckfarbe.",
+    "source": {
+      "title": "Wikipedia · Linolschnitt",
+      "url": "https://de.wikipedia.org/wiki/Linolschnitt"
+    }
+  },
+  {
+    "id": "art-radierung-tiefdruck",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Wo sitzt die druckende Farbe bei einer klassischen Radierung nach dem Abwischen der Plattenoberfläche?",
+    "answers": [
+      "In den vertieften Linien der Druckplatte",
+      "Nur auf einem über der Platte schwebenden Film",
+      "Ausschließlich auf den unvertieften Außenkanten",
+      "Im Papier, bevor es die Platte berührt"
+    ],
+    "explanation": "Die Radierung gehört zum Tiefdruck: Vertiefungen halten die Farbe zurück. Beim Drucken wird diese Farbe unter Druck auf das Papier übertragen.",
+    "source": {
+      "title": "Wikipedia · Radierung",
+      "url": "https://de.wikipedia.org/wiki/Radierung"
+    }
+  },
+  {
+    "id": "art-lasur-schichten",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was kennzeichnet eine Lasur in der Malerei?",
+    "answers": [
+      "Eine dünne, durchscheinende Farbschicht",
+      "Eine ausschließlich durch Meißeln erzeugte Vertiefung",
+      "Eine stets vollständig deckende dicke Spachtelschicht",
+      "Eine farblose Rahmenkante um das Bild"
+    ],
+    "explanation": "Eine Lasur lässt darunterliegende Schichten optisch mitwirken. Durch mehrere transparente Schichten lassen sich Tiefe und feine Farbwirkungen erzeugen.",
+    "source": {
+      "title": "Wikipedia · Lasur",
+      "url": "https://de.wikipedia.org/wiki/Lasur"
+    }
+  },
+  {
+    "id": "art-itten-komplementaer",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Farbe liegt Gelb in Ittens zwölfteiligem Farbkreis gegenüber?",
+    "answers": [
+      "Violett",
+      "Orange",
+      "Gelbgrün",
+      "Rot"
+    ],
+    "explanation": "In Ittens Farbkreis bilden Gelb und Violett ein Komplementärpaar. Solche gegenüberliegenden Farben können nebeneinander einen besonders starken Farbkontrast erzeugen.",
+    "source": {
+      "title": "Wikipedia · Farbkreis",
+      "url": "https://de.wikipedia.org/wiki/Farbkreis"
+    }
+  },
+  {
+    "id": "art-ikonografie-kontext",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein Bild zeigt eine Figur mit einem Schlüssel. Was untersucht eine ikonografische Deutung besonders?",
+    "answers": [
+      "Welche überlieferte Bedeutung dieses Attribut im jeweiligen Kontext haben kann",
+      "Wie schwer der dargestellte Schlüssel in Gramm gewesen sein muss",
+      "Welche Perspektivlinien sich durch den Schlüssel verlängern lassen",
+      "Wie viele Pigmentteilchen das gemalte Metall enthält"
+    ],
+    "explanation": "Ikonografie fragt nach Motiven, Attributen und ihren überlieferten Bedeutungen. Ein Symbol ist dabei nicht in jeder Kultur und Epoche automatisch gleich zu verstehen.",
+    "source": {
+      "title": "Wikipedia · Ikonografie",
+      "url": "https://de.wikipedia.org/wiki/Ikonografie"
+    }
+  },
+  {
+    "id": "art-provenienz",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was versucht die Provenienzforschung bei einem Gemälde besonders zu rekonstruieren?",
+    "answers": [
+      "Seine Herkunft und die Geschichte seiner Besitzverhältnisse",
+      "Ausschließlich den chemischen Aufbau aller Farben",
+      "Die mathematisch ideale Position in jedem Ausstellungsraum",
+      "Die Vorlieben heutiger Besucher für Rahmenfarben"
+    ],
+    "explanation": "Provenienzforschung untersucht die Herkunft und frühere Besitzer eines Werks. Sie ist beispielsweise wichtig, um unrechtmäßige Entziehungen und mögliche Rückgabeansprüche aufzuklären.",
+    "source": {
+      "title": "Wikipedia · Provenienzforschung",
+      "url": "https://de.wikipedia.org/wiki/Provenienzforschung"
+    }
+  },
+  {
+    "id": "art-restaurierung-ergaenzung",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum werden Ergänzungen bei einer verantwortlichen Restaurierung dokumentiert?",
+    "answers": [
+      "Damit spätere Untersuchungen Originalsubstanz und Eingriffe unterscheiden können",
+      "Damit jeder spätere Eingriff unabhängig vom Zustand ausgeschlossen ist",
+      "Damit das Datum der Restaurierung als Entstehungsdatum des Originals gilt",
+      "Damit ergänzte Stellen ohne Kennzeichnung der ursprünglichen Künstlerhand zugeschrieben werden"
+    ],
+    "explanation": "Restauratorische Maßnahmen verändern den Zustand eines Objekts und sollen nachvollziehbar bleiben. Die Dokumentation schützt davor, spätere Ergänzungen mit ursprünglicher Gestaltung zu verwechseln.",
+    "source": {
+      "title": "Wikipedia · Restaurierung",
+      "url": "https://de.wikipedia.org/wiki/Restaurierung"
+    }
+  },
+  {
+    "id": "art-sfumato-konturen",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Welche Wirkung beschreibt der Begriff Sfumato in der Malerei?",
+    "answers": [
+      "Weich verschwimmende Übergänge ohne scharf betonte Konturen",
+      "Eine starke Hell-Dunkel-Trennung mit scharf geschnittenen Schattenkanten",
+      "Das Aufbauen eines Bildes aus klar getrennten geometrischen Farbflächen",
+      "Eine räumliche Darstellung mit ausschließlich einem Fluchtpunkt"
+    ],
+    "explanation": "Beim Sfumato gehen Helligkeiten und Farben besonders weich ineinander über. Das kann Körper und Gesichtszüge atmosphärisch erscheinen lassen, ohne harte Umrisslinien zu betonen.",
+    "source": {
+      "title": "Wikipedia · Sfumato",
+      "url": "https://de.wikipedia.org/wiki/Sfumato"
+    }
+  },
+  {
+    "id": "art-siebdruck-schablone",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Wie entsteht das Motiv beim Siebdruck grundsätzlich?",
+    "answers": [
+      "Farbe gelangt durch offene Siebstellen, während eine Schablone andere Bereiche sperrt.",
+      "Farbe wird aus vertieften Metallrillen unter hohem Druck auf Papier übertragen.",
+      "Farbe wird von den erhöhten Stellen einer geschnittenen Holzplatte abgedruckt.",
+      "Eine Zeichnung wird mit einem Stichel direkt in das fertige Papier geprägt."
+    ],
+    "explanation": "Der Siebdruck verwendet ein Gewebe und gesperrte beziehungsweise durchlässige Stellen. So lässt sich Farbe gezielt auf Papier, Stoff und andere geeignete Oberflächen übertragen.",
+    "source": {
+      "title": "Wikipedia · Siebdruck",
+      "url": "https://de.wikipedia.org/wiki/Siebdruck"
+    }
+  },
+  {
+    "id": "art-konzeptkunst-idee",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was kann bei Konzeptkunst wichtiger sein als ein dauerhaftes handwerklich gefertigtes Einzelobjekt?",
+    "answers": [
+      "Die zugrunde liegende Idee oder Anweisung",
+      "Die naturgetreue Wiedergabe eines Gegenstands nach einem einheitlichen Blickpunkt",
+      "Die kostbare Materialauswahl als verbindliches Hauptkriterium jedes Werks",
+      "Eine festgelegte Maltechnik, die für alle Werke dieser Richtung vorgeschrieben ist"
+    ],
+    "explanation": "Konzeptkunst rückt die Idee und den gedanklichen Zusammenhang in den Vordergrund. Eine Anweisung, Dokumentation oder Handlung kann deshalb ein wesentlicher Teil des Werks sein.",
+    "source": {
+      "title": "Wikipedia · Konzeptkunst",
+      "url": "https://de.wikipedia.org/wiki/Konzeptkunst"
+    }
+  },
+  {
+    "id": "art-ortsbezogene-installation",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum kann eine ortsspezifische Installation durch den Umzug in einen anderen Raum ihre Bedeutung verändern?",
+    "answers": [
+      "Weil der konkrete Ort und seine Beziehungen zum Werk Teil der Gestaltung sind",
+      "Weil Kunst außerhalb ihres Herstellungsorts grundsätzlich ihren materiellen Originalstatus verliert",
+      "Weil die Bedeutung einer Installation ausschließlich von ihrer Versicherungsbewertung abhängt",
+      "Weil Raummaße nur die Transportkosten, niemals aber die Wahrnehmung beeinflussen"
+    ],
+    "explanation": "Ortsspezifische Kunst bezieht Architektur, Nutzung oder Geschichte eines Ortes ein. Wird sie versetzt, bleiben diese Beziehungen nicht zwangsläufig erhalten.",
+    "source": {
+      "title": "Wikipedia · Ortsspezifische Kunst",
+      "url": "https://de.wikipedia.org/wiki/Ortsspezifische_Kunst"
+    }
+  },
+  {
+    "id": "art-readymade-kontext",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was ist die zentrale künstlerische Verschiebung bei einem Readymade?",
+    "answers": [
+      "Ein ausgewählter Alltagsgegenstand wird durch Setzung und Kontext als Kunst zur Diskussion gestellt.",
+      "Ein Gegenstand wird möglichst naturgetreu als handgemaltes Abbild wiedergegeben.",
+      "Ein historisches Werk wird durch identische Materialien vollständig rekonstruiert.",
+      "Eine Druckplatte wird so vorbereitet, dass eine nummerierte Auflage entstehen kann."
+    ],
+    "explanation": "Bei einem Readymade steht die Auswahl und Präsentation eines vorhandenen Gegenstands im Mittelpunkt. Das lenkt den Blick auf die Frage, wodurch etwas als Kunst anerkannt wird.",
+    "source": {
+      "title": "Wikipedia · Readymade",
+      "url": "https://de.wikipedia.org/wiki/Readymade"
+    }
+  },
+  {
+    "id": "art-negativer-raum",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was meint negativer Raum bei einer Bildkomposition?",
+    "answers": [
+      "Die gestaltwirksamen Zwischen- und Umgebungsflächen um dargestellte Formen",
+      "Ausschließlich die dunkelsten Schattenflächen eines Bildes",
+      "Die von Gegenständen vollständig ausgefüllten Körperflächen",
+      "Den vom Bildrahmen verdeckten Rand des Bildträgers"
+    ],
+    "explanation": "Auch die scheinbar leeren Flächen zwischen Formen beeinflussen ein Bild. Ihre Größen und Beziehungen können Figuren betonen, ausbalancieren oder Spannung erzeugen.",
+    "source": {
+      "title": "Wikipedia · Negative space",
+      "url": "https://en.wikipedia.org/wiki/Negative_space"
+    }
+  },
+  {
+    "id": "art-originalgrafik-auflage",
+    "category": "Kunst",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum kann eine Grafik trotz mehrerer nummerierter Abzüge als Originalgrafik gelten?",
+    "answers": [
+      "Weil das künstlerische Verfahren von Anfang an für mehrere originale Drucke angelegt sein kann",
+      "Weil jede gedruckte Abbildung eines Gemäldes automatisch ein eigenständiges Original ist",
+      "Weil eine gedruckte Nummer allein die persönliche Herstellung jedes Abzugs beweist",
+      "Weil eine kleine Auflage unabhängig vom Herstellungsverfahren jede Reproduktion zum Original macht"
+    ],
+    "explanation": "Originalgrafik ist für die Herstellung als Druckwerk gestaltet, nicht bloß eine spätere Reproduktion eines anderen Kunstwerks. Eine nummerierte Auflage allein ersetzt allerdings keine Prüfung von Herkunft und Verfahren.",
+    "source": {
+      "title": "Wikipedia · Grafik",
+      "url": "https://de.wikipedia.org/wiki/Grafik"
+    }
+  },
+  {
+    "id": "sport-fussball-seitenaus",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie wird ein Fußballspiel fortgesetzt, wenn der Ball die Seitenlinie vollständig überschreitet?",
+    "answers": [
+      "Mit einem Einwurf",
+      "Mit einem Eckstoß unabhängig vom letzten Kontakt",
+      "Mit einem Strafstoß",
+      "Mit einem Anstoß vom Mittelpunkt"
+    ],
+    "explanation": "An der Seitenlinie gibt es einen Einwurf für das Team, das den Ball nicht zuletzt berührt hat. Die Linie selbst gehört noch zum Spielfeld.",
+    "source": {
+      "title": "Wikipedia · Fußballregeln",
+      "url": "https://de.wikipedia.org/wiki/Fu%C3%9Fballregeln"
+    }
+  },
+  {
+    "id": "sport-basketball-freiwurf",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie viele Punkte zählt ein erfolgreicher Freiwurf im Basketball?",
+    "answers": [
+      "Einen Punkt",
+      "Zwei Punkte",
+      "Drei Punkte",
+      "Vier Punkte"
+    ],
+    "explanation": "Ein Freiwurf zählt einen Punkt. Feldwürfe können dagegen zwei oder, von jenseits der Dreipunktlinie, drei Punkte einbringen.",
+    "source": {
+      "title": "Wikipedia · Basketball",
+      "url": "https://de.wikipedia.org/wiki/Basketball"
+    }
+  },
+  {
+    "id": "sport-volleyball-drei-kontakte",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie oft darf ein Volleyballteam den Ball vor dem Rückspiel höchstens berühren, wenn kein Blockkontakt mitgezählt wird?",
+    "answers": [
+      "Dreimal",
+      "Einmal",
+      "Fünfmal",
+      "Beliebig oft"
+    ],
+    "explanation": "Ein Team hat gewöhnlich höchstens drei Ballkontakte, um den Ball zurückzuspielen. Im Hallenvolleyball zählt ein Blockkontakt nicht zu diesen drei Kontakten.",
+    "source": {
+      "title": "Wikipedia · Volleyball",
+      "url": "https://de.wikipedia.org/wiki/Volleyball"
+    }
+  },
+  {
+    "id": "sport-handball-schritte",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie viele Schritte darf man im Handball mit dem Ball in der Hand normalerweise höchstens machen, ohne zu prellen?",
+    "answers": [
+      "Drei",
+      "Einen",
+      "Fünf",
+      "Beliebig viele"
+    ],
+    "explanation": "Ohne Prellen sind grundsätzlich höchstens drei Schritte mit dem gehaltenen Ball erlaubt. Danach muss der Ball entsprechend den Regeln weitergespielt werden.",
+    "source": {
+      "title": "Wikipedia · Handball",
+      "url": "https://de.wikipedia.org/wiki/Handball"
+    }
+  },
+  {
+    "id": "sport-badminton-federball",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "In welcher Sportart wird mit einem Federball über ein hohes Netz gespielt?",
+    "answers": [
+      "Badminton",
+      "Squash",
+      "Tischtennis",
+      "Feldhockey"
+    ],
+    "explanation": "Badminton verwendet einen Federball und Schläger. Der Wettkampfsport unterscheidet sich vom lockeren Federballspiel durch verbindliche Feld- und Wertungsregeln.",
+    "source": {
+      "title": "Wikipedia · Badminton",
+      "url": "https://de.wikipedia.org/wiki/Badminton"
+    }
+  },
+  {
+    "id": "sport-tennis-einstand",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bezeichnet im Tennis den Punktestand 40:40 innerhalb eines Aufschlagspiels?",
+    "answers": [
+      "Einstand",
+      "Satzball",
+      "Matchball",
+      "Doppelfehler"
+    ],
+    "explanation": "Bei Einstand benötigt man normalerweise zwei Punkte Vorsprung, um das Spiel zu gewinnen. Der nächste gewonnene Punkt bedeutet zunächst Vorteil.",
+    "source": {
+      "title": "Wikipedia · Tennis",
+      "url": "https://de.wikipedia.org/wiki/Tennis"
+    }
+  },
+  {
+    "id": "sport-staffel-stab",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welcher Gegenstand wird bei einer klassischen 4×100-Meter-Staffel weitergegeben?",
+    "answers": [
+      "Ein Staffelstab",
+      "Eine Startpistole",
+      "Eine Hürde",
+      "Ein Zeitmesschip als alleiniger Staffelgegenstand"
+    ],
+    "explanation": "Bei der Staffel wird der Stab in festgelegten Wechselzonen an die nächste Person übergeben. Damit gehören koordinierte Übergaben ebenso zum Wettkampf wie schnelles Laufen.",
+    "source": {
+      "title": "Wikipedia · Staffellauf",
+      "url": "https://de.wikipedia.org/wiki/Staffellauf"
+    }
+  },
+  {
+    "id": "sport-marathon-distanz",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche Streckenlänge hat ein standardisierter Marathonlauf?",
+    "answers": [
+      "42,195 km",
+      "21,0975 km",
+      "10 km",
+      "100 km"
+    ],
+    "explanation": "Die Marathondistanz beträgt 42,195 Kilometer. Die etwa halb so lange Strecke von 21,0975 Kilometern heißt Halbmarathon.",
+    "source": {
+      "title": "Wikipedia · Marathonlauf",
+      "url": "https://de.wikipedia.org/wiki/Marathonlauf"
+    }
+  },
+  {
+    "id": "sport-tischtennis-satz",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Bei wie vielen Punkten ist ein regulärer Tischtennissatz frühestens gewonnen?",
+    "answers": [
+      "Bei 11 Punkten und mindestens zwei Punkten Vorsprung",
+      "Bei 7 Punkten ohne nötigen Vorsprung",
+      "Bei 10 Punkten unabhängig vom Gegner",
+      "Bei 21 Punkten und genau einem Punkt Vorsprung"
+    ],
+    "explanation": "Ein Satz wird normalerweise bis elf gespielt, benötigt aber immer zwei Punkte Vorsprung. Aus 10:10 kann deshalb ein deutlich längerer Satz entstehen.",
+    "source": {
+      "title": "Wikipedia · Tischtennis",
+      "url": "https://de.wikipedia.org/wiki/Tischtennis"
+    }
+  },
+  {
+    "id": "sport-schwimmen-schmetterling",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche Schwimmart wird auch als Butterfly bezeichnet?",
+    "answers": [
+      "Schmetterlingsschwimmen",
+      "Brustschwimmen",
+      "Rückenschwimmen",
+      "Kraulschwimmen"
+    ],
+    "explanation": "Beim Schmetterlingsschwimmen werden beide Arme gleichzeitig über Wasser nach vorn geführt. Die Beine führen typischerweise einen gemeinsamen Delfinkick aus.",
+    "source": {
+      "title": "Wikipedia · Schmetterlingsschwimmen",
+      "url": "https://de.wikipedia.org/wiki/Schmetterlingsschwimmen"
+    }
+  },
+  {
+    "id": "sport-abseits-einwurf",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Kann im Fußball allein aus dem direkten Empfang eines Einwurfs eine Abseitsstrafbarkeit entstehen?",
+    "answers": [
+      "Nein, beim direkten Empfang eines Einwurfs gilt diese Ausnahme.",
+      "Ja, jeder Empfang in der gegnerischen Hälfte ist abseits.",
+      "Ja, wenn der Ball vorher den Boden berührt hat.",
+      "Nur dann, wenn der Einwurf mit beiden Händen ausgeführt wurde."
+    ],
+    "explanation": "Beim direkten Empfang eines Einwurfs gibt es kein Abseitsvergehen. Ähnliche Ausnahmen gelten für den direkten Empfang eines Abstoßes oder Eckstoßes.",
+    "source": {
+      "title": "Wikipedia · Abseitsregel",
+      "url": "https://de.wikipedia.org/wiki/Abseitsregel"
+    }
+  },
+  {
+    "id": "sport-basketball-rebound",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was ist ein Rebound im Basketball?",
+    "answers": [
+      "Das Erlangen des Balls nach einem erfolglosen Korbwurf",
+      "Das erste Dribbling nach jedem Einwurf",
+      "Ein Treffer aus der eigenen Spielfeldhälfte",
+      "Das absichtliche Wegschlagen des Balls nach dem Schlusssignal"
+    ],
+    "explanation": "Nach einem verfehlten Wurf ist der Ball häufig wieder umkämpft. Ein Rebound kann dem angreifenden Team eine neue Chance oder dem verteidigenden Team Ballbesitz geben.",
+    "source": {
+      "title": "Wikipedia · Rebound (Basketball)",
+      "url": "https://de.wikipedia.org/wiki/Rebound_(Basketball)"
+    }
+  },
+  {
+    "id": "sport-volleyball-libero",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Rolle hat ein Libero im Hallenvolleyball besonders?",
+    "answers": [
+      "Eine spezialisierte Abwehrrolle mit besonderen Einsatzregeln",
+      "Die ausschließliche Aufgabe, jedes Mal aufzuschlagen",
+      "Die alleinige Berechtigung, Angriffe oberhalb der Netzkante abzuschließen",
+      "Die Funktion eines zusätzlichen Spielers außerhalb der regulären Mannschaft"
+    ],
+    "explanation": "Der Libero ist ein spezialisierter Defensivspieler und trägt ein andersfarbiges Trikot. Für seine Angriffe, Blockaktionen und Einwechslungen gelten besondere Regeln.",
+    "source": {
+      "title": "Wikipedia · Libero (Volleyball)",
+      "url": "https://de.wikipedia.org/wiki/Libero_(Volleyball)"
+    }
+  },
+  {
+    "id": "sport-tennis-break",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was bedeutet ein Break im Tennis?",
+    "answers": [
+      "Das rückschlagende Team oder die rückschlagende Person gewinnt das Aufschlagspiel.",
+      "Ein Satz endet nach genau sechs gespielten Punkten.",
+      "Ein Schläger muss während eines Ballwechsels gewechselt werden.",
+      "Der Aufschlag darf einmal ohne Grund wiederholt werden."
+    ],
+    "explanation": "Ein Break nimmt der aufschlagenden Seite ein Spiel ab. Das ist taktisch wichtig, weil der Aufschlag im Tennis oft einen Vorteil bietet.",
+    "source": {
+      "title": "Wikipedia · Tennis",
+      "url": "https://de.wikipedia.org/wiki/Tennis"
+    }
+  },
+  {
+    "id": "sport-badminton-aufschlagfeld",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "In welches Aufschlagfeld muss ein regelgerechter Badmintonaufschlag grundsätzlich gespielt werden?",
+    "answers": [
+      "In das diagonal gegenüberliegende Aufschlagfeld",
+      "In das beliebige Feld direkt neben der aufschlagenden Person",
+      "Immer hinter die hinterste Grundlinie",
+      "Immer in die vorderste Netzzone der eigenen Hälfte"
+    ],
+    "explanation": "Beim Aufschlag stehen sich die beteiligten Aufschlagfelder diagonal gegenüber. Welches Feld verwendet wird, hängt unter anderem vom aktuellen Punktestand der aufschlagenden Seite ab.",
+    "source": {
+      "title": "Wikipedia · Badminton",
+      "url": "https://de.wikipedia.org/wiki/Badminton"
+    }
+  },
+  {
+    "id": "sport-handball-torraum",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Wer darf im Handball den eigenen Torraum gewöhnlich zur Torabwehr betreten?",
+    "answers": [
+      "Der Torwart oder die Torhüterin",
+      "Jede verteidigende Person, sobald der Ball in der Luft ist",
+      "Nur die Person, die zuletzt ein Tor erzielt hat",
+      "Ausschließlich die angreifende Mannschaft"
+    ],
+    "explanation": "Der Torraum ist für den Torwart beziehungsweise die Torhüterin besonders geschützt. Feldspieler dürfen etwa beim Wurf in den Raum hineinspringen, müssen den Ball aber vor dem Aufkommen abgespielt haben.",
+    "source": {
+      "title": "Wikipedia · Handball",
+      "url": "https://de.wikipedia.org/wiki/Handball"
+    }
+  },
+  {
+    "id": "sport-judo-ippon",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was bedeutet ein Ippon im Judo grundsätzlich für den laufenden Kampf?",
+    "answers": [
+      "Er ist eine volle Wertung und entscheidet den Kampf.",
+      "Er verlängert den Kampf automatisch um eine weitere Runde.",
+      "Er ist nur eine Ermahnung ohne Einfluss auf die Wertung.",
+      "Er zählt ausschließlich als halber Punkt im Mannschaftsergebnis."
+    ],
+    "explanation": "Ein Ippon ist die höchste entscheidende Wertung im Judo. Er kann nach den Regeln beispielsweise durch einen entsprechend gelungenen Wurf oder eine andere zulässige Technik erreicht werden.",
+    "source": {
+      "title": "Wikipedia · Ippon",
+      "url": "https://de.wikipedia.org/wiki/Ippon"
+    }
+  },
+  {
+    "id": "sport-radsport-windschatten",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Warum kann Fahren im Windschatten bei einem Radrennen Kraft sparen?",
+    "answers": [
+      "Das vorausfahrende Rad verändert die Luftströmung und verringert den Luftwiderstand dahinter.",
+      "Die Schwerkraft wird hinter einem anderen Rad ausgeschaltet.",
+      "Der Hinterreifen erhält automatisch einen größeren Umfang.",
+      "Die Straße wird hinter dem führenden Rad dauerhaft flacher."
+    ],
+    "explanation": "Das führende Rad verdrängt Luft und verändert die Strömung dahinter. Dadurch kann die nachfolgende Person bei gleicher Geschwindigkeit weniger Leistung gegen den Luftwiderstand benötigen.",
+    "source": {
+      "title": "Wikipedia · Windschatten",
+      "url": "https://de.wikipedia.org/wiki/Windschatten"
+    }
+  },
+  {
+    "id": "sport-eishockey-powerplay",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was meint Powerplay im Eishockey häufig?",
+    "answers": [
+      "Ein Team spielt wegen einer Strafe gegen das andere Team vorübergehend in Überzahl.",
+      "Beide Teams dürfen die Zahl der Spieler beliebig erhöhen.",
+      "Die Scheibe darf in dieser Phase nur hinter dem eigenen Tor bleiben.",
+      "Alle Strafen sind bis zum Ende des Drittels aufgehoben."
+    ],
+    "explanation": "Eine Zeitstrafe kann ein Team zeitweise in Unterzahl bringen. Die Überzahlphase der Gegenseite wird häufig Powerplay genannt und verändert die taktischen Möglichkeiten.",
+    "source": {
+      "title": "Wikipedia · Powerplay",
+      "url": "https://de.wikipedia.org/wiki/Powerplay"
+    }
+  },
+  {
+    "id": "sport-turnen-balken",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Kombination beschreibt den Schwebebalken als Turngerät richtig?",
+    "answers": [
+      "Ein schmales erhöhtes Gerät für Balancieren, Sprünge und akrobatische Elemente",
+      "Eine breite federnde Fläche für Bodenküren",
+      "Zwei parallele bewegliche Ringe an langen Seilen",
+      "Ein schräges Brett, das ausschließlich für Anläufe dient"
+    ],
+    "explanation": "Der Schwebebalken fordert Gleichgewicht und präzise Bewegungssteuerung auf einer schmalen Fläche. Er unterscheidet sich damit deutlich von Boden, Ringen oder Sprunggeräten.",
+    "source": {
+      "title": "Wikipedia · Schwebebalken",
+      "url": "https://de.wikipedia.org/wiki/Schwebebalken"
+    }
+  },
+  {
+    "id": "sport-basketball-pick-roll",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Welche Abfolge beschreibt im Basketball ein Pick and Roll?",
+    "answers": [
+      "Eine Person stellt einen Block und bewegt sich danach zum Korb, um anspielbar zu werden.",
+      "Eine Person stellt einen Block und bleibt anschließend unbewegt an derselben Stelle stehen.",
+      "Eine Person stellt einen Block und weicht danach für einen Distanzwurf nach außen aus.",
+      "Eine Person deutet einen Korbwurf an und dribbelt anschließend ohne Block rückwärts."
+    ],
+    "explanation": "Beim Pick and Roll soll der gestellte Block der ballführenden Person Raum verschaffen. Das anschließende Abrollen zum Korb bietet zusätzlich eine Passmöglichkeit.",
+    "source": {
+      "title": "Wikipedia · Pick and roll",
+      "url": "https://de.wikipedia.org/wiki/Pick_and_roll"
+    }
+  },
+  {
+    "id": "sport-tennis-topspin",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum kann ein kräftiger Tennisball mit Topspin trotz hoher Geschwindigkeit früher nach unten abgelenkt werden?",
+    "answers": [
+      "Seine Vorwärtsrotation beeinflusst die Luftströmung und erzeugt eine abwärts gerichtete Kraft.",
+      "Die Rotation erhöht die Masse des Balls und damit seine Gewichtskraft deutlich.",
+      "Die Rotation beseitigt den Luftwiderstand, sodass nur eine geradlinige Bahn möglich ist.",
+      "Der Ball wird nach dem Auftreffen stärker abgebremst, was schon vorher seine Flugbahn nach unten zieht."
+    ],
+    "explanation": "Topspin ist eine Vorwärtsrotation des Balls. Der dabei wirkende Magnus-Effekt kann die Flugbahn stärker nach unten krümmen und dadurch steilere Schläge ermöglichen.",
+    "source": {
+      "title": "Wikipedia · Magnus-Effekt",
+      "url": "https://de.wikipedia.org/wiki/Magnus-Effekt"
+    }
+  },
+  {
+    "id": "sport-badminton-clear-drop",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein Badmintonball wird hoch und weit bis nahe an die gegnerische Grundlinie geschlagen. Wie heißt dieser Schlag?",
+    "answers": [
+      "Clear",
+      "Drop",
+      "Smash",
+      "Kurzer Netzball"
+    ],
+    "explanation": "Ein Clear verlagert den Ballwechsel weit nach hinten. Ein Drop ist dagegen ein Schlag, der möglichst kurz hinter dem Netz herunterkommen soll.",
+    "source": {
+      "title": "Wikipedia · Badminton",
+      "url": "https://de.wikipedia.org/wiki/Badminton"
+    }
+  },
+  {
+    "id": "sport-fussball-vorteil",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum kann eine Schiedsrichterin nach einem Foul im Fußball zunächst Vorteil geben?",
+    "answers": [
+      "Weil die nicht schuldige Mannschaft durch Weiterspielen eine günstigere Situation behalten kann",
+      "Weil ein Foul bei erhaltenem Ballbesitz unabhängig von seinen Folgen nie mehr geahndet werden darf",
+      "Weil nach jedem Foul zwingend eine feste Wartezeit von zehn Sekunden einzuhalten ist",
+      "Weil Ballbesitz jeden vorangegangenen Regelverstoß automatisch ungeschehen macht"
+    ],
+    "explanation": "Die Vorteilsregel soll verhindern, dass eine Unterbrechung ausgerechnet das benachteiligte Team zusätzlich benachteiligt. Eine persönliche Strafe kann gegebenenfalls bei der nächsten Unterbrechung folgen.",
+    "source": {
+      "title": "Wikipedia · Fußballregeln",
+      "url": "https://de.wikipedia.org/wiki/Fu%C3%9Fballregeln"
+    }
+  },
+  {
+    "id": "sport-basketball-zonenverteidigung",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was unterscheidet eine Zonenverteidigung im Basketball grundsätzlich von reiner Mann-Mann-Verteidigung?",
+    "answers": [
+      "Verteidigende sichern vorrangig zugewiesene Räume statt jeweils nur eine feste Person.",
+      "Jede verteidigende Person bleibt unabhängig von Ball und Ort ausschließlich bei einer festen Gegenspielerin.",
+      "Nur die Dreipunktlinie wird verteidigt, während der gesamte Innenraum regelbedingt frei bleiben muss.",
+      "Eine vorgeschriebene Doppelbewachung verhindert jede Übergabe zwischen Verteidigenden."
+    ],
+    "explanation": "In einer Zonenverteidigung orientieren sich Aufgaben wesentlich an Räumen und Ballbewegungen. Die Verteidigenden müssen dennoch Angreifer übergeben und gemeinsam verschieben.",
+    "source": {
+      "title": "Wikipedia · Zonenverteidigung",
+      "url": "https://de.wikipedia.org/wiki/Zonenverteidigung"
+    }
+  },
+  {
+    "id": "sport-rugby-passrichtung",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Welche Richtung ist für einen Pass aus der Hand im Rugby Union grundsätzlich nicht erlaubt?",
+    "answers": [
+      "Nach vorn in Richtung der gegnerischen Mallinie",
+      "Nach hinten in Richtung der eigenen Mallinie",
+      "Seitlich auf gleicher Höhe",
+      "Schräg nach hinten zur mitlaufenden Unterstützung"
+    ],
+    "explanation": "Ein Handpass darf im Rugby Union nicht nach vorn gerichtet sein. Raumgewinn entsteht unter anderem durch Laufen und regelgerechtes Kicken des Balls.",
+    "source": {
+      "title": "Wikipedia · Rugby Union",
+      "url": "https://de.wikipedia.org/wiki/Rugby_Union"
+    }
+  },
+  {
+    "id": "sport-rudern-skullen",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was kennzeichnet Skullen im Rudersport im Unterschied zum Riemenrudern?",
+    "answers": [
+      "Jede Person führt zwei Ruder, eines in jeder Hand.",
+      "Jede Person führt ein Ruder mit beiden Händen auf einer Seite des Boots.",
+      "Die Steuerperson führt allein beide Antriebsruder, alle anderen stabilisieren das Boot.",
+      "Die Ruder werden nur zum Lenken eingesetzt; der Antrieb entsteht ohne Blattkontakt zum Wasser."
+    ],
+    "explanation": "Beim Skullen bedient jede Person zwei kürzere Ruder. Beim Riemenrudern führt sie dagegen ein Ruder mit beiden Händen.",
+    "source": {
+      "title": "Wikipedia · Skullen",
+      "url": "https://de.wikipedia.org/wiki/Skullen"
+    }
+  },
+  {
+    "id": "sport-fechten-degen-doppeltreffer",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum können beim Degenfechten in einem eng begrenzten Zeitfenster beide Fechtenden einen Treffer erhalten?",
+    "answers": [
+      "Beim Degen gibt es Doppeltreffer ohne das Angriffsrecht von Florett und Säbel.",
+      "Auch beim Degen entscheidet stets das Angriffsrecht, wer bei gleichzeitigem Treffen den Punkt erhält.",
+      "Beim Degen darf ausschließlich der Rumpf getroffen werden, weshalb alle anderen Kontakte doppelt zählen.",
+      "Beide Treffer zählen grundsätzlich auch dann, wenn sie mehrere Sekunden auseinanderliegen."
+    ],
+    "explanation": "Beim Degenfechten können nahezu gleichzeitige gültige Treffer als Doppeltreffer gewertet werden. Anders als bei Florett und Säbel wird kein Trefferrecht aufgrund eines vorrangigen Angriffs zugeteilt.",
+    "source": {
+      "title": "Wikipedia · Degen (Sportwaffe)",
+      "url": "https://de.wikipedia.org/wiki/Degen_(Sportwaffe)"
+    }
+  },
+  {
+    "id": "sport-spezifitaet-training",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was beschreibt das Prinzip der Spezifität im sportlichen Training?",
+    "answers": [
+      "Anpassungen hängen wesentlich davon ab, welche Fähigkeiten und Belastungen trainiert werden.",
+      "Alle Trainingsformen bewirken unabhängig von ihrer Durchführung die gleichen Anpassungen.",
+      "Eine verbesserte Ausdauer überträgt sich ohne Einschränkung in gleiche Maße auf Maximalkraft.",
+      "Der Trainingseffekt ist ausschließlich von der Dauer, niemals von Art und Intensität der Belastung abhängig."
+    ],
+    "explanation": "Training führt nicht automatisch in jeder Disziplin zu denselben Anpassungen. Fähigkeiten wie Ausdauer, Maximalkraft und Koordination benötigen unterschiedliche Schwerpunkte.",
+    "source": {
+      "title": "Wikipedia · Trainingswissenschaft",
+      "url": "https://de.wikipedia.org/wiki/Trainingswissenschaft"
+    }
+  },
+  {
+    "id": "sport-schach-patt",
+    "category": "Sport",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was ist beim Schach ein Patt?",
+    "answers": [
+      "Die am Zug befindliche Seite hat keinen legalen Zug, ihr König steht aber nicht im Schach.",
+      "Der König steht im Schach und es gibt keinen legalen Zug, der das Schach aufhebt.",
+      "Die gleiche Stellung ist zum dritten Mal auf dem Brett aufgetreten.",
+      "Die am Zug befindliche Seite darf noch ziehen, besitzt aber weniger Material als die andere."
+    ],
+    "explanation": "Patt unterscheidet sich vom Schachmatt durch das fehlende Schachgebot. Nach den üblichen Schachregeln endet die Partie bei Patt unentschieden.",
+    "source": {
+      "title": "Wikipedia · Patt",
+      "url": "https://de.wikipedia.org/wiki/Patt"
+    }
+  },
+  {
+    "id": "everyday-thermometer",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche physikalische Größe misst ein Thermometer?",
+    "answers": [
+      "Die Temperatur",
+      "Die elektrische Spannung",
+      "Die Windrichtung",
+      "Die Luftzusammensetzung"
+    ],
+    "explanation": "Ein Thermometer zeigt Temperatur an und nutzt dafür eine temperaturabhängige Eigenschaft. Je nach Bauart kann das etwa eine Flüssigkeitsausdehnung oder ein elektrisches Signal sein.",
+    "source": {
+      "title": "Wikipedia · Thermometer",
+      "url": "https://de.wikipedia.org/wiki/Thermometer"
+    }
+  },
+  {
+    "id": "everyday-kuehlschrank-keime",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Warum bleiben viele leicht verderbliche Lebensmittel im Kühlschrank länger haltbar?",
+    "answers": [
+      "Kälte verlangsamt bei vielen Mikroorganismen Wachstum und Stoffwechsel.",
+      "Kälte entfernt automatisch sämtliche Krankheitserreger.",
+      "Ein Kühlschrank verwandelt alle Lebensmittel in sterile Konserven.",
+      "Ein Kühlschrank verhindert grundsätzlich jede chemische Veränderung."
+    ],
+    "explanation": "Kühlung bremst viele Verderbnisprozesse, macht Lebensmittel aber nicht keimfrei. Unterschiedliche Produkte brauchen deshalb weiterhin eine passende Aufbewahrung und Beachtung ihrer Hinweise.",
+    "source": {
+      "title": "Wikipedia · Kühlschrank",
+      "url": "https://de.wikipedia.org/wiki/K%C3%BChlschrank"
+    }
+  },
+  {
+    "id": "everyday-klettverschluss",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie hält ein gewöhnlicher Klettverschluss zusammen?",
+    "answers": [
+      "Kleine Haken greifen in passende Schlaufen.",
+      "Zwei Klebstoffschichten verschmelzen bei jeder Berührung.",
+      "Ein elektrischer Strom erzeugt dauerhafte Hitze.",
+      "Ein flüssiges Metall verbindet beide Stoffstreifen."
+    ],
+    "explanation": "Ein Klettverschluss nutzt viele kleine mechanische Verbindungen zwischen Haken und Schlaufen. Beim Auseinanderziehen lösen sich diese Verbindungen nacheinander wieder.",
+    "source": {
+      "title": "Wikipedia · Klettverschluss",
+      "url": "https://de.wikipedia.org/wiki/Klettverschluss"
+    }
+  },
+  {
+    "id": "everyday-reissverschluss",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bewirkt der Schieber eines gewöhnlichen Reißverschlusses beim Schließen?",
+    "answers": [
+      "Er führt zwei Reihen passender Elemente so zusammen, dass sie ineinandergreifen.",
+      "Er klebt den Stoff bei jeder Bewegung mit neuem Klebstoff fest.",
+      "Er näht mit einer verborgenen Nadel eine neue Naht.",
+      "Er erzeugt einen Magneten entlang der gesamten Kleidung."
+    ],
+    "explanation": "Der Schieber führt die beiden Elementreihen zusammen oder trennt sie. Die Haltekraft entsteht durch das formschlüssige Ineinandergreifen der Elemente.",
+    "source": {
+      "title": "Wikipedia · Reißverschluss",
+      "url": "https://de.wikipedia.org/wiki/Rei%C3%9Fverschluss"
+    }
+  },
+  {
+    "id": "everyday-strichcode",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was enthält ein Strichcode auf einer typischen Produktverpackung hauptsächlich?",
+    "answers": [
+      "Eine maschinenlesbare Kennnummer, die einem Artikel zugeordnet werden kann",
+      "Den verbindlichen Verkaufspreis für alle Läden weltweit",
+      "Eine vollständige Liste sämtlicher Käufer des Artikels",
+      "Die gesamte Gebrauchsanleitung als gesprochenen Ton"
+    ],
+    "explanation": "Der Strichcode stellt bei üblichen Artikelcodes eine Nummer maschinenlesbar dar. Informationen wie der konkrete Ladenpreis werden normalerweise über die zugeordnete Datenbank abgerufen.",
+    "source": {
+      "title": "Wikipedia · Strichcode",
+      "url": "https://de.wikipedia.org/wiki/Strichcode"
+    }
+  },
+  {
+    "id": "everyday-akku-begriff",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was unterscheidet einen Akku grundsätzlich von einer nicht wiederaufladbaren Primärbatterie?",
+    "answers": [
+      "Ein Akku ist für wiederholtes elektrisches Aufladen ausgelegt.",
+      "Ein Akku enthält grundsätzlich keine chemischen Stoffe.",
+      "Ein Akku liefert Strom, ohne jemals Energie speichern zu müssen.",
+      "Ein Akku muss bei normaler Nutzung immer direkt an der Steckdose hängen."
+    ],
+    "explanation": "Ein Akkumulator speichert Energie mithilfe grundsätzlich umkehrbarer elektrochemischer Vorgänge. Nicht jede Batterie ist dafür ausgelegt, erneut geladen zu werden.",
+    "source": {
+      "title": "Wikipedia · Akkumulator",
+      "url": "https://de.wikipedia.org/wiki/Akkumulator"
+    }
+  },
+  {
+    "id": "everyday-mhd",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bedeutet das Mindesthaltbarkeitsdatum grundsätzlich?",
+    "answers": [
+      "Bis dahin behält ein ungeöffnetes, passend gelagertes Produkt seine zugesicherten Eigenschaften.",
+      "Ab diesem Datum wird jedes Produkt in jedem Fall sofort giftig.",
+      "Bis zu diesem Datum darf jede angebrochene Packung ungekühlt bleiben.",
+      "Es nennt immer das Datum, an dem ein Lebensmittel hergestellt wurde."
+    ],
+    "explanation": "Das Mindesthaltbarkeitsdatum ist kein automatisches Wegwerfdatum. Es unterscheidet sich vom Verbrauchsdatum leicht verderblicher Lebensmittel, das eine andere Bedeutung hat.",
+    "source": {
+      "title": "Wikipedia · Mindesthaltbarkeitsdatum",
+      "url": "https://de.wikipedia.org/wiki/Mindesthaltbarkeitsdatum"
+    }
+  },
+  {
+    "id": "everyday-wasserhaerte",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche gelösten Stoffe tragen hauptsächlich zur Wasserhärte bei?",
+    "answers": [
+      "Calcium- und Magnesiumionen",
+      "Sauerstoff- und Stickstoffmoleküle aus der Luft",
+      "Allein gewöhnlicher Haushaltszucker",
+      "Ausschließlich winzige ungelöste Sandkörner"
+    ],
+    "explanation": "Wasserhärte hängt vor allem von gelösten Calcium- und Magnesiumverbindungen ab. Sie beeinflusst unter anderem Kalkablagerungen und die Wirkung bestimmter Waschmittel.",
+    "source": {
+      "title": "Wikipedia · Wasserhärte",
+      "url": "https://de.wikipedia.org/wiki/Wasserh%C3%A4rte"
+    }
+  },
+  {
+    "id": "everyday-altglas-keramik",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Warum gehören Keramikscherben nicht in den Altglascontainer?",
+    "answers": [
+      "Sie können den Glasrecyclingprozess und die Qualität des neuen Glases stören.",
+      "Sie werden im Container automatisch zu Papier umgewandelt.",
+      "Sie besitzen grundsätzlich dieselben Schmelzeigenschaften wie Verpackungsglas.",
+      "Sie ersetzen bei der Glasherstellung vollständig alle Rohstoffe."
+    ],
+    "explanation": "Altglasbehälter sind für geeignetes Verpackungsglas gedacht. Fremdstoffe wie Keramik können bei der Aufbereitung und beim Schmelzen Probleme verursachen.",
+    "source": {
+      "title": "Wikipedia · Glasrecycling",
+      "url": "https://de.wikipedia.org/wiki/Glasrecycling"
+    }
+  },
+  {
+    "id": "everyday-uv-sonnenschutz",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Vor welcher Strahlungsart sollen die UV-Filter eines Sonnenschutzmittels vor allem schützen?",
+    "answers": [
+      "Vor ultravioletter Strahlung",
+      "Vor sämtlichen Funkwellen",
+      "Vor jeder Form von sichtbarem Licht",
+      "Vor der Schwerkraft der Sonne"
+    ],
+    "explanation": "UV-Strahlung kann Haut und Augen schädigen. UV-Filter verringern den auf die Haut gelangenden Anteil, ersetzen aber keine weiteren geeigneten Schutzmaßnahmen gegen starke Sonne.",
+    "source": {
+      "title": "Wikipedia · Sonnenschutzmittel",
+      "url": "https://de.wikipedia.org/wiki/Sonnenschutzmittel"
+    }
+  },
+  {
+    "id": "everyday-apfel-braun",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Warum wird ein frisch aufgeschnittener Apfel an der Schnittfläche häufig braun?",
+    "answers": [
+      "Sauerstoff ermöglicht enzymatische Oxidationsreaktionen an freigelegten Inhaltsstoffen.",
+      "Die braune Farbe entsteht ausschließlich aus unsichtbaren Sandkörnern.",
+      "Der gesamte Apfel verkohlt dabei ohne jede Wärmezufuhr.",
+      "Das Fruchtfleisch verwandelt sich an der Luft unmittelbar in Eisenrost."
+    ],
+    "explanation": "Beim Aufschneiden werden Zellen beschädigt und verschiedene Inhaltsstoffe kommen zusammen. Enzyme können mit Luftsauerstoff Reaktionen anstoßen, aus denen braune Stoffe entstehen.",
+    "source": {
+      "title": "Wikipedia · Enzymatische Bräunung",
+      "url": "https://de.wikipedia.org/wiki/Enzymatische_Br%C3%A4unung"
+    }
+  },
+  {
+    "id": "everyday-seife-mizellen",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Wie helfen Tenside beim Entfernen fettiger Verschmutzungen mit Wasser?",
+    "answers": [
+      "Ihre Moleküle können zwischen Wasser und Fett vermitteln und Fett in kleinen Einheiten verteilen.",
+      "Sie verwandeln Wasser vollständig in Öl.",
+      "Sie machen Fett bei jeder Temperatur zu einem Edelmetall.",
+      "Sie entfernen Schmutz ausschließlich durch eine radioaktive Reaktion."
+    ],
+    "explanation": "Tenside besitzen einen wasserfreundlichen und einen fettfreundlichen Molekülteil. Dadurch können sie fettige Verschmutzungen lösen oder fein verteilen und mit Wasser abtransportierbar machen.",
+    "source": {
+      "title": "Wikipedia · Tenside",
+      "url": "https://de.wikipedia.org/wiki/Tenside"
+    }
+  },
+  {
+    "id": "everyday-maillard-braeunung",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Reaktion trägt beim Backen wesentlich zur Bräunung einer Brotkruste bei?",
+    "answers": [
+      "Die Maillard-Reaktion zwischen bestimmten Zuckerarten und Aminoverbindungen",
+      "Die Spaltung von Wasser durch Tageslicht",
+      "Die Umwandlung von Kochsalz in Sand",
+      "Die vollständige Umwandlung aller Stärke in Sauerstoff"
+    ],
+    "explanation": "Bei der Maillard-Reaktion reagieren unter geeigneten Bedingungen Zucker und Aminoverbindungen miteinander. Dabei entstehen zahlreiche Farb- und Aromastoffe, die gebackene oder gebratene Lebensmittel prägen.",
+    "source": {
+      "title": "Wikipedia · Maillard-Reaktion",
+      "url": "https://de.wikipedia.org/wiki/Maillard-Reaktion"
+    }
+  },
+  {
+    "id": "everyday-sprudel-oeffnen",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Warum bilden sich beim Öffnen einer Sprudelwasserflasche häufig besonders viele Gasbläschen?",
+    "answers": [
+      "Der Druck über der Flüssigkeit sinkt, sodass gelöstes Kohlendioxid leichter entweicht.",
+      "Die Flasche erzeugt beim Öffnen neuen Sauerstoff aus dem Glas.",
+      "Der Sauerstoffgehalt der Luft wird durch den Verschluss verdoppelt.",
+      "Das gesamte Wasser verdampft bei Raumtemperatur schlagartig."
+    ],
+    "explanation": "Unter höherem Kohlendioxiddruck kann mehr Gas im Wasser gelöst bleiben. Nach dem Öffnen ist der Druck geringer, und das gelöste Kohlendioxid kann Blasen bilden.",
+    "source": {
+      "title": "Wikipedia · Henry-Gesetz",
+      "url": "https://de.wikipedia.org/wiki/Henry-Gesetz"
+    }
+  },
+  {
+    "id": "everyday-wolle-verfilzen",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Warum kann Wolle bei ungeeigneter mechanischer Behandlung verfilzen?",
+    "answers": [
+      "Die schuppenartige Oberfläche der Fasern begünstigt ihr Verhaken und Zusammenwandern.",
+      "Wolle schmilzt bereits durch jede Berührung mit kaltem Wasser.",
+      "Die Fasern werden dabei automatisch zu glatten Metalldrähten.",
+      "Wolle schrumpft ausschließlich, weil ihr sämtliche Atome verloren gehen."
+    ],
+    "explanation": "Wollfasern besitzen eine schuppenartige Oberfläche. Feuchtigkeit, Wärme und mechanische Bewegung können zusammen dazu führen, dass sich die Fasern stärker ineinander verschieben und verhaken.",
+    "source": {
+      "title": "Wikipedia · Filzen",
+      "url": "https://de.wikipedia.org/wiki/Filzen"
+    }
+  },
+  {
+    "id": "everyday-siphon-geruch",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Warum bleibt im Siphon unter einem Waschbecken normalerweise etwas Wasser stehen?",
+    "answers": [
+      "Es bildet einen Geruchsverschluss zwischen Abwasserleitung und Raumluft.",
+      "Es soll das Waschbecken ständig mit Trinkwasser auffüllen.",
+      "Es sorgt dafür, dass jede Verstopfung von selbst verschwindet.",
+      "Es erzeugt Strom für die Beleuchtung des Badezimmers."
+    ],
+    "explanation": "Das stehende Wasser unterbricht den direkten Luftweg aus der Abwasserleitung. Wenn ein Geruchsverschluss vollständig austrocknet, kann diese Sperrwirkung verloren gehen.",
+    "source": {
+      "title": "Wikipedia · Geruchsverschluss",
+      "url": "https://de.wikipedia.org/wiki/Geruchsverschluss"
+    }
+  },
+  {
+    "id": "everyday-papierfasern-recycling",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Warum lassen sich Papierfasern nicht unbegrenzt oft zu gleichwertigem Papier recyceln?",
+    "answers": [
+      "Die Fasern werden bei wiederholter Verarbeitung kürzer und verlieren an Eigenschaften.",
+      "Cellulose wird beim ersten Recycling grundsätzlich radioaktiv.",
+      "Papier kann sich nur ein einziges Mal mit Wasser verbinden.",
+      "Jede Recyclingrunde verdoppelt automatisch die Länge aller Fasern."
+    ],
+    "explanation": "Beim Aufbereiten und mechanischen Verarbeiten werden Papierfasern beansprucht und teilweise verkürzt. Deshalb müssen dem Kreislauf je nach Papierart auch geeignete frische Fasern zugeführt werden.",
+    "source": {
+      "title": "Wikipedia · Papierrecycling",
+      "url": "https://de.wikipedia.org/wiki/Papierrecycling"
+    }
+  },
+  {
+    "id": "everyday-emulsion-mayonnaise",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Wie wird Mayonnaise als Stoffgemisch grundsätzlich eingeordnet?",
+    "answers": [
+      "Als Emulsion aus fein verteilten Tröpfchen zweier sonst schlecht mischbarer Flüssigkeiten",
+      "Als reine chemische Verbindung mit nur einer Molekülart",
+      "Als Gasgemisch ohne flüssige Bestandteile",
+      "Als metallische Legierung"
+    ],
+    "explanation": "Mayonnaise ist eine Emulsion, in der kleine Öltröpfchen in einer wasserhaltigen Phase verteilt sind. Emulgierende Stoffe helfen, diese Verteilung zu stabilisieren.",
+    "source": {
+      "title": "Wikipedia · Mayonnaise",
+      "url": "https://de.wikipedia.org/wiki/Mayonnaise"
+    }
+  },
+  {
+    "id": "everyday-thermoskanne-vakuum",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Warum besitzen viele Isolierflaschen zwischen ihren Wänden einen luftarmen Zwischenraum?",
+    "answers": [
+      "Er verringert Wärmeleitung und Konvektion durch Teilchen in diesem Zwischenraum.",
+      "Er verhindert jede Wärmestrahlung grundsätzlich vollständig.",
+      "Er erzeugt im Inhalt automatisch immer exakt dieselbe Temperatur.",
+      "Er verwandelt heiße Getränke in einen Stoff ohne innere Energie."
+    ],
+    "explanation": "Ein Vakuum beziehungsweise stark verringerter Gasdruck vermindert Wärmeübertragung durch Gas. Gegen Wärmestrahlung helfen zusätzlich geeignete Oberflächen; eine reale Isolierflasche ist nicht vollkommen isolierend.",
+    "source": {
+      "title": "Wikipedia · Isolierkanne",
+      "url": "https://de.wikipedia.org/wiki/Isolierkanne"
+    }
+  },
+  {
+    "id": "everyday-kugelschreiber-kugel",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Aufgabe hat die kleine Kugel an der Spitze eines Kugelschreibers?",
+    "answers": [
+      "Sie überträgt beim Rollen Tinte auf das Papier und dosiert den Austritt.",
+      "Sie schneidet für jedes Zeichen ein Loch durch das Papier.",
+      "Sie erzeugt allein durch ihre Farbe die Schrift.",
+      "Sie erwärmt das Papier bis zum Verkohlen."
+    ],
+    "explanation": "Die Kugel dreht sich beim Schreiben und bringt Tinte aus ihrem Sitz auf das Papier. Gleichzeitig begrenzt sie, wie viel Tinte nach außen gelangt.",
+    "source": {
+      "title": "Wikipedia · Kugelschreiber",
+      "url": "https://de.wikipedia.org/wiki/Kugelschreiber"
+    }
+  },
+  {
+    "id": "everyday-edelstahl-passivierung",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Wodurch erhält geeigneter rostfreier Stahl einen wesentlichen Teil seines Korrosionsschutzes?",
+    "answers": [
+      "Durch eine dünne schützende Passivschicht, die wesentlich vom Chromgehalt abhängt",
+      "Durch eine bei jedem rostfreien Stahl aufgebrachte dicke Zinnschicht als einzigem Schutz",
+      "Durch einen besonders hohen Eisengehalt, der Sauerstoffreaktionen grundsätzlich ausschließt",
+      "Allein durch einen niedrigen Kohlenstoffanteil, der jede Korrosion in jeder Umgebung verhindert"
+    ],
+    "explanation": "Chrom kann an der Oberfläche eine sehr dünne schützende Oxidschicht bilden. Rostfreier Stahl ist trotzdem nicht gegen jede Umgebung und jede Form von Korrosion unempfindlich.",
+    "source": {
+      "title": "Wikipedia · Rostfreier Stahl",
+      "url": "https://de.wikipedia.org/wiki/Rostfreier_Stahl"
+    }
+  },
+  {
+    "id": "everyday-verbundsicherheitsglas",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum bleiben Bruchstücke von Verbundsicherheitsglas häufig an Ort und Stelle?",
+    "answers": [
+      "Eine zähe Zwischenschicht hält viele der zerbrochenen Glasteile zusammen.",
+      "Druckspannungen sorgen dafür, dass sämtliche voneinander getrennten Bruchstücke am Rahmen haften.",
+      "Eine dünne äußere Kratzschutzschicht verbindet beim Bruch automatisch alle Scheibenränder.",
+      "Alle Glasarten besitzen beim Zerbrechen natürliche dauerhafte Klebewirkung zwischen den Splittern."
+    ],
+    "explanation": "Verbundsicherheitsglas verbindet Glasscheiben mit einer geeigneten Zwischenschicht. Diese kann Splitter binden und die Bruchöffnung je nach Aufbau begrenzen.",
+    "source": {
+      "title": "Wikipedia · Verbund-Sicherheitsglas",
+      "url": "https://de.wikipedia.org/wiki/Verbund-Sicherheitsglas"
+    }
+  },
+  {
+    "id": "everyday-geschirrspueler-ionentauscher",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Welche Aufgabe hat ein Ionenaustauscher zur Wasserenthärtung in vielen Geschirrspülern?",
+    "answers": [
+      "Er ersetzt härtebildende Calcium- und Magnesiumionen im Wasser durch andere Ionen.",
+      "Er hält gelöste Calciumionen wie Sandkörner in einem groben Sieb zurück.",
+      "Er bindet ausschließlich gelösten Sauerstoff, während alle Härtebildner unverändert bleiben.",
+      "Er entfernt Härtebildner allein dadurch, dass er das Wasser ohne Stoffaustausch abkühlt."
+    ],
+    "explanation": "Ein Ionenaustauscher kann Calcium- und Magnesiumionen binden und dafür andere Ionen abgeben. Dadurch wird die Bildung störender Kalkablagerungen im Gerät verringert.",
+    "source": {
+      "title": "Wikipedia · Ionenaustauscher",
+      "url": "https://de.wikipedia.org/wiki/Ionenaustauscher"
+    }
+  },
+  {
+    "id": "everyday-foto-rote-augen",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Wie entsteht bei Blitzfotos der klassische Rote-Augen-Effekt?",
+    "answers": [
+      "Blitzlicht wird aus dem Augeninneren zur Kamera zurückgeworfen, wobei die durchbluteten Schichten mitwirken.",
+      "Die rote Farbe entsteht ausschließlich durch eine farbige Beschichtung auf der Außenseite der Hornhaut.",
+      "Die Kamera fügt jeder weit geöffneten Pupille unabhängig vom einfallenden Licht einen roten Farbwert hinzu.",
+      "Die Augenlinse erzeugt beim Blitz selbst rotes Licht wie eine elektrische Lichtquelle."
+    ],
+    "explanation": "Wenn Blitz und Kamera nah beieinander liegen, kann Licht aus dem Augeninneren in Richtung Objektiv zurückgelangen. Die gut durchbluteten Schichten am Augenhintergrund tragen zur rötlichen Erscheinung bei.",
+    "source": {
+      "title": "Wikipedia · Rote-Augen-Effekt",
+      "url": "https://de.wikipedia.org/wiki/Rote-Augen-Effekt"
+    }
+  },
+  {
+    "id": "everyday-lcd-sonnenbrille",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum kann ein LCD-Bildschirm durch eine polarisierende Sonnenbrille beim Drehen sehr dunkel wirken?",
+    "answers": [
+      "Die Polarisationsrichtungen von Bildschirmlicht und Brillenfilter können sich nahezu kreuzen.",
+      "Das Drehen der Brille löst grundsätzlich die automatische Helligkeitsregelung des Displays aus.",
+      "Alle Sonnenbrillen dämpfen LCD-Licht bei jedem Winkel gleich stark; der Effekt entsteht nur durch die Pupille.",
+      "Der LCD-Bildschirm wechselt beim Drehen grundsätzlich von sichtbarem zu infrarotem Licht."
+    ],
+    "explanation": "LCD-Anzeigen arbeiten mit polarisiertem Licht. Ein weiterer Polarisationsfilter kann je nach Winkel einen großen Teil dieses Lichts herausfiltern.",
+    "source": {
+      "title": "Wikipedia · Flüssigkristallanzeige",
+      "url": "https://de.wikipedia.org/wiki/Fl%C3%BCssigkristallanzeige"
+    }
+  },
+  {
+    "id": "everyday-reflektor-rueckstrahlung",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was unterscheidet einen idealen Retroreflektor besonders von einem einzelnen ebenen Spiegel?",
+    "answers": [
+      "Er lenkt einfallendes Licht über einen Winkelbereich wieder ungefähr zur Quelle zurück.",
+      "Er lenkt jeden Strahl unabhängig von seinem Einfallswinkel senkrecht zur Oberfläche aus.",
+      "Er speichert Licht wie ein nachleuchtendes Material und sendet es erst nach dem Abschalten aus.",
+      "Er ist ein einzelner besonders glatter ebener Spiegel, dessen Orientierung keine Rolle spielt."
+    ],
+    "explanation": "Retroreflektoren verwenden beispielsweise passend angeordnete Flächen oder kleine Glaskugeln. Sie können Licht daher näher zur Beleuchtungsquelle zurücklenken als ein einfacher ebener Spiegel.",
+    "source": {
+      "title": "Wikipedia · Retroreflexion",
+      "url": "https://de.wikipedia.org/wiki/Retroreflexion"
+    }
+  },
+  {
+    "id": "everyday-hochdruck-lebensmittel",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was nutzt die Hochdruckbehandlung bestimmter Lebensmittel zur Haltbarmachung hauptsächlich?",
+    "answers": [
+      "Sehr hohen Druck, der unter geeigneten Bedingungen viele Mikroorganismen beeinträchtigt",
+      "Ausschließlich den vollständigen Wasserentzug durch Trocknung",
+      "Die Behandlung mit ionisierender Strahlung als bestimmenden Verfahrensschritt",
+      "Eine für alle Produkte garantierte vollständige Sterilisation einschließlich jeder Sporenform"
+    ],
+    "explanation": "Bei der Hochdruckbehandlung wird verpacktes Lebensmittel einem hohen Druck ausgesetzt. Wirkung und Grenzen hängen vom Produkt und Verfahren ab; nicht alle Mikroorganismenformen werden gleichermaßen erfasst.",
+    "source": {
+      "title": "Wikipedia · High-pressure processing",
+      "url": "https://en.wikipedia.org/wiki/High-pressure_processing"
+    }
+  },
+  {
+    "id": "everyday-wasserfarbe-filmbildung",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Wie kann bei einer wasserbasierten Dispersionsfarbe nach dem Auftragen ein zusammenhängender Anstrich entstehen?",
+    "answers": [
+      "Beim Trocknen rücken Bindemittelteilchen zusammen und können einen Film bilden.",
+      "Die Bindemittelteilchen bleiben dauerhaft isoliert als loses Pulver auf der Oberfläche liegen.",
+      "Das verdunstende Wasser selbst hinterlässt unabhängig von Bindemitteln die feste Farbschicht.",
+      "Die Pigmente schmelzen bei Raumtemperatur und übernehmen dadurch allein die Funktion des Bindemittels."
+    ],
+    "explanation": "Dispersionsfarben enthalten fein verteilte Bindemittelteilchen in einer wasserhaltigen Umgebung. Beim Trocknen und unter passenden Bedingungen verbinden sich diese Teilchen zu einer zusammenhängenden Schicht.",
+    "source": {
+      "title": "Wikipedia · Dispersionsfarbe",
+      "url": "https://de.wikipedia.org/wiki/Dispersionsfarbe"
+    }
+  },
+  {
+    "id": "everyday-schaum-stabilitaet",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum können bestimmte oberflächenaktive Stoffe einen Schaum stabilisieren?",
+    "answers": [
+      "Sie lagern sich an Grenzflächen an und können das Zusammenfließen der Blasenfilme verlangsamen.",
+      "Sie beseitigen alle Grenzflächen zwischen Gas und Flüssigkeit vollständig.",
+      "Sie stabilisieren Schaum ausschließlich durch das vollständige Einfrieren der enthaltenen Flüssigkeit.",
+      "Sie verhindern ohne Einfluss auf die Blasenfilme allein durch ein höheres Gasgewicht jeden Schaumzerfall."
+    ],
+    "explanation": "Schaum besteht aus Gasblasen, die durch dünne Flüssigkeitsfilme getrennt sind. Geeignete grenzflächenaktive Stoffe können diese Filme stabilisieren, aber Schaum bleibt nicht zwangsläufig unbegrenzt erhalten.",
+    "source": {
+      "title": "Wikipedia · Schaum",
+      "url": "https://de.wikipedia.org/wiki/Schaum"
+    }
+  },
+  {
+    "id": "everyday-aquaplaning-wasserkeil",
+    "category": "Alltagswissenschaft",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Was passiert beim Aquaplaning grundsätzlich an einem rollenden Fahrzeugreifen?",
+    "answers": [
+      "Ein Wasserfilm kann den direkten Kontakt zwischen Reifen und Fahrbahn weitgehend trennen.",
+      "Der Reifen erhält allein durch den Wasserfilm einen deutlich höheren direkten Kontakt zum Asphalt.",
+      "Das Reifenprofil kann unter allen Umständen sämtliches Wasser sofort und ohne Mengenbegrenzung ableiten.",
+      "Der Kontaktverlust entsteht ausschließlich, weil Regen die gesamte Fahrbahn zum Schmelzen bringt."
+    ],
+    "explanation": "Kann ein Reifen Wasser nicht ausreichend verdrängen, kann sich zwischen ihm und der Fahrbahn ein tragender Wasserfilm bilden. Dadurch lassen sich die sonst über den Kontakt übertragenen Kräfte stark verringern.",
+    "source": {
+      "title": "Wikipedia · Aquaplaning",
+      "url": "https://de.wikipedia.org/wiki/Aquaplaning"
+    }
+  }
+]

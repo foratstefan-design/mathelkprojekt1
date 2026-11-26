@@ -1,0 +1,1622 @@
+[
+  {
+    "id": "lit-fabel-tiere",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "In einer kurzen Geschichte reden ein Fuchs und ein Rabe wie Menschen; am Ende steht eine Lehre. Welche Textsorte passt?",
+    "answers": [
+      "Fabel",
+      "Reisebericht",
+      "Lexikoneintrag",
+      "Kochrezept"
+    ],
+    "explanation": "Fabeln lassen häufig Tiere menschliche Eigenschaften und Konflikte verkörpern. Die erzählte Situation führt zu einer Lehre über menschliches Verhalten.",
+    "source": {
+      "title": "Wikipedia · Fabel",
+      "url": "https://de.wikipedia.org/wiki/Fabel"
+    }
+  },
+  {
+    "id": "lit-maerchen-wunder",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche Eigenschaft ist für viele traditionelle Märchen typisch?",
+    "answers": [
+      "Wunderbare Ereignisse werden in der erzählten Welt selbstverständlich behandelt.",
+      "Jede Behauptung wird durch eine wissenschaftliche Messreihe belegt.",
+      "Die Handlung besteht ausschließlich aus echten Gerichtsakten.",
+      "Jede Figur muss eine historisch belegte Person sein."
+    ],
+    "explanation": "Im Märchen können Tiere sprechen oder Gegenstände verzaubert sein, ohne dass die Figuren dies wissenschaftlich erklären müssen. Diese Erzählkonvention gehört zum Wunderbaren.",
+    "source": {
+      "title": "Wikipedia · Märchen",
+      "url": "https://de.wikipedia.org/wiki/M%C3%A4rchen"
+    }
+  },
+  {
+    "id": "lit-drama-buehne",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Ein Text enthält vor allem Figurenreden und Hinweise wie „tritt ein“. Für welches Medium ist er ursprünglich besonders gedacht?",
+    "answers": [
+      "Für eine Aufführung auf der Bühne",
+      "Für eine Wettervorhersage",
+      "Für eine Straßenkarte",
+      "Für eine Bedienungsanleitung"
+    ],
+    "explanation": "Ein Drama ist auf szenische Darstellung angelegt. Neben den gesprochenen Texten können Regieanweisungen Bewegungen, Räume oder Auftritte beschreiben.",
+    "source": {
+      "title": "Wikipedia · Drama",
+      "url": "https://de.wikipedia.org/wiki/Drama"
+    }
+  },
+  {
+    "id": "lit-roman-prosa",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche Beschreibung passt am besten zum üblichen Begriff „Roman“?",
+    "answers": [
+      "Eine umfangreiche erzählende Prosadichtung",
+      "Eine Sammlung alphabetisch geordneter Worterklärungen",
+      "Ein einzelner kurzer Werbeslogan",
+      "Eine ausschließlich aus Noten bestehende Komposition"
+    ],
+    "explanation": "Romane erzählen meist in Prosa von Figuren und Ereignissen über einen größeren Umfang. Es gibt Grenzfälle, doch diese Beschreibung trifft die gebräuchliche Gattungsbedeutung.",
+    "source": {
+      "title": "Wikipedia · Roman",
+      "url": "https://de.wikipedia.org/wiki/Roman"
+    }
+  },
+  {
+    "id": "lit-comic-bildfolge",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie entsteht die Handlung eines Comics typischerweise?",
+    "answers": [
+      "Durch eine geordnete Folge von Bildern, oft zusammen mit Text",
+      "Nur durch eine alphabetische Liste von Figuren",
+      "Nur durch die Farbe des Buchumschlags",
+      "Durch ungeordnete Bilder ohne einen möglichen Zusammenhang"
+    ],
+    "explanation": "Comics nutzen aufeinander bezogene Bilderfolgen. Leserinnen und Leser verbinden einzelne Panels zu zeitlichen oder inhaltlichen Abläufen.",
+    "source": {
+      "title": "Wikipedia · Comic",
+      "url": "https://de.wikipedia.org/wiki/Comic"
+    }
+  },
+  {
+    "id": "lit-autobiografie-leben",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was unterscheidet eine Autobiografie grundsätzlich von einer Biografie über eine andere Person?",
+    "answers": [
+      "Die schreibende Person erzählt vom eigenen Leben.",
+      "Sie muss vollständig in Reimen stehen.",
+      "Sie handelt ausschließlich von erfundenen Planeten.",
+      "Sie enthält grundsätzlich keine Erinnerungen."
+    ],
+    "explanation": "In einer Autobiografie schreibt eine Person über ihr eigenes Leben. Auch dabei werden Erinnerungen ausgewählt und aus einer bestimmten Perspektive geordnet.",
+    "source": {
+      "title": "Wikipedia · Autobiografie",
+      "url": "https://de.wikipedia.org/wiki/Autobiografie"
+    }
+  },
+  {
+    "id": "lit-tagebuch-datum",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welches Merkmal passt besonders zu einem Tagebuch?",
+    "answers": [
+      "Einträge beziehen sich meist auf einzelne Tage oder Zeitpunkte.",
+      "Alle Stichwörter stehen zwingend in alphabetischer Reihenfolge.",
+      "Jeder Eintrag muss eine Bühnenanweisung sein.",
+      "Jeder Text besteht aus genau vierzehn Versen."
+    ],
+    "explanation": "Ein Tagebuch hält Erlebnisse oder Gedanken in zeitlich bezogenen Einträgen fest. Die Nähe zum jeweiligen Erleben unterscheidet es häufig vom späteren zusammenhängenden Rückblick.",
+    "source": {
+      "title": "Wikipedia · Tagebuch",
+      "url": "https://de.wikipedia.org/wiki/Tagebuch"
+    }
+  },
+  {
+    "id": "lit-anthologie-auswahl",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "In einem Buch stehen ausgewählte Gedichte vieler verschiedener Schreibender. Wie nennt man eine solche Sammlung?",
+    "answers": [
+      "Anthologie",
+      "Autobiografie",
+      "Wörterbuch",
+      "Drehbuch"
+    ],
+    "explanation": "Eine Anthologie versammelt ausgewählte Texte, oft unterschiedlicher Autorinnen und Autoren. Die Auswahl kann etwa durch ein Thema, eine Epoche oder eine Textsorte verbunden sein.",
+    "source": {
+      "title": "Wikipedia · Anthologie",
+      "url": "https://de.wikipedia.org/wiki/Anthologie"
+    }
+  },
+  {
+    "id": "lit-protagonist-rolle",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bezeichnet „Protagonist“ in einer Erzählung?",
+    "answers": [
+      "Eine zentrale Hauptfigur",
+      "Immer die Person, die das Buch gedruckt hat",
+      "Ausschließlich eine namenlose Nebenfigur",
+      "Das Inhaltsverzeichnis des Buches"
+    ],
+    "explanation": "Der Protagonist steht im Zentrum eines wesentlichen Handlungsstrangs. Er muss weder moralisch vorbildlich noch mit dem Verfasser identisch sein.",
+    "source": {
+      "title": "Wikipedia · Protagonist",
+      "url": "https://de.wikipedia.org/wiki/Protagonist"
+    }
+  },
+  {
+    "id": "lit-krimi-ermittlung",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welcher Handlungsschwerpunkt passt besonders zu einem Detektivroman?",
+    "answers": [
+      "Die Untersuchung und Aufklärung eines rätselhaften Verbrechens",
+      "Die alphabetische Erklärung von Fremdwörtern",
+      "Die Anleitung zum Stimmen einer Gitarre",
+      "Die tägliche Aufzeichnung von Niederschlagsmengen"
+    ],
+    "explanation": "Im Detektivroman steht die Ermittlung im Vordergrund. Spuren und Aussagen sollen eine zunächst unklare Tat verständlich machen.",
+    "source": {
+      "title": "Wikipedia · Detektivroman",
+      "url": "https://de.wikipedia.org/wiki/Detektivroman"
+    }
+  },
+  {
+    "id": "lit-fantasy-magie",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "In einer erfundenen Welt sind Zauberei und Drachen Teil der Wirklichkeit. Welches Genre liegt besonders nahe?",
+    "answers": [
+      "Fantasy",
+      "Sachlexikon",
+      "Realistischer Laborbericht",
+      "Amtliches Sitzungsprotokoll"
+    ],
+    "explanation": "Fantasy entwirft häufig Welten, in denen übernatürliche Kräfte tatsächlich wirksam sind. Die Regeln dieser Welt können deutlich von alltäglichen Naturgesetzen abweichen.",
+    "source": {
+      "title": "Wikipedia · Fantasy",
+      "url": "https://de.wikipedia.org/wiki/Fantasy"
+    }
+  },
+  {
+    "id": "lit-science-fiction-technik",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Eine Geschichte untersucht, wie eine mögliche neue Technologie das Zusammenleben verändert. Welchem Genre ist dies besonders nah?",
+    "answers": [
+      "Science-Fiction",
+      "Kochbuch",
+      "Reiseführer zu heutigen Öffnungszeiten",
+      "Telefonverzeichnis"
+    ],
+    "explanation": "Science-Fiction denkt mögliche wissenschaftliche oder technische Entwicklungen erzählerisch weiter. Sie muss nicht immer in einer fernen Zukunft spielen.",
+    "source": {
+      "title": "Wikipedia · Science-Fiction",
+      "url": "https://de.wikipedia.org/wiki/Science-Fiction"
+    }
+  },
+  {
+    "id": "lit-sachbuch-ziel",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was ist ein vorrangiges Ziel eines Sachbuchs über Vulkane?",
+    "answers": [
+      "Kenntnisse zu einem realen Gegenstand verständlich vermitteln",
+      "Die Lesenden über einen erfundenen Verlag täuschen",
+      "Ausschließlich Dialoge für eine Theaterprobe liefern",
+      "Eine Tonleiter in Notenschrift darstellen"
+    ],
+    "explanation": "Sachbücher erklären reale Themen für ein bestimmtes Publikum. Sie können anschaulich erzählen, bleiben aber an überprüfbare Informationen gebunden.",
+    "source": {
+      "title": "Wikipedia · Sachbuch",
+      "url": "https://de.wikipedia.org/wiki/Sachbuch"
+    }
+  },
+  {
+    "id": "lit-hoerbuch-format",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was wird bei einem Hörbuch hauptsächlich in einer Tonaufnahme zugänglich gemacht?",
+    "answers": [
+      "Ein gesprochener literarischer oder sachlicher Text",
+      "Nur das Geräusch beim Umblättern",
+      "Ausschließlich die Seitenzahlen eines Buches",
+      "Eine lautlose Bildfolge ohne Sprache"
+    ],
+    "explanation": "Ein Hörbuch vermittelt einen Text durch Vorlesen oder sprecherische Gestaltung. Es kann ungekürzt oder als bearbeitete Fassung erscheinen.",
+    "source": {
+      "title": "Wikipedia · Hörbuch",
+      "url": "https://de.wikipedia.org/wiki/H%C3%B6rbuch"
+    }
+  },
+  {
+    "id": "lit-klappentext-funktion",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wozu dient der Klappentext eines Romans meist?",
+    "answers": [
+      "Einen Eindruck vom Buch geben und Interesse am Lesen wecken",
+      "Die vollständige Handlung mit jedem Detail ersetzen",
+      "Die gesetzliche Steuererklärung des Verlags liefern",
+      "Sämtliche Druckfehler des Buches aufzählen"
+    ],
+    "explanation": "Der Klappentext stellt Inhalt, Thema oder Ton eines Buches knapp vor. Er ist zugleich ein Werbetext und verrät häufig gerade nicht die gesamte Auflösung.",
+    "source": {
+      "title": "Wikipedia · Klappentext",
+      "url": "https://de.wikipedia.org/wiki/Klappentext"
+    }
+  },
+  {
+    "id": "lit-novelle-konzentration",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Beschreibung passt typischerweise zu einer Novelle?",
+    "answers": [
+      "Eine konzentrierte Erzählung mit einem außergewöhnlichen zentralen Ereignis",
+      "Eine vollständige alphabetische Enzyklopädie",
+      "Eine unverbundene Liste sämtlicher Wörter einer Sprache",
+      "Ein Text, der grundsätzlich ohne jedes Ereignis auskommen muss"
+    ],
+    "explanation": "Novellen bündeln ihre Handlung häufig um einen besonderen Konflikt oder eine bemerkenswerte Begebenheit. Die Konzentration unterscheidet sie oft von weit verzweigten Romanhandlungen.",
+    "source": {
+      "title": "Wikipedia · Novelle",
+      "url": "https://de.wikipedia.org/wiki/Novelle"
+    }
+  },
+  {
+    "id": "lit-kurzgeschichte-offenes-ende",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Eine Kurzgeschichte endet, bevor der Konflikt eindeutig gelöst ist. Welche Wirkung kann das bewusst haben?",
+    "answers": [
+      "Die Lesenden müssen mögliche Folgen selbst weiterdenken.",
+      "Die Geschichte gilt deshalb automatisch als unveröffentlicht.",
+      "Alle vorherigen Ereignisse werden dadurch ungeschehen.",
+      "Die letzte Seite muss zwingend verloren gegangen sein."
+    ],
+    "explanation": "Ein offenes Ende kann eine bewusste Erzählentscheidung sein. Es fordert dazu auf, aus dem bisherigen Text mögliche Entwicklungen oder Deutungen abzuleiten.",
+    "source": {
+      "title": "Wikipedia · Kurzgeschichte",
+      "url": "https://de.wikipedia.org/wiki/Kurzgeschichte"
+    }
+  },
+  {
+    "id": "lit-ballade-erzaehlt",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was unterscheidet eine Ballade häufig von einem rein beschreibenden Gedicht?",
+    "answers": [
+      "Sie erzählt in Versen ein Geschehen, oft mit spannungsreichen Szenen.",
+      "Sie darf grundsätzlich keine Figuren enthalten.",
+      "Sie besteht immer aus einem einzigen ungereimten Wort.",
+      "Sie muss ausschließlich Zahlen und Tabellen enthalten."
+    ],
+    "explanation": "Balladen verbinden erzählende Elemente mit der Form eines Gedichts und oft mit dramatischen Szenen. Deshalb werden sie gelegentlich als Verbindung der literarischen Hauptgattungen beschrieben.",
+    "source": {
+      "title": "Wikipedia · Ballade",
+      "url": "https://de.wikipedia.org/wiki/Ballade"
+    }
+  },
+  {
+    "id": "lit-sonett-verse",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Wie viele Verse hat ein Sonett in seiner klassischen Grundform?",
+    "answers": [
+      "14",
+      "10",
+      "12",
+      "16"
+    ],
+    "explanation": "Das klassische Sonett besteht aus vierzehn Versen. Reimschema und innere Gliederung unterscheiden sich je nach Tradition, etwa zwischen italienischen und englischen Formen.",
+    "source": {
+      "title": "Wikipedia · Sonett",
+      "url": "https://de.wikipedia.org/wiki/Sonett"
+    }
+  },
+  {
+    "id": "lit-leitmotiv-gegenstand",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein bestimmter Gegenstand taucht in einem Roman an wichtigen Stellen wieder auf und gewinnt Bedeutung. Welcher Begriff passt?",
+    "answers": [
+      "Leitmotiv",
+      "Druckfehler",
+      "Namensregister",
+      "Fußnote"
+    ],
+    "explanation": "Ein Leitmotiv verbindet wiederkehrende Situationen oder Vorstellungen im Text. Durch seine Wiederholung kann ein Gegenstand über seine unmittelbare Funktion hinaus Bedeutung erhalten.",
+    "source": {
+      "title": "Wikipedia · Leitmotiv",
+      "url": "https://de.wikipedia.org/wiki/Leitmotiv"
+    }
+  },
+  {
+    "id": "lit-rahmenerzaehlung",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Eine Reisende trifft Menschen, die ihr jeweils eigene Geschichten erzählen. Die Begegnungen verbinden diese Geschichten. Was bilden sie?",
+    "answers": [
+      "Eine Rahmenhandlung",
+      "Ein alphabetisches Register",
+      "Eine reine Inhaltsangabe",
+      "Eine Sammlung von Regieanweisungen ohne Handlung"
+    ],
+    "explanation": "Eine Rahmenhandlung umschließt eine oder mehrere Binnenerzählungen. Sie schafft eine erzählte Situation, in der weitere Geschichten vorgetragen werden.",
+    "source": {
+      "title": "Wikipedia · Rahmenerzählung",
+      "url": "https://de.wikipedia.org/wiki/Rahmenerz%C3%A4hlung"
+    }
+  },
+  {
+    "id": "lit-in-medias-res",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein Roman beginnt mitten in einer Verfolgung; die Vorgeschichte erfahren wir später. Wie heißt diese Art des Einstiegs?",
+    "answers": [
+      "In medias res",
+      "Alphabetische Ordnung",
+      "Chronologisches Personenregister",
+      "Bibliografischer Nachweis"
+    ],
+    "explanation": "In medias res bedeutet sinngemäß „mitten in die Dinge“. Ein solcher Einstieg erzeugt häufig unmittelbare Spannung, bevor Hintergründe nachgereicht werden.",
+    "source": {
+      "title": "Wikipedia · In medias res",
+      "url": "https://de.wikipedia.org/wiki/In_medias_res"
+    }
+  },
+  {
+    "id": "lit-bildungsroman-entwicklung",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was steht in einem Bildungsroman besonders im Mittelpunkt?",
+    "answers": [
+      "Die geistige und persönliche Entwicklung einer Hauptfigur",
+      "Die Herstellung des Papiers in einer Druckerei",
+      "Die vollständige Beschreibung aller Schulen eines Landes",
+      "Ein Verzeichnis ohne erzählte Figurenentwicklung"
+    ],
+    "explanation": "Der Bildungsroman verfolgt, wie eine Figur Erfahrungen verarbeitet und sich zu ihrer Umwelt verhält. Gemeint ist mehr als der bloße Besuch einer Bildungseinrichtung.",
+    "source": {
+      "title": "Wikipedia · Bildungsroman",
+      "url": "https://de.wikipedia.org/wiki/Bildungsroman"
+    }
+  },
+  {
+    "id": "lit-briefroman-form",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein Roman besteht überwiegend aus Briefen seiner Figuren. Welche Bezeichnung passt?",
+    "answers": [
+      "Briefroman",
+      "Bühnenkomödie",
+      "Wörterbuchroman im alphabetischen Sinn",
+      "Reines Regiebuch"
+    ],
+    "explanation": "Im Briefroman vermitteln die Briefe das Geschehen und die Sichtweisen der Schreibenden. Wissensunterschiede zwischen den Figuren können dabei die Spannung prägen.",
+    "source": {
+      "title": "Wikipedia · Briefroman",
+      "url": "https://de.wikipedia.org/wiki/Briefroman"
+    }
+  },
+  {
+    "id": "lit-dystopie-gesellschaft",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Eine erfundene Gesellschaft ist von umfassender Überwachung und Unterdrückung geprägt. Welche Gattungsbezeichnung passt besonders?",
+    "answers": [
+      "Dystopie",
+      "Idylle",
+      "Autobiografie",
+      "Reine Gebrauchsanweisung"
+    ],
+    "explanation": "Dystopien entwerfen bedrohliche gesellschaftliche Ordnungen. Sie können Entwicklungen der Gegenwart zuspitzen und dadurch zur kritischen Auseinandersetzung anregen.",
+    "source": {
+      "title": "Wikipedia · Dystopie",
+      "url": "https://de.wikipedia.org/wiki/Dystopie"
+    }
+  },
+  {
+    "id": "lit-utopie-gesellschaft",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein Text entwirft eine erfundene, als vorbildlich gedachte Gesellschaftsordnung. Welche Bezeichnung liegt nahe?",
+    "answers": [
+      "Utopie",
+      "Kriminalprotokoll",
+      "Naturwissenschaftlicher Messbericht",
+      "Buchhandelsrechnung"
+    ],
+    "explanation": "Eine Utopie stellt eine gedachte gesellschaftliche Ordnung dar, die als Alternative zur bestehenden Welt gelesen werden kann. Ob dieses Modell überzeugend ist, bleibt eine Frage der kritischen Prüfung.",
+    "source": {
+      "title": "Wikipedia · Utopie",
+      "url": "https://de.wikipedia.org/wiki/Utopie"
+    }
+  },
+  {
+    "id": "lit-historischer-roman",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was ist für einen historischen Roman kennzeichnend?",
+    "answers": [
+      "Eine erfundene Handlung ist in eine erkennbare vergangene Epoche eingebettet.",
+      "Jede Figur muss exakt so in einer erhaltenen Urkunde stehen.",
+      "Er darf keine erfundenen Gespräche enthalten.",
+      "Er ist immer ein unveränderter Originalbericht aus der erzählten Zeit."
+    ],
+    "explanation": "Historische Romane verbinden fiktionales Erzählen mit einer vergangenen geschichtlichen Welt. Sie sind deshalb keine unmittelbaren historischen Quellen für alle dargestellten Einzelheiten.",
+    "source": {
+      "title": "Wikipedia · Historischer Roman",
+      "url": "https://de.wikipedia.org/wiki/Historischer_Roman"
+    }
+  },
+  {
+    "id": "lit-bewusstseinsstrom",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein Text folgt sprunghaft den Erinnerungen, Sinneseindrücken und Assoziationen einer Figur. Welche Technik passt besonders?",
+    "answers": [
+      "Bewusstseinsstrom",
+      "Alphabetische Aufzählung",
+      "Regiebuch ohne Figurenrede",
+      "Sachliches Literaturverzeichnis"
+    ],
+    "explanation": "Der Bewusstseinsstrom versucht, die Bewegung von Gedanken und Wahrnehmungen sprachlich erfahrbar zu machen. Die Folge muss deshalb nicht einer ordentlich erklärten äußeren Chronologie entsprechen.",
+    "source": {
+      "title": "Wikipedia · Bewusstseinsstrom",
+      "url": "https://de.wikipedia.org/wiki/Bewusstseinsstrom"
+    }
+  },
+  {
+    "id": "lit-satire-gesellschaftskritik",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein Text übertreibt gesellschaftliche Missstände, um sie kritisierbar zu machen. Welche Schreibweise passt besonders?",
+    "answers": [
+      "Satire",
+      "Neutrales Personenregister",
+      "Wörtliche Abschrift ohne Gestaltung",
+      "Bibliografie"
+    ],
+    "explanation": "Satire verbindet eine kritische Absicht mit verfremdender oder zuspitzender Darstellung. Übertreibung und Komik können helfen, Widersprüche sichtbar zu machen.",
+    "source": {
+      "title": "Wikipedia · Satire",
+      "url": "https://de.wikipedia.org/wiki/Satire"
+    }
+  },
+  {
+    "id": "lit-epilog-position",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein kurzer Schlussteil erzählt, wie es Figuren nach der Haupthandlung ergeht. Wie nennt man einen solchen Nachklang?",
+    "answers": [
+      "Epilog",
+      "Prolog",
+      "Titelblatt",
+      "Inhaltsverzeichnis"
+    ],
+    "explanation": "Ein Epilog steht nach der eigentlichen Haupthandlung. Er kann einen Ausblick geben oder die vorher erzählten Ereignisse rückblickend einordnen.",
+    "source": {
+      "title": "Wikipedia · Epilog",
+      "url": "https://de.wikipedia.org/wiki/Epilog"
+    }
+  },
+  {
+    "id": "lit-vorausdeutung",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Die Erzählung erwähnt schon jetzt, dass eine Figur Jahre später zurückkehren wird. Was geschieht mit der zeitlichen Reihenfolge?",
+    "answers": [
+      "Ein späteres Ereignis wird vorweggenommen.",
+      "Ein früheres Ereignis wird als Rückblende nachgetragen.",
+      "Die Handlung wird ohne Zeitfortschritt nur beschrieben.",
+      "Die erzählte Welt wechselt vom Roman zur Aufführung."
+    ],
+    "explanation": "Eine Vorausdeutung oder Prolepse greift einem späteren Ereignis vor. Sie kann Erwartungen aufbauen, obwohl ihre Bedeutung erst im weiteren Verlauf klar wird.",
+    "source": {
+      "title": "Wikipedia · Erzähltheorie",
+      "url": "https://de.wikipedia.org/wiki/Erz%C3%A4hltheorie"
+    }
+  },
+  {
+    "id": "lit-zeitraffung",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "„Drei Jahre vergingen, bis sie wieder miteinander sprachen.“ Welches Verhältnis von Textumfang und erzählter Zeit liegt hier nahe?",
+    "answers": [
+      "Zeitraffung",
+      "Zeitdeckung",
+      "Erzählpause",
+      "Zeitdehnung"
+    ],
+    "explanation": "Bei Zeitraffung fasst wenig Text einen vergleichsweise langen Zeitraum zusammen. Der Text kann so zwischen ausführlich erzählten Szenen größere Zeitabschnitte überbrücken.",
+    "source": {
+      "title": "Wikipedia · Erzähltempo",
+      "url": "https://de.wikipedia.org/wiki/Erz%C3%A4hltempo"
+    }
+  },
+  {
+    "id": "lit-zeitdeckung-dialog",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein kurzer Dialog wird mit allen unmittelbar aufeinanderfolgenden Äußerungen wiedergegeben. Welche Zeitgestaltung liegt am ehesten vor?",
+    "answers": [
+      "Zeitdeckung: Erzählzeit und erzählte Zeit sind ungefähr gleich lang.",
+      "Zeitraffung: Viele Jahre werden in einem Satz übersprungen.",
+      "Erzählpause: In der erzählten Welt vergeht überhaupt keine Zeit.",
+      "Rückblende: Die Handlung wechselt zwingend in eine frühere Epoche."
+    ],
+    "explanation": "Szenisch wiedergegebene Gespräche können annähernd zeitdeckend sein. Das Lesen der Äußerungen dauert dann ungefähr so lange wie das dargestellte Gespräch.",
+    "source": {
+      "title": "Wikipedia · Erzähltempo",
+      "url": "https://de.wikipedia.org/wiki/Erz%C3%A4hltempo"
+    }
+  },
+  {
+    "id": "lit-erzaehlpause",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Die Handlung steht still, während der Text ausführlich einen Raum beschreibt. Welche Zeitgestaltung ist das im idealisierten Fall?",
+    "answers": [
+      "Erzählpause",
+      "Zeitdeckung",
+      "Ellipse als Zeitsprung",
+      "Zeitraffung über mehrere Jahre"
+    ],
+    "explanation": "In einer Erzählpause läuft der Text weiter, ohne dass die eigentliche Handlung zeitlich voranschreitet. Sie unterscheidet sich damit vom Überspringen eines nicht erzählten Zeitabschnitts.",
+    "source": {
+      "title": "Wikipedia · Erzähltempo",
+      "url": "https://de.wikipedia.org/wiki/Erz%C3%A4hltempo"
+    }
+  },
+  {
+    "id": "lit-leerstelle-lesen",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein Roman sagt nicht ausdrücklich, warum eine Figur schweigt; mehrere Textsignale geben Hinweise. Was verlangt diese Leerstelle von Lesenden?",
+    "answers": [
+      "Hinweise zu begründeten Deutungen verbinden, ohne Beliebiges zu behaupten",
+      "Die fehlende Erklärung stets als Druckfehler behandeln",
+      "Eine einzige private Vermutung unabhängig vom Text zur Tatsache erklären",
+      "Den gesamten Text für bedeutungslos halten, solange kein Motiv genannt wird"
+    ],
+    "explanation": "Leerstellen lassen Zusammenhänge unausgesprochen und fordern eine aktive Lektüre. Gute Deutungen bleiben dennoch an Hinweise und Widersprüche im Text gebunden.",
+    "source": {
+      "title": "Wikipedia · Leerstelle (Literatur)",
+      "url": "https://de.wikipedia.org/wiki/Leerstelle_(Literatur)"
+    }
+  },
+  {
+    "id": "lit-offenes-drama",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein Drama wechselt häufig Ort und Zeit; einzelne Szenen stehen relativ selbstständig nebeneinander. Welcher Bauform entspricht das eher?",
+    "answers": [
+      "Offene Form des Dramas",
+      "Streng geschlossene Form mit einheitlichem Handlungsbogen",
+      "Ein ausschließlich lyrisches Sonett",
+      "Ein alphabetisch gegliedertes Sachlexikon"
+    ],
+    "explanation": "Offene Dramen können ihre Handlung durch selbstständigere Szenen, Sprünge und wechselnde Schauplätze organisieren. Das ist ein Strukturmerkmal, kein automatisches Qualitätsurteil.",
+    "source": {
+      "title": "Wikipedia · Offene und geschlossene Form im Drama",
+      "url": "https://de.wikipedia.org/wiki/Offene_und_geschlossene_Form_im_Drama"
+    }
+  },
+  {
+    "id": "lit-freytag-pyramide",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Im klassischen Fünfaktschema nach Freytag steht nach dem Höhepunkt eine Gegenbewegung. Welche Funktion gehört typischerweise dazu?",
+    "answers": [
+      "Die Handlung fällt in Richtung einer Auflösung oder Katastrophe.",
+      "Die Exposition stellt erstmals alle Ausgangsbedingungen vor.",
+      "Der Text muss nun zwingend in einen Briefroman wechseln.",
+      "Der Konflikt beginnt erst nach der letzten Szene."
+    ],
+    "explanation": "Freytags Modell beschreibt einen idealtypischen Aufbau bestimmter Dramen. Nach dem Höhepunkt führt die fallende Handlung zur Entscheidung; viele Dramen folgen diesem Schema jedoch nicht.",
+    "source": {
+      "title": "Wikipedia · Gustav Freytag",
+      "url": "https://de.wikipedia.org/wiki/Gustav_Freytag"
+    }
+  },
+  {
+    "id": "lit-tragischer-pflichtenkonflikt",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine Figur muss zwischen zwei begründeten Pflichten wählen und verletzt mit jeder Entscheidung eine davon. Was macht den Konflikt tragisch?",
+    "answers": [
+      "Es gibt innerhalb dieser Lage keine vollständig schuldlose Lösung.",
+      "Die Figur kennt bereits eine konfliktfreie Lösung, handelt aber nur zu langsam.",
+      "Jeder Pflichtenkonflikt lässt sich allein durch zusätzliche Sachinformationen auflösen.",
+      "Eine der beiden Pflichten muss schon deshalb völlig unbegründet sein, weil die andere berechtigt ist."
+    ],
+    "explanation": "Tragik kann aus einem Gegensatz entstehen, in dem berechtigte Ansprüche nicht zugleich erfüllt werden können. Eine einfache Einteilung in eine vollkommen gute und eine vollkommen böse Seite greift dann zu kurz.",
+    "source": {
+      "title": "Wikipedia · Tragödie",
+      "url": "https://de.wikipedia.org/wiki/Trag%C3%B6die"
+    }
+  },
+  {
+    "id": "lit-metatheater",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "In einem Theaterstück führen Figuren selbst ein Stück auf, das ihre eigene Situation spiegelt. Welcher Effekt wird dadurch besonders möglich?",
+    "answers": [
+      "Das Theater reflektiert seine eigene Darstellung und Rollen.",
+      "Die Aufführung belegt dadurch bereits die historische Echtheit aller dargestellten Ereignisse.",
+      "Das innere Stück hebt die Unterscheidung zwischen realem Publikum und Figuren automatisch auf.",
+      "Die äußere Handlung verliert damit grundsätzlich jeden Bezug zum inneren Stück."
+    ],
+    "explanation": "Ein Spiel im Spiel kann die Beziehung zwischen Rolle, Darstellung und Wirklichkeit sichtbar machen. Solche selbstbezüglichen Verfahren werden dem Metatheater zugeordnet.",
+    "source": {
+      "title": "Wikipedia · Metatheater",
+      "url": "https://de.wikipedia.org/wiki/Metatheater"
+    }
+  },
+  {
+    "id": "lit-rezeptionsgeschichte",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Derselbe Roman wird in verschiedenen Epochen sehr unterschiedlich beurteilt. Was untersucht seine Rezeptionsgeschichte?",
+    "answers": [
+      "Wie Lesende und Öffentlichkeit das Werk aufgenommen und gedeutet haben",
+      "Wie sich der Wortlaut zwischen verschiedenen erhaltenen Handschriften unterscheidet",
+      "Wie das Werk vor seiner Veröffentlichung aus Entwürfen entstanden ist",
+      "Wie ein einzelner Verlag seine Buchpreise kaufmännisch kalkuliert hat"
+    ],
+    "explanation": "Rezeptionsgeschichte betrachtet die wechselnde Aufnahme eines Werkes. Neue gesellschaftliche Fragen können andere Aspekte eines unveränderten Textes in den Vordergrund rücken.",
+    "source": {
+      "title": "Wikipedia · Rezeptionsgeschichte",
+      "url": "https://de.wikipedia.org/wiki/Rezeptionsgeschichte"
+    }
+  },
+  {
+    "id": "lit-autor-erzaehler",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein Roman ist in der Ich-Form geschrieben. Welche Schlussfolgerung wäre ohne weitere Belege unzulässig?",
+    "answers": [
+      "Alle geschilderten Erlebnisse seien genau so dem Verfasser selbst passiert.",
+      "Der Text vermittle das Geschehen durch eine erzählende Instanz.",
+      "Zwischen erzählter Welt und tatsächlicher Entstehung müsse unterschieden werden.",
+      "Die Ich-Form könne ein bewusst gewähltes fiktionales Verfahren sein."
+    ],
+    "explanation": "Ein Ich-Erzähler ist zunächst eine Instanz des Textes. Die Gleichsetzung mit der realen schreibenden Person braucht zusätzliche Belege und ist nicht schon durch das Wort „ich“ bewiesen.",
+    "source": {
+      "title": "Wikipedia · Erzähler",
+      "url": "https://de.wikipedia.org/wiki/Erz%C3%A4hler"
+    }
+  },
+  {
+    "id": "lit-paratext-vorwort",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein Vorwort kündigt einen Roman als „wahre Begebenheit“ an. Warum kann diese Rahmung für die Lektüre wichtig sein?",
+    "answers": [
+      "Sie lenkt Erwartungen an den Text, ohne die Wahrheit jedes Details zu beweisen.",
+      "Sie beweist bereits allein durch die Behauptung die Tatsächlichkeit aller Szenen.",
+      "Sie macht sämtliche fiktionalen Figuren automatisch zu historisch nachgewiesenen Personen.",
+      "Sie gehört notwendig zur erzählten Welt und kann deshalb nicht die Leseerwartung steuern."
+    ],
+    "explanation": "Vorworte, Titel und ähnliche Rahmungen werden als Paratexte untersucht. Sie beeinflussen den Zugang zum Werk, sind aber kein pauschaler Beweis für alle Aussagen der Erzählung.",
+    "source": {
+      "title": "Wikipedia · Paratext",
+      "url": "https://de.wikipedia.org/wiki/Paratext"
+    }
+  },
+  {
+    "id": "lit-detektiv-faire-hinweise",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "In einem Rätselkrimi erscheint die entscheidende Lösung erst durch eine zuvor völlig unbekannte Person und Information. Welche Kritik an der Rätselkonstruktion liegt nahe?",
+    "answers": [
+      "Die Lesenden konnten die Lösung aus den verfügbaren Hinweisen kaum selbst erschließen.",
+      "Es wurden zu viele entscheidende Hinweise früh und nachvollziehbar miteinander verknüpft.",
+      "Die Ermittlung wurde vollständig durch ein offengelegtes, logisch zwingendes Indiziennetz gelöst.",
+      "Jede überraschende Auflösung verletzt unabhängig von ihrer Vorbereitung dieselbe Erwartung."
+    ],
+    "explanation": "Beim fair angelegten Detektivrätsel sollen wesentliche Hinweise grundsätzlich zugänglich sein. Die Kritik betrifft diese Gattungserwartung und verbietet nicht jede erzählerische Überraschung.",
+    "source": {
+      "title": "Wikipedia · Detektivroman",
+      "url": "https://de.wikipedia.org/wiki/Detektivroman"
+    }
+  },
+  {
+    "id": "lit-polyphonie-roman",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Mehrere Figuren vertreten eigenständige, gegeneinander nicht endgültig aufgelöste Weltdeutungen. Was meint „Polyphonie“ beim Roman besonders?",
+    "answers": [
+      "Ein Nebeneinander eigenständiger Stimmen und Perspektiven",
+      "Alle Figuren bestätigen letztlich nur eine unangefochtene und einheitliche Autorposition.",
+      "Mehrere grammatische Zeitformen wechseln, unabhängig von unterschiedlichen Weltdeutungen.",
+      "Jeder Abschnitt muss tatsächlich von einer anderen realen Person verfasst worden sein."
+    ],
+    "explanation": "Der Begriff Polyphonie bezeichnet in der Romantheorie eine Vielfalt eigenständiger Stimmen. Gemeint ist nicht einfach nur eine große Zahl auftretender Personen.",
+    "source": {
+      "title": "Wikipedia · Michail Michailowitsch Bachtin",
+      "url": "https://de.wikipedia.org/wiki/Michail_Michailowitsch_Bachtin"
+    }
+  },
+  {
+    "id": "lit-parodie-vorbild",
+    "category": "Literatur",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein Text übernimmt erkennbar typische Formen eines bekannten Genres und verändert sie komisch. Was ist daran parodistisch?",
+    "answers": [
+      "Das erkennbare Vorbild wird durch die verändernde Nachahmung zum Gegenstand des Spiels.",
+      "Das Vorbild soll als möglichst unauffällige, unveränderte Vorlage ohne neue Wirkung fortgeführt werden.",
+      "Die Darstellung erhält ihren parodistischen Charakter allein durch eine spätere Jahreszahl.",
+      "Das bekannte Genre muss vollständig unkenntlich gemacht werden, damit kein Vergleich möglich ist."
+    ],
+    "explanation": "Parodie braucht ein wiedererkennbares Vorbild oder Muster, das umgestaltet wird. Sie kann mit Satire verbunden sein, muss aber nicht jede gesellschaftskritische Absicht teilen.",
+    "source": {
+      "title": "Wikipedia · Parodie",
+      "url": "https://de.wikipedia.org/wiki/Parodie"
+    }
+  },
+  {
+    "id": "music-geige-streichinstrument",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Zu welcher Instrumentengruppe gehört eine Geige?",
+    "answers": [
+      "Streichinstrumente",
+      "Blechblasinstrumente",
+      "Holzblasinstrumente",
+      "Schlaginstrumente ohne Saiten"
+    ],
+    "explanation": "Bei der Geige erzeugen schwingende Saiten den Ton, meist angestrichen mit einem Bogen. Deshalb zählt sie zu den Streichinstrumenten.",
+    "source": {
+      "title": "Wikipedia · Violine",
+      "url": "https://de.wikipedia.org/wiki/Violine"
+    }
+  },
+  {
+    "id": "music-klarinette-holzblasinstrument",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Zu welcher Instrumentenfamilie gehört eine Klarinette?",
+    "answers": [
+      "Holzblasinstrumente",
+      "Blechblasinstrumente",
+      "Tasteninstrumente",
+      "Streichinstrumente"
+    ],
+    "explanation": "Die Klarinette gehört zu den Holzblasinstrumenten und verwendet ein einfaches Rohrblatt. Die Einteilung richtet sich nach der Bau- und Tonerzeugungstradition, nicht nur nach dem Material des Körpers.",
+    "source": {
+      "title": "Wikipedia · Klarinette",
+      "url": "https://de.wikipedia.org/wiki/Klarinette"
+    }
+  },
+  {
+    "id": "music-klavier-saiten",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was gerät in einem akustischen Klavier hauptsächlich in Schwingung, wenn eine Taste angeschlagen wird?",
+    "answers": [
+      "Saiten, die durch Hämmer angeregt werden",
+      "Eine angeblasene Rohrblattzunge",
+      "Nur Luft in einer offenen Flötenröhre",
+      "Ein über eine Öffnung gezogenes Trommelfell"
+    ],
+    "explanation": "Beim akustischen Klavier setzt die Taste einen Mechanismus in Gang, der einen Hammer gegen Saiten bewegt. Die Saitenschwingungen werden über den Resonanzboden hörbar verstärkt.",
+    "source": {
+      "title": "Wikipedia · Klavier",
+      "url": "https://de.wikipedia.org/wiki/Klavier"
+    }
+  },
+  {
+    "id": "music-trommel-membran",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was schwingt bei einer üblichen Trommel hauptsächlich, wenn man auf das Fell schlägt?",
+    "answers": [
+      "Eine gespannte Membran",
+      "Eine gestrichene Saite",
+      "Ein angeblasenes Doppelrohrblatt",
+      "Eine Klaviertaste als Tonzunge"
+    ],
+    "explanation": "Bei einer Trommel wird eine gespannte Membran in Schwingung versetzt. Der Korpus und die eingeschlossene Luft beeinflussen den Klang zusätzlich.",
+    "source": {
+      "title": "Wikipedia · Trommel",
+      "url": "https://de.wikipedia.org/wiki/Trommel"
+    }
+  },
+  {
+    "id": "music-quartett-anzahl",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie viele Ausführende gehören zu einem musikalischen Quartett?",
+    "answers": [
+      "Vier",
+      "Zwei",
+      "Drei",
+      "Fünf"
+    ],
+    "explanation": "Ein Quartett besteht aus vier Ausführenden oder vier selbstständigen Stimmen. Die Bezeichnung kann auch ein Werk für eine solche Besetzung meinen.",
+    "source": {
+      "title": "Wikipedia · Quartett",
+      "url": "https://de.wikipedia.org/wiki/Quartett"
+    }
+  },
+  {
+    "id": "music-chor-stimmen",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was ist ein Chor im üblichen musikalischen Sinn?",
+    "answers": [
+      "Eine Gruppe gemeinsam singender Menschen",
+      "Eine einzelne unbegleitete Trommel",
+      "Eine Spielanweisung zum besonders schnellen Tempo",
+      "Ein Instrument mit genau vier Tasten"
+    ],
+    "explanation": "Ein Chor ist ein Gesangsensemble, häufig mit mehreren Stimmgruppen. Seine Besetzung und Größe können stark variieren.",
+    "source": {
+      "title": "Wikipedia · Chor (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Chor_(Musik)"
+    }
+  },
+  {
+    "id": "music-dirigieren-funktion",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welche Aufgabe hat das Dirigieren eines Orchesters besonders?",
+    "answers": [
+      "Einsätze, Tempo und gemeinsame Gestaltung koordinieren",
+      "Während der Aufführung jedes Instrument selbst spielen",
+      "Die Notenblätter durch neue Texte ersetzen",
+      "Die Lautsprecher durch reine Handbewegungen mit Strom versorgen"
+    ],
+    "explanation": "Dirigierende geben Impulse für zeitliche Abläufe und musikalische Gestaltung. Diese Zeichen ergänzen die vorbereitete Arbeit des Ensembles.",
+    "source": {
+      "title": "Wikipedia · Dirigent",
+      "url": "https://de.wikipedia.org/wiki/Dirigent"
+    }
+  },
+  {
+    "id": "music-tempo-geschwindigkeit",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bezeichnet das Tempo eines Musikstücks?",
+    "answers": [
+      "Die Geschwindigkeit seines zeitlichen Ablaufs",
+      "Die Anzahl der Zuhörenden",
+      "Die Farbe der verwendeten Instrumente",
+      "Die Höhe des Eintrittspreises"
+    ],
+    "explanation": "Tempo beschreibt, wie schnell die musikalischen Zeitwerte ablaufen. Es wird etwa durch Wörter oder eine Anzahl von Schlägen pro Minute angegeben.",
+    "source": {
+      "title": "Wikipedia · Tempo (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Tempo_(Musik)"
+    }
+  },
+  {
+    "id": "music-dynamik-lautstaerke",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Worauf beziehen sich Angaben wie piano und forte in der Musik hauptsächlich?",
+    "answers": [
+      "Auf die Lautstärke und ihre Gestaltung",
+      "Auf die Farbe des Bühnenlichts",
+      "Auf die Zahl der Seiten eines Buches",
+      "Auf die Nationalität des Orchesters"
+    ],
+    "explanation": "Piano und forte sind dynamische Angaben für leises beziehungsweise lautes Musizieren. Dynamik umfasst auch Veränderungen der Lautstärke innerhalb eines Stücks.",
+    "source": {
+      "title": "Wikipedia · Dynamik (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Dynamik_(Musik)"
+    }
+  },
+  {
+    "id": "music-instrumental-ohne-gesang",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bedeutet „Instrumentalmusik“?",
+    "answers": [
+      "Musik, deren musikalische Stimmen von Instrumenten statt von Gesang getragen werden",
+      "Musik, die nur aus gesprochenen Bühnenanweisungen besteht",
+      "Jede Aufnahme mit einer besonders langen Titelliste",
+      "Ein ausschließlich unbegleiteter Chor"
+    ],
+    "explanation": "Instrumentalmusik wird für Instrumente gestaltet. Das unterscheidet sie grundsätzlich von Vokalmusik, bei der Gesangsstimmen den musikalischen Satz tragen.",
+    "source": {
+      "title": "Wikipedia · Instrumentalmusik",
+      "url": "https://de.wikipedia.org/wiki/Instrumentalmusik"
+    }
+  },
+  {
+    "id": "music-solo-hervortreten",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Eine Geigerin tritt mit einer eigenen Melodie vor das begleitende Orchester. Welche Rolle übernimmt sie in diesem Abschnitt?",
+    "answers": [
+      "Eine Solopartie",
+      "Die gesamte Chorgruppe",
+      "Das Publikum",
+      "Eine reine Seitenwendefunktion"
+    ],
+    "explanation": "Eine Solopartie lässt eine einzelne Stimme hervortreten. Ein Solo kann dabei durchaus von anderen Musizierenden begleitet werden.",
+    "source": {
+      "title": "Wikipedia · Solo (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Solo_(Musik)"
+    }
+  },
+  {
+    "id": "music-duett-zwei",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Was bedeutet „Duett“ im musikalischen Zusammenhang?",
+    "answers": [
+      "Ein Stück oder Abschnitt für zwei Ausführende beziehungsweise zwei Hauptstimmen",
+      "Eine Komposition für genau zwölf Orchester",
+      "Ein verbindlich vorgegebenes Tempo von 200 Schlägen pro Minute",
+      "Ein Lied ohne jede Stimme"
+    ],
+    "explanation": "Ein Duett verbindet zwei musikalische Stimmen oder Ausführende. Begleitinstrumente können je nach Werk zusätzlich hinzukommen.",
+    "source": {
+      "title": "Wikipedia · Duett",
+      "url": "https://de.wikipedia.org/wiki/Duett"
+    }
+  },
+  {
+    "id": "music-refrain-wiederkehr",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Welcher Teil eines Popsongs kehrt häufig mit weitgehend gleichem Text und gleicher Melodie wieder?",
+    "answers": [
+      "Der Refrain",
+      "Der einmalige Ansagetext vor der Aufnahme",
+      "Die Katalognummer des Tonträgers",
+      "Das gedruckte Impressum"
+    ],
+    "explanation": "Ein Refrain bildet einen wiederkehrenden Abschnitt eines Liedes. Er kann dadurch besonders einprägsam sein und einzelne Strophen miteinander verbinden.",
+    "source": {
+      "title": "Wikipedia · Refrain",
+      "url": "https://de.wikipedia.org/wiki/Refrain"
+    }
+  },
+  {
+    "id": "music-notensystem-linien",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie viele Linien hat ein übliches Notensystem der heutigen westlichen Notenschrift?",
+    "answers": [
+      "Fünf",
+      "Drei",
+      "Vier",
+      "Sechs"
+    ],
+    "explanation": "Das heute übliche Notensystem besitzt fünf Linien. Höhere und tiefere Töne können mit zusätzlichen Hilfslinien notiert werden.",
+    "source": {
+      "title": "Wikipedia · Notensystem (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Notensystem_(Musik)"
+    }
+  },
+  {
+    "id": "music-vier-viertel-takt",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 1,
+    "prompt": "Wie viele Viertelnotenwerte passen in einen vollständigen 4/4-Takt?",
+    "answers": [
+      "Vier",
+      "Zwei",
+      "Drei",
+      "Acht"
+    ],
+    "explanation": "Die obere Zahl nennt hier vier Zähleinheiten, die untere die Viertelnote als Einheit. Andere Noten- und Pausenwerte können diese Gesamtdauer ebenfalls ausfüllen.",
+    "source": {
+      "title": "Wikipedia · Takt (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Takt_(Musik)"
+    }
+  },
+  {
+    "id": "music-dreiklang-toene",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Wie viele verschiedene Tonhöhenklassen enthält ein einfacher Dreiklang grundsätzlich?",
+    "answers": [
+      "Drei",
+      "Zwei",
+      "Vier",
+      "Fünf"
+    ],
+    "explanation": "Ein Dreiklang besteht aus drei Tönen, die in seiner Grundform terzweise übereinanderliegen. Verdopplungen einzelner Töne ändern den zugrunde liegenden Akkordtyp nicht.",
+    "source": {
+      "title": "Wikipedia · Dreiklang",
+      "url": "https://de.wikipedia.org/wiki/Dreiklang"
+    }
+  },
+  {
+    "id": "music-dur-dreiklang",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Terzschichtung bildet einen Dur-Dreiklang in Grundstellung von unten nach oben?",
+    "answers": [
+      "Große Terz, dann kleine Terz",
+      "Kleine Terz, dann große Terz",
+      "Zwei kleine Terzen",
+      "Zwei große Terzen"
+    ],
+    "explanation": "Beim Dur-Dreiklang liegt zwischen Grundton und Terz eine große Terz. Die nächste Terz ist klein, sodass die Außentöne eine reine Quinte bilden.",
+    "source": {
+      "title": "Wikipedia · Dur-Dreiklang",
+      "url": "https://de.wikipedia.org/wiki/Dur-Dreiklang"
+    }
+  },
+  {
+    "id": "music-parallele-tonart",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Welche Molltonart ist in der gebräuchlichen deutschen Terminologie die Paralleltonart zu C-Dur?",
+    "answers": [
+      "a-Moll",
+      "c-Moll",
+      "d-Moll",
+      "e-Moll"
+    ],
+    "explanation": "C-Dur und a-Moll besitzen dieselbe Vorzeichnung ohne Kreuze oder Be. c-Moll hat zwar denselben Grundton wie C-Dur, ist aber nicht dessen Paralleltonart.",
+    "source": {
+      "title": "Wikipedia · Paralleltonart",
+      "url": "https://de.wikipedia.org/wiki/Paralleltonart"
+    }
+  },
+  {
+    "id": "music-oktave-frequenz",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein Ton hat 220 Hz. Welche Frequenz hat der Ton eine reine Oktave darüber?",
+    "answers": [
+      "440 Hz",
+      "110 Hz",
+      "330 Hz",
+      "660 Hz"
+    ],
+    "explanation": "Bei einer reinen Oktave steht die höhere Frequenz zur tieferen im Verhältnis 2 zu 1. 440 Hz ist daher eine Oktave über 220 Hz.",
+    "source": {
+      "title": "Wikipedia · Oktave",
+      "url": "https://de.wikipedia.org/wiki/Oktave"
+    }
+  },
+  {
+    "id": "music-gleichstufig-halbtoene",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "In wie viele gleich große Halbtonschritte teilt die übliche gleichstufige Stimmung eine Oktave?",
+    "answers": [
+      "Zwölf",
+      "Sieben",
+      "Acht",
+      "Zehn"
+    ],
+    "explanation": "Die gleichstufige Stimmung teilt die Oktave in zwölf gleiche Frequenzverhältnisse. Dadurch lassen sich Tonarten wechseln, ohne jede Tonhöhe neu stimmen zu müssen.",
+    "source": {
+      "title": "Wikipedia · Gleichstufige Stimmung",
+      "url": "https://de.wikipedia.org/wiki/Gleichstufige_Stimmung"
+    }
+  },
+  {
+    "id": "music-synkope-betonung",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein eigentlich schwacher Taktteil wird betont und über einen stärkeren hinweg gehalten. Welcher rhythmische Effekt liegt nahe?",
+    "answers": [
+      "Synkope",
+      "Fermate als vollständiger Tempowechsel",
+      "Unisono",
+      "Staccato als Tonhöhenwechsel"
+    ],
+    "explanation": "Eine Synkope verschiebt die erwartete Betonungsordnung. Sie kann etwa durch einen betonten Einsatz auf einer schwachen Zählzeit mit anschließender Überbindung entstehen.",
+    "source": {
+      "title": "Wikipedia · Synkope (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Synkope_(Musik)"
+    }
+  },
+  {
+    "id": "music-a-cappella",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was bedeutet die heute gebräuchliche Angabe „a cappella“ bei einer Gesangsgruppe?",
+    "answers": [
+      "Gesang ohne Instrumentalbegleitung",
+      "Gesang nur mit sehr vielen Schlaginstrumenten",
+      "Ausschließlich besonders leises Singen",
+      "Ein Sololied mit verpflichtender Klavierbegleitung"
+    ],
+    "explanation": "A cappella bezeichnet heute normalerweise unbegleiteten Gesang. Mehrere Gesangsstimmen können dabei selbst einen vollständigen musikalischen Satz bilden.",
+    "source": {
+      "title": "Wikipedia · A cappella",
+      "url": "https://de.wikipedia.org/wiki/A_cappella"
+    }
+  },
+  {
+    "id": "music-fuge-imitative-stimmen",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein Thema setzt nacheinander in verschiedenen selbstständigen Stimmen ein und wird weiter verarbeitet. Welche Form liegt besonders nahe?",
+    "answers": [
+      "Fuge",
+      "Ein unstrukturierter Applaus",
+      "Ein einstimmiger Sprechtext ohne Wiederaufnahme",
+      "Eine reine Lautstärkenangabe"
+    ],
+    "explanation": "Die Fuge verwendet ein Thema, das in verschiedenen Stimmen auftritt und kontrapunktisch verarbeitet wird. Die Stimmen bleiben dabei nicht bloß eine einzige gemeinsam verdoppelte Melodie.",
+    "source": {
+      "title": "Wikipedia · Fuge (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Fuge_(Musik)"
+    }
+  },
+  {
+    "id": "music-kanon-versetzter-einsatz",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Mehrere Gruppen singen dieselbe Melodie mit zeitlich versetzten Einsätzen. Welche mehrstimmige Form ist das?",
+    "answers": [
+      "Kanon",
+      "Unisono ohne Zeitversetzung",
+      "Ein einzelner Ton ohne Wiederholung",
+      "Eine bloße Tempoangabe"
+    ],
+    "explanation": "Im Kanon ahmt eine Stimme eine andere nach einem festgelegten zeitlichen Abstand nach. Bekannte Schulkanons machen dieses Prinzip unmittelbar hörbar.",
+    "source": {
+      "title": "Wikipedia · Kanon (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Kanon_(Musik)"
+    }
+  },
+  {
+    "id": "music-blues-schema",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Wie viele Takte hat ein besonders verbreitetes traditionelles Blues-Grundschema?",
+    "answers": [
+      "Zwölf",
+      "Fünf",
+      "Sieben",
+      "Elf"
+    ],
+    "explanation": "Das zwölftaktige Schema ist eine häufige Form des Blues. Es gibt daneben andere Bluesformen; die Zahl ist deshalb keine Vorschrift für jedes Bluesstück.",
+    "source": {
+      "title": "Wikipedia · Blues-Schema",
+      "url": "https://de.wikipedia.org/wiki/Blues-Schema"
+    }
+  },
+  {
+    "id": "music-improvisation-gestaltung",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was bedeutet musikalische Improvisation?",
+    "answers": [
+      "Musikalische Einfälle werden während des Spielens oder Singens entwickelt.",
+      "Eine Aufnahme wird nur ohne Kopfhörer angehört.",
+      "Jede Note muss ohne Gestaltung mechanisch kopiert werden.",
+      "Ein Stück darf grundsätzlich keine Regeln oder Harmonien haben."
+    ],
+    "explanation": "Improvisation entsteht im Moment der Ausführung. Sie kann auf bekannten Harmonien, Formen und eingeübten musikalischen Mitteln aufbauen.",
+    "source": {
+      "title": "Wikipedia · Improvisation (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Improvisation_(Musik)"
+    }
+  },
+  {
+    "id": "music-programmmusik",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Ein Orchesterstück bezieht sich ausdrücklich auf eine Landschaft, Geschichte oder Szene. Welcher Begriff passt besonders?",
+    "answers": [
+      "Programmmusik",
+      "Absolute Stille als Aufführungsverbot",
+      "Ein reines Stimmgerät",
+      "Eine verbindliche Lautstärkenstufe"
+    ],
+    "explanation": "Programmmusik nimmt auf außermusikalische Vorstellungen oder Inhalte Bezug. Der Bezug kann durch einen Titel, ein Programm oder eine erzählerische Grundlage vermittelt werden.",
+    "source": {
+      "title": "Wikipedia · Programmmusik",
+      "url": "https://de.wikipedia.org/wiki/Programmmusik"
+    }
+  },
+  {
+    "id": "music-oper-inszenierung",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was unterscheidet eine Oper in ihrer üblichen Aufführungsform besonders von einem rein konzertanten Oratorium?",
+    "answers": [
+      "Sie stellt eine Handlung szenisch mit singenden Rollen dar.",
+      "Sie darf grundsätzlich keine menschlichen Stimmen enthalten.",
+      "Sie benötigt zwingend ausschließlich elektronische Instrumente.",
+      "Sie besteht nur aus einer Liste ungesungener Werktitel."
+    ],
+    "explanation": "Eine Oper ist für die szenische Darstellung einer Handlung mit Gesang gedacht. Ein Oratorium wird traditionell überwiegend konzertant statt als ausgeführtes Bühnenspiel präsentiert.",
+    "source": {
+      "title": "Wikipedia · Oper",
+      "url": "https://de.wikipedia.org/wiki/Oper"
+    }
+  },
+  {
+    "id": "music-filmmusik-diegetisch",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "In einer Filmszene spielt eine Figur sichtbar Radio; die anderen Figuren hören die Musik mit. Wie wird diese Musik eingeordnet?",
+    "answers": [
+      "Diegetische Musik innerhalb der erzählten Welt",
+      "Nur für das Publikum hörbare Hintergrundmusik außerhalb der Szene",
+      "Ein stummes Zwischentitelbild",
+      "Ein unhörbares Notenmanuskript ohne Klang"
+    ],
+    "explanation": "Diegetische Musik hat eine Quelle innerhalb der erzählten Filmwelt. Davon unterscheidet man Musik, die nur das Publikum als Kommentar oder Begleitung hört.",
+    "source": {
+      "title": "Wikipedia · Filmmusik",
+      "url": "https://de.wikipedia.org/wiki/Filmmusik"
+    }
+  },
+  {
+    "id": "music-triller-zwei-toene",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 2,
+    "prompt": "Was passiert bei einem musikalischen Triller gewöhnlich?",
+    "answers": [
+      "Ein Hauptton wechselt rasch mit seinem benachbarten oberen Nebenton.",
+      "Ein einzelner Ton wird nur immer lauter gehalten.",
+      "Eine ganze Melodie wird eine Oktave tiefer notiert.",
+      "Alle Ausführenden schweigen für einen vollständigen Takt."
+    ],
+    "explanation": "Ein Triller ist eine Verzierung mit schnellem Wechsel zweier benachbarter Töne. Er unterscheidet sich etwa vom wiederholten Anschlagen nur eines Tons.",
+    "source": {
+      "title": "Wikipedia · Triller",
+      "url": "https://de.wikipedia.org/wiki/Triller"
+    }
+  },
+  {
+    "id": "music-sonatenhauptsatz-reprise",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "In einer typischen Sonatenhauptsatzform kehren die Hauptthemen nach der Durchführung zurück. Wie heißt dieser Formteil?",
+    "answers": [
+      "Reprise",
+      "Exposition",
+      "Einleitung",
+      "Coda als grundsätzlich einziger Hauptteil"
+    ],
+    "explanation": "Die Reprise nimmt das zuvor vorgestellte Themenmaterial wieder auf. Im klassischen Modell wird dabei der Tonartengegensatz der Exposition häufig zugunsten der Grundtonart aufgelöst.",
+    "source": {
+      "title": "Wikipedia · Sonatensatzform",
+      "url": "https://de.wikipedia.org/wiki/Sonatensatzform"
+    }
+  },
+  {
+    "id": "music-modulation-tonart",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine musikalische Passage etabliert im Verlauf eine neue Tonart als tonales Zentrum. Welcher Vorgang liegt vor?",
+    "answers": [
+      "Modulation",
+      "Bloße Änderung der Lautstärke",
+      "Ein unveränderter Grundton ohne harmonischen Wechsel",
+      "Wechsel der Aufnahmegeschwindigkeit als Notenwert"
+    ],
+    "explanation": "Modulation bezeichnet einen Wechsel der Tonart im musikalischen Verlauf. Eine einzelne fremde Note allein muss noch kein neues tonales Zentrum begründen.",
+    "source": {
+      "title": "Wikipedia · Modulation (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Modulation_(Musik)"
+    }
+  },
+  {
+    "id": "music-dominante-tonika",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine Kadenz führt in C-Dur vom G-Dur-Akkord zum C-Dur-Akkord. Welche Funktionsfolge ist das?",
+    "answers": [
+      "Dominante → Tonika",
+      "Tonika → Subdominante",
+      "Subdominante → Dominante",
+      "Tonikaparallele → Subdominante"
+    ],
+    "explanation": "G-Dur ist in C-Dur der Akkord auf der fünften Stufe und wirkt als Dominante. Die Rückkehr zur Tonika C-Dur kann dadurch besonders schlusskräftig wirken.",
+    "source": {
+      "title": "Wikipedia · Kadenz (Harmonielehre)",
+      "url": "https://de.wikipedia.org/wiki/Kadenz_(Harmonielehre)"
+    }
+  },
+  {
+    "id": "music-transposition-intervalle",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine gesamte Melodie wird zwei Halbtöne höher gespielt, ihre Intervallfolge bleibt gleich. Wie heißt dieses Verfahren?",
+    "answers": [
+      "Transposition",
+      "Rhythmische Umkehrung",
+      "Wechsel von Dur zu Moll durch veränderte Intervalle",
+      "Verkürzung sämtlicher Notenwerte auf die Hälfte"
+    ],
+    "explanation": "Bei einer Transposition werden die Tonhöhen um denselben Abstand versetzt. Die Beziehungen der Töne untereinander bleiben dabei erhalten.",
+    "source": {
+      "title": "Wikipedia · Transposition (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Transposition_(Musik)"
+    }
+  },
+  {
+    "id": "music-enharmonik-gleichstufig",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Warum können Cis und Des auf einem gleichstufig gestimmten Klavier dieselbe Taste bezeichnen?",
+    "answers": [
+      "Sie sind enharmonisch verschiedene Namen für dieselbe klingende Tonhöhe.",
+      "Jede Klaviertaste erzeugt gleichzeitig alle zwölf Tonhöhen.",
+      "Cis ist dabei grundsätzlich eine Oktave höher als Des.",
+      "Die Namen geben nur die Lautstärke der Taste an."
+    ],
+    "explanation": "In der gleichstufigen Stimmung fallen solche enharmonischen Tonhöhen zusammen. Ihre unterschiedliche Schreibweise kann dennoch eine harmonische Funktion im Notentext zeigen.",
+    "source": {
+      "title": "Wikipedia · Enharmonische Verwechslung",
+      "url": "https://de.wikipedia.org/wiki/Enharmonische_Verwechslung"
+    }
+  },
+  {
+    "id": "music-punktierte-note",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine Viertelnote erhält einen Punkt. Welcher Gesamtdauer entspricht sie?",
+    "answers": [
+      "Drei Achtelnoten",
+      "Zwei Achtelnoten",
+      "Vier Achtelnoten",
+      "Fünf Achtelnoten"
+    ],
+    "explanation": "Ein Punkt verlängert einen Notenwert um die Hälfte seines ursprünglichen Wertes. Zur Viertelnote kommen daher eine Achtelnote und insgesamt drei Achtelnotenwerte zusammen.",
+    "source": {
+      "title": "Wikipedia · Punktierung (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Punktierung_(Musik)"
+    }
+  },
+  {
+    "id": "music-sechs-achtel-gruppierung",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein 6/8-Takt wird im üblichen zusammengesetzten Zweiertakt empfunden. Wie gruppieren sich seine Achtel typischerweise?",
+    "answers": [
+      "In zwei Gruppen zu je drei Achteln",
+      "In drei Gruppen zu je zwei Achteln",
+      "In sechs Gruppen zu je einer Viertelnote",
+      "In eine Gruppe aus vier und eine aus vier Achteln"
+    ],
+    "explanation": "Der gebräuchliche 6/8-Takt besitzt zwei größere Zähleinheiten mit je drei Achteln. Diese Gruppierung unterscheidet ihn vom üblichen 3/4-Takt trotz gleicher Gesamtdauer.",
+    "source": {
+      "title": "Wikipedia · Takt (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Takt_(Musik)"
+    }
+  },
+  {
+    "id": "music-polyrhythmik-drei-gegen-zwei",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine Stimme spielt drei gleichmäßige Schläge, während eine andere im selben Zeitraum zwei spielt. Welcher Begriff beschreibt das Zusammenspiel?",
+    "answers": [
+      "Polyrhythmik",
+      "Ein durchgehend gemeinsamer Unisonorhythmus",
+      "Eine bloße enharmonische Umbenennung",
+      "Ein ausschließlich einstimmiger Auftakt"
+    ],
+    "explanation": "Polyrhythmik überlagert unterschiedliche rhythmische Gliederungen. Bei drei gegen zwei treffen die Anfänge zusammen, die dazwischenliegenden Impulse jedoch an verschiedenen Stellen.",
+    "source": {
+      "title": "Wikipedia · Polyrhythmik",
+      "url": "https://de.wikipedia.org/wiki/Polyrhythmik"
+    }
+  },
+  {
+    "id": "music-homophonie-begleitung",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine deutlich führende Melodie wird von überwiegend akkordischen Stimmen begleitet. Welcher Satztyp liegt besonders nahe?",
+    "answers": [
+      "Homophonie",
+      "Gleichberechtigte imitierende Polyphonie",
+      "Ein Kanon mit identischen zeitversetzten Stimmen",
+      "Völlig unbegleitete Einstimmigkeit"
+    ],
+    "explanation": "Bei Homophonie steht häufig eine Melodie über einer begleitenden harmonischen Grundlage. Polyphone Sätze geben demgegenüber mehreren eigenständigen Stimmen stärkeres Gewicht.",
+    "source": {
+      "title": "Wikipedia · Homophonie",
+      "url": "https://de.wikipedia.org/wiki/Homophonie"
+    }
+  },
+  {
+    "id": "music-ostinato-bass",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine kurze Bassfigur wird über längere Zeit unverändert wiederholt, während sich andere Stimmen verändern. Wie nennt man die Bassfigur?",
+    "answers": [
+      "Ostinato",
+      "Sequenz mit regelmäßiger Versetzung des Musters auf neue Tonstufen",
+      "Freie Kadenz ohne wiederkehrendes rhythmisches oder melodisches Muster",
+      "Durchführung mit fortlaufender thematischer Umgestaltung statt fester Wiederholung"
+    ],
+    "explanation": "Ein Ostinato ist ein beharrlich wiederkehrendes musikalisches Muster. Es kann als feste Grundlage dienen, über der andere Elemente variiert werden.",
+    "source": {
+      "title": "Wikipedia · Ostinato",
+      "url": "https://de.wikipedia.org/wiki/Ostinato"
+    }
+  },
+  {
+    "id": "music-obertoene-klangfarbe",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Geige und Flöte spielen denselben Grundton bei ähnlicher Lautstärke. Was erklärt einen wichtigen Teil ihres unterschiedlichen Klangs?",
+    "answers": [
+      "Unterschiedliche Obertonanteile und zeitliche Klangverläufe",
+      "Eine grundsätzlich unterschiedliche Zahl von Sekunden pro Minute",
+      "Die Tatsache, dass nur die Geige überhaupt Schwingungen erzeugt",
+      "Der gedruckte Name des Tones allein"
+    ],
+    "explanation": "Die Klangfarbe hängt unter anderem von der Zusammensetzung der Teiltöne und ihrem zeitlichen Verlauf ab. Dieselbe Grundfrequenz garantiert deshalb noch keinen identischen Klang.",
+    "source": {
+      "title": "Wikipedia · Klangfarbe",
+      "url": "https://de.wikipedia.org/wiki/Klangfarbe"
+    }
+  },
+  {
+    "id": "music-sampling-aufnahme",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine Produktion übernimmt einen kurzen Ausschnitt einer bestehenden Tonaufnahme und verarbeitet ihn neu. Welches Verfahren ist das?",
+    "answers": [
+      "Sampling",
+      "Neueinspielen einer nur aus Noten übernommenen Melodie ohne Verwendung der Aufnahme",
+      "Klangerzeugung ausschließlich durch einen Synthesizer ohne Übernahme aufgenommenen Materials",
+      "Reine Transkription einer Aufnahme in Notenschrift ohne Nutzung des Klangmaterials"
+    ],
+    "explanation": "Sampling verwendet aufgenommenes Klangmaterial als Baustein einer Produktion. Die musikalische Gestaltung und die erforderlichen Nutzungsrechte sind dabei unterschiedliche Fragen.",
+    "source": {
+      "title": "Wikipedia · Sampling (Musik)",
+      "url": "https://de.wikipedia.org/wiki/Sampling_(Musik)"
+    }
+  },
+  {
+    "id": "music-hall-reflexionen",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Eine Aufnahme erhält einen dichten, nachklingenden Raumeindruck statt klar getrennter einzelner Wiederholungen. Welcher Effekt passt dazu?",
+    "answers": [
+      "Hall beziehungsweise Reverb",
+      "Tonhöhenverschiebung ohne zeitliche Reflexionen",
+      "Dynamikkompression ohne Nachklang",
+      "Verzerrung durch Übersteuerung ohne räumliche Nachhallfahne"
+    ],
+    "explanation": "Hall entsteht durch viele zeitlich überlagerte Reflexionen und ihr Abklingen. Deutlich getrennte Wiederholungen werden dagegen meist als Echo oder Delay wahrgenommen.",
+    "source": {
+      "title": "Wikipedia · Nachhall",
+      "url": "https://de.wikipedia.org/wiki/Nachhall"
+    }
+  },
+  {
+    "id": "music-kompressor-dynamik",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "Ein Audiokompressor senkt Pegelspitzen oberhalb eines eingestellten Schwellenwertes ab. Was wird dadurch zunächst kleiner?",
+    "answers": [
+      "Der Dynamikumfang zwischen leisen und lauten Signalanteilen",
+      "Die Tonhöhe sämtlicher Signalanteile",
+      "Die musikalische Taktzahl durch Kürzen der Aufnahme",
+      "Die Zahl der im Stück verwendeten Tonarten"
+    ],
+    "explanation": "Kompression verringert zunächst Pegelunterschiede, indem lautere Anteile gezielt abgesenkt werden. Eine spätere Pegelanhebung ist ein zusätzlicher Arbeitsschritt.",
+    "source": {
+      "title": "Wikipedia · Kompressor (Signalverarbeitung)",
+      "url": "https://de.wikipedia.org/wiki/Kompressor_(Signalverarbeitung)"
+    }
+  },
+  {
+    "id": "music-swing-achtel",
+    "category": "Musik",
+    "basis": "curated",
+    "difficulty": 3,
+    "prompt": "In einem Swing-Abschnitt stehen zwei gleich notierte Achtel, werden aber mit einer längeren ersten und kürzeren zweiten gespielt. Was zeigt das?",
+    "answers": [
+      "Die Spielweise verändert die rhythmische Unterteilung gegenüber einer geraden Ausführung.",
+      "Die zweite Note muss dadurch grundsätzlich unhörbar werden.",
+      "Die Tonart wird allein durch dieses Zeitverhältnis zu Moll.",
+      "Die beiden Noten müssen auf derselben Tonhöhe liegen."
+    ],
+    "explanation": "Swing beruht unter anderem auf einer ungleichen zeitlichen Ausführung bestimmter gleich notierter Werte. Das genaue Verhältnis hängt von Stil und Tempo ab und ist nicht stets ein festes Zahlenverhältnis.",
+    "source": {
+      "title": "Wikipedia · Swing (Rhythmus)",
+      "url": "https://de.wikipedia.org/wiki/Swing_(Rhythmus)"
+    }
+  }
+]

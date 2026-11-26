@@ -30,7 +30,7 @@ const releaseSource = await bundle(resolve(root, 'lib/catalog-release.js'));
 // A small trusted content release is embedded server-side and installed once
 // in the existing D1 database. No client can supply rows to this path.
 const catalogLines=(await readFile(resolve(root,'content/catalog-import.jsonl'),'utf8')).trim().split('\n').map(JSON.parse);
-const schoolBatches=catalogLines.map(batch=>({...batch,rows:batch.rows.filter(row=>batch.table==='question_fact_families'?row.fact_key?.startsWith('school:'):batch.table==='question_catalog'?row.id?.startsWith('school-'):batch.table==='question_family_aliases'?row.family_id?.startsWith('school:'):batch.table==='question_catalog_meta')})).filter(batch=>batch.rows.length);
+const schoolBatches=catalogLines.map(batch=>({...batch,rows:batch.rows.filter(row=>batch.table==='question_fact_families'?(row.fact_key?.startsWith('school:')||row.fact_key?.startsWith('curated:')):batch.table==='question_catalog'?(row.id?.startsWith('school-')||row.id?.startsWith('curated-')):batch.table==='question_family_aliases'?(row.family_id?.startsWith('school:')||row.family_id?.startsWith('curated:')):batch.table==='question_catalog_meta')})).filter(batch=>batch.rows.length);
 const schoolVersion=schoolBatches.find(batch=>batch.table==='question_catalog_meta')?.rows.find(row=>row.key==='version')?.value;
 const catalogRelease={id:schoolVersion,batches:schoolBatches};
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.json': 'application/json' };

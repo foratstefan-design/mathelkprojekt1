@@ -6,6 +6,7 @@ import {createCatalog} from '../lib/catalog.js';
 import {applyTestSchema,seedTestCatalog} from './helpers/catalog-fixture.js';
 
 for(const date of ['2026-11-25','2026-11-26'])test('authorized '+date+' replacement grants one progressive attempt and preserves old flights',async()=>{
+  const targetRevision=date==='2026-11-26'?2:1;
   const realNow=Date.now;Date.now=()=>Date.parse(date+'T12:00:00Z');
   const db=new DatabaseSync(':memory:');db.exec('PRAGMA foreign_keys=ON');applyTestSchema(db);seedTestCatalog(db);
   const adapter={all:async(sql,params)=>db.prepare(sql).all(...params),run:async(sql,params)=>db.prepare(sql).run(...params)};
@@ -23,10 +24,10 @@ for(const date of ['2026-11-25','2026-11-26'])test('authorized '+date+' replacem
     db.prepare(`INSERT INTO runs(id,device,mode,seed,status,deadline,question_json,score,altitude,started_at,flight_kind,day,start_altitude,peak_altitude,content_version,competition_version)
       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run('original-active',peer,'earlier',date,'flying',Date.now()+25000,JSON.stringify(old[0]),17,1800,1,'daily',date,1500,1800,2,3);
     const frozen=db.prepare("SELECT * FROM runs WHERE id='original-active'").get();
-    const info=await call('daily');assert.equal(info.refreshed,true);assert.equal(info.dailyRevision,1);assert.equal(info.mode,'mix');assert.equal(info.available,true);assert.deepEqual(info.difficultyPlan,[1,1,1,2,2,3,3,3,3,3]);assert.equal(info.progressiveDaily,true);assert.equal(info.attempt,null);
+    const info=await call('daily');assert.equal(info.refreshed,true);assert.equal(info.dailyRevision,targetRevision);assert.equal(info.mode,'mix');assert.equal(info.available,true);assert.deepEqual(info.difficultyPlan,[1,1,1,2,2,2,2,3,3,3]);assert.equal(info.progressiveDaily,true);assert.equal(info.attempt,null);
     assert.equal((await call('leaderboard')).totalFinished,0,'old scores never compete against different questions');
     const [a,retry]=await Promise.all([call('start',{mode:'daily'}),call('start',{mode:'daily'})]);
-    assert.equal(a.id,retry.id);assert.notEqual(a.id,'original-completed');assert.equal(a.dailyRevision,1);assert.equal(a.score,0);assert.equal(a.altitude,1500);
+    assert.equal(a.id,retry.id);assert.notEqual(a.id,'original-completed');assert.equal(a.dailyRevision,targetRevision);assert.equal(a.score,0);assert.equal(a.altitude,1500);
     const b=await call('start',{mode:'daily'},peer);assert.notEqual(b.id,'original-active');
     const archived=await call('run?id=original-active',undefined,peer);assert.equal(archived.dailySuperseded,true);assert.equal(archived.question,null);assert.equal(archived.deadline,null);
     assert.equal((await call('next',{runId:'original-active'},peer)).dailySuperseded,true);
@@ -43,7 +44,7 @@ for(const date of ['2026-11-25','2026-11-26'])test('authorized '+date+' replacem
       other=await call('answer',{runId:b.id,questionIndex:i,questionId:q.id,choiceId:q.options.find(o=>o.id!==q.correctId).id},peer);
     }
     assert.equal(own.status,'finished');assert.equal(other.status,'finished');assert.equal(own.index,10);
-    assert.deepEqual(levels,[1,1,1,2,2,3,3,3,3,3]);assert.ok(topics.size>=4);
+    assert.deepEqual(levels,[1,1,1,2,2,2,2,3,3,3]);assert.ok(topics.size>=4);
     const board=await call('leaderboard');assert.equal(board.totalFinished,2);assert.equal(board.own.rank,1);assert.ok(board.entries.every(e=>e.altitude<99999));
     api=createAPI(adapter);assert.equal((await call('start',{mode:'daily'})).id,a.id,'a reload or deployment never resets the replacement again');
     const history=await call('history');assert.ok(history.flights.some(f=>f.id==='original-completed'&&f.dailySuperseded&&f.altitude===99999&&f.dailyDate===date));
@@ -51,7 +52,44 @@ for(const date of ['2026-11-25','2026-11-26'])test('authorized '+date+' replacem
     assert.equal(db.prepare('SELECT questions_json FROM daily_challenges WHERE day=?').get(date).questions_json,oldJson);
     assert.equal(db.prepare('SELECT COUNT(*) AS n FROM daily_challenge_revisions WHERE day=?').get(date).n,1);
     assert.equal(db.prepare("SELECT COUNT(*) AS n FROM answers WHERE run_id='original-completed'").get().n,10);
-    const nextDay=new Date(Date.parse(date+'T12:00:00Z')+86400000).toISOString().slice(0,10);Date.now=()=>Date.parse(nextDay+'T12:00:00Z');const nextRevision=nextDay==='2026-11-26'?1:0;const tomorrow=await call('daily');assert.equal(tomorrow.dailyRevision,nextRevision);assert.equal(tomorrow.refreshed,nextRevision>0);
+    const nextDay=new Date(Date.parse(date+'T12:00:00Z')+86400000).toISOString().slice(0,10);Date.now=()=>Date.parse(nextDay+'T12:00:00Z');const nextRevision=nextDay==='2026-11-26'?2:0;const tomorrow=await call('daily');assert.equal(tomorrow.dailyRevision,nextRevision);assert.equal(tomorrow.refreshed,nextRevision>0);
     const normal=await call('start',{mode:'daily'});assert.notEqual(normal.id,a.id);assert.equal(normal.dailyRevision,nextRevision);assert.equal((await call('start',{mode:'daily'})).id,normal.id);
+  }finally{Date.now=realNow;db.close();}
+});
+
+test('26 November revision two archives the already played 3/2/5 revision and blocks late receipt claims atomically',async()=>{
+  const realNow=Date.now;Date.now=()=>Date.parse('2026-11-26T13:00:00Z');
+  const db=new DatabaseSync(':memory:');db.exec('PRAGMA foreign_keys=ON');applyTestSchema(db);seedTestCatalog(db);
+  const adapter={all:async(sql,params)=>db.prepare(sql).all(...params),run:async(sql,params)=>db.prepare(sql).run(...params)};
+  const api=createAPI(adapter),catalog=createCatalog(adapter),date='2026-11-26',device='prior-revision-finished-123',peer='prior-revision-active-12345';
+  async function call(path,body,who=device){
+    const response=await api(new Request('https://game.test/api/'+path+(!body?(path.includes('?')?'&':'?')+'device='+who:''),body?{method:'POST',body:JSON.stringify({device:who,...body})}:{}));
+    const data=await response.json();assert.equal(response.status,200,JSON.stringify(data));return data;
+  }
+  try{
+    const old=(await catalog.reserveDaily(date+':revision:1','mix')).map((q,i)=>({...q,difficulty:[1,1,1,2,2,3,3,3,3,3][i],_limitMs:25000})),oldJson=JSON.stringify(old);
+    db.prepare('INSERT INTO daily_challenge_revisions(day,revision,mode,questions_json,created_at) VALUES(?,?,?,?,?)').run(date,1,'mix',oldJson,1);
+    db.prepare(`INSERT INTO runs(id,device,mode,seed,status,question_index,score,altitude,started_at,finished_at,flight_kind,day,start_altitude,peak_altitude,correct_total,content_version,competition_version,daily_revision)
+      VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run('prior-revision-completed',device,'mix',date+':revision:1','finished',10,9999,99999,1,2,'daily',date,1500,99999,10,2,3,1);
+    for(let i=0;i<10;i++)db.prepare('INSERT INTO answers(run_id,position,question_id,result,received_at) VALUES(?,?,?,?,?)').run('prior-revision-completed',i,old[i].id,JSON.stringify({familyId:old[i].familyId,questionId:old[i].id,correct:true,streak:i+1,timeLimitMs:25000}),2+i);
+    db.prepare(`INSERT INTO runs(id,device,mode,seed,status,deadline,question_json,score,altitude,started_at,flight_kind,day,start_altitude,peak_altitude,content_version,competition_version,daily_revision)
+      VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run('prior-revision-active',peer,'mix',date+':revision:1','flying',Date.now()+25000,JSON.stringify(old[0]),17,1800,1,'daily',date,1500,1800,2,3,1);
+    const frozenRuns=db.prepare('SELECT * FROM runs ORDER BY id').all(),frozenAnswers=db.prepare('SELECT * FROM answers ORDER BY position').all();
+    const info=await call('daily');assert.equal(info.dailyRevision,2);assert.equal(info.attempt,null);assert.deepEqual(info.difficultyPlan,[1,1,1,2,2,2,2,3,3,3]);
+    assert.equal((await call('leaderboard')).totalFinished,0);
+    const late=await call('answer',{runId:'prior-revision-active',questionIndex:0,questionId:old[0].id,choiceId:old[0].correctId},peer);
+    assert.equal(late.dailySuperseded,true);assert.equal(late.question,null);assert.equal(late.deadline,null);assert.equal('result' in late,false);
+    assert.deepEqual(db.prepare('SELECT * FROM runs ORDER BY id').all(),frozenRuns);
+    assert.deepEqual(db.prepare('SELECT * FROM answers ORDER BY position').all(),frozenAnswers,'even a checking/receipt answer must not be inserted for revision one');
+    const [own,retry]=await Promise.all([call('start',{mode:'daily'}),call('start',{mode:'daily'})]);
+    const other=await call('start',{mode:'daily'},peer);assert.equal(own.id,retry.id);assert.equal(own.dailyRevision,2);assert.equal(other.dailyRevision,2);
+    const a=await call('next',{runId:own.id}),b=await call('next',{runId:other.id},peer);assert.deepEqual(a.question,b.question);
+    assert.equal(old.some(q=>q.familyId===a.question.familyId),false);
+    const active=JSON.parse(db.prepare('SELECT question_json FROM runs WHERE id=?').get(own.id).question_json);
+    await call('answer',{runId:own.id,questionIndex:0,questionId:active.id,choiceId:active.correctId});
+    assert.equal((await call('start',{mode:'daily'})).id,own.id);
+    assert.equal(db.prepare('SELECT questions_json FROM daily_challenge_revisions WHERE day=? AND revision=1').get(date).questions_json,oldJson);
+    assert.equal(db.prepare('SELECT COUNT(*) AS n FROM daily_challenge_revisions WHERE day=?').get(date).n,2);
+    const history=await call('history');assert.ok(history.flights.some(f=>f.id==='prior-revision-completed'&&f.dailySuperseded&&f.score===9999));
   }finally{Date.now=realNow;db.close();}
 });

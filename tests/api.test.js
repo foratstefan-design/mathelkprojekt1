@@ -89,7 +89,7 @@ test('daily competition has one fixed ten-question attempt, equal questions and 
       assert.deepEqual(flying.question, otherFlying.question, 'everyone sees the same question irrespective of previous results');
       assert.equal(flying.timeLimitMs, otherFlying.timeLimitMs); assert.equal(flying.timeLimitMs, timeLimitMs(index, { daily: true }));
       types.add(flying.question.type); categories.add(flying.question.category);
-      assert.equal(flying.question.difficulty,[1,1,1,2,2,3,3,3,3,3][index]);
+      assert.equal(flying.question.difficulty,[1,1,1,2,2,2,2,3,3,3][index]);
       const full = q(f, flying); assert.equal(ids.has(full.id), false); assert.equal(families.has(full.familyId), false); ids.add(full.id); families.add(full.familyId);
       result = await wrong(f, flying);
       otherResult = await f.call('answer', post(otherFlying, q(f, otherFlying).correctId), secondDevice);
@@ -229,7 +229,7 @@ test('legacy migration preserves old records and the exact previously armed ques
   } finally { f.sqlite.close(); }
 });
 
-function insertRanked(f, { id, device, day, altitude = 2000, score = 100, elapsed = 1000, started = 1000, status = 'finished', version = 3, index = 10, mode = 'rare', revision=['2026-11-25','2026-11-26'].includes(day)?1:0 }) {
+function insertRanked(f, { id, device, day, altitude = 2000, score = 100, elapsed = 1000, started = 1000, status = 'finished', version = 3, index = 10, mode = 'rare', revision=day==='2026-11-26'?2:day==='2026-11-25'?1:0 }) {
   f.sqlite.prepare(`INSERT INTO runs(id,device,mode,seed,status,question_index,streak,score,altitude,started_at,finished_at,flight_kind,day,start_altitude,peak_altitude,correct_total,content_version,competition_version,answer_elapsed_ms,daily_revision)
     VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(id,device,mode,day,status,index,0,score,altitude,started,status === 'finished' ? started + 10000 : null,'daily',day,1500,Math.max(1500,altitude),5,2,version,elapsed,revision);
 }

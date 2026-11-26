@@ -1,16 +1,19 @@
 {
-  "version": "a7528923a3d4c1629b39c53d1e35393cc0fcdeda0280ca7923fc736c45ae4916",
-  "source": "Wikidata (CC0) + eigene Schulfragen",
+  "version": "00bfff0d48beccd26d967075aef55dab72e83a32c585bc1795af01122a9b69a4",
+  "source": "Wikidata (CC0) + eigene Wissensfragen",
   "updatedAt": "2026-11-26T00:00:00Z",
   "downloadedFacts": 19136,
   "acceptedFacts": 14778,
-  "sourceFactsUsed": 14927,
+  "sourceFactsUsed": 15242,
   "wikidataFactsUsed": 14657,
-  "schoolQuestions": 270,
+  "schoolQuestions": 360,
+  "curatedQuestions": 225,
+  "authoredQuestions": 585,
   "schoolSubjects": [
     "Biologie",
     "Chemie",
     "Deutsch",
+    "Englisch",
     "Erdkunde",
     "Geschichte",
     "Informatik",
@@ -18,46 +21,60 @@
     "Physik",
     "Politik & Wirtschaft"
   ],
-  "questions": 11045,
-  "families": 9104,
+  "curatedSubjects": [
+    "Alltagswissenschaft",
+    "Kunst",
+    "Literatur",
+    "Musik",
+    "Religionen & Weltanschauungen",
+    "Sport"
+  ],
+  "questions": 11360,
+  "families": 9419,
   "retiredQuestions": 54,
-  "freeFamilies": 7988,
-  "dailyFamilies": 1116,
+  "freeFamilies": 8164,
+  "dailyFamilies": 1255,
   "types": {
     "common": 1716,
     "earlier": 225,
-    "general": 7163,
+    "general": 7478,
     "later": 225,
     "rare": 1716
   },
   "difficulties": {
-    "1": 576,
-    "2": 6812,
-    "3": 3657
+    "1": 681,
+    "2": 6917,
+    "3": 3762
   },
   "categories": {
+    "Alltagswissenschaft": 30,
     "Bauwerkshöhen": 16,
-    "Biologie": 30,
-    "Chemie": 30,
-    "Deutsch": 30,
-    "Erdkunde": 30,
+    "Biologie": 36,
+    "Chemie": 36,
+    "Deutsch": 36,
+    "Englisch": 30,
+    "Erdkunde": 36,
     "Film": 673,
     "Flächen": 1970,
     "Geografie": 5983,
-    "Geschichte": 30,
+    "Geschichte": 33,
     "Gründungen": 206,
-    "Informatik": 30,
+    "Informatik": 39,
     "Kultur": 385,
-    "Literatur": 96,
+    "Kunst": 30,
+    "Literatur": 141,
     "Längen": 98,
-    "Mathematik": 30,
+    "Mathematik": 39,
     "Meereshöhen": 1348,
-    "Physik": 30,
-    "Politik & Wirtschaft": 30
+    "Musik": 45,
+    "Physik": 39,
+    "Politik & Wirtschaft": 36,
+    "Religionen & Weltanschauungen": 45,
+    "Sport": 30
   },
   "pools": {
-    "daily": 2096,
-    "free": 8949
+    "daily": 2235,
+    "free": 9125
   },
   "legacyAliases": 49,
   "rejected": {
@@ -67,7 +84,7 @@
     "notEnoughDistractors": 0,
     "leftoverComparisonFacts": 54
   },
-  "importBatches": 524,
+  "importBatches": 537,
   "largestBatchBytes": 185024,
   "sourceSnapshotSha256": "f59c29229702b0d3fcc08f7b50364c55f2bfae4f2e9628d6c25940cbd7fccae9"
 }

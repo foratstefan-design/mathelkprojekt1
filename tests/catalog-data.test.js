@@ -27,7 +27,7 @@ test('the installed large catalog is backed by the recorded official Wikidata sn
   assert.equal(installed.questions,report.questions);assert.equal(installed.families,report.families);
   assert.ok(installed.families>=8000,'independent factual questions, not a combinatorial claim');
   assert.equal(db.prepare("SELECT COUNT(*) AS n FROM question_catalog WHERE type='general' AND pool='daily' AND json_extract(content_json,'$.basis')='wikidata'").get().n,0,'Wikidata relation questions start in the free pool');
-  assert.equal(school.size,270);assert.equal(report.schoolQuestions,270);assert.equal(report.schoolSubjects.length,9);
+  assert.equal(school.size,585);assert.equal(report.authoredQuestions,585);assert.equal(report.schoolQuestions,360);assert.equal(report.curatedQuestions,225);assert.equal(report.schoolSubjects.length,10);assert.equal(report.curatedSubjects.length,6);
 });
 test('every imported solution and comparison value traces to its canonical source fact',()=>{
   const mapped=new Map(db.prepare('SELECT fact_key,family_id FROM question_fact_families').all().map(r=>[r.fact_key,r.family_id]));
@@ -36,12 +36,12 @@ test('every imported solution and comparison value traces to its canonical sourc
     const q=JSON.parse(row.content_json);assert.equal(q.id,row.id);assert.equal(q.familyId,row.family_id);
     assert.ok(q.factKeys.length===1||q.factKeys.length===4);
     assert.equal(prompts.has(q.prompt),false);prompts.add(q.prompt);
-    for(const key of q.factKeys){assert.ok(q.basis==='school'?school.has(q.id):facts.has(key),key);assert.equal(mapped.get(key),q.familyId);}
+    for(const key of q.factKeys){assert.ok(['school','curated'].includes(q.basis)?school.has(q.id):facts.has(key),key);assert.equal(mapped.get(key),q.familyId);}
     assert.equal(new Set(q.options.map(o=>o.id)).size,4);assert.equal(new Set(q.options.map(o=>o.label)).size,4);
     const result=gradeChoice(q,q.correctId);assert.equal(result.correct,true);assert.equal(result.options.filter(o=>o.id===q.correctId).length,1);
-    if(q.basis==='school'){
+    if(['school','curated'].includes(q.basis)){
       const authored=school.get(q.id);assert.deepEqual(q,authored);
-      assert.equal(q.provenance.kind,'original-school-question');assert.ok(q.source.url.startsWith('https://'));assert.ok(q.explanation.length>=40);
+      assert.equal(q.provenance.kind,q.basis==='school'?'original-school-question':'original-curated-question');assert.ok(q.source.url.startsWith('https://'));assert.ok(q.explanation.length>=40);
     }else if(q.type==='general'){
       const f=facts.get(q.factKeys[0]);assert.equal(q.correctId,'choice-'+f.objectId);assert.equal(result.correctLabel,f.objectLabel);
     }else{
@@ -91,7 +91,7 @@ test('real daily selections stay new across days and remain disjoint from every 
   for(let i=0;i<8;i++){
     const date=new Date(Date.UTC(2027,0,1+i)).toISOString().slice(0,10),mode='mix';
     const questions=await catalog.reserveDaily(date,mode);assert.equal(questions.length,10);
-    assert.deepEqual(questions.map(q=>q.difficulty),[1,1,1,2,2,3,3,3,3,3],'daily difficulty advances in the fixed three/two/five order');
+    assert.deepEqual(questions.map(q=>q.difficulty),[1,1,1,2,2,2,2,3,3,3],'daily difficulty advances in the fixed three/four/three order');
     assert.ok(new Set(questions.map(q=>q.type)).size>=1,'subject variety does not require every comparison style');
     const categoryCounts=new Map();for(const q of questions)categoryCounts.set(q.category,(categoryCounts.get(q.category)||0)+1);assert.ok(categoryCounts.size>=5);assert.ok([...categoryCounts.values()].every(n=>n<=2));
     for(const q of questions){assert.equal(seen.has(q.familyId),false);seen.add(q.familyId);assert.equal(db.prepare("SELECT COUNT(*) AS n FROM seen_questions WHERE family_id=?").get(q.familyId).n,0,'mixed days never borrow an already exposed free fact');}
