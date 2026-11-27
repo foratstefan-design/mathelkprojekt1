@@ -740,3 +740,13 @@ body[data-screen="question"] .flight-status{gap:3px;padding-top:0}
 @keyframes cockpit-arrive{from{opacity:0}to{opacity:1}}
 .flight-game.active-question .question-content{animation:cockpit-arrive .18s ease-out both;transform:none}
 @media(prefers-reduced-motion:reduce){.flight-game.active-question .question-content{animation:none}}
+
+/* Keep the smaller question aircraft clear of the central HUD. Its condition
+   remains available to screen readers and in the recovery/learning message. */
+body.in-flight .brand{display:none}
+body[data-screen="feedback"] .flight-status{gap:3px;padding-top:0}
+body[data-screen="question"] #hud-condition,
+body[data-screen="feedback"] #hud-condition{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1100px){
+ body[data-screen="question"] #alt-rail,body[data-screen="feedback"] #alt-rail{display:none}
+}

@@ -1,7 +1,7 @@
 import {FlightScene} from './sky.js?v=fit-1';
 import {plane,hero} from './art.js?v=flight-4';
 import {API_ORIGIN} from './runtime-config.js?v=pages-1';
-import {questionLayout,fitQuestion} from './viewport.js?v=fit-1';
+import {questionLayout,fitQuestion} from './viewport.js?v=fit-2';
 const $=selector=>document.querySelector(selector),main=$('#main');
 const MODES=[{id:'mix',label:'Mix',detail:'Alle Flugmanöver',icon:'✦'},{id:'common',label:'Mehr',detail:'Größer, höher oder länger?',icon:'+'},{id:'rare',label:'Weniger',detail:'Kleiner, niedriger oder kürzer?',icon:'◇'},{id:'earlier',label:'Früher',detail:'Was war zuerst da?',icon:'Ⅰ'},{id:'later',label:'Später',detail:'Was kam zuletzt?',icon:'Ⅳ'}];
 const modeInfo=id=>id==='daily'?{id:'daily',label:'Tagesflug',detail:'Ein Versuch pro Tag'}:id==='general'?{id:'general',label:'Wissen',detail:'Allgemeines Wissen'}:MODES.find(mode=>mode.id===id)||MODES[0];
@@ -169,7 +169,7 @@ function startClock(){
       $('#timer-bar').classList.toggle('urgent',remaining<=Math.min(5000,run.timeLimitMs*.4));
     }
     if(!announced&&remaining<=3000){$('#timer-live').textContent='Noch höchstens drei Sekunden.';announced=true;}
-    if(remaining<=0){submitChoice(null,true);return;}
+    if(remaining<=0&&!busy){submitChoice(null,true);return;}
     clockFrame=requestAnimationFrame(tick);
   }
   tick();
