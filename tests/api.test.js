@@ -41,6 +41,46 @@ async function wrong(f, flight) { const full = q(f, flight); return f.call('answ
   } finally { f.sqlite.close(); }
 });
 
+test('free Mix arms height-based questions at3000/6000m and updates its state after descent',async()=>{
+  const f=fixture();
+  try{
+    for(const [altitude,level] of [[2999,1],[3000,2],[5999,2],[6000,3]]){
+      const ready=await f.call('start',{mode:'mix'});
+      f.sqlite.prepare('UPDATE runs SET altitude=?,peak_altitude=?,start_altitude=10000 WHERE id=?').run(altitude,altitude,ready.id);
+      assert.equal((await f.call('run?id='+ready.id)).difficulty,level);
+      const armed=await f.call('next',{runId:ready.id});
+      assert.equal(armed.question.difficulty,level);assert.equal(armed.difficulty,level);
+      const repeated=await f.call('next',{runId:ready.id});
+      assert.deepEqual(repeated.question,armed.question);assert.equal(repeated.deadline,armed.deadline);
+    }
+    for(const [altitude,level,afterLevel] of [[3100,2,1],[6100,3,2]]){
+      const ready=await f.call('start',{mode:'mix'});
+      f.sqlite.prepare('UPDATE runs SET altitude=?,peak_altitude=? WHERE id=?').run(altitude,altitude,ready.id);
+      const armed=await f.call('next',{runId:ready.id});assert.equal(armed.difficulty,level);
+      const failed=await wrong(f,armed);
+      assert.equal(failed.altitude,altitude-250);assert.equal(failed.difficulty,afterLevel);
+      const rescued=await f.call('next',{runId:ready.id});assert.equal(rescued.question.difficulty,afterLevel);
+      assert.notEqual(rescued.question.familyId,armed.question.familyId,'descent does not recycle a seen family');
+    }
+    const named=await f.call('start',{mode:'common'});
+    f.sqlite.prepare('UPDATE runs SET altitude=6000 WHERE id=?').run(named.id);
+    assert.equal((await f.call('next',{runId:named.id})).difficulty,1,'other modes preserve their former progression');
+  }finally{f.sqlite.close();}
+});
+
+test('an exhausted Mix band ends safely without silently upgrading to available harder questions',async()=>{
+  const f=fixture();
+  try{
+    f.sqlite.prepare("UPDATE question_catalog SET enabled=0 WHERE pool='free' AND difficulty=1").run();
+    const ready=await f.call('start',{mode:'mix'}),ended=await f.call('next',{runId:ready.id});
+    assert.equal(ended.httpStatus,200);assert.equal(ended.status,'exhausted');assert.equal(ended.poolExhausted,true);
+    assert.equal(ended.question,null);assert.equal(ended.deadline,null);assert.equal(ended.crashReason,null);assert.equal(ended.altitude,0);
+    assert.match(ended.exhaustionMessage,/aktuellen Höhenstufe/);
+    assert.equal((await f.call('next',{runId:ready.id})).status,'exhausted');
+    assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM seen_questions WHERE run_id=?').get(ready.id).n,0);
+  }finally{f.sqlite.close();}
+});
+
 test('two consecutive practice errors survive at ground level; a third crashes and cannot restart', async () => {
   const f = fixture();
   try {

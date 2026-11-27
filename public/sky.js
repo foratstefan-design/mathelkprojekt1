@@ -4,6 +4,9 @@ const ease=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
 const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
 const ACTION_MS={takeoff:1400,ascend:1400,recover:1400,stall:1100,crash:2600};
 const CRASH_IMPACT=.83;
+const MIX_SKIES=[{top:[115,183,201],horizon:[192,220,213]},{top:[76,100,158],horizon:[218,150,164]},{top:[15,28,64],horizon:[36,58,102]}];
+const mixZone=altitude=>altitude>=6000?2:altitude>=3000?1:0;
+const SKY_ZONE_MS=700;
 const SKY_STOPS=[[0,[115,183,201]],[2500,[86,146,181]],[7000,[58,104,151]],[14000,[36,62,109]],[26000,[19,33,71]],[50000,[10,20,47]]];
 // Compile the fixed sprite once instead of scanning its transparent pixels on
 // every frame. Canvas drawing stays identical to the original pixel artwork.
@@ -23,6 +26,7 @@ export class FlightScene {
     if(!this.ctx||!this.g)throw new Error('Canvas 2D is unavailable.');
     canvas.setAttribute('aria-hidden','true');canvas.style.imageRendering='pixelated';
     this.motion=window.matchMedia('(prefers-reduced-motion: reduce)');this.reduced=this.motion.matches;
+    this.course='';this.skyZone=0;this.skyWeights=[1,0,0];this.skyZoneTween=null;this.skyStyleVersion=0;
     this.mode='home';this.altitude=0;this.targetAltitude=0;this.visualAltitude=0;
     this.speed=0;this.targetSpeed=0;this.climb=0;this.takeoffP=0;this.crashP=0;
     this.altitudeTween=null;this.action=null;this.viewTween=null;this.flightView='home';this.questionLayout=null;this.maneuverLift=0;this.ascendP=1;this.particles=[];this.boostUntil=0;
@@ -75,6 +79,39 @@ export class FlightScene {
     }
     if(this.reduced)this._render(0,0);
   }
+  /** The free Mix course has exact score-height zones. Home/other courses
+   * retain their original sky; resets keep the selected course for takeoff.
+   */
+  setCourse(course=''){
+    if(this.dead)return;const next=course==='mix'?'mix':'';if(next===this.course)return;
+    this.course=next;this.skyZoneTween=null;this.skyZone=mixZone(this.altitude);
+    this.skyWeights=[0,0,0];this.skyWeights[this.skyZone]=1;this.skyStyleVersion++;
+    this._render(this.reduced?0:this.time,0);
+  }
+  _mixSkyEnabled(){return this.course==='mix'&&this.mode!=='home';}
+  _syncSkyZone(now,snap=false){
+    if(!this._mixSkyEnabled())return;
+    // The 350m camera lift is decorative and must not advance difficulty skies.
+    const height=this.mode==='crashed'?this.altitude*(1-ease(Math.min(1,this.crashP/.74))):this.altitude;
+    const zone=mixZone(height);
+    if(snap||this.reduced){
+      if(zone===this.skyZone&&!this.skyZoneTween&&this.skyWeights[zone]===1)return;
+      this.skyZone=zone;this.skyZoneTween=null;
+      for(let i=0;i<3;i++)this.skyWeights[i]=i===zone?1:0;
+      this.skyStyleVersion++;return;
+    }
+    if(zone!==this.skyZone){
+      this.skyZone=zone;this.skyZoneTween={from:[...this.skyWeights],started:now,progress:-1};
+    }
+    const tween=this.skyZoneTween;if(!tween)return;
+    const progress=clamp((now-tween.started)/SKY_ZONE_MS,0,1);
+    if(progress!==tween.progress){
+      tween.progress=progress;const amount=ease(progress);
+      for(let i=0;i<3;i++)this.skyWeights[i]=tween.from[i]+((i===zone?1:0)-tween.from[i])*amount;
+      this.skyStyleVersion++;
+    }
+    if(progress===1)this.skyZoneTween=null;
+  }
   setMode(mode){
     if(this.dead||!['home','flying','crashed'].includes(mode))return;
     if(mode==='home'){this.reset();return;}
@@ -96,7 +133,7 @@ export class FlightScene {
   }
   setAltitude(meters,{duration=1600}={}){
     if(this.dead)return;const n=Number(meters),target=Number.isFinite(n)?Math.max(0,Math.min(Number.MAX_SAFE_INTEGER,n)):0;this.targetAltitude=target;
-    if(this.reduced||duration<=0){this.altitude=target;this.altitudeTween=null;this._render(this.reduced?0:this.time,0);return;}
+    if(this.reduced||duration<=0){this.altitude=target;this.altitudeTween=null;this._syncSkyZone(performance.now(),true);this._render(this.reduced?0:this.time,0);return;}
     this.altitudeTween={from:this.altitude,to:target,started:performance.now(),duration:clamp(Number(duration)||1600,1,20000)};
   }
   setSpeed(streak=0){this.targetSpeed=clamp(Number(streak)||0,0,30)/30;if(this.reduced)this.speed=this.targetSpeed;}
@@ -149,7 +186,7 @@ export class FlightScene {
   }
   reset(){
     if(this.dead)return;this._settleAction();this._settleView();this.mode='home';this.flightView='home';this.maneuverLift=0;
-    this.altitude=this.targetAltitude=0;this.altitudeTween=null;this.takeoffP=this.crashP=this.climb=0;
+    this.altitude=this.targetAltitude=0;this.altitudeTween=null;this.skyZone=0;this.skyWeights[0]=1;this.skyWeights[1]=this.skyWeights[2]=0;this.skyZoneTween=null;this.skyStyleVersion++;this.takeoffP=this.crashP=this.climb=0;
     this.danger=this.staticStall=this.stallLevel=0;this.stallP=this.recoverP=this.ascendP=1;this.speed=this.targetSpeed=0;
     this.boostUntil=0;this.lastPlanePose=this.crashOrigin=this.takeoffOrigin=null;this.particles.length=0;this._render(this.reduced?0:this.time,0);
   }
@@ -184,6 +221,13 @@ export class FlightScene {
   _poly(points,color){const g=this.g;g.fillStyle=color;g.beginPath();points.forEach(([x,y],i)=>i?g.lineTo(Math.round(x),Math.round(y)):g.moveTo(Math.round(x),Math.round(y)));g.closePath();g.fill();}
   _mix(a,b,p){return a.map((n,i)=>Math.round(n+(b[i]-n)*clamp(p,0,1)));}
   _skyColor(altitude,y){
+    if(this._mixSkyEnabled()){
+      const rgb=[0,0,0];
+      for(let zone=0;zone<3;zone++)for(let channel=0;channel<3;channel++){
+        const sky=MIX_SKIES[zone];rgb[channel]+=(sky.top[channel]+(sky.horizon[channel]-sky.top[channel])*y*.65)*this.skyWeights[zone];
+      }
+      return 'rgb('+rgb.map(Math.round).join(',')+')';
+    }
     let a=SKY_STOPS[0],b=SKY_STOPS.at(-1);for(let i=1;i<SKY_STOPS.length;i++){b=SKY_STOPS[i];if(altitude<=b[0])break;a=b;}
     const base=this._mix(a[1],b[1],(altitude-a[0])/Math.max(1,b[0]-a[0]));return 'rgb('+this._mix(base,[192,220,213],Math.max(0,1-altitude/11000)*y*.5).join(',')+')';
   }
@@ -196,9 +240,10 @@ export class FlightScene {
     // Start controls begin below 56%; keep the runway and parked plane above them.
     const groundBase=this.mode==='home'?.52:this.mode==='flying'?.52+.25*this.takeoffP:.77;
     this.groundY=h*groundBase+this.camera;
-    const skyAltitude=Math.round(this.visualAltitude);
-    if(this.skyAltitude!==skyAltitude||this.skyHeight!==h){
-      this.skyAltitude=skyAltitude;this.skyHeight=h;this.skyBands=[];
+    this._syncSkyZone(performance.now());
+    const skyAltitude=Math.round(this.visualAltitude),styleKey=this._mixSkyEnabled()?this.skyStyleVersion:-1;
+    if(this.skyAltitude!==skyAltitude||this.skyHeight!==h||this.skyStyleKey!==styleKey){
+      this.skyAltitude=skyAltitude;this.skyHeight=h;this.skyStyleKey=styleKey;this.skyBands=[];
       for(let y=0;y<h;y+=8)this.skyBands.push({y,color:this._skyColor(skyAltitude,y/h)});
     }
     for(const band of this.skyBands)this._rect(0,band.y,w,9,band.color);
@@ -210,13 +255,13 @@ export class FlightScene {
     this.ctx.imageSmoothingEnabled=false;this.ctx.drawImage(this.buffer,0,0,w,h,0,0,this.canvas.width,this.canvas.height);
   }
   _stars(time){
-    const strength=clamp((this.visualAltitude-5500)/11000,0,1);if(!strength)return;this.g.globalAlpha=strength;
+    const strength=this._mixSkyEnabled()?this.skyWeights[1]*.08+this.skyWeights[2]*.92:clamp((this.visualAltitude-5500)/11000,0,1);if(!strength)return;this.g.globalAlpha=strength;
     for(let i=0;i<65;i++){const x=this._random(i+313)*this.w,y=((this._random(i+417)*this.h+this.visualAltitude*.002*(.4+this._random(i+215)))%this.h+this.h)%this.h;this._rect(x,y,i%13===0?2:1,1,i%4?'#b4cddd':'#f5e6bd');if(i%13===0)this._rect(x+1,y-1,1,3,'#d7e3dc');}
     if(this.visualAltitude>21000){this.g.globalAlpha=strength*.16;this._poly([[0,this.h*.26],[this.w*.42,this.h*.1],[this.w,this.h*.25],[this.w,this.h*.3],[this.w*.4,this.h*.18],[0,this.h*.33]],'#a99aca');}
     this.g.globalAlpha=1;
   }
   _sun(time){
-    const alpha=clamp(1-this.visualAltitude/14000,0,1);if(!alpha)return;this.g.globalAlpha=alpha;const x=this.w*.81,y=this.h*.19+this.camera*.05;
+    const alpha=this._mixSkyEnabled()?this.skyWeights[0]+this.skyWeights[1]*.7+this.skyWeights[2]*.08:clamp(1-this.visualAltitude/14000,0,1);if(!alpha)return;this.g.globalAlpha=alpha;const x=this.w*.81,y=this.h*.19+this.camera*.05;
     this._rect(x-12,y-7,24,14,'#f4d9aa');this._rect(x-8,y-11,16,22,'#f4d9aa');this._rect(x-4,y-13,8,26,'#f4d9aa');this._rect(x-7,y-6,14,11,'#fbeac2');this.g.globalAlpha=1;
   }
   _cloud(x,y,size,color='#d4e9df',shadow='#9fc8cf'){
@@ -231,7 +276,7 @@ export class FlightScene {
         const y=h*.67+(altitude-worldAltitude)*h/2200*parallax;
         if(y<-25||y>h+25)continue;
         const width=20+this._random(seed+208)*32,x=((this._random(seed+317)*(w+80)-time*(1.8+layer*2.5+this.speed*8))%(w+80)+(w+80))%(w+80)-40;
-        this.g.globalAlpha=clamp(1-altitude/19000,.09,1)*(layer===0?.4:layer===1?.6:.85);
+        this.g.globalAlpha=(this._mixSkyEnabled()?this.skyWeights[0]+this.skyWeights[1]*.7+this.skyWeights[2]*.25:clamp(1-altitude/19000,.09,1))*(layer===0?.4:layer===1?.6:.85);
         this._cloud(x,y,width,layer===0?'#b7d6d5':'#d4e9df',layer===0?'#91b9c8':'#a2c7cc');
       }
     }

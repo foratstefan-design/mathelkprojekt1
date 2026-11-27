@@ -249,3 +249,62 @@ test('the original plane retains crisp pixels and strips unsafe SVG class text',
   assert.match(hero,/shape-rendering="crispEdges"/);assert.ok(PLANE_SPRITE.length>15);
   const svg=plane('badge" onload="alert(1)');assert.equal(svg.includes('onload='),false);assert.match(svg,/plane-body/);
 });
+
+
+test('free Mix skies use exact canonical3000/6000m boundaries and retain other/home palettes',()=>{
+  const h=skyHarness(),scene=new FlightScene(h.canvas);
+  try{
+    const home=scene._skyColor(0,.2);scene.setCourse('mix');
+    assert.equal(scene._skyColor(0,.2),home,'home keeps its original palette');
+    ready(scene,2999);const easy=scene._skyColor(2999,.2);
+    assert.equal(scene.skyZone,0);assert.ok(scene.visualAltitude>3000,'camera offset already crosses the boundary');
+    scene.setAltitude(3000,{duration:0});const medium=scene._skyColor(3000,.2);
+    assert.equal(scene.skyZone,1);assert.notEqual(medium,easy);
+    scene.setAltitude(5999,{duration:0});assert.equal(scene.skyZone,1);assert.equal(scene._skyColor(5999,.2),medium);
+    assert.ok(scene.visualAltitude>6000);
+    scene.setAltitude(6000,{duration:0});const hard=scene._skyColor(6000,.2);
+    assert.equal(scene.skyZone,2);assert.notEqual(hard,medium);assert.notEqual(hard,easy);
+    assert.ok(scene.g.commands.some(command=>command.color==='#b4cddd'&&command.alpha>.9),'hard zone has visible stars');
+    const mixBand=scene.skyBands[0].color;scene.setCourse('');
+    assert.notEqual(scene.skyBands[0].color,mixBand,'same-height course change invalidates cached bands');
+    const legacy=scene._skyColor(scene.visualAltitude,.2);scene.setCourse('daily');assert.equal(scene._skyColor(scene.visualAltitude,.2),legacy);
+    scene.setCourse('mix');scene.reset();assert.equal(scene.course,'mix');assert.equal(scene._skyColor(0,.2),home);
+    ready(scene,0);assert.equal(scene.skyZone,0,'reset keeps the next Mix takeoff in the easy zone');
+  }finally{scene.destroy();h.restore();}
+});
+
+test('Mix zone changes crossfade in both directions without restarting a maneuver',options,async()=>{
+  const h=skyHarness(),scene=new FlightScene(h.canvas);
+  try{
+    scene.setCourse('mix');ready(scene,2999);const easy=scene._skyColor(2999,.2);
+    const ascent=scene.ascend(),action=scene.action;
+    scene.setAltitude(3000,{duration:100});h.advance(100);
+    assert.equal(scene.skyZone,1);assert.equal(scene._skyColor(3000,.2),easy,'boundary starts at the existing color');
+    h.advance(350);const midway=scene._skyColor(3000,.2);
+    assert.notEqual(midway,easy);assert.equal(scene.action,action);
+    h.advance(350);const medium=scene._skyColor(3000,.2);
+    assert.notEqual(midway,medium);assert.equal(scene.skyZoneTween,null);
+    scene.setAltitude(2999,{duration:100});h.advance(100);
+    assert.equal(scene.skyZone,0);assert.equal(scene._skyColor(2999,.2),medium);
+    h.advance(700);assert.equal(scene._skyColor(2999,.2),easy);
+    h.advance(100);await ascent;
+    scene.setAltitude(6000,{duration:0});const hard=scene._skyColor(6000,.2);
+    scene.setAltitude(5999,{duration:100});h.advance(100);assert.equal(scene.skyZone,1);
+    h.advance(350);assert.notEqual(scene._skyColor(5999,.2),hard);
+    h.advance(350);assert.equal(scene._skyColor(5999,.2),medium);
+  }finally{scene.destroy();h.restore();}
+});
+
+test('Mix crash background descends through its zones and reduced motion settles palettes immediately',options,async()=>{
+  const h=skyHarness(),scene=new FlightScene(h.canvas);
+  try{
+    scene.setCourse('mix');ready(scene,8000);const fall=scene.crash();h.advance(800);
+    assert.equal(scene.skyZone,1,'fall passes6000m using score height rather than camera lift');
+    h.advance(600);assert.equal(scene.skyZone,0,'fall passes3000m');
+    h.changeMotion(true);await fall;assert.equal(scene.skyZone,0);assert.equal(scene.skyZoneTween,null);assert.equal(h.frames.size,0);
+    scene.reset();ready(scene,6000);assert.equal(scene.skyZone,2);assert.equal(scene.skyZoneTween,null);
+    scene.setAltitude(3000);assert.equal(scene.skyZone,1);assert.equal(scene.skyWeights[1],1);
+    scene.setAltitude(2999);assert.equal(scene.skyZone,0);assert.equal(scene.skyWeights[0],1);
+    assert.equal(h.frames.size,0);
+  }finally{scene.destroy();h.restore();}
+});

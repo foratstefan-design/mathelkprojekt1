@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {questions} from '../lib/questions.js';
-import {modes,questionFor,publicQuestion,gradeChoice,timeLimitMs,flightReward,difficultyFor,dailyModeFor,dailyQuestionFor,QuestionPoolExhaustedError} from '../lib/engine.js';
+import {modes,questionFor,publicQuestion,gradeChoice,timeLimitMs,flightReward,difficultyFor,mixDifficultyFor,dailyModeFor,dailyQuestionFor,QuestionPoolExhaustedError} from '../lib/engine.js';
 
 test('160 upper-secondary questions provide concrete facts, unique options and explanations',()=>{
   assert.equal(questions.length,160);
@@ -58,10 +58,26 @@ test('free difficulty rises gently and an exhausted entry pool never becomes exp
   const seen=questions.filter(q=>q.type==='common'&&q.difficulty===1);
   assert.throws(()=>questionFor('facts-first',20,'common',{altitude:0,seenFamilies:seen.map(q=>q.familyId)}),QuestionPoolExhaustedError);
 });
+
+test('free Mix difficulty uses exact current-height bands independent of index or launch height',()=>{
+  for(const [altitude,level] of [[0,1],[2999,1],[3000,2],[5999,2],[6000,3],[20000,3],[2500,1]]){
+    assert.equal(mixDifficultyFor(altitude),level);
+    for(const index of [0,15,16,32,500]){
+      assert.equal(difficultyFor(altitude,10000,index,'mix'),level);
+      assert.equal(questionFor('altitude-bands',index,'mix',{altitude,startAltitude:10000,seenFamilies:[]}).difficulty,level);
+    }
+  }
+  assert.equal(mixDifficultyFor(NaN),1);
+  assert.equal(difficultyFor(3000,0,0,'common'),1,'named courses keep their former progression');
+  for(const [altitude,level] of [[0,1],[3000,2],[6000,3]]){
+    const seenFamilies=questions.filter(q=>q.difficulty===level).map(q=>q.familyId);
+    assert.throws(()=>questionFor('spent-band',99,'mix',{altitude,seenFamilies}),QuestionPoolExhaustedError,'other bands do not replace exhausted Mix questions');
+  }
+});
 test('all modes exhaust finite factual families without recycling or generated number clones',()=>{
   for(const mode of modes.map(m=>m.id)){
     const context={altitude:20000,startAltitude:0,seenIds:[],seenFamilies:[]};
-    const eligible=questions.filter(q=>['mix','daily'].includes(mode)||q.type===mode);
+    const eligible=questions.filter(q=>(['mix','daily'].includes(mode)||q.type===mode)&&(mode!=='mix'||q.difficulty===3));
     const expected=new Set(eligible.map(q=>q.familyId)).size;
     for(let position=0;position<expected;position++){
       const q=questionFor('finite',32+position,mode,context);

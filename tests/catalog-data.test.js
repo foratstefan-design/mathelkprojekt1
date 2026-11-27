@@ -62,9 +62,10 @@ test('one thousand real imported questions across flights never repeat an expose
     const id='real-flight-'+flight;
     db.prepare('INSERT INTO runs(id,device,mode,seed,status,started_at,content_version) VALUES(?,?,?,?,?,?,2)').run(id,device,'mix',id,'ready',Date.now());
     for(let position=0;position<100;position++){
-      db.prepare('UPDATE runs SET question_index=? WHERE id=?').run(position,id);
+      const level=(flight*100+position)%3+1,altitude=[0,3000,6000][level-1];
+      db.prepare('UPDATE runs SET question_index=?,altitude=? WHERE id=?').run(position,altitude,id);
       const row=db.prepare('SELECT * FROM runs WHERE id=?').get(id),q=await catalog.claimFree(row,3);
-      assert.ok(q);assert.equal(seen.has(q.familyId),false);seen.add(q.familyId);
+      assert.ok(q);assert.equal(q.difficulty,level,'real Mix remains within the current height band');assert.equal(seen.has(q.familyId),false);seen.add(q.familyId);
       assert.equal((await catalog.claimFree(row,3)).id,q.id,'retry resumes the same reserved question');
     }
   }
@@ -79,7 +80,7 @@ test('a fresh real Mix spans broad areas instead of disguising twenty geography 
     db.prepare('UPDATE runs SET question_index=? WHERE id=?').run(position,id);
     const q=await catalog.claimFree(db.prepare('SELECT * FROM runs WHERE id=?').get(id),1);
     assert.ok(q);assert.equal(families.has(q.familyId),false);families.add(q.familyId);
-    assert.ok(q.difficulty<=2,'variety does not require an early expert question');
+    assert.equal(q.difficulty,1,'topic variety stays within the easy altitude band');
     topics.push(geography.has(q.category)?'geography':q.category);
   }
   assert.equal(families.size,20);assert.ok(new Set(topics).size>=4);

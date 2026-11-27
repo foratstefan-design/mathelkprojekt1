@@ -19,6 +19,7 @@ const body=new Element('body'),storage=new Map();
 class Scene {
   constructor(){this.calls=[];scenes.push(this);}
   setMode(mode){this.calls.push(['mode',mode]);}
+  setCourse(course){this.calls.push(['course',course]);}
   setFlightView(view){this.calls.push(['flightView',view]);return Promise.resolve();}
   ascend(){this.calls.push(['ascend']);return Promise.resolve();}
   setAltitude(height){this.calls.push(['height',height]);}
@@ -158,8 +159,8 @@ for(const [difficulty,label,index] of [[1,'LEICHT',0],[2,'MITTEL',3],[3,'SCHWER'
 setRun({kind:'daily',mode:'daily',dailyMode:'mix',competitionVersion:3,questionCount:10,index:4,question:{...q,category:'Musik',difficulty:2,basis:'curated',basisLabel:'Wissen · Musik'}});
 assert.match(query('#main').innerHTML,/Wissen · Musik/);
 assert.ok(!query('#main').innerHTML.includes('Schulwissen · Musik'));
-setRun({question:{...q,difficulty:2}});
-assert.match(query('#main').innerHTML,/data-level="2">VERTIEFUNG<\/span>/,'free-flight labels stay intact');
+setRun({mode:'common',question:{...q,difficulty:2}});
+assert.match(query('#main').innerHTML,/data-level="2">VERTIEFUNG<\/span>/,'individual free-course labels stay intact');
 
 // Reaching a finite catalog is a successful saved end, never a crash or retry loop.
 setRun({altitude:700,peakAltitude:900,score:55,correctTotal:2});
@@ -342,3 +343,19 @@ assert.ok(scenes[0].calls.some(([name,layout])=>name==='questionLayout'&&layout.
 execute("lockChoices('a')");
 assert.equal(query('#feedback').className,'feedback-banner pending');
 assert.match(query('#feedback').textContent,/Antwort gewählt/);
+
+// The free Mix communicates the exact altitude bands used by the server/sky.
+for(const [altitude,difficulty,label,course] of [[0,1,'LEICHT','LEICHTER KURS'],[2999,1,'LEICHT','LEICHTER KURS'],[3000,2,'MITTEL','MITTLERER KURS'],[5999,2,'MITTEL','MITTLERER KURS'],[6000,3,'SCHWER','SCHWERER KURS']]){
+  setRun({mode:'mix',altitude,question:{...q,difficulty}});
+  execute('setAltitude(run.altitude,false)');
+  assert.match(query('#main').innerHTML,new RegExp('data-level="'+difficulty+'">'+label+'</span>'));
+  assert.equal(query('#flight-level').textContent,course);
+  assert.equal(scenes[0].calls.filter(call=>call[0]==='course').at(-1)[1],'mix');
+}
+setRun({mode:'daily',kind:'daily',altitude:6000,question:{...q,difficulty:1}});
+execute('setAltitude(run.altitude,false)');
+assert.equal(scenes[0].calls.filter(call=>call[0]==='course').at(-1)[1],'','daily keeps its own background');
+assert.match(query('#main').innerHTML,/data-level="1">LEICHT<\/span>/,'daily difficulty follows the frozen question');
+execute('instructions()');
+assert.match(query('#main').innerHTML,/unter 3.000 m leicht, ab 3.000 m mittel und ab 6.000 m schwer/);
+assert.ok(!query('#main').innerHTML.includes('auch früher Vertiefungen'));
