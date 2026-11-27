@@ -11,7 +11,7 @@ function ready(scene,altitude=3000){scene.setMode('flying');scene.setAltitude(al
  test('the pixel camera moves terrain downward during ascent and remains finite at fantasy heights',()=>{
   const h=skyHarness(),scene=new FlightScene(h.canvas);
   try{
-    assert.equal(h.canvas.width,2560);assert.equal(h.canvas.attrs['aria-hidden'],'true');
+    assert.equal(h.canvas.width,1920);assert.equal(h.canvas.attrs['aria-hidden'],'true');
     assert.ok(scene.groundY<scene.h);const ground=scene.groundY;
     scene.setMode('flying');scene.setAltitude(1800,{duration:1000});h.advance(500);
     assert.ok(scene.altitude>0&&scene.altitude<1800);assert.ok(scene.groundY>ground);
@@ -38,6 +38,87 @@ test('phone and desktop answer anchors keep a visible centered plane above the q
       }
     }finally{scene.destroy();h.restore();}
   }
+});
+
+test('compact question layouts use CSS pixels and retain visible warning wobble on short screens',()=>{
+  for(const [width,height,centerY,size] of [[390,650,90,80],[1024,600,90,80],[1440,900,105,100]]){
+    const h=skyHarness({width,height}),scene=new FlightScene(h.canvas);
+    try{
+      scene.setQuestionLayout({centerY,size});ready(scene);
+      const anchor=scene._flightAnchor();close(cssY(scene,anchor.y),centerY);close(anchor.scale*48*width/scene.w,size);
+      for(const danger of [1,2]){
+        scene.setDanger(danger);
+        let minY=Infinity,maxY=-Infinity;
+        for(let time=0;time<8;time+=.08){
+          const pose=scene._planePose(time),radius=(Math.abs(Math.sin(pose.tilt))*24+Math.abs(Math.cos(pose.tilt))*11)*pose.scale;
+          minY=Math.min(minY,cssY(scene,pose.y-radius));maxY=Math.max(maxY,cssY(scene,pose.y+radius));
+        }
+        assert.ok(minY>centerY-40,'compact aircraft remains inside the upper sky band');
+        assert.ok(maxY<centerY+55,'danger wobble does not use the former tall question band');
+        assert.ok(maxY-minY>size*.45,'warning motion remains visible');
+      }
+      const showcase=scene._viewAnchor('showcase');close(showcase.y,scene.h*.38);
+      scene.setQuestionLayout(null);close(cssY(scene,scene._viewAnchor('question').y),Math.min(180,height*.3));
+    }finally{scene.destroy();h.restore();}
+  }
+});
+
+test('question layout changes do not restart a focus transition or maneuver',options,async()=>{
+  const h=skyHarness(),scene=new FlightScene(h.canvas);
+  try{
+    ready(scene);scene.setQuestionLayout({centerY:105,size:100});
+    const focus=scene.setFlightView('showcase'),view=scene.viewTween;
+    h.advance(160);scene.setQuestionLayout({centerY:90,size:80});
+    assert.equal(scene.viewTween,view);assert.equal(scene.setFlightView('showcase'),focus);
+    h.advance(160);await focus;close(scene._flightAnchor().y,scene.h*.38);
+    let complete=false;const ascent=scene.ascend().then(()=>{complete=true;}),action=scene.action;
+    h.advance(700);scene.setQuestionLayout({centerY:105,size:100});assert.equal(scene.action,action);
+    await Promise.resolve();assert.equal(complete,false);
+    h.advance(700);await ascent;assert.equal(complete,true);assert.equal(scene.maneuverLift,90);
+    const back=scene.setFlightView('question');h.advance(320);await back;
+    close(cssY(scene,scene._flightAnchor().y),105);
+    scene.setQuestionLayout({centerY:Infinity,size:NaN});close(cssY(scene,scene._flightAnchor().y),105);
+    close(scene._flightAnchor().scale*48*scene.cssWidth/scene.w,100);
+  }finally{scene.destroy();h.restore();}
+});
+
+test('Retina presentation uses fewer pixels and duplicate resize notifications do no extra rendering',()=>{
+  const h=skyHarness({width:1280,height:900,dpr:3}),scene=new FlightScene(h.canvas);
+  try{
+    assert.equal(h.canvas.width,1920);assert.equal(h.canvas.height,1350);
+    close(h.canvas.width*h.canvas.height/(2560*1800),.5625);
+    const original=scene._render;let renders=0;
+    scene._render=function(...args){renders++;return original.apply(this,args);};
+    scene.resize();scene.resize();assert.equal(renders,0);
+    window.devicePixelRatio=1;scene.resize();assert.equal(renders,1);
+    assert.equal(h.canvas.width,1280);assert.equal(h.canvas.height,900);
+    assert.equal(scene.ctx.imageSmoothingEnabled,false);assert.equal(scene.g.imageSmoothingEnabled,false);
+  }finally{scene.destroy();h.restore();}
+});
+
+test('stable sky colors and one plane pose are reused while particles expire without array churn',()=>{
+  const h=skyHarness(),scene=new FlightScene(h.canvas);
+  try{
+    ready(scene);scene.setDanger(2);scene.boost();
+    const color=scene._skyColor,pose=scene._planePose,particles=scene.particles;let colors=0,poses=0;
+    scene._skyColor=function(...args){colors++;return color.apply(this,args);};
+    scene._planePose=function(...args){poses++;return pose.apply(this,args);};
+    scene._render(.1,.1);assert.equal(colors,0);assert.equal(poses,1);
+    scene._render(.2,.1);assert.equal(colors,0);assert.equal(poses,2);assert.equal(scene.particles,particles);
+    scene.setAltitude(3200,{duration:0});assert.ok(colors>0,'a changed height refreshes sky colors');
+    const refreshed=colors;scene._render(.3,2);assert.equal(colors,refreshed);
+    assert.equal(scene.particles,particles);assert.equal(scene.particles.length,0);
+    assert.ok(scene.g.commands.some(command=>command.color==='#8a91a0'),'danger smoke remains drawn');
+  }finally{scene.destroy();h.restore();}
+});
+
+test('destroying during a frame cannot leave a stale animation callback',()=>{
+  const h=skyHarness(),scene=new FlightScene(h.canvas);
+  try{
+    assert.equal(h.frames.size,1);scene._render=()=>scene.destroy();h.advance(16);
+    assert.equal(scene.dead,true);assert.equal(h.frames.size,0);h.advance(16);assert.equal(h.frames.size,0);
+    h.changeMotion(false);assert.equal(h.frames.size,0);
+  }finally{scene.destroy();h.restore();}
 });
 
 test('viewport focus interpolates to a larger showcase and settles before subsequent maneuvers',options,async()=>{
@@ -143,6 +224,8 @@ test('reduced motion uses immediate fixed poses, no particles and no RAF for eve
     const fixed=scene._planePose(0);close(scene._planePose(100).y,fixed.y);close(scene._planePose(100).tilt,fixed.tilt);
     await scene.recover();assert.equal(scene.danger,0);assert.equal(scene.staticStall,0);
     await scene.setFlightView('question');close(cssY(scene,scene._flightAnchor().y),180);
+    scene.setQuestionLayout({centerY:90,size:80});close(cssY(scene,scene.lastPlanePose.y),90);
+    close(scene.lastPlanePose.scale*48*scene.cssWidth/scene.w,80);assert.equal(h.frames.size,0);
     await scene.crash();assert.equal(scene.crashP,1);assert.equal(scene.visualAltitude,0);
     assert.equal(scene.particles.length,0);assert.equal(h.frames.size,0);
     scene.reset();assert.equal(scene.mode,'home');assert.equal(scene.flightView,'home');

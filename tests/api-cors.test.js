@@ -25,6 +25,7 @@ test('Pages JSON preflight succeeds without a device or database access', async 
     assertAllowed(response);
     assert.equal(response.headers.get('Access-Control-Allow-Methods'), 'GET, POST');
     assert.equal(response.headers.get('Access-Control-Allow-Headers'), 'Content-Type');
+    assert.equal(response.headers.get('Access-Control-Max-Age'), '600');
   }
 });
 
@@ -34,6 +35,7 @@ test('CORS does not permit other origins, extra request headers, methods, or adm
     const response = await api(request('start', { method: 'OPTIONS', headers: { Origin: otherOrigin, 'Access-Control-Request-Method': 'POST' } }));
     assert.equal(response.status, 403);
     assert.equal(response.headers.get('Access-Control-Allow-Origin'), null);
+    assert.equal(response.headers.get('Access-Control-Max-Age'), null);
   }
   for (const changes of [
     { 'Access-Control-Request-Method': 'DELETE' },
@@ -42,11 +44,13 @@ test('CORS does not permit other origins, extra request headers, methods, or adm
     const response = await api(request('start', { method: 'OPTIONS', headers: { Origin: origin, 'Access-Control-Request-Method': 'POST', ...changes } }));
     assert.equal(response.status, 403);
     assert.equal(response.headers.get('Access-Control-Allow-Methods'), null);
+    assert.equal(response.headers.get('Access-Control-Max-Age'), null);
   }
   for (const path of ['admin/catalog/import', 'unknown']) {
     const response = await api(request(path, { method: 'OPTIONS', headers: { Origin: origin, 'Access-Control-Request-Method': 'POST' } }));
     assert.equal(response.headers.get('Access-Control-Allow-Origin'), null);
     assert.equal(response.headers.get('Access-Control-Allow-Methods'), null);
+    assert.equal(response.headers.get('Access-Control-Max-Age'), null);
   }
 });
 

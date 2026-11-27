@@ -4,6 +4,16 @@ const ease=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
 const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
 const ACTION_MS={takeoff:1400,ascend:1400,recover:1400,stall:1100,crash:2600};
 const CRASH_IMPACT=.83;
+const SKY_STOPS=[[0,[115,183,201]],[2500,[86,146,181]],[7000,[58,104,151]],[14000,[36,62,109]],[26000,[19,33,71]],[50000,[10,20,47]]];
+// Compile the fixed sprite once instead of scanning its transparent pixels on
+// every frame. Canvas drawing stays identical to the original pixel artwork.
+const PLANE_RUNS=[];
+for(let y=0;y<PLANE_SPRITE.length;y++)for(let x=0;x<48;){
+  const color=PLANE_PALETTE[PLANE_SPRITE[y][x]];
+  if(!color){x++;continue;}
+  let end=x+1;while(end<48&&PLANE_SPRITE[y][end]===PLANE_SPRITE[y][x])end++;
+  PLANE_RUNS.push({x:x-24,y:y-11,width:end-x,color});x=end;
+}
 /** A procedural pixel world: ascent moves clouds and landscape down the screen. */
 export class FlightScene {
   constructor(canvas) {
@@ -15,11 +25,12 @@ export class FlightScene {
     this.motion=window.matchMedia('(prefers-reduced-motion: reduce)');this.reduced=this.motion.matches;
     this.mode='home';this.altitude=0;this.targetAltitude=0;this.visualAltitude=0;
     this.speed=0;this.targetSpeed=0;this.climb=0;this.takeoffP=0;this.crashP=0;
-    this.altitudeTween=null;this.action=null;this.viewTween=null;this.flightView='home';this.maneuverLift=0;this.ascendP=1;this.particles=[];this.boostUntil=0;
+    this.altitudeTween=null;this.action=null;this.viewTween=null;this.flightView='home';this.questionLayout=null;this.maneuverLift=0;this.ascendP=1;this.particles=[];this.boostUntil=0;
     this.danger=0;this.stallP=1;this.recoverP=1;this.stallLevel=0;this.staticStall=0;
     this.frame=0;this.lastTime=0;this.dead=false;this.time=0;
     this._onResize=()=>this.resize();
     this._onMotion=()=>{
+      if(this.dead)return;
       this.reduced=this.motion.matches;cancelAnimationFrame(this.frame);
       if(this.reduced){this.altitude=this.targetAltitude;this.altitudeTween=null;this.particles.length=0;this.climb=0;
         if(this.action)this._completeAction();this._settleView();
@@ -33,7 +44,7 @@ export class FlightScene {
       const velocity=dt?Math.max(0,this.altitude-previous)/dt:0;
       this.climb+=(Math.min(1,velocity/1000)-this.climb)*Math.min(1,dt*6);
       this.speed+=(this.targetSpeed-this.speed)*Math.min(1,dt*3);
-      this.time+=dt;this._render(this.time,dt);this.frame=requestAnimationFrame(this._tick);
+      this.time+=dt;this._render(this.time,dt);if(!this.dead&&!this.reduced)this.frame=requestAnimationFrame(this._tick);
     };
     window.addEventListener('resize',this._onResize,{passive:true});this.motion.addEventListener?.('change',this._onMotion);
     if(window.ResizeObserver){this.observer=new ResizeObserver(this._onResize);this.observer.observe(canvas);}
@@ -41,9 +52,28 @@ export class FlightScene {
   }
   resize(){
     if(this.dead)return;const b=this.canvas.getBoundingClientRect(),width=Math.max(1,b.width||window.innerWidth),height=Math.max(1,b.height||window.innerHeight);
+    // The pixel world is already drawn at one third CSS resolution. A 1.5x
+    // presentation surface avoids the much larger 2x Retina blit on iPads.
+    const pixelRatio=Math.min(1.5,Math.max(1,Number(window.devicePixelRatio)||1));
+    if(width===this.cssWidth&&height===this.cssHeight&&pixelRatio===this.pixelRatio)return;
+    this.pixelRatio=pixelRatio;
     this.cssWidth=width;this.cssHeight=height;this.w=Math.max(100,Math.ceil(width/3));this.h=Math.max(120,Math.ceil(height/3));
-    this.buffer.width=this.w;this.buffer.height=this.h;this.canvas.width=Math.round(width*Math.min(2,window.devicePixelRatio||1));this.canvas.height=Math.round(height*Math.min(2,window.devicePixelRatio||1));
+    this.buffer.width=this.w;this.buffer.height=this.h;this.canvas.width=Math.round(width*pixelRatio);this.canvas.height=Math.round(height*pixelRatio);
     this.ctx.imageSmoothingEnabled=this.g.imageSmoothingEnabled=false;this._render(this.reduced?0:this.time,0);
+  }
+  /** Match the answering plane to the responsive panel's free sky band.
+   * centerY and full sprite width are CSS pixels, independent of canvas DPR.
+   * This does not restart focus transitions or any in-flight action promise.
+   */
+  setQuestionLayout(layout){
+    if(this.dead)return;
+    if(!layout)this.questionLayout=null;
+    else{
+      const previous=this.questionLayout||{centerY:Math.min(180,this.cssHeight*.3),size:this.cssWidth<550?112:130};
+      const centerY=Number(layout.centerY),size=Number(layout.size);
+      this.questionLayout={centerY:Number.isFinite(centerY)?clamp(centerY,24,Math.max(24,this.cssHeight-24)):previous.centerY,size:Number.isFinite(size)?clamp(size,64,240):previous.size};
+    }
+    if(this.reduced)this._render(0,0);
   }
   setMode(mode){
     if(this.dead||!['home','flying','crashed'].includes(mode))return;
@@ -154,8 +184,7 @@ export class FlightScene {
   _poly(points,color){const g=this.g;g.fillStyle=color;g.beginPath();points.forEach(([x,y],i)=>i?g.lineTo(Math.round(x),Math.round(y)):g.moveTo(Math.round(x),Math.round(y)));g.closePath();g.fill();}
   _mix(a,b,p){return a.map((n,i)=>Math.round(n+(b[i]-n)*clamp(p,0,1)));}
   _skyColor(altitude,y){
-    const stops=[[0,[115,183,201]],[2500,[86,146,181]],[7000,[58,104,151]],[14000,[36,62,109]],[26000,[19,33,71]],[50000,[10,20,47]]];
-    let a=stops[0],b=stops.at(-1);for(let i=1;i<stops.length;i++){b=stops[i];if(altitude<=b[0])break;a=b;}
+    let a=SKY_STOPS[0],b=SKY_STOPS.at(-1);for(let i=1;i<SKY_STOPS.length;i++){b=SKY_STOPS[i];if(altitude<=b[0])break;a=b;}
     const base=this._mix(a[1],b[1],(altitude-a[0])/Math.max(1,b[0]-a[0]));return 'rgb('+this._mix(base,[192,220,213],Math.max(0,1-altitude/11000)*y*.5).join(',')+')';
   }
   _render(time,dt){
@@ -167,10 +196,16 @@ export class FlightScene {
     // Start controls begin below 56%; keep the runway and parked plane above them.
     const groundBase=this.mode==='home'?.52:this.mode==='flying'?.52+.25*this.takeoffP:.77;
     this.groundY=h*groundBase+this.camera;
-    for(let y=0;y<h;y+=8)this._rect(0,y,w,9,this._skyColor(this.visualAltitude,y/h));
+    const skyAltitude=Math.round(this.visualAltitude);
+    if(this.skyAltitude!==skyAltitude||this.skyHeight!==h){
+      this.skyAltitude=skyAltitude;this.skyHeight=h;this.skyBands=[];
+      for(let y=0;y<h;y+=8)this.skyBands.push({y,color:this._skyColor(skyAltitude,y/h)});
+    }
+    for(const band of this.skyBands)this._rect(0,band.y,w,9,band.color);
     this._stars(time);this._sun(time);this._clouds(time);
     if(this.groundY<h+70)this._landscape(time);
-    this._trails(time);this._plane(time);this._effects(dt,time);
+    const pose=this._planePose(time);
+    this._trails(time,pose);this._plane(time,pose);this._effects(dt,time,pose);
     if(crash&&this.crashP>=CRASH_IMPACT)this._impact(time);
     this.ctx.imageSmoothingEnabled=false;this.ctx.drawImage(this.buffer,0,0,w,h,0,0,this.canvas.width,this.canvas.height);
   }
@@ -220,6 +255,7 @@ export class FlightScene {
   _viewAnchor(view){
     if(view==='home')return{x:this.w*.5,y:this.h*.48,scale:this.cssWidth<550?.75:1};
     if(view==='showcase')return{x:this.w*.5,y:this.h*.38,scale:this.cssWidth<550?1.3:1.65};
+    if(this.questionLayout)return{x:this.w*.5,y:this._cssY(clamp(this.questionLayout.centerY,24,Math.max(24,this.cssHeight-24))),scale:this._cssX(this.questionLayout.size)/48};
     return{x:this.w*.5,y:this._cssY(Math.min(180,this.cssHeight*.3)),scale:this.cssWidth<550?.78:.9};
   }
   _flightAnchor(){
@@ -258,26 +294,27 @@ export class FlightScene {
     return{x:home.x+(anchor.x-home.x)*this.takeoffP+rescue.wobble,y:home.y+(anchor.y-home.y)*this.takeoffP+bob+rescue.dip,tilt:this._baseTilt(time)+rescue.tilt,scale:home.scale+(anchor.scale-home.scale)*this.takeoffP};
   }
   _planePosition(time){const{x,y}=this._planePose(time);return{x,y};}
-  _plane(time){
-    const p=this._planePose(time);this.lastPlanePose=p;
+  _plane(time,p=this._planePose(time)){
+    this.lastPlanePose=p;
     if(this.mode==='crashed'&&this.crashP>=CRASH_IMPACT)return;
     const g=this.g,shake=this.mode==='crashed'&&this.crashP<.13&&!this.reduced?this._cssX(Math.sin(time*24)*3):0;
     g.save();g.translate(Math.round(p.x+shake),Math.round(p.y));g.rotate(p.tilt);g.scale(p.scale,p.scale);
-    for(let y=0;y<PLANE_SPRITE.length;y++)for(let x=0;x<48;){const c=PLANE_SPRITE[y][x];if(!PLANE_PALETTE[c]){x++;continue;}let end=x+1;while(end<48&&PLANE_SPRITE[y][end]===c)end++;this._rect(x-24,y-11,end-x,1,PLANE_PALETTE[c]);x=end;}
+    for(const run of PLANE_RUNS)this._rect(run.x,run.y,run.width,1,run.color);
     if(this.mode!=='crashed'&&!this.reduced){g.globalAlpha=.65;this._rect(14,Math.floor(time*14)%2?-5:-8,1,12,'#e4efdf');g.globalAlpha=1;}
     g.restore();
   }
-  _trails(time){
-    if(this.mode!=='flying'||this.reduced)return;const p=this._planePosition(time);this.g.globalAlpha=.18;
+  _trails(time,p=this._planePose(time)){
+    if(this.mode!=='flying'||this.reduced)return;this.g.globalAlpha=.18;
     const boost=this.boostUntil>time;
     for(let i=0;i<(boost?9:5);i++){const length=(boost?24:12)+i*4,wind=((time*(boost?65:12+this.speed*25)+i*21)%100);this._rect(p.x-25-wind,p.y+(i-(boost?4:2))*4,length,1,boost?'#f8e3ac':i%2?'#e0eee0':'#aacbd4');}
     this.g.globalAlpha=1;
   }
-  _effects(dt,time){
-    for(const p of this.particles){p.life+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;this.g.globalAlpha=Math.max(0,1-p.life/p.max);this._rect(p.x,p.y,p.size,p.size,p.color);}
-    this.particles=this.particles.filter(p=>p.life<p.max);this.g.globalAlpha=1;
+  _effects(dt,time,plane=this._planePose(time)){
+    let alive=0;
+    for(const p of this.particles){p.life+=dt;if(p.life>=p.max)continue;this.particles[alive++]=p;p.x+=p.vx*dt;p.y+=p.vy*dt;this.g.globalAlpha=Math.max(0,1-p.life/p.max);this._rect(p.x,p.y,p.size,p.size,p.color);}
+    this.particles.length=alive;this.g.globalAlpha=1;
     if(this.mode==='flying'&&(this.danger||this.staticStall||this.action?.type==='stall')){
-      const plane=this._planePosition(time),strength=Math.max(this.danger,this.staticStall,this.action?.type==='stall'?this.stallLevel:0);
+      const strength=Math.max(this.danger,this.staticStall,this.action?.type==='stall'?this.stallLevel:0);
       const count=2+Math.ceil(strength);
       for(let i=0;i<count;i++){
         const age=this.reduced?(i+.5)/count:((time*.75+i/count)%1);
@@ -286,7 +323,7 @@ export class FlightScene {
       }
       this.g.globalAlpha=1;
     }
-    if(this.mode==='crashed'&&this.crashP<CRASH_IMPACT){const plane=this._planePosition(time);for(let i=0;i<7;i++){const age=((this.crashP*2.5+i*.12)%1),x=plane.x-9-age*24,y=plane.y-5-age*14;this.g.globalAlpha=(1-age)*.7;this._rect(x,y,3+age*5,3+age*4,i%2?'#758392':'#b2a5a5');}this.g.globalAlpha=1;}
+    if(this.mode==='crashed'&&this.crashP<CRASH_IMPACT){for(let i=0;i<7;i++){const age=((this.crashP*2.5+i*.12)%1),x=plane.x-9-age*24,y=plane.y-5-age*14;this.g.globalAlpha=(1-age)*.7;this._rect(x,y,3+age*5,3+age*4,i%2?'#758392':'#b2a5a5');}this.g.globalAlpha=1;}
   }
   _impact(time){
     const{x,y}=this._impactPosition(),p=clamp((this.crashP-CRASH_IMPACT)/(1-CRASH_IMPACT),0,1),radius=this._cssX(8+ease(p)*54);

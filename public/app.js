@@ -1,6 +1,7 @@
-import {FlightScene} from './sky.js?v=flight-4';
+import {FlightScene} from './sky.js?v=fit-1';
 import {plane,hero} from './art.js?v=flight-4';
 import {API_ORIGIN} from './runtime-config.js?v=pages-1';
+import {questionLayout,fitQuestion} from './viewport.js?v=fit-1';
 const $=selector=>document.querySelector(selector),main=$('#main');
 const MODES=[{id:'mix',label:'Mix',detail:'Alle Flugmanöver',icon:'✦'},{id:'common',label:'Mehr',detail:'Größer, höher oder länger?',icon:'+'},{id:'rare',label:'Weniger',detail:'Kleiner, niedriger oder kürzer?',icon:'◇'},{id:'earlier',label:'Früher',detail:'Was war zuerst da?',icon:'Ⅰ'},{id:'later',label:'Später',detail:'Was kam zuletzt?',icon:'Ⅳ'}];
 const modeInfo=id=>id==='daily'?{id:'daily',label:'Tagesflug',detail:'Ein Versuch pro Tag'}:id==='general'?{id:'general',label:'Wissen',detail:'Allgemeines Wissen'}:MODES.find(mode=>mode.id===id)||MODES[0];
@@ -135,9 +136,49 @@ function showFlightState(){
 function flightCounter(){
   return 'FRAGE '+(run.index+1)+(run.questionCount?' / '+run.questionCount:'')+' · '+(isDaily()?dailyLabel(run.dailyMode):modeInfo(run.mode).label).toUpperCase();
 }
-function question(){const q=currentQuestion;pendingChoice=null;view(`<section class="game flight-game ${run.recovering?'recovering':''} ${q.prompt.length>130?'long-question':''}"><div class="game-top"><button class="text-button" id="surface">FLUGSTATION</button><span class="question-counter">${flightCounter()}</span></div><div class="question-content"><div class="question-panel"><span class="category-tag">${modeInfo(q.type).label.toUpperCase()} · ${esc(q.category.toUpperCase())}</span><span class="difficulty-badge" data-level="${q.difficulty||run.difficulty||1}">${difficultyLabel(q.difficulty||run.difficulty||1)}</span><h1 class="question-title">${esc(q.prompt)}</h1><p class="question-note">${esc(q.basisLabel)}</p></div>${run.recovering?`<div class="recovery-banner" data-level="${run.danger||1}" role="status">${run.danger>=2?'LETZTE CHANCE: Die nächste Antwort muss stimmen.':'STABILISIEREN: Richtig antworten und das Flugzeug abfangen.'}</div>`:''}<div class="choice-grid" role="group" aria-label="Eine Antwort wählen">${q.options.map((option,index)=>`<button class="choice" data-choice="${esc(option.id)}"><span class="choice-number" aria-hidden="true">${index+1}</span><strong class="choice-label">${esc(option.label)}</strong></button>`).join('')}</div><div id="question-timer"><div class="timer-info"><span>ANTWORTE, BEVOR DER AUFTRIEB FEHLT.</span><span id="timer-count" role="timer" aria-label="Verbleibende Antwortzeit">${seconds(run.timeLimitMs)}</span></div><div class="timer-track" aria-hidden="true"><div id="timer-bar" class="timer-bar"></div></div><span class="sr-only" id="timer-live" aria-live="polite"></span></div><p class="game-hint">Eine Antwort wählen · Tastatur: 1, 2, 3 oder 4</p><div class="feedback-banner" id="feedback" role="status" aria-live="polite"></div></div></section>`,'question');$('#surface').onclick=()=>leaveFlight();document.querySelectorAll('[data-choice]').forEach(button=>button.onclick=()=>submitChoice(button.dataset.choice));scene.setMode('flying');scene.setFlightView('question');scene.setDanger?.(run.danger||0);scene.setSpeed(run.correctTotal??run.streak);hud();startClock();focusTitle();}
-function startClock(){let announced=false;function tick(){if(screen!=='question')return;const remaining=Math.max(0,run.deadline-Date.now());$('#timer-count').textContent=seconds(remaining);$('#hud-time').textContent=seconds(remaining);$('#timer-bar').style.transform=`scaleX(${Math.min(1,remaining/run.timeLimitMs)})`;$('#timer-bar').classList.toggle('urgent',remaining<=Math.min(5000,run.timeLimitMs*.4));if(!announced&&remaining<=3000){$('#timer-live').textContent='Noch höchstens drei Sekunden.';announced=true;}if(remaining<=0){submitChoice(null,true);return;}clockFrame=requestAnimationFrame(tick);}clockFrame=requestAnimationFrame(tick);}
-function lockChoices(choiceId){document.querySelectorAll('[data-choice]').forEach(button=>{button.disabled=true;button.classList.toggle('selected',button.dataset.choice===choiceId);});$('#timer-count').textContent='GESENDET';$('#feedback').innerHTML='<strong>Antwort wird gespeichert …</strong>';}
+// Only measure when content/viewport changes, never during the animation loop.
+let fitFrame=0;
+function fitCockpit(){
+  if(screen!=='question')return;
+  const game=main.querySelector('.active-question'),content=game?.querySelector('.question-content');
+  if(!Number.isFinite(content?.offsetHeight)||!game.style.setProperty)return;
+  const width=window.visualViewport?.width||window.innerWidth,height=window.visualViewport?.height||window.innerHeight;
+  if(!width||!height)return;
+  game.style.setProperty('--play-height',height+'px');
+  fitQuestion(()=>content.offsetHeight-height,density=>{
+    const layout=questionLayout(width,height,density);
+    game.dataset.density=String(density);game.style.setProperty('--cockpit-top',layout.top+'px');
+    scene.setQuestionLayout({centerY:layout.centerY,size:layout.size});
+  },height<650?1:0);
+}
+function scheduleCockpit(){cancelAnimationFrame(fitFrame);fitFrame=requestAnimationFrame(fitCockpit);}
+window.addEventListener('resize',scheduleCockpit);
+window.visualViewport?.addEventListener('resize',scheduleCockpit);
+document.fonts?.ready.then(scheduleCockpit);
+function question(){const q=currentQuestion;pendingChoice=null;view(`<section class="game flight-game active-question ${run.recovering?'recovering':''} ${q.prompt.length>130?'long-question':''}"><div class="question-content"><div class="game-top"><button class="text-button" id="surface">FLUGSTATION</button><span class="question-counter">${flightCounter()}</span></div><div class="question-panel"><span class="category-tag">${modeInfo(q.type).label.toUpperCase()} · ${esc(q.category.toUpperCase())}</span><span class="difficulty-badge" data-level="${q.difficulty||run.difficulty||1}">${difficultyLabel(q.difficulty||run.difficulty||1)}</span><h1 class="question-title">${esc(q.prompt)}</h1><p class="question-note">${esc(q.basisLabel)}</p></div>${run.recovering?`<div class="recovery-banner" data-level="${run.danger||1}" role="status">${run.danger>=2?'LETZTE CHANCE: Die nächste Antwort muss stimmen.':'STABILISIEREN: Richtig antworten und das Flugzeug abfangen.'}</div>`:''}<div class="choice-grid" role="group" aria-label="Eine Antwort wählen">${q.options.map((option,index)=>`<button class="choice" data-choice="${esc(option.id)}"><span class="choice-number" aria-hidden="true">${index+1}</span><strong class="choice-label">${esc(option.label)}</strong></button>`).join('')}</div><div id="question-timer"><div class="timer-info"><span>ANTWORTE, BEVOR DER AUFTRIEB FEHLT.</span><span id="timer-count" role="timer" aria-label="Verbleibende Antwortzeit">${seconds(run.timeLimitMs)}</span></div><div class="timer-track" aria-hidden="true"><div id="timer-bar" class="timer-bar"></div></div><span class="sr-only" id="timer-live" aria-live="polite"></span></div><p class="game-hint">Eine Antwort wählen · Tastatur: 1, 2, 3 oder 4</p><div class="feedback-banner" id="feedback" role="status" aria-live="polite"></div></div></section>`,'question');$('#surface').onclick=()=>leaveFlight();document.querySelectorAll('[data-choice]').forEach(button=>button.onclick=()=>submitChoice(button.dataset.choice));scene.setMode('flying');scene.setFlightView('question');scene.setDanger?.(run.danger||0);scene.setSpeed(run.correctTotal??run.streak);hud();fitCockpit();scheduleCockpit();startClock();focusTitle();}
+function startClock(){
+  let announced=false,lastPaint=-Infinity;
+  function tick(now=performance.now()){
+    if(screen!=='question')return;
+    const remaining=Math.max(0,run.deadline-Date.now());
+    // Ten DOM updates per second are enough for a tenth-second countdown.
+    if(now-lastPaint>=100||remaining===0){
+      lastPaint=now;const label=seconds(remaining);
+      $('#timer-count').textContent=label;$('#hud-time').textContent=label;
+      $('#timer-bar').style.transform=`scaleX(${Math.min(1,remaining/run.timeLimitMs)})`;
+      $('#timer-bar').classList.toggle('urgent',remaining<=Math.min(5000,run.timeLimitMs*.4));
+    }
+    if(!announced&&remaining<=3000){$('#timer-live').textContent='Noch höchstens drei Sekunden.';announced=true;}
+    if(remaining<=0){submitChoice(null,true);return;}
+    clockFrame=requestAnimationFrame(tick);
+  }
+  tick();
+}
+function lockChoices(choiceId){
+  document.querySelectorAll('[data-choice]').forEach(button=>{button.disabled=true;button.classList.toggle('selected',button.dataset.choice===choiceId);});
+  $('#timer-count').textContent='GESENDET';$('#feedback').className='feedback-banner pending';
+  $('#feedback').textContent='Antwort gewählt · wird übertragen …';
+}
 async function submitChoice(choiceId,expired=false,retry){
   if(busy||(!retry&&screen!=='question'))return;
   if($('#leave-dialog').open)$('#leave-dialog').close('stay');
@@ -189,6 +230,7 @@ function showLearning(result,animating=false){
 }
 async function advanceFlight(){
   if(busy)return;busy=true;
+  const nextButton=$('#next-question');if(nextButton){nextButton.disabled=true;nextButton.textContent='NÄCHSTE FRAGE WIRD GELADEN …';}
   try{
     if(supersededDaily()){showDailyRefresh();return;}
     if(catalogEmpty(run)){catalogExhausted();return;}
@@ -196,7 +238,7 @@ async function advanceFlight(){
     run=await api('next',{runId:run.id});showFlightState();
   }catch(error){
     if(error.poolExhausted||error.code==='QUESTION_POOL_EXHAUSTED'){catalogExhausted(null,null,isDaily());return;}
-    if(screen==='feedback'){toast(error.message);$('#next-question').textContent='Erneut weiterfliegen';}
+    if(screen==='feedback'){toast(error.message);$('#next-question').disabled=false;$('#next-question').textContent='Erneut weiterfliegen';}
     else errorView(error,resumeFlight);
   }finally{busy=false;}
 }

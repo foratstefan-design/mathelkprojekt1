@@ -53,6 +53,7 @@ Der freie Flug hat keine feste Gesamtdauer und kein festes Höhenziel. Höhe ist
 public/
   index.html              Oberfläche und Navigation
   app.js                  Auswahl, Timer, Flugzustand und Ergebnisse
+  viewport.js             Lesbare Cockpitdichte nach sichtbarer Bildschirmhöhe
   base.css                Gemeinsame responsive Bedienelemente
   style.css               Pixel-Flugoberfläche und Antwortmöglichkeiten
   sky.js                  Eigene Pixel-Flugwelt und Animationen
@@ -220,3 +221,12 @@ Der Browser speichert unter `hoehenflug-` eine anonyme Gerätekennung, Einstellu
 ## GitHub
 
 GitHub-Repository: [foratstefan-design/mathelkprojekt1](https://github.com/foratstefan-design/mathelkprojekt1). Projektname: `mathelkprojekt`. GitHub Actions prüft bei Pushes und Pull Requests Tests, Worker-Build und Backend-Smoke-Test mit Node.js 24. Es werden keine API-Schlüssel benötigt. Laufzeitdaten, Datenbanken, Zugangsdaten und die Konfiguration der ursprünglichen Website sind nicht Bestandteil dieses Repositories.
+
+
+## Kompaktes Cockpit und Reaktionszeit
+
+Die aktive Frage nutzt die sichtbare Browserhöhe (`visualViewport` auf iPad/Safari) und bis zu drei Abstandsstufen. Frage, vier Antworten und Timer bleiben auf typischen Tablet-Ansichten gemeinsam sichtbar; Antworten bleiben mindestens 16 CSS-Pixel groß. Extrem lange Texte und vergrößerte Schrift dürfen weiterhin natürlich scrollen. Größenwechsel ändern weder die Aufgabe noch ihre Frist. Lernkarten sind absichtlich ohne Zeitdruck scrollbar.
+
+Die gewählte Antwort und der Weiterflug zeigen sofort einen Übertragungszustand. Der Countdown schreibt seine Zehntelsekunden höchstens zehnmal pro Sekunde ins DOM. Die Canvas-Zeichenfläche verwendet höchstens DPR 1,5; kompilierte Sprite-Zeilen und zwischengespeicherte Himmelsfarben reduzieren Zeichenarbeit. Reduced Motion und alle Steig-, Rettungs- und Absturzphasen bleiben erhalten.
+
+Backend-Leseergebnisse werden ausschließlich innerhalb einer Anfrage wiederverwendet. Im warmen lokalen Test benötigt `/api/next` statt 21 nun 13 SQL-Aufrufe im freien Flug und statt 19 nun 12 im Tagesflug (Auswahlgrenzen können zusätzliche Abfragen erfordern). Die erlaubte GitHub-Pages-Herkunft darf die CORS-Vorabfreigabe 600 Sekunden wiederverwenden. Antworten und Spielstände werden weiterhin nicht öffentlich zwischengespeichert; die erste Antwort wird vor weiteren Datenbank-Lesezugriffen atomar gespeichert. Die tatsächliche Wartezeit hängt weiterhin von Netzwerk und Hosting ab.

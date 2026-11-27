@@ -685,3 +685,58 @@ body[data-screen="crashing"] .footer{display:none}
 
 /* The daily course is visible before starting, without moving the flight band. */
 .daily-plan{display:block;grid-column:1 / -1;grid-row:3;font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.7;letter-spacing:.025em;color:#d7e6c2;overflow-wrap:anywhere}
+
+/* The active cockpit uses the visible viewport, including iPad browser chrome.
+   Long explanations and exceptional text/zoom sizes retain natural scrolling. */
+.flight-game.active-question{width:min(960px,calc(100% - 140px));padding:0;min-height:var(--play-height,100dvh)}
+.flight-game.active-question .question-content,
+.flight-game.active-question:has(.recovery-banner) .question-content{padding:var(--cockpit-top,172px) 0 12px;min-height:var(--play-height,100dvh);gap:0}
+.flight-game.active-question .game-top{position:static;min-height:24px;margin:0 0 8px;gap:12px;letter-spacing:0}
+.flight-game.active-question .game-top .text-button{min-height:28px;padding:2px 0}
+.flight-game.active-question .question-panel{padding:14px 20px;min-height:0}
+.flight-game.active-question .category-tag{font-size:12px;line-height:1.4;margin:0 6px 8px 0;letter-spacing:.05em}
+.flight-game.active-question .difficulty-badge{font-size:12px;line-height:1.4;margin:0 0 8px;padding:2px 6px}
+.flight-game.active-question .question-title,
+.flight-game.active-question.long-question .question-title{font-size:clamp(1.8rem,3.3vw,2.4rem);line-height:1.08;margin:0 0 8px;letter-spacing:0;overflow-wrap:break-word}
+.flight-game.active-question .question-note{font-size:12px;line-height:1.4}
+.flight-game.active-question .choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.flight-game.active-question .choice{min-height:76px;padding:12px;gap:10px}
+.flight-game.active-question .choice-label{font-size:17px;line-height:1.35;overflow-wrap:break-word;hyphens:auto}
+.flight-game.active-question #question-timer{margin-top:auto}
+.flight-game.active-question .timer-info{font-size:12px;line-height:1.4;margin:0 0 7px}
+.flight-game.active-question .game-hint{font-size:12px;line-height:1.4;margin:10px 0 0}
+.flight-game.active-question .recovery-banner{font-size:13px;line-height:1.4;padding:7px 10px;margin:10px 0 0}
+.flight-game.active-question .feedback-banner.pending{position:absolute;top:auto;bottom:8px;left:50%;width:max-content;max-width:100%;padding:6px 12px;font-size:12px;line-height:1.5;transform:translateX(-50%);animation:none}
+.flight-game.active-question .choice.selected{opacity:1;background:#20584f;border-color:#a5ead1;box-shadow:0 0 0 2px #8ed9bd55}
+body[data-screen="question"] .score-chip{display:none}
+body[data-screen="question"] .flight-status{gap:3px;padding-top:0}
+@media(max-width:640px){
+ .flight-game.active-question{width:calc(100% - 28px)}
+ .flight-game.active-question .question-panel{padding:12px 14px}
+ .flight-game.active-question .question-title,.flight-game.active-question.long-question .question-title{font-size:1.9rem}
+ .flight-game.active-question .choice{min-height:72px;display:block;padding:9px 10px}
+ .flight-game.active-question .choice-number{display:block;width:auto;height:auto;min-height:0;padding:0;margin-bottom:3px;border:0;box-shadow:none;background:none;font-size:12px;line-height:1}
+ .flight-game.active-question .choice-label{display:block;font-size:16px;line-height:1.3}
+ .flight-game.active-question .question-counter{font-size:11px}
+ .flight-game.active-question .timer-info>span:first-child{max-width:72%;font-size:10px}
+}
+.flight-game.active-question[data-density="1"] .question-panel,
+.flight-game.active-question[data-density="2"] .question-panel{padding:10px 14px}
+.flight-game.active-question[data-density="1"] .choice-grid,
+.flight-game.active-question[data-density="2"] .choice-grid{margin:10px 0;gap:8px}
+.flight-game.active-question[data-density="1"] .choice,
+.flight-game.active-question[data-density="2"] .choice{min-height:64px;padding:9px 10px}
+.flight-game.active-question[data-density="1"] .game-hint,
+.flight-game.active-question[data-density="2"] .game-hint{display:none}
+.flight-game.active-question[data-density="2"] .question-title{font-size:1.8rem;line-height:1.05}
+.flight-game.active-question[data-density="2"] .choice-grid{gap:6px;margin:8px 0}
+.flight-game.active-question[data-density="2"] .choice{min-height:56px;padding:7px 9px}
+.flight-game.active-question[data-density="2"] .question-note{font-size:11px;line-height:1.3}
+.flight-game.active-question[data-density="2"] .category-tag,
+.flight-game.active-question[data-density="2"] .difficulty-badge{margin-bottom:5px}
+.flight-game.active-question[data-density="2"] .recovery-banner{margin-top:7px;padding:5px 8px}
+@media(prefers-reduced-motion:reduce){.flight-game.active-question .choice{transition:none}}
+
+@keyframes cockpit-arrive{from{opacity:0}to{opacity:1}}
+.flight-game.active-question .question-content{animation:cockpit-arrive .18s ease-out both;transform:none}
+@media(prefers-reduced-motion:reduce){.flight-game.active-question .question-content{animation:none}}

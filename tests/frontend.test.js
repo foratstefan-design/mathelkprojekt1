@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
+import {questionLayout,fitQuestion} from '../public/viewport.js';
 const elements=new Map(),scenes=[],calls=[];
 function classes(){const list=new Set();return {toggle(name,on){if(on===undefined)on=!list.has(name);on?list.add(name):list.delete(name);return on;},contains:name=>list.has(name),add:name=>list.add(name),remove:name=>list.delete(name)};}
 class Element {
@@ -22,6 +23,7 @@ class Scene {
   ascend(){this.calls.push(['ascend']);return Promise.resolve();}
   setAltitude(height){this.calls.push(['height',height]);}
   setDanger(){}setSpeed(){}reset(){}
+  setQuestionLayout(layout){this.calls.push(['questionLayout',layout]);}
   takeoff(){this.calls.push(['takeoff']);return Promise.resolve();}
   recover(){this.calls.push(['recover']);return Promise.resolve();}
   stall(){this.calls.push(['stall']);return Promise.resolve();}
@@ -34,7 +36,7 @@ const context=vm.createContext({
   console,crypto,URL,Response,Intl,Date,Math,Promise,performance,setTimeout,clearTimeout,
   localStorage:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},
   matchMedia:()=>({matches:true}),requestAnimationFrame:()=>++frame,cancelAnimationFrame(){},
-  FlightScene:Scene,plane:()=>'<svg></svg>',hero:'<svg></svg>',location,API_ORIGIN:'',
+  questionLayout,fitQuestion,FlightScene:Scene,plane:()=>'<svg></svg>',hero:'<svg></svg>',location,API_ORIGIN:'',
   window:{scrollTo(){},addEventListener(){},history:{replaceState(a,b,value){location.hash=value;}}},
   document:{body,querySelector:query,querySelectorAll:()=>[],addEventListener(){},createElement:()=>new Element()},
   navigator:{},fetch:async(path,init)=>{calls.push({path,body:init?.body?JSON.parse(init.body):null});const result=await handler(path,init);const status=result.__httpStatus||200;const body={...result};delete body.__httpStatus;return new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json'}});}
@@ -318,3 +320,25 @@ context.navigator.share=async value=>{shared=value;};
 await execute('share()');
 assert.ok(shared.text.endsWith('https://flight.test/mathelkprojekt1/'));
 console.log('Frontend flow checks passed, including shared API requests and GitHub Pages share links.');
+
+// A viewport refit only changes geometry; it never starts a question/timer again.
+setRun();
+const cockpit=query('.active-question'),cockpitContent=query('.question-content');
+cockpit.style.setProperty=(key,value)=>cockpit.style[key]=value;
+Object.defineProperty(cockpitContent,'offsetHeight',{get:()=>cockpit.dataset.density==='0'?900:700});
+context.window.innerWidth=1024;context.window.innerHeight=768;
+calls.length=0;const savedDeadline=execute('run.deadline');
+execute('fitCockpit()');
+assert.equal(cockpit.dataset.density,'1');
+assert.equal(cockpit.style['--play-height'],'768px');
+assert.equal(cockpit.style['--cockpit-top'],'140px');
+assert.equal(execute('run.deadline'),savedDeadline);
+assert.equal(calls.length,0,'rotating/resizing never arms another question');
+context.window.visualViewport={width:390,height:620};
+execute('fitCockpit()');
+assert.equal(cockpit.style['--play-height'],'620px','browser chrome uses visual viewport');
+assert.equal(execute('run.deadline'),savedDeadline);
+assert.ok(scenes[0].calls.some(([name,layout])=>name==='questionLayout'&&layout.centerY===90));
+execute("lockChoices('a')");
+assert.equal(query('#feedback').className,'feedback-banner pending');
+assert.match(query('#feedback').textContent,/Antwort gewählt/);
